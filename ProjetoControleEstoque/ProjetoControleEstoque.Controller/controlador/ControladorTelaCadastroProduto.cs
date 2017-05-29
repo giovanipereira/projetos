@@ -142,7 +142,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private bool ValidarCampoObrigatorio()
         {
-            return !validacao.VerificarCampoVazio();
+            return validacao.VerificarCampoVazio();
         }
 
         #endregion

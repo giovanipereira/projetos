@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace ProjetoControleEstoque.Controller.utility
                     ((DataGridView)control).Rows.Clear();
 
                 else if (control is NumericUpDown)
-                    ((NumericUpDown)control).Value = 1;
+                    ((NumericUpDown)control).Value = 0;
             }
         }
 
@@ -58,13 +59,23 @@ namespace ProjetoControleEstoque.Controller.utility
         public bool VerificarCampoVazio()
         {
             bool retorno = false;
-            foreach(var control in listaControles)
+            foreach (var control in listaControles)
             {
-                if (control.Text.Equals(string.Empty))
-                    retorno = true;
+                if (control is TextBox)
+                {
+                    if (control.Text.Equals(string.Empty))
+                        return retorno = true;
+                }
+                else if (control is NumericUpDown)
+                {
+                    if (((NumericUpDown)control).Value == 0)
+                    {
+                        return false;
+                    }
+                }
             }
             return retorno;
         }
     }
-            
+
 }

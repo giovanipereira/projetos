@@ -52,11 +52,29 @@
     <Compile Include="layout\frmTelaCadastroCardapio.Designer.cs">
       <DependentUpon>frmTelaCadastroCardapio.cs</DependentUpon>
     </Compile>
+    <Compile Include="layout\frmTelaCadastroFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaCadastroFornecedor.Designer.cs">
+      <DependentUpon>frmTelaCadastroFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="layout\frmTelaCadastroFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaCadastroFuncionario.Designer.cs">
+      <DependentUpon>frmTelaCadastroFuncionario.cs</DependentUpon>
+    </Compile>
     <Compile Include="layout\frmTelaCadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="layout\frmTelaCadastroProduto.Designer.cs">
       <DependentUpon>frmTelaCadastroProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="layout\frmTelaCadastroSubcategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaCadastroSubcategoria.Designer.cs">
+      <DependentUpon>frmTelaCadastroSubcategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="layout\frmTelaCardapioItem.cs">
       <SubType>Form</SubType>
@@ -76,6 +94,12 @@
     <Compile Include="layout\frmTelaPedido.Designer.cs">
       <DependentUpon>frmTelaPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="layout\frmTelaPedidoItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaPedidoItem.Designer.cs">
+      <DependentUpon>frmTelaPedidoItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="layout\frmTelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,8 +111,17 @@
     <EmbeddedResource Include="layout\frmTelaCadastroCardapio.resx">
       <DependentUpon>frmTelaCadastroCardapio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaCadastroFornecedor.resx">
+      <DependentUpon>frmTelaCadastroFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaCadastroFuncionario.resx">
+      <DependentUpon>frmTelaCadastroFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaCadastroProduto.resx">
       <DependentUpon>frmTelaCadastroProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaCadastroSubcategoria.resx">
+      <DependentUpon>frmTelaCadastroSubcategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaCardapioItem.resx">
       <DependentUpon>frmTelaCardapioItem.cs</DependentUpon>
@@ -98,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaPedido.resx">
       <DependentUpon>frmTelaPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaPedidoItem.resx">
+      <DependentUpon>frmTelaPedidoItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaPrincipal.resx">
       <DependentUpon>frmTelaPrincipal.cs</DependentUpon>

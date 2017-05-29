@@ -132,11 +132,6 @@
             this.nudQntdFornecidas.Name = "nudQntdFornecidas";
             this.nudQntdFornecidas.Size = new System.Drawing.Size(84, 20);
             this.nudQntdFornecidas.TabIndex = 26;
-            this.nudQntdFornecidas.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label14
             // 
@@ -178,11 +173,6 @@
             this.nudQntdMinima.Name = "nudQntdMinima";
             this.nudQntdMinima.Size = new System.Drawing.Size(84, 20);
             this.nudQntdMinima.TabIndex = 20;
-            this.nudQntdMinima.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // mskDataValidade
             // 
@@ -239,7 +229,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(18, 109);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(134, 20);
+            this.txtNome.Size = new System.Drawing.Size(146, 20);
             this.txtNome.TabIndex = 13;
             // 
             // txtCodigo
