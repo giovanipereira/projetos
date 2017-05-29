@@ -286,11 +286,4 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
     }
-
-    public enum EnumOperationMode
-    {
-        Normal = 1,
-        Inserir = 2,
-        Atualizar = 3
-    }
 }

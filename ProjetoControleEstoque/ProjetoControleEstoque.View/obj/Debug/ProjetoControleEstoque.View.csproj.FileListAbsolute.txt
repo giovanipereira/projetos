@@ -34,3 +34,8 @@ C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoContr
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.csproj.GenerateResource.Cache
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.exe
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.pdb
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroFornecedor.resources
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroFuncionario.resources
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroMesa.resources
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroSubcategoria.resources
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaPedidoItem.resources

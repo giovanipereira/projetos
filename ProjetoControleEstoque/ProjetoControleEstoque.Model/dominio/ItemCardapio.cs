@@ -19,20 +19,6 @@ namespace ProjetoControleEstoque.Model.dominio
 
         #endregion
 
-        public ItemCardapio()
-        {
-
-        }
-
-        public ItemCardapio(int codigo_produto, string nome_produto, string unidade, double quantidade, Cardapio cardapio)
-        {
-            this.codigo_produto = codigo_produto;
-            this.nome_produto = nome_produto;
-            this.unidade = unidade;
-            this.quantidade = quantidade;
-            this.cardapio = cardapio;
-        }
-
         #region Properties
         public Cardapio _cardapio
         {

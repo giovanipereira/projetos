@@ -64,6 +64,12 @@
     <Compile Include="layout\frmTelaCadastroFuncionario.Designer.cs">
       <DependentUpon>frmTelaCadastroFuncionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="layout\frmTelaCadastroMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaCadastroMesa.Designer.cs">
+      <DependentUpon>frmTelaCadastroMesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="layout\frmTelaCadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaCadastroFuncionario.resx">
       <DependentUpon>frmTelaCadastroFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaCadastroMesa.resx">
+      <DependentUpon>frmTelaCadastroMesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaCadastroProduto.resx">
       <DependentUpon>frmTelaCadastroProduto.cs</DependentUpon>
