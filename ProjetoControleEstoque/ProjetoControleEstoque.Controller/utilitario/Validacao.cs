@@ -47,7 +47,7 @@ namespace ProjetoControleEstoque.Controller.utility
         {
             foreach (var control in listaControles)
             {
-                if (control is TextBox || control is MaskedTextBox || control is ComboBox ||control is Button
+                if (control is TextBox || control is MaskedTextBox || control is ComboBox || control is Button
                     || control is PictureBox || control is DataGridView || control is NumericUpDown)
                 {
                     control.Enabled = enable;
@@ -55,16 +55,16 @@ namespace ProjetoControleEstoque.Controller.utility
             }
         }
 
-        public bool VerificarObrigatoriedade()
+        public bool VerificarCampoVazio()
         {
             bool retorno = false;
-            foreach (var control in listaControles)
+            foreach(var control in listaControles)
             {
-                if (control is TextBox)
-                    if (!control.Text.Equals(string.Empty))
-                        retorno = true;
+                if (control.Text.Equals(string.Empty))
+                    retorno = true;
             }
             return retorno;
         }
     }
+            
 }

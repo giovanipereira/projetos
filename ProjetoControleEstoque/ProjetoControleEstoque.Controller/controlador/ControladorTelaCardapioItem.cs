@@ -51,7 +51,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         // Função que desabilita os componentes
         private void EnableAll()
         {
-            validacao.EnableControl(false);
+            validacao.EnableControle(false);
         }
 
         // Função para o evento load que desabilita os componentes

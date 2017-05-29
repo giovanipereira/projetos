@@ -21,8 +21,6 @@ namespace ProjetoControleEstoque.Controller.controlador
         // Declaração das listas
         private List<Control> listaControles = new List<Control>();
 
-
-
         // Declaração das classes 
         Validacao validacao;
 
@@ -142,6 +140,11 @@ namespace ProjetoControleEstoque.Controller.controlador
             txtCodigo.Enabled = false;
         }
 
+        private bool ValidarCampoObrigatorio()
+        {
+            return !validacao.VerificarCampoVazio();
+        }
+
         #endregion
 
         #region Event Functions
@@ -153,8 +156,12 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Salvar()
         {
-            Mensagem.MensagemSalvar();
-            OperationMode((int)EnumOperationMode.Normal);
+            if (!ValidarCampoObrigatorio())
+            {
+                Mensagem.MensagemSalvar();
+                OperationMode((int)EnumOperationMode.Normal);
+            }
+            
         }
 
         public void Inserir()
