@@ -9,20 +9,17 @@ using ProjetoControleEstoque.Controller.utility;
 
 namespace ProjetoControleEstoque.Controller.controlador
 {
-    public class ControladorTelaCadastroCardapio
+    public class ControladorTelaCadastroCardapio : ControladorBase
     {
 
         #region Declaration
 
         private TextBox txtCodigo, txtNome, txtPreco, txtDescricao;
         private PictureBox picFigura;
-        private Button btnEscolher, btnRemover, btnSelecionar, btnInserir, btnSalvar, btnAtualizar;
-        private Button btnCancelar, btnRemoverItem, btnEditarItem;
+        private Button btnEscolher, btnRemover, btnSelecionar;
+        private Button btnRemoverItem, btnEditarItem;
         private DataGridView dgvListaProdutos;
         private ComboBox cboCategoria;
-
-        // Declaração das listas
-        private List<Control> listControls = new List<Control>();
 
         // Declaração das classes 
         Cardapio cardapio;
@@ -59,7 +56,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             this.btnRemoverItem = btnRemoverItem;
             this.btnEditarItem = btnEditarItem;
             // Adiciona a Lista
-            AddList();
+            AdicionarListaControles();
         }
 
         #endregion
@@ -67,7 +64,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         #region Public Methods
 
         // Função que habilita ou desabilita os botões de editar e remover itens
-        public void EnableButtonItem()
+        public void HabilitarBotaoItem()
         {
             // Verifica se o datagridview tem registros, se tiver habilita os botões de editar e remover item
             if (dgvListaProdutos.Rows.Count > 0)
@@ -83,7 +80,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         }
 
         // Função que seleciona uma figura para a picturebox
-        public void ChooseFigura()
+        public void EscolherFigura()
         {
             string foto = null;
             OpenFileDialog OpenFileDialog = new OpenFileDialog();
@@ -95,27 +92,21 @@ namespace ProjetoControleEstoque.Controller.controlador
                 picFigura.Load(foto);
             }
         }
+
         // Função que remove a figura da picturebox
-        public void RemoveFigura()
+        public void RemoverFigura()
         {
             picFigura.Image = null;
         }
 
-        // Função que adiciona o produto ao datagridview
-        public void AddItem(object item)
-        {
-            dgvListaProdutos.Rows.Add(item);
-            dgvListaProdutos.Refresh();
-        }
-
         // Função que abre o form de consulta produto
-        public void SelectProduto(Form form)
+        public void SelecionarProduto(Form form)
         {
             form.ShowDialog();
         }
 
         // Função que remove os itens do datagridview
-        public void RemoveItem()
+        public void RemoverItem()
         {
             // Verifica se contem registros no datagridview
             if (dgvListaProdutos.Rows.Count > 0)
@@ -126,83 +117,65 @@ namespace ProjetoControleEstoque.Controller.controlador
             }
         }
 
-        // Função que configura o tipo de operação
-        public void OperationMode(int option)
+        // ======== não finalizadas =========
+
+        // Função que adiciona o produto ao datagridview
+        public void AdicionarItem(object item)
         {
-            // A variável option recebe um valor que pode ser standard, insert ou update
-            // Por padrão os botões de operação vem desabilitados
-            btnInserir.Enabled = false;
-            btnSalvar.Enabled = false;
-            btnAtualizar.Enabled = false;
-            btnCancelar.Enabled = false;
-            // Desabilitar todos os componentes
-            EnableAll(false);
-            switch (option)
-            {
-                // Se for standard
-                case 1:
-                    // Habilita os botões padrões
-                    btnInserir.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    // Desabilita os componentes
-                    EnableAll(false);
-                    // E limpa os componentes
-                    ClearControl();
-                    break;
-                // Se for Insert
-                case 2:
-                    // Habilita os componentes para realizar a operação de salvar
-                    btnSalvar.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    // Habilita os componentes
-                    EnableAll(true);
-                    break;
-                // Se for Update
-                case 3:
-                    // Habilita os componentes para realizar a operação de atualizar
-                    btnAtualizar.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    // Habilita os componentes
-                    EnableAll(true);
-                    break;
-            }
+            dgvListaProdutos.Rows.Add(item);
+            dgvListaProdutos.Refresh();
         }
 
         // Função que edita o item
-        public void EditItem()
+        public void EditarItem()
         {
-            EnableButtonItem();
+            HabilitarBotaoItem();
         }
 
         #endregion
 
-        #region Private Methods
+        #region Private and Protected Abstracts Methods
 
         // Função que adiciona uma lista ao construtor da classe Validacao
-        private void AddList()
+        protected override void AdicionarListaControles()
         {
-            listControls.Add(txtCodigo);
-            listControls.Add(txtNome);
-            listControls.Add(txtPreco);
-            listControls.Add(picFigura);
-            listControls.Add(txtDescricao);
-            listControls.Add(cboCategoria);
-            listControls.Add(dgvListaProdutos);
-            listControls.Add(btnEscolher);
-            listControls.Add(btnRemover);
-            listControls.Add(btnSelecionar);
-            validacao = new Validacao(listControls);
+            listaControles.Add(txtCodigo);
+            listaControles.Add(txtNome);
+            listaControles.Add(txtPreco);
+            listaControles.Add(picFigura);
+            listaControles.Add(txtDescricao);
+            listaControles.Add(cboCategoria);
+            listaControles.Add(dgvListaProdutos);
+            listaControles.Add(btnEscolher);
+            listaControles.Add(btnRemover);
+            listaControles.Add(btnSelecionar);
+            validacao = new Validacao(listaControles);
         }
+
+        // Função que habilita os componentes se receber true ou desabilita se receber false
+        protected override void HabilitarTodosCampos(bool enable)
+        {
+            // Os componentes que estão com o valor false é porque sempre que 
+            // for chamado esse método eles não ficaram habilitados
+            txtCodigo.Enabled = false;
+            btnRemoverItem.Enabled = false;
+            btnEditarItem.Enabled = false;
+            validacao.EnableControle(enable);
+        }
+
         // Função que limpa todos os componentes
-        private void ClearControl()
+        protected override void LimparCampos()
         {
             validacao.LimparControl();
         }
 
+        // ======== não finalizadas =========
+
         // Função que anexa os valores dos componentes nas propriedades do objeto cardapio
-        private void LoadCardapio()
+        private void CarregarCardapio()
         {
-            // Variável para uso no Try parse, onde se acontecer alguma exception na conversão o codigo sera igual a 1
+            // Variável para uso no Try parse, onde se acontecer alguma exception na conversão o 
+            // codigo sera igual a 1
             int codigo;
             cardapio = new Cardapio();
             cardapio._codigo = int.TryParse(txtCodigo.Text, out codigo) ? codigo : 1;
@@ -211,16 +184,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             cardapio._figura = picFigura.ImageLocation;
             cardapio._descricao = txtDescricao.Text;
             cardapio._codigo_categoria = int.Parse(cboCategoria.SelectedValue.ToString());
-        }
-
-        // Função que habilita os componentes se receber true ou desabilita se receber false
-        private void EnableAll(bool enable)
-        {
-            // Os componentes que estão com o valor false é porque sempre que for chamado esse método eles não ficaram habilitados
-            txtCodigo.Enabled = false;
-            btnRemoverItem.Enabled = false;
-            btnEditarItem.Enabled = false;
-            validacao.EnableControle(enable);
         }
 
         #endregion
@@ -232,18 +195,18 @@ namespace ProjetoControleEstoque.Controller.controlador
             OperationMode((int)EnumOperationMode.Normal);
         }
 
-        public void Save()
+        public void Salvar()
         {
             Mensagem.MensagemSalvar();
             OperationMode((int)EnumOperationMode.Normal);
         }
 
-        public void Insert()
+        public void Inserir()
         {
             OperationMode((int)EnumOperationMode.Inserir);
         }
 
-        public void Update()
+        public void Atualizar()
         {
             OperationMode((int)EnumOperationMode.Atualizar);
         }

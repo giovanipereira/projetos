@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ProjetoControleEstoque.Controller.controlador
 {
-    public class ControladorTelaCadastroProduto
+    public class ControladorTelaCadastroProduto : ControladorBase
     {
         #region Declaration
 
@@ -16,10 +16,6 @@ namespace ProjetoControleEstoque.Controller.controlador
         private ComboBox cboFornecedor, cboUnidade, cboSubcategoria, cboCategoria;
         private NumericUpDown nudQntdFornecidas, nudQntdMinima, nudQntdMaxima;
         private MaskedTextBox mskDataValidade;
-        private Button btnInserir, btnSalvar, btnAtualizar, btnCancelar;
-
-        // Declaração das listas
-        private List<Control> listaControles = new List<Control>();
 
         // Declaração das classes 
         Validacao validacao;
@@ -63,51 +59,27 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Public Methods
 
-        // Função que configura o tipo de operação
-        public void OperationMode(int option)
-        {
-            // A variável option recebe um valor que pode ser standard, insert ou update
-            // Por padrão os botões de operação vem desabilitados
-            btnInserir.Enabled = false;
-            btnSalvar.Enabled = false;
-            btnAtualizar.Enabled = false;
-            btnCancelar.Enabled = false;
-            // Desabilitar todos os componentes
-            HabilitarCampos(false);
-            switch (option)
-            {
-                // Se for standard
-                case 1:
-                    // Habilita os botões padrões
-                    btnInserir.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    // Desabilita os componentes
-                    HabilitarCampos(false);
-                    // E limpa os componentes
-                    LimparControles();
-                    break;
-                // Se for Insert
-                case 2:
-                    // Habilita os componentes para realizar a operação de salvar
-                    btnSalvar.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    // Habilita os componentes
-                    HabilitarCampos(true);
-                    break;
-                // Se for Update
-                case 3:
-                    // Habilita os componentes para realizar a operação de atualizar
-                    btnAtualizar.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    // Habilita os componentes
-                    HabilitarCampos(true);
-                    break;
-            }
-        }
+
 
         #endregion
 
         #region Private Methods
+
+        protected override void HabilitarTodosCampos(bool enable)
+        {
+            validacao.EnableControle(enable);
+            txtCodigo.Enabled = false;
+        }
+
+        protected override void LimparCampos()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void AdicionarListaControles()
+        {
+            throw new NotImplementedException();
+        }
 
         private void AdicionarLista()
         {
@@ -134,7 +106,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         }
 
         // Função que habilita os componentes se receber true ou desabilita se receber false
-        private void HabilitarCampos(bool enable)
+        private void HabilitarCampos1(bool enable)
         {
             validacao.EnableControle(enable);
             txtCodigo.Enabled = false;
@@ -209,6 +181,8 @@ namespace ProjetoControleEstoque.Controller.controlador
                 else e.Handled = true;
             }
         }
+
+        
 
         #endregion
     }

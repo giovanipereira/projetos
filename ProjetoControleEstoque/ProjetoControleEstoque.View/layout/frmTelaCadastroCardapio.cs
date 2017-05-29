@@ -36,33 +36,33 @@ namespace ProjetoControleEstoque.View.layout
 
         private void btnEscolher_Click(object sender, EventArgs e)
         {
-            controladorTelaCadastroCardapio().ChooseFigura();
+            controladorTelaCadastroCardapio().EscolherFigura();
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            controladorTelaCadastroCardapio().RemoveFigura();
+            controladorTelaCadastroCardapio().RemoverFigura();
         }
 
         private void btnRemoverItem_Click(object sender, EventArgs e)
         {
-            controladorTelaCadastroCardapio().RemoveItem();
+            controladorTelaCadastroCardapio().RemoverItem();
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            controladorTelaCadastroCardapio().Insert();
+            controladorTelaCadastroCardapio().Inserir();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            controladorTelaCadastroCardapio().Save();
+            controladorTelaCadastroCardapio().Salvar();
         }
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             telaConsultaProduto = new frmTelaConsultaProduto();
-            controladorTelaCadastroCardapio().SelectProduto(telaConsultaProduto);
+            controladorTelaCadastroCardapio().SelecionarProduto(telaConsultaProduto);
             this.Hide();
         }
 
@@ -83,7 +83,7 @@ namespace ProjetoControleEstoque.View.layout
 
         private void dgvListaProdutos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            controladorTelaCadastroCardapio().EnableButtonItem();
+            controladorTelaCadastroCardapio().HabilitarBotaoItem();
         }
     }
 }
