@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjetoControleEstoque.Controller.interfaces;
 
 namespace ProjetoControleEstoque.Controller.controlador
 {
-    public abstract class ControladorBase
+    public abstract class ControladorBase : IControladorBase
     {
         #region Declaration
 
@@ -15,16 +16,17 @@ namespace ProjetoControleEstoque.Controller.controlador
         protected List<Control> listaControles = new List<Control>();
         #endregion
 
-        #region Declaration Protected Abstract Methods
+        #region Declaration Public Abstract Methods
 
-        protected abstract void HabilitarTodosCampos(bool enable);
-        protected abstract void LimparCampos();
-        protected abstract void AdicionarListaControles();
+        public abstract void HabilitarTodosCampos(bool enable);
+        public abstract void LimparCampos();
+        public abstract void AdicionarListaControles();
+
         #endregion
 
         #region Protected Methods
 
-        // Função que controla o tipo de operação que o usuário está fazendo
+        // Função que controla o tipo de operação que o usuário executara
         protected void OperationMode(int option)
         {
             // A variável option recebe um valor que pode ser standard, insert ou update

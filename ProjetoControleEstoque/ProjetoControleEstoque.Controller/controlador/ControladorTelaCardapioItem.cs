@@ -1,4 +1,5 @@
 ﻿using ProjetoControleEstoque.Controller.utility;
+using ProjetoControleEstoque.Controller.validacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ProjetoControleEstoque.Controller.controlador
     public class ControladorTelaCardapioItem
     {
         #region Declaration
-        Validacao validacao;
+        ValidacaoProduto validacao;
 
         private TextBox txtCodigoProduto, txtNomeProduto, txtQuantidadeProduto;
         private ComboBox cboUnidadeProduto;
@@ -45,7 +46,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             listControls.Add(txtCodigoProduto);
             listControls.Add(txtNomeProduto);
             listControls.Add(cboUnidadeProduto);
-            validacao = new Validacao(listControls);
+            validacao = new ValidacaoProduto(listControls);
         }
 
         // Função que desabilita os componentes

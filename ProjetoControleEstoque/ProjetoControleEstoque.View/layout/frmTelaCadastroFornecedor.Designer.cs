@@ -94,7 +94,7 @@
             this.cboUf.FormattingEnabled = true;
             this.cboUf.Location = new System.Drawing.Point(467, 267);
             this.cboUf.Name = "cboUf";
-            this.cboUf.Size = new System.Drawing.Size(74, 21);
+            this.cboUf.Size = new System.Drawing.Size(146, 21);
             this.cboUf.TabIndex = 41;
             // 
             // mskCep
@@ -225,6 +225,7 @@
             // 
             // txtCodigo
             // 
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(34, 46);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(146, 20);
@@ -274,6 +275,7 @@
             this.btnCancelar.TabIndex = 15;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAtualizar
             // 
@@ -283,6 +285,7 @@
             this.btnAtualizar.TabIndex = 14;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // btnSalvar
             // 
@@ -292,6 +295,7 @@
             this.btnSalvar.TabIndex = 13;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnInserir
             // 
@@ -301,6 +305,7 @@
             this.btnInserir.TabIndex = 12;
             this.btnInserir.Text = "Inserir";
             this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // label21
             // 
@@ -327,6 +332,7 @@
             this.Name = "frmTelaCadastroFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Cadastro Fornecedor";
+            this.Load += new System.EventHandler(this.frmTelaCadastroFornecedor_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             this.ResumeLayout(false);

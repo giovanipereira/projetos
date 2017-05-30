@@ -130,7 +130,7 @@
             // 
             this.nudQntdFornecidas.Location = new System.Drawing.Point(18, 236);
             this.nudQntdFornecidas.Name = "nudQntdFornecidas";
-            this.nudQntdFornecidas.Size = new System.Drawing.Size(58, 20);
+            this.nudQntdFornecidas.Size = new System.Drawing.Size(55, 20);
             this.nudQntdFornecidas.TabIndex = 26;
             // 
             // label14

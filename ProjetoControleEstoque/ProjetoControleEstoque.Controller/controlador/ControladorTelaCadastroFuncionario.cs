@@ -1,4 +1,5 @@
 ﻿using ProjetoControleEstoque.Controller.utility;
+using ProjetoControleEstoque.Controller.validacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         private ComboBox cboCargo, cboNivelAcesso;
         private MaskedTextBox mskCpf, mskTelefone;
 
-        Validacao validacao;
+        ValidacaoProduto validacao;
 
         #endregion
 
@@ -55,9 +56,9 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-        #region Private and Protected Abstracts Methods
+        #region Private and Abstracts Methods
 
-        protected override void AdicionarListaControles()
+        public override void AdicionarListaControles()
         {
             listaControles.Add(txtCodigo);
             listaControles.Add(txtNome);
@@ -69,16 +70,16 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(cboNivelAcesso);
             listaControles.Add(mskCpf);
             listaControles.Add(mskTelefone);
-            validacao = new Validacao(listaControles);
+            validacao = new ValidacaoProduto(listaControles);
         }
 
-        protected override void HabilitarTodosCampos(bool enable)
+        public override void HabilitarTodosCampos(bool enable)
         {
             validacao.EnableControle(enable);
             txtCodigo.Enabled = false;
         }
 
-        protected override void LimparCampos()
+        public override void LimparCampos()
         {
             validacao.LimparControl();
         }

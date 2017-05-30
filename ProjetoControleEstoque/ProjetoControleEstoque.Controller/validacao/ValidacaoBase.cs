@@ -1,18 +1,18 @@
-﻿using System;
+﻿using ProjetoControleEstoque.Controller.interfaces;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjetoControleEstoque.Controller.utility
+namespace ProjetoControleEstoque.Controller.validacao
 {
-    public class Validacao
+    public abstract class ValidacaoBase<T> : IValidacaoBase<T> where T : class
     {
         private List<Control> listaControles;
 
-        public Validacao(List<Control> listaControles)
+        public ValidacaoBase(List<Control> listaControles)
         {
             this.listaControles = listaControles;
         }
@@ -77,5 +77,5 @@ namespace ProjetoControleEstoque.Controller.utility
             return retorno;
         }
     }
-
 }
+

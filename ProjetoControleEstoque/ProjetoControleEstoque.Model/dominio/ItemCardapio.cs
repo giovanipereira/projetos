@@ -11,7 +11,7 @@ namespace ProjetoControleEstoque.Model.dominio
     {
         #region Fields
 
-        private Cardapio cardapio;
+      //  private Cardapio cardapio;
         private int codigo_produto;
         private string nome_produto;
         private string unidade;

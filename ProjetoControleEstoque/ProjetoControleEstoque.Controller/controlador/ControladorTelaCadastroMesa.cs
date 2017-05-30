@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace ProjetoControleEstoque.Controller.controlador
 {
-    class ControladorTelaCadastroMesa
+    public class ControladorTelaCadastroMesa : ControladorBase
     {
+        public override void AdicionarListaControles()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void HabilitarTodosCampos(bool enable)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void LimparCampos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

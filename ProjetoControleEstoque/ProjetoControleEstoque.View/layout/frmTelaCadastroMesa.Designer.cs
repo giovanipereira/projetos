@@ -39,8 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dgvListaSubcategorias = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaSubcategorias)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -102,7 +102,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(251, 132);
+            this.btnBuscar.Location = new System.Drawing.Point(280, 132);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 26;
@@ -111,7 +111,7 @@
             // 
             // txtBusca
             // 
-            this.txtBusca.Location = new System.Drawing.Point(145, 134);
+            this.txtBusca.Location = new System.Drawing.Point(174, 134);
             this.txtBusca.Name = "txtBusca";
             this.txtBusca.Size = new System.Drawing.Size(100, 20);
             this.txtBusca.TabIndex = 25;
@@ -121,9 +121,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(34, 137);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.Size = new System.Drawing.Size(135, 13);
             this.label4.TabIndex = 23;
-            this.label4.Text = "Consulta Nº mesa:";
+            this.label4.Text = "Consultar número da mesa:";
             // 
             // dgvListaSubcategorias
             // 
@@ -142,6 +142,13 @@
             this.panel1.Size = new System.Drawing.Size(735, 91);
             this.panel1.TabIndex = 21;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(39, 46);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -150,13 +157,6 @@
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Número da mesa:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(39, 46);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 1;
             // 
             // frmTelaCadastroMesa
             // 

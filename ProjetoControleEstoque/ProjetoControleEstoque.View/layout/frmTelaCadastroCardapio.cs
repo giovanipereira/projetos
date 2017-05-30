@@ -63,7 +63,6 @@ namespace ProjetoControleEstoque.View.layout
         {
             telaConsultaProduto = new frmTelaConsultaProduto();
             controladorTelaCadastroCardapio().SelecionarProduto(telaConsultaProduto);
-            this.Hide();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjetoControleEstoque.Model.dominio;
 using ProjetoControleEstoque.Controller.utility;
+using ProjetoControleEstoque.Controller.validacao;
 
 namespace ProjetoControleEstoque.Controller.controlador
 {
@@ -23,7 +24,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         // Declaração das classes 
         Cardapio cardapio;
-        Validacao validacao;
+        ValidacaoCardapio validacao;
 
         #endregion
 
@@ -55,7 +56,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             this.cboCategoria = cboCategoria;
             this.btnRemoverItem = btnRemoverItem;
             this.btnEditarItem = btnEditarItem;
-            // Adiciona a Lista
             AdicionarListaControles();
         }
 
@@ -134,10 +134,10 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-        #region Private and Protected Abstracts Methods
+        #region Private and Abstracts Methods
 
         // Função que adiciona uma lista ao construtor da classe Validacao
-        protected override void AdicionarListaControles()
+        public override void AdicionarListaControles()
         {
             listaControles.Add(txtCodigo);
             listaControles.Add(txtNome);
@@ -149,22 +149,22 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(btnEscolher);
             listaControles.Add(btnRemover);
             listaControles.Add(btnSelecionar);
-            validacao = new Validacao(listaControles);
+            validacao = new ValidacaoCardapio(listaControles);
         }
 
         // Função que habilita os componentes se receber true ou desabilita se receber false
-        protected override void HabilitarTodosCampos(bool enable)
+        public override void HabilitarTodosCampos(bool enable)
         {
             // Os componentes que estão com o valor false é porque sempre que 
             // for chamado esse método eles não ficaram habilitados
+            validacao.EnableControle(enable);
             txtCodigo.Enabled = false;
             btnRemoverItem.Enabled = false;
             btnEditarItem.Enabled = false;
-            validacao.EnableControle(enable);
         }
 
         // Função que limpa todos os componentes
-        protected override void LimparCampos()
+        public override void LimparCampos()
         {
             validacao.LimparControl();
         }
