@@ -22,8 +22,10 @@ namespace ProjetoControleEstoque.Controller.controlador
         protected abstract void AdicionarListaControles();
         #endregion
 
+        #region Protected Methods
+
         // Função que controla o tipo de operação que o usuário está fazendo
-        public void OperationMode(int option)
+        protected void OperationMode(int option)
         {
             // A variável option recebe um valor que pode ser standard, insert ou update
             // Por padrão os botões de operação vem desabilitados
@@ -62,7 +64,10 @@ namespace ProjetoControleEstoque.Controller.controlador
                     HabilitarTodosCampos(true);
                     break;
             }
-        }        
+        }
+
+        #endregion
+
     }
 
     public enum EnumOperationMode

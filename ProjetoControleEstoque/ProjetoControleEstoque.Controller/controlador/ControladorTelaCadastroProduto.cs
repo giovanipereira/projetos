@@ -52,7 +52,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             this.btnSalvar = btnSalvar;
             this.btnAtualizar = btnAtualizar;
             this.btnCancelar = btnCancelar;
-            AdicionarLista();
+            AdicionarListaControles();
         }
 
         #endregion
@@ -60,10 +60,9 @@ namespace ProjetoControleEstoque.Controller.controlador
         #region Public Methods
 
 
-
         #endregion
 
-        #region Private Methods
+        #region Private and Protected Abstracts Methods
 
         protected override void HabilitarTodosCampos(bool enable)
         {
@@ -71,17 +70,13 @@ namespace ProjetoControleEstoque.Controller.controlador
             txtCodigo.Enabled = false;
         }
 
+        // Função que limpa todos os componentes
         protected override void LimparCampos()
         {
-            throw new NotImplementedException();
+            validacao.LimparControl();
         }
 
         protected override void AdicionarListaControles()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AdicionarLista()
         {
             listaControles.Add(txtCodigo);
             listaControles.Add(txtNome);
@@ -97,19 +92,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(nudQntdMaxima);
             listaControles.Add(mskDataValidade);
             validacao = new Validacao(listaControles);
-        }
-
-        // Função que limpa todos os componentes
-        private void LimparControles()
-        {
-            validacao.LimparControl();
-        }
-
-        // Função que habilita os componentes se receber true ou desabilita se receber false
-        private void HabilitarCampos1(bool enable)
-        {
-            validacao.EnableControle(enable);
-            txtCodigo.Enabled = false;
         }
 
         private bool ValidarCampoObrigatorio()
@@ -181,8 +163,6 @@ namespace ProjetoControleEstoque.Controller.controlador
                 else e.Handled = true;
             }
         }
-
-        
 
         #endregion
     }
