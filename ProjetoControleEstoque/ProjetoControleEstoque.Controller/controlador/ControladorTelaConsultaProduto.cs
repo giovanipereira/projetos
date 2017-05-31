@@ -44,18 +44,18 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             listProducts.Add(new Produto()
             {
-                _codigo = 1,
-                _nome = "Goiaba",
-                _valor_compra = 2,
-                _qntd_estoque = 6,
-                _qntd_minima = 4,
-                _qntd_fornecidas = 6,
-                _qntd_maxima = 10,
-                _data_validade = new DateTime(2000, 05, 12),
-                _descricao = "N.d.a",
-                _codigo_unidade = 1,
-                _codigo_fornecedor = 1,
-                _codigo_subcategoria = 1
+                Id = 1,
+                Nome = "Goiaba",
+                Valor_compra = 2,
+                Qntd_estoque = 6,
+                Qntd_minima = 4,
+                Qntd_fornecidas = 6,
+                Qntd_maxima = 10,
+                Data_validade = new DateTime(2000, 05, 12),
+                Descricao = "N.d.a",
+                Unidade = 1,
+                Fornecedor = 1,
+                Subcategoria = 1
             });
         }
 

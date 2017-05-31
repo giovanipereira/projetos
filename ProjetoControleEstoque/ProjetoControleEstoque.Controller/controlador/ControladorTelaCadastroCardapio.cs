@@ -178,12 +178,12 @@ namespace ProjetoControleEstoque.Controller.controlador
             // codigo sera igual a 1
             int codigo;
             cardapio = new Cardapio();
-            cardapio._codigo = int.TryParse(txtCodigo.Text, out codigo) ? codigo : 1;
-            cardapio._nome = txtNome.Text;
-            cardapio._preco = decimal.Parse(txtPreco.Text);
-            cardapio._figura = picFigura.ImageLocation;
-            cardapio._descricao = txtDescricao.Text;
-            cardapio._codigo_categoria = int.Parse(cboCategoria.SelectedValue.ToString());
+            cardapio.Id = int.TryParse(txtCodigo.Text, out codigo) ? codigo : 1;
+            cardapio.Nome = txtNome.Text;
+            cardapio.Preco = decimal.Parse(txtPreco.Text);
+            cardapio.Figura = picFigura.ImageLocation;
+            cardapio.Descricao = txtDescricao.Text;
+            cardapio.Categoria = int.Parse(cboCategoria.SelectedValue.ToString());
         }
 
         #endregion

@@ -10,40 +10,38 @@ namespace ProjetoControleEstoque.Model.dominio
     public class ItemCardapio
     {
         #region Fields
-
-      //  private Cardapio cardapio;
-        private int codigo_produto;
-        private string nome_produto;
+        private int id_produto;
+        private int id_cardapio;
+        private string nome;
         private string unidade;
         private double quantidade;
-
         #endregion
 
         #region Properties
-        public Cardapio _cardapio
+        public int Id_cardapio
         {
-            get { return this._cardapio; }
-            set { this._cardapio = value; }
+            get { return this.id_cardapio; }
+            set { this.id_cardapio = value; }
         }
-        public int _codigo_produto
+        public int Id_produto
         {
-            get { return this.codigo_produto; }
-            set { this.codigo_produto = value; }
-        }
-
-        public string _nome_produto
-        {
-            get { return this.nome_produto; }
-            set { this.nome_produto = value; }
+            get { return this.id_produto; }
+            set { this.id_produto = value; }
         }
 
-        public string _unidade
+        public string Nome
+        {
+            get { return this.nome; }
+            set { this.nome = value; }
+        }
+
+        public string Unidade
         {
             get { return this.unidade; }
             set { this.unidade = value; }
         }
 
-        public double _quantidade
+        public double Quantidade
         {
             get { return this.quantidade; }
             set { this.quantidade = value; }

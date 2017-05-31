@@ -14,6 +14,5 @@ namespace ProjetoControleEstoque.Controller.validacao
         {
         }
 
-
     }
 }

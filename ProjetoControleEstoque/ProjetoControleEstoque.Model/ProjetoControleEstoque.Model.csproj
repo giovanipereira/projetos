@@ -41,8 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dominio\Cardapio.cs" />
+    <Compile Include="dominio\Fornecedor.cs" />
+    <Compile Include="dominio\Funcionario.cs" />
     <Compile Include="dominio\ItemCardapio.cs" />
+    <Compile Include="dominio\ItemPedido.cs" />
+    <Compile Include="dominio\Mesa.cs" />
+    <Compile Include="dominio\Pedido.cs" />
     <Compile Include="dominio\Produto.cs" />
+    <Compile Include="dominio\Subcategoria.cs" />
+    <Compile Include="dominio\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

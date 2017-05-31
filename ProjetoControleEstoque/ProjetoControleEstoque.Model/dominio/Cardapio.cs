@@ -9,52 +9,49 @@ namespace ProjetoControleEstoque.Model.dominio
     public class Cardapio
     {
         #region Fields
-
-        private int codigo;
+        private int id;
         private string nome;
         private decimal preco;
         private string figura;
         private string descricao;
-        private int codigo_categoria;
-
+        private int categoria;
         #endregion
 
         #region Properties
-
-        public int _codigo
+        public int Id
         {
-            get { return this.codigo; }
-            set { this.codigo = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
 
-        public string _nome
+        public string Nome
         {
             get { return this.nome; }
             set { this.nome = value; }
         }
 
-        public decimal _preco
+        public decimal Preco
         {
             get { return this.preco; }
             set { this.preco = value; }
         }
 
-        public string _figura
+        public string Figura
         {
             get { return this.figura; }
             set { this.figura = value; }
         }
 
-        public string _descricao
+        public string Descricao
         {
             get { return this.descricao; }
             set { this.descricao = value; }
         }
 
-        public int _codigo_categoria
+        public int Categoria
         {
-            get { return this.codigo_categoria; }
-            set { this.codigo_categoria = value; }
+            get { return this.categoria; }
+            set { this.categoria = value; }
         }
         #endregion
     }
@@ -65,11 +62,12 @@ namespace ProjetoControleEstoque.Model.dominio
         {
             var cardapios = new List<Cardapio>
             {
-                new Cardapio() { _codigo= 1, _nome = "Refreigerante",
-                    _preco = 30, _figura= "C:User/Giovani/Projetos/teste.png",
-                    _descricao = "Suco",_codigo_categoria = 1},
+                new Cardapio() {  Id= 1, Nome = "Refreigerante",
+                    Preco = 30, Figura= "C:User/Giovani/Projetos/teste.png",
+                    Descricao = "Suco", Categoria = 1},
             };
             return cardapios;
         }
     }
+
 }

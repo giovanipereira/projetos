@@ -9,93 +9,93 @@ namespace ProjetoControleEstoque.Model.dominio
     public class Produto
     {
         #region Fields
-        private int codigo;
+        private int id;
         private string nome;
-        private decimal valor_compra;
+        private double valor_compra;
         private int qntd_estoque;
         private int qntd_minima;
         private int qntd_maxima;
         private DateTime data_validade;
         private string descricao;
         private int qntd_fornecidas;
-        private int codigo_unidade;
-        private int codigo_fornecedor;
-        private int codigo_subcategoria;
+        private int unidade;
+        private int fornecedor;
+        private int subcategoria;
         #endregion
 
-
         #region Properties
-        public int _codigo
+        public int Id
         {
-            get { return this.codigo; }
-            set { this.codigo = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
 
-        public string _nome
+        public string Nome
         {
             get { return this.nome; }
             set { this.nome = value; }
         }
 
-        public decimal _valor_compra
+        public double Valor_compra
         {
             get { return this.valor_compra; }
             set { this.valor_compra = value; }
         }
 
-        public int _qntd_estoque
+        public int Qntd_estoque
         {
             get { return this.qntd_estoque; }
             set { this.qntd_estoque = value; }
         }
 
-        public int _qntd_minima
+        public int Qntd_minima
         {
             get { return this.qntd_minima; }
             set { this.qntd_minima = value; }
         }
 
-        public int _qntd_maxima
+        public int Qntd_maxima
         {
             get { return this.qntd_maxima; }
             set { this.qntd_maxima = value; }
         }
 
-        public DateTime _data_validade
+        public DateTime Data_validade
         {
             get { return this.data_validade; }
             set { this.data_validade = value; }
         }
 
-        public string _descricao
+        public string Descricao
         {
             get { return this.descricao; }
             set { this.descricao = value; }
         }
 
-        public int _qntd_fornecidas
+        public int Qntd_fornecidas
         {
             get { return this.qntd_fornecidas; }
             set { this.qntd_fornecidas = value; }
         }
 
-        public int _codigo_unidade
+        public int Unidade
         {
-            get { return this.codigo_unidade; }
-            set { this.codigo_unidade = value; }
+            get { return this.unidade; }
+            set { this.unidade = value; }
         }
 
-        public int _codigo_fornecedor
+        public int Fornecedor
         {
-            get { return this.codigo_fornecedor; }
-            set { this.codigo_fornecedor = value; }
+            get { return this.fornecedor; }
+            set { this.fornecedor = value; }
         }
 
-        public int _codigo_subcategoria
+        public int Subcategoria
         {
-            get { return this.codigo_subcategoria; }
-            set { this.codigo_subcategoria = value; }
+            get { return this.subcategoria; }
+            set { this.subcategoria = value; }
         }
         #endregion
+
     }
 }
