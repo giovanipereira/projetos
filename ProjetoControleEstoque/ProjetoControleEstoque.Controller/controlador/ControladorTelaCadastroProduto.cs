@@ -71,7 +71,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             txtCodigo.Enabled = false;
         }
 
-        // Função que limpa todos os componentes
         public override void LimparCampos()
         {
             validacao.LimparControl();
@@ -95,11 +94,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             validacao = new ValidacaoProduto(listaControles);
         }
 
-        private bool ValidarCampoObrigatorio()
-        {
-            return validacao.VerificarCampoVazio();
-        }
-
         #endregion
 
         #region Event Functions
@@ -111,12 +105,8 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Salvar()
         {
-            if (!ValidarCampoObrigatorio())
-            {
-                Mensagem.MensagemSalvar();
-                OperationMode((int)EnumOperationMode.Normal);
-            }
-            
+            Mensagem.MensagemSalvar();
+            OperationMode((int)EnumOperationMode.Normal);
         }
 
         public void Inserir()

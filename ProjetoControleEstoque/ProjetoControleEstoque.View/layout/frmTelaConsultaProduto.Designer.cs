@@ -49,6 +49,7 @@
             this.dgvListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaProdutos.Size = new System.Drawing.Size(739, 318);
             this.dgvListaProdutos.TabIndex = 0;
+            this.dgvListaProdutos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvListaProdutos_CellFormatting);
             // 
             // label1
             // 

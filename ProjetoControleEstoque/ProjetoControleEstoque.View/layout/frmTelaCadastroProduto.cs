@@ -61,5 +61,13 @@ namespace ProjetoControleEstoque.View.layout
         {
             controladorTelaCadastroProduto().PrecoCompraLeave();
         }
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != txtQuantidade.MaxLength)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

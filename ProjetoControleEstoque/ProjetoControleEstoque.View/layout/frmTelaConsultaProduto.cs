@@ -29,8 +29,17 @@ namespace ProjetoControleEstoque.View.layout
 
         private void btnBuscarTodos_Click(object sender, EventArgs e)
         {
-
-        }
+           // NomeDaColuna.HeaderText = "Titulo da Coluna";
+         /*  private void AdjustColumnOrder()
+        {
+            customersDataGridView.Columns["CustomerID"].Visible = false;
+            customersDataGridView.Columns["ContactName"].DisplayIndex = 0;
+            customersDataGridView.Columns["ContactTitle"].DisplayIndex = 1;
+            customersDataGridView.Columns["City"].DisplayIndex = 2;
+            customersDataGridView.Columns["Country"].DisplayIndex = 3;
+            customersDataGridView.Columns["CompanyName"].DisplayIndex = 4;
+        }*/ 
+    }
 
         private void frmTelaConsultaProduto_Load(object sender, EventArgs e)
         {
@@ -43,6 +52,16 @@ namespace ProjetoControleEstoque.View.layout
             telaCardapioItem = new frmTelaCardapioItem();
             controladorTelaConsultaProduto().AddProduct(telaCardapioItem);
             this.Hide();
+        }
+
+        private void dgvListaProdutos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if(e.Value != null)
+            {
+                DataGridViewRow row = dgvListaProdutos.Rows[e.RowIndex];
+                row.DefaultCellStyle.BackColor = Color.Yellow;
+                row.DefaultCellStyle.ForeColor = Color.Aquamarine;
+            }
         }
     }
 }

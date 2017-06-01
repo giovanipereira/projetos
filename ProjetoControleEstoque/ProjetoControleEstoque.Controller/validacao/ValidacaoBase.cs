@@ -55,27 +55,6 @@ namespace ProjetoControleEstoque.Controller.validacao
                 }
             }
         }
-
-        public bool VerificarCampoVazio()
-        {
-            bool retorno = false;
-            foreach (var control in listaControles)
-            {
-                if (control is TextBox)
-                {
-                    if (control.Text.Equals(string.Empty))
-                        return retorno = true;
-                }
-                else if (control is NumericUpDown)
-                {
-                    if (((NumericUpDown)control).Value == 0)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return retorno;
-        }
     }
 }
 
