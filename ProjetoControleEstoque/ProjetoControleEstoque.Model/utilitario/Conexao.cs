@@ -9,18 +9,18 @@ using System.Configuration;
 
 namespace ProjetoControleEstoque.Model.utilitario
 {
-    public class Conexao
+    public static class Conexao
     {
         public static SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
 
-        public void Open()
+        public static void Open()
         {
             if (connection.State == ConnectionState.Closed)
             {
                 connection.Open();
             }
         }
-        public void Close()
+        public static void Close()
         {
             if (connection.State != ConnectionState.Closed)
             {
