@@ -9,7 +9,7 @@ namespace ProjetoControleEstoque.Entity.Context
 {
     public class Contexto : DbContext
     {
-        public Contexto() : base("bd_ControleEstoque")
+        public Contexto() : base("bd_ControleEstoque") 
         {
 
         }

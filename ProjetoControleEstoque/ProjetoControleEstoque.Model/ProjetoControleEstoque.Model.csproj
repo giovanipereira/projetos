@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,11 +52,15 @@
     <Compile Include="dominio\Produto.cs" />
     <Compile Include="dominio\Subcategoria.cs" />
     <Compile Include="dominio\Usuario.cs" />
+    <Compile Include="interfaces\IRepositorioBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="repositorio\RepositorioBase.cs" />
+    <Compile Include="repositorio\RepositorioFuncionario.cs" />
     <Compile Include="utilitario\Conexao.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="repositorio\" />
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
