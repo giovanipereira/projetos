@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjetoControleEstoque.Model.dominio
 {
+    [Table("Usuario")]
     public class Usuario
     {
         #region Fields
-        private int id;
+        private Guid id;
         private string nome_usuario;
         private string senha;
         private int nivel_acesso;
         #endregion
 
         #region Properties
-        public int Id
+        [Key()]
+        [Display(Name = "Código")]
+        public Guid Id
         {
             get { return this.id; }
             set { this.id = value; }

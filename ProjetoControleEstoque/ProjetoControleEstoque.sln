@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoControleEstoque.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoControleEstoque.Controller", "ProjetoControleEstoque.Controller\ProjetoControleEstoque.Controller.csproj", "{1B369C1F-FA8F-453D-9128-FE022955A667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoControleEstoque.Entity", "ProjetoControleEstoque.Entity\ProjetoControleEstoque.Entity.csproj", "{02763F55-0C3A-4F42-A438-EBAC249744E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1B369C1F-FA8F-453D-9128-FE022955A667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B369C1F-FA8F-453D-9128-FE022955A667}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B369C1F-FA8F-453D-9128-FE022955A667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02763F55-0C3A-4F42-A438-EBAC249744E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02763F55-0C3A-4F42-A438-EBAC249744E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02763F55-0C3A-4F42-A438-EBAC249744E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02763F55-0C3A-4F42-A438-EBAC249744E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

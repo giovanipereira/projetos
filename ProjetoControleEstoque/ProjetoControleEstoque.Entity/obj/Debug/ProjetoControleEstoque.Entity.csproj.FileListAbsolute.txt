@@ -1,0 +1,9 @@
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Entity.dll.config
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Entity.dll
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Entity.pdb
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.dll
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.xml
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.dll
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.pdb
