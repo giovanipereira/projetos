@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dominio\Cardapio.cs" />
+    <Compile Include="dominio\Cargo.cs" />
     <Compile Include="dominio\Fornecedor.cs" />
     <Compile Include="dominio\Funcionario.cs" />
     <Compile Include="dominio\ItemCardapio.cs" />

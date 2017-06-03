@@ -3,6 +3,8 @@ C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoContr
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Entity.pdb
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.dll
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Model.dll
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Model.pdb
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.xml
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.csprojResolveAssemblyReference.cache

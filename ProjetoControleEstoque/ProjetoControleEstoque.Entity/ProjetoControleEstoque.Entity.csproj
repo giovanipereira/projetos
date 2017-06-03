@@ -50,11 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\Contexto.cs" />
+    <Compile Include="Entidades\EntidadeCargo.cs" />
+    <Compile Include="Entidades\EntidadeFuncionario.cs" />
+    <Compile Include="Entidades\EntidadeProduto.cs" />
+    <Compile Include="Entidades\EntidadeUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoControleEstoque.Model\ProjetoControleEstoque.Model.csproj">
+      <Project>{83cd9ea5-d95e-4da0-bc1a-1713706f9372}</Project>
+      <Name>ProjetoControleEstoque.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

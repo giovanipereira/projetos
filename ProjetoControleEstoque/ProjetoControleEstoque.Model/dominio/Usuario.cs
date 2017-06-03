@@ -8,31 +8,26 @@ using System.Threading.Tasks;
 
 namespace ProjetoControleEstoque.Model.dominio
 {
-    [Table("Usuario")]
     public class Usuario
     {
-        #region Fields
-        private Guid id;
+        private int id;
         private string nome_usuario;
         private string senha;
         private int nivel_acesso;
-        #endregion
+        public virtual Funcionario Funcionario { get; set; }
 
-        #region Properties
-        [Key()]
-        [Display(Name = "Código")]
-        public Guid Id
+        public int Id
         {
             get { return this.id; }
             set { this.id = value; }
         }
-
         public string Nome_Usuario
         {
             get { return this.nome_usuario; }
             set { this.nome_usuario = value; }
         }
 
+        [DataType(DataType.Password)]
         public string Senha
         {
             get { return this.senha; }
@@ -44,7 +39,6 @@ namespace ProjetoControleEstoque.Model.dominio
             get { return this.nivel_acesso; }
             set { this.nivel_acesso = value; }
         }
-        #endregion
     }
 
     public enum EnumNivelAcesso
