@@ -1,5 +1,7 @@
 ﻿using ProjetoControleEstoque.Controller.utility;
 using ProjetoControleEstoque.Controller.validacao;
+using ProjetoControleEstoque.Model.dominio;
+using ProjetoControleEstoque.Model.repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,9 @@ namespace ProjetoControleEstoque.Controller.controlador
         private ComboBox cboCargo, cboNivelAcesso;
         private MaskedTextBox mskCpf, mskTelefone;
 
+        RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
+        Funcionario funcionario;
+        Usuario usuario;
         ValidacaoProduto validacao;
 
         #endregion
@@ -52,11 +57,56 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-        #region Public Methods
+        #region Private Methods
+
+        private void PreencherCargo()
+        {
+            repositorioFuncionario.PreencherCargo(cboCargo);
+        }
+
+        private void PreencherNivelAcesso()
+        {
+            repositorioFuncionario.PreencherNivelAcesso(cboNivelAcesso);
+        }
+
+        private Usuario CarregarUsuario(Usuario usuario)
+        {
+            usuario.Nome_Usuario = txtUsuario.Text;
+            usuario.Senha = txtSenha.Text;
+            usuario.Nivel_Acesso = int.Parse(cboNivelAcesso.SelectedValue.ToString());
+            return usuario;
+        }
+
+        private Funcionario CarregarFuncionario(Funcionario funcionario)
+        {
+            funcionario.Nome = txtNome.Text;
+            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            funcionario.Cpf = long.Parse(mskCpf.Text);
+            funcionario.Email = txtEmail.Text;
+            mskTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            funcionario.Telefone = long.Parse(mskTelefone.Text);
+            funcionario.Id_cargo = int.Parse(cboCargo.SelectedValue.ToString());
+            return funcionario;
+        }
+
+        private void SalvarFuncionario()
+        {
+            usuario = new Usuario();
+            funcionario = new Funcionario();
+
+            usuario = CarregarUsuario(usuario);
+            funcionario = CarregarFuncionario(funcionario);
+
+            if (repositorioFuncionario.Salvar(funcionario,usuario))
+            {
+                Mensagem.MensagemSalvar();
+            }
+        }
+
 
         #endregion
 
-        #region Private and Abstracts Methods
+        #region Abstracts Methods
 
         public override void AdicionarListaControles()
         {
@@ -91,11 +141,13 @@ namespace ProjetoControleEstoque.Controller.controlador
         public void Load()
         {
             OperationMode((int)EnumOperationMode.Normal);
+            PreencherCargo();
+            PreencherNivelAcesso();
         }
 
         public void Salvar()
         {
-            Mensagem.MensagemSalvar();
+            SalvarFuncionario();
             OperationMode((int)EnumOperationMode.Normal);
         }
 

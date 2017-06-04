@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Context\Contexto.cs" />
     <Compile Include="Entidades\EntidadeCargo.cs" />
+    <Compile Include="Entidades\EntidadeFornecedor.cs" />
     <Compile Include="Entidades\EntidadeFuncionario.cs" />
     <Compile Include="Entidades\EntidadeProduto.cs" />
     <Compile Include="Entidades\EntidadeUsuario.cs" />

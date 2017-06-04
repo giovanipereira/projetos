@@ -1,5 +1,7 @@
 ﻿using ProjetoControleEstoque.Controller.utility;
 using ProjetoControleEstoque.Controller.validacao;
+using ProjetoControleEstoque.Model.dominio;
+using ProjetoControleEstoque.Model.repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,8 @@ namespace ProjetoControleEstoque.Controller.controlador
         private ComboBox cboUf;
         private MaskedTextBox mskCnpj, mskTelefone, mskCep;
 
+        RepositorioFornecedor repositorioFornecedor = new RepositorioFornecedor();
+        Fornecedor fornecedor;
         ValidacaoProduto validacao;
 
         #endregion
@@ -53,11 +57,46 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-        #region Public Methods
+        #region Private Methods
+
+        private void PreencherUf()
+        {
+            repositorioFornecedor.PreencherUf(cboUf);
+        }
+
+        private Fornecedor CarregarFornecedor(Fornecedor fornecedor)
+        {
+            fornecedor.Nome = txtNome.Text;
+            mskCnpj.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            fornecedor.Cnpj = long.Parse(mskCnpj.Text);
+            fornecedor.Endereco = txtEndereco.Text;
+            fornecedor.Complemento = txtComplemento.Text;
+            fornecedor.Bairro = txtBairro.Text;
+            fornecedor.Cidade = txtCidade.Text;
+            fornecedor.Situacao = (int) EnumSituacaoFornecedor.Ativo;
+            mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            fornecedor.Cep = long.Parse(mskCep.Text);
+            mskTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            fornecedor.Telefone = long.Parse(mskTelefone.Text);
+            fornecedor.Email = txtEmail.Text;
+            fornecedor.Uf = int.Parse(cboUf.SelectedValue.ToString());
+            return fornecedor;
+        }
+
+        private void SalvarFornecedor()
+        {
+            fornecedor = new Fornecedor();
+            fornecedor = CarregarFornecedor(fornecedor);
+
+            if (repositorioFornecedor.Salvar(fornecedor))
+            {
+                Mensagem.MensagemSalvar();
+            }
+        }
 
         #endregion
 
-        #region Private and Abstracts Methods
+        #region Abstracts Methods
 
         public override void AdicionarListaControles()
         {
@@ -93,10 +132,12 @@ namespace ProjetoControleEstoque.Controller.controlador
         public void Load()
         {
             OperationMode((int)EnumOperationMode.Normal);
+            PreencherUf();
         }
 
         public void Salvar()
         {
+            SalvarFornecedor();
             OperationMode((int)EnumOperationMode.Normal);
         }
 

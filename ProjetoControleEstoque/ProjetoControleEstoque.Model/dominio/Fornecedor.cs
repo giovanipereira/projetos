@@ -8,7 +8,6 @@ namespace ProjetoControleEstoque.Model.dominio
 {
     public class Fornecedor
     {
-        #region Fields
         private int id;
         private string nome;
         private long cnpj;
@@ -20,10 +19,8 @@ namespace ProjetoControleEstoque.Model.dominio
         private long telefone;
         private string email;
         private long cep;
-        private int status;
-        #endregion
+        private int situacao;
 
-        #region Properties
         public int Id
         {
             get { return this.id; }
@@ -90,17 +87,16 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.cep = value; }
         }
 
-        public int Status
+        public int Situacao
         {
-            get { return this.status; }
-            set { this.status = value; }
+            get { return this.situacao; }
+            set { this.situacao = value; }
         }
-        #endregion
     }
 
     public enum EnumStatusFornecedor
     {
         Ativo = 1,
-        Desativo = 2
+        Inativo = 2
     }
 }

@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjetoControleEstoque.Model.dominio;
+using ProjetoControleEstoque.Entity.Entidades;
 
 namespace ProjetoControleEstoque.Entity.Context
 {
@@ -14,11 +16,17 @@ namespace ProjetoControleEstoque.Entity.Context
 
         }
 
+        public DbSet<Cargo> Cargos { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // Configurar esquema padrão 
+            // Configura o schema padrão 
             modelBuilder.HasDefaultSchema("dbo");
-            //Configure domain classes using modelBuilder here
+
+            // Adiciona as entidades
+            modelBuilder.Configurations.Add(new EntidadeCargo());
+            modelBuilder.Configurations.Add(new EntidadeCargo());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -8,22 +8,20 @@ namespace ProjetoControleEstoque.Model.dominio
 {
     public class Produto
     {
-        #region Fields
         private int id;
         private string nome;
         private double valor_compra;
-        private int qntd_estoque;
-        private int qntd_minima;
-        private int qntd_maxima;
+        private int qtd_estoque;
+        private int qtd_minima;
+        private int qtd_maxima;
+        private double medida_pro;
         private DateTime data_validade;
         private string descricao;
-        private int qntd_fornecidas;
+        private int qtd_fornecidas;
         private int unidade;
         private int fornecedor;
         private int subcategoria;
-        #endregion
 
-        #region Properties
         public int Id
         {
             get { return this.id; }
@@ -42,22 +40,28 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.valor_compra = value; }
         }
 
-        public int Qntd_estoque
+        public int Qtd_estoque
         {
-            get { return this.qntd_estoque; }
-            set { this.qntd_estoque = value; }
+            get { return this.qtd_estoque; }
+            set { this.qtd_estoque = value; }
         }
 
-        public int Qntd_minima
+        public int Qtd_minima
         {
-            get { return this.qntd_minima; }
-            set { this.qntd_minima = value; }
+            get { return this.qtd_minima; }
+            set { this.qtd_minima = value; }
         }
 
-        public int Qntd_maxima
+        public int Qtd_maxima
         {
-            get { return this.qntd_maxima; }
-            set { this.qntd_maxima = value; }
+            get { return this.qtd_maxima; }
+            set { this.qtd_maxima = value; }
+        }
+
+        public double Medida_pro
+        {
+            get { return this.medida_pro; }
+            set { this.medida_pro = value; }
         }
 
         public DateTime Data_validade
@@ -72,10 +76,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.descricao = value; }
         }
 
-        public int Qntd_fornecidas
+        public int Qtd_fornecidas
         {
-            get { return this.qntd_fornecidas; }
-            set { this.qntd_fornecidas = value; }
+            get { return this.qtd_fornecidas; }
+            set { this.qtd_fornecidas = value; }
         }
 
         public int Unidade
@@ -95,7 +99,6 @@ namespace ProjetoControleEstoque.Model.dominio
             get { return this.subcategoria; }
             set { this.subcategoria = value; }
         }
-        #endregion
 
     }
 }

@@ -16,7 +16,6 @@ namespace ProjetoControleEstoque.Model.dominio
         private string email;
         private long telefone;
         private int id_cargo;
-
         public virtual Cargo Cargo { get; set; }
         public virtual Usuario Usuario { get; set; }
 
@@ -50,7 +49,7 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.telefone = value; }
         }
 
-        public int Id_Cargo
+        public int Id_cargo
         {
             get { return this.id_cargo; }
             set { this.id_cargo = value; }

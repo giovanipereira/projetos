@@ -13,11 +13,5 @@ namespace ProjetoControleEstoque.Model.repositorio
         public abstract bool Atualizar(T obj);
         public abstract void Remover(T obj);
         public abstract bool Salvar(T entidade);
-
-        void IDisposable.Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoControleEstoque.Model.interfaces
 {
-    public interface IRepositorioBase<T> : IDisposable where T : class
+    public interface IRepositorioBase<T> where T : class
     {
         bool Salvar(T entidade);
         bool Atualizar(T obj);
