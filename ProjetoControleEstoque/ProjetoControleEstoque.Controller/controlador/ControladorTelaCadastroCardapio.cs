@@ -169,8 +169,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             validacao.LimparControl();
         }
 
-        // ======== não finalizadas =========
-
         // Função que anexa os valores dos componentes nas propriedades do objeto cardapio
         private void CarregarCardapio()
         {

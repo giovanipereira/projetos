@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
@@ -42,7 +42,6 @@
             this.btnEscolher = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.btnInserir = new System.Windows.Forms.Button();
@@ -51,13 +50,13 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.dgvListaProdutos = new System.Windows.Forms.DataGridView();
-            this.btnEditarItem = new System.Windows.Forms.Button();
-            this.btnRemoverItem = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditarItem = new System.Windows.Forms.Button();
+            this.btnRemoverItem = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picFigura)).BeginInit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdutos)).BeginInit();
@@ -130,9 +129,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(206, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 16);
+            this.label4.Size = new System.Drawing.Size(67, 16);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Preço:";
+            this.label4.Text = "Preço R$:";
             // 
             // picFigura
             // 
@@ -168,7 +167,6 @@
             // 
             // panel
             // 
-            this.panel.Controls.Add(this.label7);
             this.panel.Controls.Add(this.label6);
             this.panel.Controls.Add(this.txtDescricao);
             this.panel.Controls.Add(this.label1);
@@ -187,15 +185,6 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(735, 178);
             this.panel.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(183, 33);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 16);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "R$";
             // 
             // label6
             // 
@@ -278,24 +267,52 @@
             this.Nome,
             this.Unidade,
             this.Quantidade});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaProdutos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaProdutos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaProdutos.Location = new System.Drawing.Point(20, 218);
             this.dgvListaProdutos.MultiSelect = false;
             this.dgvListaProdutos.Name = "dgvListaProdutos";
             this.dgvListaProdutos.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaProdutos.Size = new System.Drawing.Size(727, 147);
             this.dgvListaProdutos.TabIndex = 28;
             this.dgvListaProdutos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvListaProdutos_RowsAdded);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "Código";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 110;
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Produto";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 262;
+            // 
+            // Unidade
+            // 
+            this.Unidade.HeaderText = "Unidade";
+            this.Unidade.Name = "Unidade";
+            this.Unidade.ReadOnly = true;
+            this.Unidade.Width = 180;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            this.Quantidade.Width = 130;
             // 
             // btnEditarItem
             // 
@@ -327,34 +344,6 @@
             this.label5.Size = new System.Drawing.Size(122, 18);
             this.label5.TabIndex = 31;
             this.label5.Text = "Lista de produtos";
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Código";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 110;
-            // 
-            // Nome
-            // 
-            this.Nome.HeaderText = "Produto";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 262;
-            // 
-            // Unidade
-            // 
-            this.Unidade.HeaderText = "Unidade";
-            this.Unidade.Name = "Unidade";
-            this.Unidade.ReadOnly = true;
-            this.Unidade.Width = 180;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.HeaderText = "Quantidade";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            this.Quantidade.Width = 130;
             // 
             // frmTelaCadastroCardapio
             // 
@@ -410,7 +399,6 @@
         private System.Windows.Forms.Button btnRemoverItem;
         public System.Windows.Forms.DataGridView dgvListaProdutos;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidade;

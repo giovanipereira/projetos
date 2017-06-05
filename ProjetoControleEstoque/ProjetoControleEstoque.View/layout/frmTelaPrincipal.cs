@@ -17,13 +17,5 @@ namespace ProjetoControleEstoque.View.layout
         {
             InitializeComponent();
         }
-        
-        private void btnCadastroCardapio_Click(object sender, EventArgs e)
-        {
-            frmTelaCadastroCardapio tela = new frmTelaCadastroCardapio();
-            tela.Show();
-            this.Hide();
-        }
-
     }
 }

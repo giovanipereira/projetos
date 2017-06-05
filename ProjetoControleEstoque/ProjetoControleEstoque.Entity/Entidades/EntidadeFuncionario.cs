@@ -16,7 +16,7 @@ namespace ProjetoControleEstoque.Entity.Entidades
         public EntidadeFuncionario()
         {
             ToTable("Funcionario");
-            HasKey(p => p.Id); // chave estrangeira do usuario
+            HasKey(p => p.Id);
             HasRequired<Cargo>(p => p.Cargo)
                 .WithMany(p => p.Funcionarios);
 
