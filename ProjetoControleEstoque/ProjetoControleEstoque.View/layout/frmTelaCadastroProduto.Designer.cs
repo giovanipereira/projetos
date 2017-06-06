@@ -42,7 +42,7 @@
             this.nudQtdMaxima = new System.Windows.Forms.NumericUpDown();
             this.nudQtdMinima = new System.Windows.Forms.NumericUpDown();
             this.mskDataValidade = new System.Windows.Forms.MaskedTextBox();
-            this.txtPrecoCompra = new System.Windows.Forms.TextBox();
+            this.txtValorUnitario = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.cboUnidade = new System.Windows.Forms.ComboBox();
             this.cboFornecedor = new System.Windows.Forms.ComboBox();
@@ -92,7 +92,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 158);
+            this.label3.Location = new System.Drawing.Point(276, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 16);
             this.label3.TabIndex = 2;
@@ -111,7 +111,7 @@
             this.panel.Controls.Add(this.nudQtdMaxima);
             this.panel.Controls.Add(this.nudQtdMinima);
             this.panel.Controls.Add(this.mskDataValidade);
-            this.panel.Controls.Add(this.txtPrecoCompra);
+            this.panel.Controls.Add(this.txtValorUnitario);
             this.panel.Controls.Add(this.txtDescricao);
             this.panel.Controls.Add(this.cboUnidade);
             this.panel.Controls.Add(this.cboFornecedor);
@@ -137,14 +137,14 @@
             // 
             // nudQtdEstoque
             // 
-            this.nudQtdEstoque.Location = new System.Drawing.Point(284, 140);
+            this.nudQtdEstoque.Location = new System.Drawing.Point(279, 186);
             this.nudQtdEstoque.Name = "nudQtdEstoque";
             this.nudQtdEstoque.Size = new System.Drawing.Size(73, 22);
             this.nudQtdEstoque.TabIndex = 29;
             // 
             // txtPorcao
             // 
-            this.txtPorcao.Location = new System.Drawing.Point(558, 49);
+            this.txtPorcao.Location = new System.Drawing.Point(21, 255);
             this.txtPorcao.Name = "txtPorcao";
             this.txtPorcao.Size = new System.Drawing.Size(100, 22);
             this.txtPorcao.TabIndex = 28;
@@ -153,7 +153,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(558, 18);
+            this.label13.Location = new System.Drawing.Point(18, 233);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(128, 16);
             this.label13.TabIndex = 27;
@@ -162,7 +162,7 @@
             // nudQtdFornecidas
             // 
             this.nudQtdFornecidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudQtdFornecidas.Location = new System.Drawing.Point(281, 61);
+            this.nudQtdFornecidas.Location = new System.Drawing.Point(279, 120);
             this.nudQtdFornecidas.Maximum = new decimal(new int[] {
             500,
             0,
@@ -176,7 +176,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(281, 29);
+            this.label14.Location = new System.Drawing.Point(276, 88);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(147, 16);
             this.label14.TabIndex = 25;
@@ -231,30 +231,30 @@
             // mskDataValidade
             // 
             this.mskDataValidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskDataValidade.Location = new System.Drawing.Point(284, 280);
+            this.mskDataValidade.Location = new System.Drawing.Point(558, 52);
             this.mskDataValidade.Mask = "00/00/0000";
             this.mskDataValidade.Name = "mskDataValidade";
             this.mskDataValidade.Size = new System.Drawing.Size(100, 22);
             this.mskDataValidade.TabIndex = 19;
             this.mskDataValidade.ValidatingType = typeof(System.DateTime);
             // 
-            // txtPrecoCompra
+            // txtValorUnitario
             // 
-            this.txtPrecoCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecoCompra.Location = new System.Drawing.Point(284, 210);
-            this.txtPrecoCompra.Name = "txtPrecoCompra";
-            this.txtPrecoCompra.Size = new System.Drawing.Size(100, 22);
-            this.txtPrecoCompra.TabIndex = 17;
-            this.txtPrecoCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoCompra_KeyPress);
-            this.txtPrecoCompra.Leave += new System.EventHandler(this.txtPrecoCompra_Leave);
+            this.txtValorUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorUnitario.Location = new System.Drawing.Point(279, 253);
+            this.txtValorUnitario.Name = "txtValorUnitario";
+            this.txtValorUnitario.Size = new System.Drawing.Size(100, 22);
+            this.txtValorUnitario.TabIndex = 17;
+            this.txtValorUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoCompra_KeyPress);
+            this.txtValorUnitario.Leave += new System.EventHandler(this.txtPrecoCompra_Leave);
             // 
             // txtDescricao
             // 
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescricao.Location = new System.Drawing.Point(18, 332);
+            this.txtDescricao.Location = new System.Drawing.Point(18, 323);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(356, 61);
+            this.txtDescricao.Size = new System.Drawing.Size(446, 70);
             this.txtDescricao.TabIndex = 16;
             // 
             // cboUnidade
@@ -262,7 +262,7 @@
             this.cboUnidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboUnidade.FormattingEnabled = true;
-            this.cboUnidade.Location = new System.Drawing.Point(18, 254);
+            this.cboUnidade.Location = new System.Drawing.Point(18, 186);
             this.cboUnidade.Name = "cboUnidade";
             this.cboUnidade.Size = new System.Drawing.Size(121, 24);
             this.cboUnidade.TabIndex = 15;
@@ -272,7 +272,7 @@
             this.cboFornecedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFornecedor.FormattingEnabled = true;
-            this.cboFornecedor.Location = new System.Drawing.Point(18, 190);
+            this.cboFornecedor.Location = new System.Drawing.Point(279, 50);
             this.cboFornecedor.Name = "cboFornecedor";
             this.cboFornecedor.Size = new System.Drawing.Size(146, 24);
             this.cboFornecedor.TabIndex = 14;
@@ -328,7 +328,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(284, 108);
+            this.label9.Location = new System.Drawing.Point(276, 154);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(152, 16);
             this.label9.TabIndex = 8;
@@ -348,7 +348,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(284, 248);
+            this.label7.Location = new System.Drawing.Point(558, 18);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(115, 16);
             this.label7.TabIndex = 6;
@@ -358,7 +358,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(284, 178);
+            this.label6.Location = new System.Drawing.Point(276, 222);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 16);
             this.label6.TabIndex = 5;
@@ -368,7 +368,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 222);
+            this.label5.Location = new System.Drawing.Point(18, 154);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 16);
             this.label5.TabIndex = 4;
@@ -464,7 +464,7 @@
         private System.Windows.Forms.NumericUpDown nudQtdMaxima;
         private System.Windows.Forms.NumericUpDown nudQtdMinima;
         private System.Windows.Forms.MaskedTextBox mskDataValidade;
-        private System.Windows.Forms.TextBox txtPrecoCompra;
+        private System.Windows.Forms.TextBox txtValorUnitario;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.ComboBox cboUnidade;
         private System.Windows.Forms.ComboBox cboFornecedor;

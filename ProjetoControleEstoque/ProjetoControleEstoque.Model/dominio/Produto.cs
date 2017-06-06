@@ -10,17 +10,20 @@ namespace ProjetoControleEstoque.Model.dominio
     {
         private int id;
         private string nome;
-        private double valor_compra;
+        private double valor_unitario;
         private int qtd_estoque;
         private int qtd_minima;
         private int qtd_maxima;
-        private double medida_pro;
+        private double porcao_pro;
         private DateTime data_validade;
         private string descricao;
         private int qtd_fornecidas;
-        private int unidade;
-        private int fornecedor;
-        private int subcategoria;
+        private int id_unidade;
+        private int id_fornecedor;
+        private int id_subcategoria;
+        public virtual Fornecedor Fornecedor { get; set; }
+        public virtual Subcategoria Subcategoria { get; set; }
+        //public virtual Unidade Unidade { get; set; }
 
         public int Id
         {
@@ -34,10 +37,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.nome = value; }
         }
 
-        public double Valor_compra
+        public double Valor_unitario
         {
-            get { return this.valor_compra; }
-            set { this.valor_compra = value; }
+            get { return this.valor_unitario; }
+            set { this.valor_unitario = value; }
         }
 
         public int Qtd_estoque
@@ -58,10 +61,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.qtd_maxima = value; }
         }
 
-        public double Medida_pro
+        public double Porcao_pro
         {
-            get { return this.medida_pro; }
-            set { this.medida_pro = value; }
+            get { return this.porcao_pro; }
+            set { this.porcao_pro = value; }
         }
 
         public DateTime Data_validade
@@ -82,22 +85,22 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.qtd_fornecidas = value; }
         }
 
-        public int Unidade
+        public int Id_unidade
         {
-            get { return this.unidade; }
-            set { this.unidade = value; }
+            get { return this.id_unidade; }
+            set { this.id_unidade = value; }
         }
 
-        public int Fornecedor
+        public int Id_fornecedor
         {
-            get { return this.fornecedor; }
-            set { this.fornecedor = value; }
+            get { return this.id_fornecedor; }
+            set { this.id_fornecedor = value; }
         }
 
-        public int Subcategoria
+        public int Id_subcategoria
         {
-            get { return this.subcategoria; }
-            set { this.subcategoria = value; }
+            get { return this.id_subcategoria; }
+            set { this.id_subcategoria = value; }
         }
 
     }

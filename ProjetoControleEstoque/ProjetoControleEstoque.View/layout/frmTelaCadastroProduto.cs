@@ -21,7 +21,7 @@ namespace ProjetoControleEstoque.View.layout
         ControladorTelaCadastroProduto controladorTelaCadastroProduto()
         {
             ControladorTelaCadastroProduto controlador = new ControladorTelaCadastroProduto(txtCodigo,
-                txtNome, txtPrecoCompra, txtPorcao, txtDescricao, cboFornecedor, cboUnidade, cboSubcategoria,
+                txtNome, txtValorUnitario, txtPorcao, txtDescricao, cboFornecedor, cboUnidade, cboSubcategoria,
                 cboCategoria, nudQtdFornecidas, nudQtdEstoque, nudQtdMinima, nudQtdMaxima, mskDataValidade, btnInserir, btnSalvar,
                 btnAtualizar, btnCancelar);
             return controlador;
@@ -54,12 +54,12 @@ namespace ProjetoControleEstoque.View.layout
 
         private void txtPrecoCompra_KeyPress(object sender, KeyPressEventArgs e)
         {
-            controladorTelaCadastroProduto().PrecoCompraKeyPress(sender, e);
+            controladorTelaCadastroProduto().ValorUnitarioKeyPress(sender, e);
         }
 
         private void txtPrecoCompra_Leave(object sender, EventArgs e)
         {
-            controladorTelaCadastroProduto().PrecoCompraLeave();
+            controladorTelaCadastroProduto().ValorUnitarioLeave();
         }
 
         private void txtPorcao_KeyPress(object sender, KeyPressEventArgs e)

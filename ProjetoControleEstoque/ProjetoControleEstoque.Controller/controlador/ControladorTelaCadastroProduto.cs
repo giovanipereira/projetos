@@ -1,5 +1,7 @@
 ﻿using ProjetoControleEstoque.Controller.utility;
 using ProjetoControleEstoque.Controller.validacao;
+using ProjetoControleEstoque.Model.dominio;
+using ProjetoControleEstoque.Model.repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +15,15 @@ namespace ProjetoControleEstoque.Controller.controlador
     {
         #region Declaration
 
-        private TextBox txtCodigo, txtNome, txtPrecoCompra, txtPorcao, txtDescricao;
+        private TextBox txtCodigo, txtNome, txtValorUnitario, txtPorcao, txtDescricao;
         private ComboBox cboFornecedor, cboUnidade, cboSubcategoria, cboCategoria;
         private NumericUpDown nudQtdFornecidas, nudQtdMinima, nudQtdMaxima, nudQtdEstoque;
         private MaskedTextBox mskDataValidade;
 
         // Declaração das classes 
         ValidacaoProduto validacao;
+        Produto produto;
+        RepositorioProduto repositorioProduto = new RepositorioProduto();
 
         #endregion
 
@@ -30,7 +34,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         }
 
-        public ControladorTelaCadastroProduto(TextBox txtCodigo, TextBox txtNome, TextBox txtPrecoCompra,
+        public ControladorTelaCadastroProduto(TextBox txtCodigo, TextBox txtNome, TextBox txtValorUnitario,
             TextBox txtPorcao, TextBox txtDescricao, ComboBox cboFornecedor, ComboBox cboUnidade,
             ComboBox cboSubcategoria, ComboBox cboCategoria, 
             NumericUpDown nudQtdFornecidas, NumericUpDown nudQtdEstoque,
@@ -39,7 +43,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             this.txtCodigo = txtCodigo;
             this.txtNome = txtNome;
-            this.txtPrecoCompra = txtPrecoCompra;
+            this.txtValorUnitario = txtValorUnitario;
             this.txtPorcao = txtPorcao;
             this.txtDescricao = txtDescricao;
             this.cboFornecedor = cboFornecedor;
@@ -61,7 +65,25 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
-
+        private void CarregarProduto(Produto produto)
+        {
+            double porcao, valor_unitario;
+            int id;
+            DateTime data, dataout;
+            produto.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
+            produto.Nome = txtNome.Text;
+          //  produto.Id_unidade = int.Parse(cboUnidade.SelectedValue.ToString());
+            produto.Porcao_pro = double.TryParse(txtPorcao.Text, out porcao) ? porcao : 0;
+            produto.Valor_unitario = double.TryParse(txtValorUnitario.Text, out valor_unitario) ? valor_unitario : 0;
+            produto.Qtd_estoque = int.Parse(nudQtdEstoque.Value.ToString());
+            produto.Qtd_minima = int.Parse(nudQtdMinima.Value.ToString());
+            produto.Qtd_maxima = int.Parse(nudQtdMaxima.Value.ToString());
+            mskDataValidade.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            data = DateTime.Parse(mskDataValidade.Text);
+            string d;
+            //produto.Data_validade
+                d = data.ToString("yyyyMMdd");
+        }
 
         #endregion
 
@@ -82,7 +104,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             listaControles.Add(txtCodigo);
             listaControles.Add(txtNome);
-            listaControles.Add(txtPrecoCompra);
+            listaControles.Add(txtValorUnitario);
             listaControles.Add(nudQtdEstoque);
             listaControles.Add(txtDescricao);
             listaControles.Add(cboFornecedor);
@@ -109,7 +131,10 @@ namespace ProjetoControleEstoque.Controller.controlador
         public void Salvar()
         {
             Mensagem.MensagemSalvar();
+            produto = new Produto();
+            CarregarProduto(produto);
             OperationMode((int)EnumOperationMode.Normal);
+            
         }
 
         public void Inserir()
@@ -122,27 +147,27 @@ namespace ProjetoControleEstoque.Controller.controlador
             OperationMode((int)EnumOperationMode.Atualizar);
         }
 
-        public void PrecoCompraLeave()
+        public void ValorUnitarioLeave()
         {
             // Se não tiver o caracter "."
-            if (!txtPrecoCompra.Text.Contains(".") && txtPrecoCompra.Text == string.Empty)
+            if (!txtValorUnitario.Text.Contains(".") && txtValorUnitario.Text == string.Empty)
             {
                 //Adicionara ao compoente
-                txtPrecoCompra.Text += "0.00";
+                txtValorUnitario.Text += "0.00";
             }
-            if (!txtPrecoCompra.Text.Contains("."))
+            if (!txtValorUnitario.Text.Contains("."))
             {
                 //Adicionara ao compoente
-                txtPrecoCompra.Text += ".00";
+                txtValorUnitario.Text += ".00";
             }
             // Se tiver o caracter "."
             else
                  //O método IndexOf retorna - 1 se encontrar o caractere.
-                 if (txtPrecoCompra.Text.IndexOf(".") == txtPrecoCompra.Text.Length - 1)
-                txtPrecoCompra.Text += "00";
+                 if (txtValorUnitario.Text.IndexOf(".") == txtValorUnitario.Text.Length - 1)
+                txtValorUnitario.Text += "00";
         }
 
-        public void PrecoCompraKeyPress(object sender, KeyPressEventArgs e)
+        public void ValorUnitarioKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',' && e.KeyChar != '.')
             {
@@ -150,7 +175,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             }
             if (e.KeyChar == ',' || e.KeyChar == '.')
             {
-                if (!txtPrecoCompra.Text.Contains("."))
+                if (!txtValorUnitario.Text.Contains("."))
                 {
                     e.KeyChar = '.';
                 }

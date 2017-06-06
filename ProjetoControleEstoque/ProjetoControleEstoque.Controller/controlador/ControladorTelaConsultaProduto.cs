@@ -40,7 +40,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-        private void LoadInfo()
+       /* private void LoadInfo()
         {
             listProducts.Add(new Produto()
             {
@@ -57,7 +57,7 @@ namespace ProjetoControleEstoque.Controller.controlador
                 Fornecedor = 1,
                 Subcategoria = 1
             });
-        }
+        }*/
 
         private void LoadDatagridView()
         {
@@ -66,7 +66,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Load()
         {
-            LoadInfo();
+            //LoadInfo();
             LoadDatagridView();
         }
 
