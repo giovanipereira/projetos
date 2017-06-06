@@ -10,3 +10,15 @@ C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoContr
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.csprojResolveAssemblyReference.cache
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.dll
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Entity.dll.config
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Entity.dll
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Entity.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.dll
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Model.dll
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\ProjetoControleEstoque.Model.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.xml
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.csprojResolveAssemblyReference.cache
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.dll
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Entity\obj\Debug\ProjetoControleEstoque.Entity.pdb

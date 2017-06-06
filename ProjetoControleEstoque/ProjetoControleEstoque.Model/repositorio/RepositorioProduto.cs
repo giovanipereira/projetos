@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using ProjetoControleEstoque.Model.utilitario;
+using System.Windows.Forms;
 
 namespace ProjetoControleEstoque.Model.repositorio
 {
@@ -28,6 +29,7 @@ namespace ProjetoControleEstoque.Model.repositorio
             bool retorno = false;
             try
             {
+                Conexao.Open();
                 transacao = Conexao.connection.BeginTransaction();
                 SqlCommand cmd = new SqlCommand("proc_ins_produto", Conexao.connection, transacao);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -45,9 +47,8 @@ namespace ProjetoControleEstoque.Model.repositorio
                 cmd.Parameters.Add(new SqlParameter("@id_for", SqlDbType.Int)).Value = produto.Fornecedor;
                 cmd.Parameters.Add(new SqlParameter("@id_uni", SqlDbType.Int)).Value = produto.Unidade;
                 //@id_fun integer falta o funcionario
-                Conexao.Open();
-                transacao.Commit();
                 cmd.ExecuteNonQuery();
+                transacao.Commit();
                 retorno = true;
             }
             catch (Exception e)
@@ -62,6 +63,17 @@ namespace ProjetoControleEstoque.Model.repositorio
                 Conexao.Close();
             }
             return retorno;
+        }
+        public void PreencherCategoria(ComboBox combobox)
+        {
+            SqlCommand cmd = new SqlCommand("select id_car,nome_car from cargo order by nome_car asc", Conexao.connection);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            combobox.DataSource = dt;
+            combobox.ValueMember = "id_car";
+            combobox.DisplayMember = "nome_car";
+            combobox.SelectedValue = 0;
         }
     }
 }

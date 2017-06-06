@@ -13,9 +13,9 @@ namespace ProjetoControleEstoque.Controller.controlador
     {
         #region Declaration
 
-        private TextBox txtCodigo, txtNome, txtPrecoCompra, txtQuantidade, txtDescricao;
+        private TextBox txtCodigo, txtNome, txtPrecoCompra, txtPorcao, txtDescricao;
         private ComboBox cboFornecedor, cboUnidade, cboSubcategoria, cboCategoria;
-        private NumericUpDown nudQntdFornecidas, nudQntdMinima, nudQntdMaxima;
+        private NumericUpDown nudQtdFornecidas, nudQtdMinima, nudQtdMaxima, nudQtdEstoque;
         private MaskedTextBox mskDataValidade;
 
         // Declaração das classes 
@@ -31,23 +31,25 @@ namespace ProjetoControleEstoque.Controller.controlador
         }
 
         public ControladorTelaCadastroProduto(TextBox txtCodigo, TextBox txtNome, TextBox txtPrecoCompra,
-            TextBox txtQuantidade, TextBox txtDescricao, ComboBox cboFornecedor, ComboBox cboUnidade,
-            ComboBox cboSubcategoria, ComboBox cboCategoria, NumericUpDown nudQntdFornecidas,
-            NumericUpDown nudQntdMinima, NumericUpDown nudQntdMaxima, MaskedTextBox mskDataValidade,
+            TextBox txtPorcao, TextBox txtDescricao, ComboBox cboFornecedor, ComboBox cboUnidade,
+            ComboBox cboSubcategoria, ComboBox cboCategoria, 
+            NumericUpDown nudQtdFornecidas, NumericUpDown nudQtdEstoque,
+            NumericUpDown nudQtdMinima, NumericUpDown nudQtdMaxima, MaskedTextBox mskDataValidade,
             Button btnInserir, Button btnSalvar, Button btnAtualizar, Button btnCancelar)
         {
             this.txtCodigo = txtCodigo;
             this.txtNome = txtNome;
             this.txtPrecoCompra = txtPrecoCompra;
-            this.txtQuantidade = txtQuantidade;
+            this.txtPorcao = txtPorcao;
             this.txtDescricao = txtDescricao;
             this.cboFornecedor = cboFornecedor;
             this.cboUnidade = cboUnidade;
             this.cboSubcategoria = cboSubcategoria;
             this.cboCategoria = cboCategoria;
-            this.nudQntdFornecidas = nudQntdFornecidas;
-            this.nudQntdMinima = nudQntdMinima;
-            this.nudQntdMaxima = nudQntdMaxima;
+            this.nudQtdFornecidas = nudQtdFornecidas;
+            this.nudQtdEstoque = nudQtdEstoque;
+            this.nudQtdMinima = nudQtdMinima;
+            this.nudQtdMaxima = nudQtdMaxima;
             this.mskDataValidade = mskDataValidade;
             this.btnInserir = btnInserir;
             this.btnSalvar = btnSalvar;
@@ -58,12 +60,12 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-        #region Public Methods
+        #region Private Methods
 
 
         #endregion
 
-        #region Private and Abstracts Methods
+        #region Abstracts Methods
 
         public override void HabilitarTodosCampos(bool enable)
         {
@@ -81,16 +83,17 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(txtCodigo);
             listaControles.Add(txtNome);
             listaControles.Add(txtPrecoCompra);
-            listaControles.Add(txtQuantidade);
+            listaControles.Add(nudQtdEstoque);
             listaControles.Add(txtDescricao);
             listaControles.Add(cboFornecedor);
             listaControles.Add(cboUnidade);
             listaControles.Add(cboSubcategoria);
             listaControles.Add(cboCategoria);
-            listaControles.Add(nudQntdFornecidas);
-            listaControles.Add(nudQntdMinima);
-            listaControles.Add(nudQntdMaxima);
+            listaControles.Add(nudQtdFornecidas);
+            listaControles.Add(nudQtdMinima);
+            listaControles.Add(nudQtdMaxima);
             listaControles.Add(mskDataValidade);
+            listaControles.Add(txtPorcao);
             validacao = new ValidacaoProduto(listaControles);
         }
 
@@ -152,6 +155,14 @@ namespace ProjetoControleEstoque.Controller.controlador
                     e.KeyChar = '.';
                 }
                 else e.Handled = true;
+            }
+        }
+
+        public void PorcaoKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != txtPorcao.MaxLength)
+            {
+                e.Handled = true;
             }
         }
 
