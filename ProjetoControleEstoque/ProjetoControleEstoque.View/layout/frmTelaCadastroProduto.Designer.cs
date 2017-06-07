@@ -61,6 +61,7 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdFornecidas)).BeginInit();
@@ -101,6 +102,7 @@
             // panel
             // 
             this.panel.BackColor = System.Drawing.SystemColors.Window;
+            this.panel.Controls.Add(this.dateTimePicker1);
             this.panel.Controls.Add(this.nudQtdEstoque);
             this.panel.Controls.Add(this.txtPorcao);
             this.panel.Controls.Add(this.label13);
@@ -201,6 +203,8 @@
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(121, 24);
             this.cboCategoria.TabIndex = 22;
+            this.cboCategoria.TextChanged += new System.EventHandler(this.cboCategoria_TextChanged);
+            this.cboCategoria.Leave += new System.EventHandler(this.cboCategoria_Leave);
             // 
             // nudQtdMaxima
             // 
@@ -428,6 +432,13 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(429, 80);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 30;
+            // 
             // frmTelaCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,5 +499,6 @@
         private System.Windows.Forms.NumericUpDown nudQtdEstoque;
         private System.Windows.Forms.TextBox txtPorcao;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

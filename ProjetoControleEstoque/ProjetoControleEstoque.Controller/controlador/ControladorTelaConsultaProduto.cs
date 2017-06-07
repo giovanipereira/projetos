@@ -40,24 +40,24 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-       /* private void LoadInfo()
+        private void LoadInfo()
         {
             listProducts.Add(new Produto()
             {
                 Id = 1,
                 Nome = "Goiaba",
-                Valor_compra = 2,
+                Valor_unitario = 2,
                 Qtd_estoque = 6,
                 Qtd_minima = 4,
                 Qtd_fornecidas = 6,
                 Qtd_maxima = 10,
                 Data_validade = new DateTime(2000, 05, 12),
                 Descricao = "N.d.a",
-                Unidade = 1,
-                Fornecedor = 1,
-                Subcategoria = 1
+                Id_unidade = 1,
+                Id_fornecedor = 1,
+                Id_subcategoria = 1
             });
-        }*/
+        }
 
         private void LoadDatagridView()
         {

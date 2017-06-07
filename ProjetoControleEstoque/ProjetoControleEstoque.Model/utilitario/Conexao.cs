@@ -11,9 +11,9 @@ namespace ProjetoControleEstoque.Model.utilitario
 {
     public static class Conexao
     {
-        //public static SqlConnection connection = new SqlConnection("User ID = sa; Initial Catalog = bdControleEstoque; Data Source = PC11-LAB3; Password=1234567");
+        public static SqlConnection connection = new SqlConnection("User ID = sa; Initial Catalog = bdControleEstoque; Data Source = PC11-LAB3; Password=1234567");
         //public static SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-        public static SqlConnection connection = new SqlConnection("Data Source = PC\\SQLEXPRESS;Initial Catalog = bdControleEstoque;User ID = sa;Password=1234567;");
+        //public static SqlConnection connection = new SqlConnection("Data Source = PC\\SQLEXPRESS;Initial Catalog = bdControleEstoque;User ID = sa;Password=1234567;");
         public static void Open()
         {
             if (connection.State == ConnectionState.Closed)

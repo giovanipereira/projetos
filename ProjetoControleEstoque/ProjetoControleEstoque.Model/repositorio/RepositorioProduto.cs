@@ -66,13 +66,53 @@ namespace ProjetoControleEstoque.Model.repositorio
         }
         public void PreencherCategoria(ComboBox combobox)
         {
-            SqlCommand cmd = new SqlCommand("select id_car,nome_car from cargo order by nome_car asc", Conexao.connection);
+            SqlCommand cmd = new SqlCommand("select id_cat,nome_cat from categoria order by nome_cat asc", Conexao.connection);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             combobox.DataSource = dt;
-            combobox.ValueMember = "id_car";
-            combobox.DisplayMember = "nome_car";
+            combobox.ValueMember = "id_cat";
+            combobox.DisplayMember = "nome_cat";
+            combobox.SelectedValue = 0;
+        }
+
+        public void PreencherUnidade(ComboBox combobox)
+        {
+            SqlCommand cmd = new SqlCommand("select id_uni,nome_uni from unidade order by nome_uni asc", Conexao.connection);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            combobox.DataSource = dt;
+            combobox.ValueMember = "id_uni";
+            combobox.DisplayMember = "nome_uni";
+            combobox.SelectedValue = 0;
+        }
+
+        public void PreencherFornecedor(ComboBox combobox)
+        {
+            
+            SqlCommand cmd = new SqlCommand("select id_for,nome_for from fornecedor order by nome_for asc", Conexao.connection);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            Conexao.Open();
+            combobox.DataSource = dt;
+            combobox.ValueMember = "id_for";
+            combobox.DisplayMember = "nome_for";
+            combobox.SelectedValue = 0;
+        }
+
+        public void PreencherSubcategoria(ComboBox combobox, int id_categoria)
+        {
+            SqlCommand cmd = new SqlCommand("select id_sub,nome_sub from subcategoria where id_cat = @id_cat", Conexao.connection);
+            cmd.Parameters.Add(new SqlParameter("@id_cat", SqlDbType.Int)).Value = id_categoria;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            Conexao.Open();
+            combobox.DataSource = dt;
+            combobox.ValueMember = "id_sub";
+            combobox.DisplayMember = "nome_sub";
             combobox.SelectedValue = 0;
         }
     }

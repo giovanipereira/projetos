@@ -65,7 +65,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
-        private void CarregarProduto(Produto produto)
+        /*private void CarregarProduto(Produto produto)
         {
             double porcao, valor_unitario;
             int id;
@@ -83,8 +83,27 @@ namespace ProjetoControleEstoque.Controller.controlador
             string d;
             //produto.Data_validade
                 d = data.ToString("yyyyMMdd");
+        }*/
+
+        private void PreencherFornecedor()
+        {
+            repositorioProduto.PreencherFornecedor(cboFornecedor);
         }
 
+        private void PreencherUnidade()
+        {
+            repositorioProduto.PreencherUnidade(cboUnidade);
+        }
+
+        private void PreencherCategoria()
+        {
+            repositorioProduto.PreencherCategoria(cboCategoria);
+        }
+
+        private void PreencherSubcategoria()
+        {
+            repositorioProduto.PreencherSubcategoria(cboSubcategoria, int.Parse(cboCategoria.SelectedValue.ToString()));
+        }
         #endregion
 
         #region Abstracts Methods
@@ -126,13 +145,14 @@ namespace ProjetoControleEstoque.Controller.controlador
         public void Load()
         {
             OperationMode((int)EnumOperationMode.Normal);
+            PreencherUnidade();
+            PreencherFornecedor();
+            PreencherCategoria();
         }
 
         public void Salvar()
         {
             Mensagem.MensagemSalvar();
-            produto = new Produto();
-            CarregarProduto(produto);
             OperationMode((int)EnumOperationMode.Normal);
             
         }
@@ -189,6 +209,11 @@ namespace ProjetoControleEstoque.Controller.controlador
             {
                 e.Handled = true;
             }
+        }
+
+        public void CategoriaLeave()
+        {
+            PreencherSubcategoria();
         }
 
         #endregion

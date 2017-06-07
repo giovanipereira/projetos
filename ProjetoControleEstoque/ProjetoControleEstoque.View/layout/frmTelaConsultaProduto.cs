@@ -43,8 +43,9 @@ namespace ProjetoControleEstoque.View.layout
 
         private void frmTelaConsultaProduto_Load(object sender, EventArgs e)
         {
-            controladorTelaConsultaProduto().Load();
             dgvListaProdutos.AutoGenerateColumns = false;
+            controladorTelaConsultaProduto().Load();
+            
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)

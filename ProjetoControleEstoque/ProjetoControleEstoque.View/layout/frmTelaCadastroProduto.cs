@@ -66,5 +66,14 @@ namespace ProjetoControleEstoque.View.layout
         {
             controladorTelaCadastroProduto().PorcaoKeyPress(sender, e);
         }
+
+        private void cboCategoria_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cboCategoria_Leave(object sender, EventArgs e)
+        {
+            controladorTelaCadastroProduto().CategoriaLeave();
+        }
     }
 }
