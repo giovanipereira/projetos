@@ -18,7 +18,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         private TextBox txtCodigo, txtNome, txtValorUnitario, txtPorcao, txtDescricao;
         private ComboBox cboFornecedor, cboUnidade, cboSubcategoria, cboCategoria;
         private NumericUpDown nudQtdFornecidas, nudQtdMinima, nudQtdMaxima, nudQtdEstoque;
-        private MaskedTextBox mskDataValidade;
+        private DateTimePicker dtpDataValidade;
 
         // Declaração das classes 
         ValidacaoProduto validacao;
@@ -38,7 +38,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             TextBox txtPorcao, TextBox txtDescricao, ComboBox cboFornecedor, ComboBox cboUnidade,
             ComboBox cboSubcategoria, ComboBox cboCategoria, 
             NumericUpDown nudQtdFornecidas, NumericUpDown nudQtdEstoque,
-            NumericUpDown nudQtdMinima, NumericUpDown nudQtdMaxima, MaskedTextBox mskDataValidade,
+            NumericUpDown nudQtdMinima, NumericUpDown nudQtdMaxima, DateTimePicker mskDataValidade,
             Button btnInserir, Button btnSalvar, Button btnAtualizar, Button btnCancelar)
         {
             this.txtCodigo = txtCodigo;
@@ -54,7 +54,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             this.nudQtdEstoque = nudQtdEstoque;
             this.nudQtdMinima = nudQtdMinima;
             this.nudQtdMaxima = nudQtdMaxima;
-            this.mskDataValidade = mskDataValidade;
+            this.dtpDataValidade = mskDataValidade;
             this.btnInserir = btnInserir;
             this.btnSalvar = btnSalvar;
             this.btnAtualizar = btnAtualizar;
@@ -65,25 +65,38 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
-        /*private void CarregarProduto(Produto produto)
+        private Produto CarregarProduto(Produto produto)
         {
-            double porcao, valor_unitario;
+            decimal porcao, valor_unitario;
             int id;
-            DateTime data, dataout;
+            //DateTime data;
             produto.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
             produto.Nome = txtNome.Text;
-          //  produto.Id_unidade = int.Parse(cboUnidade.SelectedValue.ToString());
-            produto.Porcao_pro = double.TryParse(txtPorcao.Text, out porcao) ? porcao : 0;
-            produto.Valor_unitario = double.TryParse(txtValorUnitario.Text, out valor_unitario) ? valor_unitario : 0;
+            produto.Id_unidade = int.Parse(cboUnidade.SelectedValue.ToString());
+            produto.Porcao_pro = decimal.TryParse(txtPorcao.Text, out porcao) ? porcao : 0;
+            produto.Valor_unitario = decimal.TryParse(txtValorUnitario.Text.Replace(".00", ""), out valor_unitario) ? valor_unitario : 0;
+            produto.Descricao = txtDescricao.Text;
             produto.Qtd_estoque = int.Parse(nudQtdEstoque.Value.ToString());
             produto.Qtd_minima = int.Parse(nudQtdMinima.Value.ToString());
             produto.Qtd_maxima = int.Parse(nudQtdMaxima.Value.ToString());
-            mskDataValidade.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            data = DateTime.Parse(mskDataValidade.Text);
-            string d;
-            //produto.Data_validade
-                d = data.ToString("yyyyMMdd");
-        }*/
+            produto.Qtd_fornecidas = int.Parse(nudQtdFornecidas.Value.ToString());
+            produto.Data_validade = DateTime.Parse(dtpDataValidade.Value.ToString());
+            produto.Id_fornecedor = int.Parse(cboFornecedor.SelectedValue.ToString());
+            produto.Id_categoria = int.Parse(cboCategoria.SelectedValue.ToString());
+            produto.Id_subcategoria = int.Parse(cboSubcategoria.SelectedValue.ToString());
+            return produto;
+        }
+
+        private void SalvarProduto()
+        {
+            produto = new Produto();
+            produto = CarregarProduto(produto);
+            if (repositorioProduto.Salvar(produto))
+            {
+                Mensagem.MensagemSalvar();
+            }
+
+        }
 
         private void PreencherFornecedor()
         {
@@ -133,7 +146,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(nudQtdFornecidas);
             listaControles.Add(nudQtdMinima);
             listaControles.Add(nudQtdMaxima);
-            listaControles.Add(mskDataValidade);
+            listaControles.Add(dtpDataValidade);
             listaControles.Add(txtPorcao);
             validacao = new ValidacaoProduto(listaControles);
         }
@@ -152,7 +165,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Salvar()
         {
-            Mensagem.MensagemSalvar();
+            SalvarProduto();
             OperationMode((int)EnumOperationMode.Normal);
             
         }
@@ -213,7 +226,14 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void CategoriaLeave()
         {
-            PreencherSubcategoria();
+            try
+            {
+                PreencherSubcategoria();
+            }
+            catch
+            {
+
+            }
         }
 
         #endregion

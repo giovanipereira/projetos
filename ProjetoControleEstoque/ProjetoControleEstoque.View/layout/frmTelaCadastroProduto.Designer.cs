@@ -41,7 +41,6 @@
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.nudQtdMaxima = new System.Windows.Forms.NumericUpDown();
             this.nudQtdMinima = new System.Windows.Forms.NumericUpDown();
-            this.mskDataValidade = new System.Windows.Forms.MaskedTextBox();
             this.txtValorUnitario = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.cboUnidade = new System.Windows.Forms.ComboBox();
@@ -61,7 +60,7 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDataValidade = new System.Windows.Forms.DateTimePicker();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdFornecidas)).BeginInit();
@@ -102,7 +101,7 @@
             // panel
             // 
             this.panel.BackColor = System.Drawing.SystemColors.Window;
-            this.panel.Controls.Add(this.dateTimePicker1);
+            this.panel.Controls.Add(this.dtpDataValidade);
             this.panel.Controls.Add(this.nudQtdEstoque);
             this.panel.Controls.Add(this.txtPorcao);
             this.panel.Controls.Add(this.label13);
@@ -112,7 +111,6 @@
             this.panel.Controls.Add(this.cboCategoria);
             this.panel.Controls.Add(this.nudQtdMaxima);
             this.panel.Controls.Add(this.nudQtdMinima);
-            this.panel.Controls.Add(this.mskDataValidade);
             this.panel.Controls.Add(this.txtValorUnitario);
             this.panel.Controls.Add(this.txtDescricao);
             this.panel.Controls.Add(this.cboUnidade);
@@ -173,6 +171,7 @@
             this.nudQtdFornecidas.Name = "nudQtdFornecidas";
             this.nudQtdFornecidas.Size = new System.Drawing.Size(73, 22);
             this.nudQtdFornecidas.TabIndex = 26;
+            this.nudQtdFornecidas.Leave += new System.EventHandler(this.nudQtdFornecidas_Leave);
             // 
             // label14
             // 
@@ -232,16 +231,6 @@
             this.nudQtdMinima.Size = new System.Drawing.Size(73, 22);
             this.nudQtdMinima.TabIndex = 20;
             // 
-            // mskDataValidade
-            // 
-            this.mskDataValidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskDataValidade.Location = new System.Drawing.Point(558, 52);
-            this.mskDataValidade.Mask = "00/00/0000";
-            this.mskDataValidade.Name = "mskDataValidade";
-            this.mskDataValidade.Size = new System.Drawing.Size(100, 22);
-            this.mskDataValidade.TabIndex = 19;
-            this.mskDataValidade.ValidatingType = typeof(System.DateTime);
-            // 
             // txtValorUnitario
             // 
             this.txtValorUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -270,6 +259,7 @@
             this.cboUnidade.Name = "cboUnidade";
             this.cboUnidade.Size = new System.Drawing.Size(121, 24);
             this.cboUnidade.TabIndex = 15;
+            this.cboUnidade.Leave += new System.EventHandler(this.cboUnidade_Leave);
             // 
             // cboFornecedor
             // 
@@ -432,12 +422,13 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // dateTimePicker1
+            // dtpDataValidade
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(429, 80);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 30;
+            this.dtpDataValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataValidade.Location = new System.Drawing.Point(561, 50);
+            this.dtpDataValidade.Name = "dtpDataValidade";
+            this.dtpDataValidade.Size = new System.Drawing.Size(118, 22);
+            this.dtpDataValidade.TabIndex = 30;
             // 
             // frmTelaCadastroProduto
             // 
@@ -474,7 +465,6 @@
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.NumericUpDown nudQtdMaxima;
         private System.Windows.Forms.NumericUpDown nudQtdMinima;
-        private System.Windows.Forms.MaskedTextBox mskDataValidade;
         private System.Windows.Forms.TextBox txtValorUnitario;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.ComboBox cboUnidade;
@@ -499,6 +489,6 @@
         private System.Windows.Forms.NumericUpDown nudQtdEstoque;
         private System.Windows.Forms.TextBox txtPorcao;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDataValidade;
     }
 }

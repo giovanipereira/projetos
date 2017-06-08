@@ -39,3 +39,26 @@ C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoContr
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.csproj.GenerateResource.Cache
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.exe
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\bin\Debug\ProjetoControleEstoque.View.exe.config
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\bin\Debug\ProjetoControleEstoque.View.exe
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\bin\Debug\ProjetoControleEstoque.View.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\bin\Debug\ProjetoControleEstoque.Controller.dll
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\bin\Debug\ProjetoControleEstoque.Model.dll
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\bin\Debug\ProjetoControleEstoque.Controller.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\bin\Debug\ProjetoControleEstoque.Model.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.csprojResolveAssemblyReference.cache
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroCardapio.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroFornecedor.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroFuncionario.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroMesa.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroProduto.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroSubcategoria.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCardapioItem.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaConsultaProduto.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaPedido.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaPedidoItem.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaPrincipal.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.Properties.Resources.resources
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.csproj.GenerateResource.Cache
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.exe
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.pdb

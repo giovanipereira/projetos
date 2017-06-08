@@ -31,7 +31,6 @@ namespace ProjetoControleEstoque.Entity.Entidades
 
             Property(p => p.Nivel_Acesso)
                 .IsRequired();
-
         }
     }
 }

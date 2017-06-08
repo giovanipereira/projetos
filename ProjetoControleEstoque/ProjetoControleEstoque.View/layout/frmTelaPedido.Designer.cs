@@ -31,16 +31,14 @@
             this.panel = new System.Windows.Forms.Panel();
             this.cboStatus = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtHorario = new System.Windows.Forms.TextBox();
             this.cboMesa = new System.Windows.Forms.ComboBox();
-            this.mskData = new System.Windows.Forms.MaskedTextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvConsulta = new System.Windows.Forms.DataGridView();
             this.btnRemoverItem = new System.Windows.Forms.Button();
             this.btnEditarItem = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
@@ -53,17 +51,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
+            this.dtpData = new System.Windows.Forms.DateTimePicker();
+            this.txtHorario = new System.Windows.Forms.TextBox();
             this.panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsulta)).BeginInit();
             this.SuspendLayout();
             // 
             // panel
             // 
+            this.panel.Controls.Add(this.txtHorario);
+            this.panel.Controls.Add(this.dtpData);
             this.panel.Controls.Add(this.cboStatus);
             this.panel.Controls.Add(this.label8);
-            this.panel.Controls.Add(this.txtHorario);
             this.panel.Controls.Add(this.cboMesa);
-            this.panel.Controls.Add(this.mskData);
             this.panel.Controls.Add(this.txtCodigo);
             this.panel.Controls.Add(this.label4);
             this.panel.Controls.Add(this.label3);
@@ -92,28 +92,14 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Status do pedido:";
             // 
-            // txtHorario
-            // 
-            this.txtHorario.Location = new System.Drawing.Point(300, 48);
-            this.txtHorario.Name = "txtHorario";
-            this.txtHorario.Size = new System.Drawing.Size(121, 20);
-            this.txtHorario.TabIndex = 9;
-            // 
             // cboMesa
             // 
             this.cboMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMesa.FormattingEnabled = true;
-            this.cboMesa.Location = new System.Drawing.Point(300, 126);
+            this.cboMesa.Location = new System.Drawing.Point(22, 126);
             this.cboMesa.Name = "cboMesa";
             this.cboMesa.Size = new System.Drawing.Size(121, 21);
             this.cboMesa.TabIndex = 7;
-            // 
-            // mskData
-            // 
-            this.mskData.Location = new System.Drawing.Point(22, 126);
-            this.mskData.Name = "mskData";
-            this.mskData.Size = new System.Drawing.Size(130, 20);
-            this.mskData.TabIndex = 6;
             // 
             // txtCodigo
             // 
@@ -125,7 +111,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(297, 96);
+            this.label4.Location = new System.Drawing.Point(19, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 3;
@@ -143,7 +129,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 96);
+            this.label2.Location = new System.Drawing.Point(297, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 1;
@@ -167,13 +153,13 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Lista de produtos";
             // 
-            // dataGridView1
+            // dgvConsulta
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 219);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(775, 150);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConsulta.Location = new System.Drawing.Point(12, 219);
+            this.dgvConsulta.Name = "dgvConsulta";
+            this.dgvConsulta.Size = new System.Drawing.Size(775, 150);
+            this.dgvConsulta.TabIndex = 2;
             // 
             // btnRemoverItem
             // 
@@ -195,7 +181,7 @@
             // 
             // btnSelecionar
             // 
-            this.btnSelecionar.Location = new System.Drawing.Point(12, 373);
+            this.btnSelecionar.Location = new System.Drawing.Point(12, 381);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(116, 29);
             this.btnSelecionar.TabIndex = 31;
@@ -281,6 +267,21 @@
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 42;
             // 
+            // dtpData
+            // 
+            this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpData.Location = new System.Drawing.Point(304, 123);
+            this.dtpData.Name = "dtpData";
+            this.dtpData.Size = new System.Drawing.Size(117, 20);
+            this.dtpData.TabIndex = 12;
+            // 
+            // txtHorario
+            // 
+            this.txtHorario.Location = new System.Drawing.Point(300, 47);
+            this.txtHorario.Name = "txtHorario";
+            this.txtHorario.Size = new System.Drawing.Size(100, 20);
+            this.txtHorario.TabIndex = 13;
+            // 
             // frmTelaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,7 +300,7 @@
             this.Controls.Add(this.btnRemoverItem);
             this.Controls.Add(this.btnEditarItem);
             this.Controls.Add(this.btnSelecionar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvConsulta);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel);
             this.Name = "frmTelaPedido";
@@ -307,7 +308,7 @@
             this.Text = "Tela de Pedido";
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsulta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,16 +317,14 @@
         #endregion
 
         private System.Windows.Forms.Panel panel;
-        private System.Windows.Forms.TextBox txtHorario;
         private System.Windows.Forms.ComboBox cboMesa;
-        private System.Windows.Forms.MaskedTextBox mskData;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvConsulta;
         private System.Windows.Forms.Button btnRemoverItem;
         private System.Windows.Forms.Button btnEditarItem;
         private System.Windows.Forms.Button btnSelecionar;
@@ -340,5 +339,7 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.ComboBox cboStatus;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dtpData;
+        private System.Windows.Forms.TextBox txtHorario;
     }
 }

@@ -22,7 +22,7 @@ namespace ProjetoControleEstoque.View.layout
         {
             ControladorTelaCadastroProduto controlador = new ControladorTelaCadastroProduto(txtCodigo,
                 txtNome, txtValorUnitario, txtPorcao, txtDescricao, cboFornecedor, cboUnidade, cboSubcategoria,
-                cboCategoria, nudQtdFornecidas, nudQtdEstoque, nudQtdMinima, nudQtdMaxima, mskDataValidade, btnInserir, btnSalvar,
+                cboCategoria, nudQtdFornecidas, nudQtdEstoque, nudQtdMinima, nudQtdMaxima, dtpDataValidade, btnInserir, btnSalvar,
                 btnAtualizar, btnCancelar);
             return controlador;
         }
@@ -74,6 +74,17 @@ namespace ProjetoControleEstoque.View.layout
         private void cboCategoria_Leave(object sender, EventArgs e)
         {
             controladorTelaCadastroProduto().CategoriaLeave();
+        }
+
+        private void nudQtdFornecidas_Leave(object sender, EventArgs e)
+        {
+            nudQtdEstoque.Value = nudQtdFornecidas.Value;
+        }
+
+        private void cboUnidade_Leave(object sender, EventArgs e)
+        {
+            if (cboUnidade.Text.Equals(string.Empty))
+                txtPorcao.Focus();
         }
     }
 }

@@ -40,6 +40,8 @@ namespace ProjetoControleEstoque.Controller.validacao
 
                 else if (control is NumericUpDown)
                     ((NumericUpDown)control).Value = 0;
+                else if (control is DateTimePicker)
+                    ((DateTimePicker)control).Value = DateTime.Now;
             }
         }
 
@@ -66,7 +68,7 @@ namespace ProjetoControleEstoque.Controller.validacao
                 //    }
                 //}
                 if (control is TextBox || control is MaskedTextBox || control is ComboBox || control is Button|| control is PictureBox || 
-                    control is DataGridView || control is NumericUpDown)
+                    control is DataGridView || control is NumericUpDown || control is DateTimePicker)
                 {
                     control.Enabled = enable;
                 }
