@@ -14,3 +14,4 @@ C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEs
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.pdb
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.dll
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.csprojResolveAssemblyReference.cache

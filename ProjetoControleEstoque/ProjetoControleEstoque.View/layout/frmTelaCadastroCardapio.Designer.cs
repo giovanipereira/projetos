@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
@@ -57,6 +57,7 @@
             this.btnEditarItem = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picFigura)).BeginInit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdutos)).BeginInit();
@@ -129,9 +130,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(206, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 16);
+            this.label4.Size = new System.Drawing.Size(47, 16);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Preço R$:";
+            this.label4.Text = "Preço:";
             // 
             // picFigura
             // 
@@ -181,9 +182,9 @@
             this.panel.Controls.Add(this.label3);
             this.panel.Controls.Add(this.label2);
             this.panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel.Location = new System.Drawing.Point(12, 12);
+            this.panel.Location = new System.Drawing.Point(20, 35);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(735, 178);
+            this.panel.Size = new System.Drawing.Size(727, 178);
             this.panel.TabIndex = 11;
             // 
             // label6
@@ -249,7 +250,7 @@
             // btnSelecionar
             // 
             this.btnSelecionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionar.Location = new System.Drawing.Point(20, 371);
+            this.btnSelecionar.Location = new System.Drawing.Point(20, 400);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(135, 29);
             this.btnSelecionar.TabIndex = 27;
@@ -267,20 +268,20 @@
             this.Nome,
             this.Unidade,
             this.Quantidade});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaProdutos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvListaProdutos.Location = new System.Drawing.Point(20, 218);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaProdutos.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvListaProdutos.Location = new System.Drawing.Point(20, 237);
             this.dgvListaProdutos.MultiSelect = false;
             this.dgvListaProdutos.Name = "dgvListaProdutos";
             this.dgvListaProdutos.ReadOnly = true;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaProdutos.Size = new System.Drawing.Size(727, 147);
             this.dgvListaProdutos.TabIndex = 28;
@@ -317,7 +318,7 @@
             // btnEditarItem
             // 
             this.btnEditarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarItem.Location = new System.Drawing.Point(522, 371);
+            this.btnEditarItem.Location = new System.Drawing.Point(522, 400);
             this.btnEditarItem.Name = "btnEditarItem";
             this.btnEditarItem.Size = new System.Drawing.Size(102, 29);
             this.btnEditarItem.TabIndex = 29;
@@ -327,7 +328,7 @@
             // btnRemoverItem
             // 
             this.btnRemoverItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverItem.Location = new System.Drawing.Point(643, 371);
+            this.btnRemoverItem.Location = new System.Drawing.Point(643, 400);
             this.btnRemoverItem.Name = "btnRemoverItem";
             this.btnRemoverItem.Size = new System.Drawing.Size(102, 29);
             this.btnRemoverItem.TabIndex = 30;
@@ -339,11 +340,21 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(332, 196);
+            this.label5.Location = new System.Drawing.Point(329, 216);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 18);
             this.label5.TabIndex = 31;
             this.label5.Text = "Lista de produtos";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(16, 8);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(165, 24);
+            this.label21.TabIndex = 105;
+            this.label21.Text = "Cadastro Cardápío";
             // 
             // frmTelaCadastroCardapio
             // 
@@ -351,6 +362,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(759, 497);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnRemoverItem);
             this.Controls.Add(this.btnEditarItem);
@@ -403,5 +415,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.Label label21;
     }
 }

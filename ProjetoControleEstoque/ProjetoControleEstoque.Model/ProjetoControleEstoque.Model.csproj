@@ -57,6 +57,7 @@
     <Compile Include="interfaces\IRepositorioBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repositorio\RepositorioBase.cs" />
+    <Compile Include="repositorio\RepositorioCardapio.cs" />
     <Compile Include="repositorio\RepositorioFornecedor.cs" />
     <Compile Include="repositorio\RepositorioFuncionario.cs" />
     <Compile Include="repositorio\RepositorioMesa.cs" />

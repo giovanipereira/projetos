@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using ProjetoControleEstoque.Model.dominio;
 using ProjetoControleEstoque.Controller.utility;
 using ProjetoControleEstoque.Controller.validacao;
+using ProjetoControleEstoque.Model.repositorio;
 
 namespace ProjetoControleEstoque.Controller.controlador
 {
@@ -22,9 +23,10 @@ namespace ProjetoControleEstoque.Controller.controlador
         private DataGridView dgvListaProdutos;
         private ComboBox cboCategoria;
 
-        // Declaração das classes 
+
         Cardapio cardapio;
         ValidacaoCardapio validacao;
+        RepositorioCardapio repositorioCardapio = new RepositorioCardapio();
 
         #endregion
 
@@ -169,19 +171,33 @@ namespace ProjetoControleEstoque.Controller.controlador
             validacao.LimparControl();
         }
 
-        // Função que anexa os valores dos componentes nas propriedades do objeto cardapio
-        private void CarregarCardapio()
+        private void PreencherCategoria()
         {
-            // Variável para uso no Try parse, onde se acontecer alguma exception na conversão o 
-            // codigo sera igual a 1
+            repositorioCardapio.PreencherCategoria(cboCategoria);
+        }
+
+        private void SalvarCardapio()
+        {
+            cardapio = new Cardapio();
+            cardapio = CarregarCardapio(cardapio);
+
+            if (repositorioCardapio.Salvar(cardapio))
+            {
+                Mensagem.MensagemSalvar();
+            }
+        }
+
+        private Cardapio CarregarCardapio(Cardapio cardapio)
+        {
             int codigo;
             cardapio = new Cardapio();
-            cardapio.Id = int.TryParse(txtCodigo.Text, out codigo) ? codigo : 1;
+            cardapio.Id = int.TryParse(txtCodigo.Text, out codigo) ? codigo : 0;
             cardapio.Nome = txtNome.Text;
             cardapio.Preco = decimal.Parse(txtPreco.Text);
             cardapio.Figura = picFigura.ImageLocation;
             cardapio.Descricao = txtDescricao.Text;
-            cardapio.Categoria = int.Parse(cboCategoria.SelectedValue.ToString());
+            cardapio.Id_categoria = int.Parse(cboCategoria.SelectedValue.ToString());
+            return cardapio;
         }
 
         #endregion
@@ -191,11 +207,12 @@ namespace ProjetoControleEstoque.Controller.controlador
         public void Load()
         {
             OperationMode((int)EnumOperationMode.Normal);
+            PreencherCategoria();
         }
 
         public void Salvar()
         {
-            Mensagem.MensagemSalvar();
+            SalvarCardapio();
             OperationMode((int)EnumOperationMode.Normal);
         }
 

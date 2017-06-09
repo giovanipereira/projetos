@@ -361,10 +361,10 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label21.Location = new System.Drawing.Point(12, 9);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(136, 16);
+            this.label21.Size = new System.Drawing.Size(189, 24);
             this.label21.TabIndex = 105;
             this.label21.Text = "Cadastro Fornecedor";
             this.label21.Click += new System.EventHandler(this.label21_Click);

@@ -9,15 +9,12 @@ namespace ProjetoControleEstoque.Model.dominio
 {
     public class ItemCardapio
     {
-        #region Fields
         private int id_produto;
         private int id_cardapio;
         private string nome;
         private string unidade;
         private double quantidade;
-        #endregion
 
-        #region Properties
         public int Id_cardapio
         {
             get { return this.id_cardapio; }
@@ -46,6 +43,5 @@ namespace ProjetoControleEstoque.Model.dominio
             get { return this.quantidade; }
             set { this.quantidade = value; }
         }
-        #endregion
     }
 }

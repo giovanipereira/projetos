@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
+            this.dtpDataValidade = new System.Windows.Forms.DateTimePicker();
             this.nudQtdEstoque = new System.Windows.Forms.NumericUpDown();
             this.txtPorcao = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.dtpDataValidade = new System.Windows.Forms.DateTimePicker();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdFornecidas)).BeginInit();
@@ -135,6 +135,14 @@
             this.panel.Size = new System.Drawing.Size(735, 411);
             this.panel.TabIndex = 3;
             // 
+            // dtpDataValidade
+            // 
+            this.dtpDataValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataValidade.Location = new System.Drawing.Point(561, 50);
+            this.dtpDataValidade.Name = "dtpDataValidade";
+            this.dtpDataValidade.Size = new System.Drawing.Size(118, 22);
+            this.dtpDataValidade.TabIndex = 30;
+            // 
             // nudQtdEstoque
             // 
             this.nudQtdEstoque.Location = new System.Drawing.Point(279, 186);
@@ -155,9 +163,9 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(18, 233);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 16);
+            this.label13.Size = new System.Drawing.Size(81, 16);
             this.label13.TabIndex = 27;
-            this.label13.Text = "Quantidade Porção:";
+            this.label13.Text = "Quantidade:";
             // 
             // nudQtdFornecidas
             // 
@@ -421,14 +429,6 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // dtpDataValidade
-            // 
-            this.dtpDataValidade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataValidade.Location = new System.Drawing.Point(561, 50);
-            this.dtpDataValidade.Name = "dtpDataValidade";
-            this.dtpDataValidade.Size = new System.Drawing.Size(118, 22);
-            this.dtpDataValidade.TabIndex = 30;
             // 
             // frmTelaCadastroProduto
             // 

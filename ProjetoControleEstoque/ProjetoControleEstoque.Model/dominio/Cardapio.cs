@@ -8,16 +8,14 @@ namespace ProjetoControleEstoque.Model.dominio
 {
     public class Cardapio
     {
-        #region Fields
         private int id;
         private string nome;
         private decimal preco;
         private string figura;
         private string descricao;
-        private int categoria;
-        #endregion
+        private int id_categoria;
+        public virtual int Categoria { get; set; }
 
-        #region Properties
         public int Id
         {
             get { return this.id; }
@@ -48,15 +46,14 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.descricao = value; }
         }
 
-        public int Categoria
+        public int Id_categoria
         {
-            get { return this.categoria; }
-            set { this.categoria = value; }
+            get { return this.id_categoria; }
+            set { this.id_categoria = value; }
         }
-        #endregion
     }
 
-    public static class ListaCardapio
+    /*public static class ListaCardapio
     {
         public static IEnumerable<Cardapio> getCardapio()
         {
@@ -68,6 +65,6 @@ namespace ProjetoControleEstoque.Model.dominio
             };
             return cardapios;
         }
-    }
+    }*/
 
 }
