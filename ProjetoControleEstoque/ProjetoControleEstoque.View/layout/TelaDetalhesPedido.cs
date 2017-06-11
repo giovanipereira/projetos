@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjetoControleEstoque.View.layout
 {
-    public partial class frmTelaPedido : Form
+    public partial class TelaDetalhesPedido : Form
     {
-        public frmTelaPedido()
+        public TelaDetalhesPedido()
         {
             InitializeComponent();
         }

@@ -36,7 +36,7 @@ namespace ProjetoControleEstoque.Controller.validacao
                     ((PictureBox)control).Image = null;
 
                 else if (control is DataGridView)
-                    ((DataGridView)control).Rows.Clear();
+                    ((DataGridView)control).DataSource = null;
 
                 else if (control is NumericUpDown)
                     ((NumericUpDown)control).Value = 0;
@@ -50,28 +50,33 @@ namespace ProjetoControleEstoque.Controller.validacao
         {
             foreach (var control in listaControles)
             {
-                //if (control is TextBox || control is MaskedTextBox)
-                //{
-                //    if (enable.Equals(true))
-                //    {
-                //        if (control is TextBox)
-                //            ((TextBox)control).ReadOnly = false;
-                //        else
-                //            ((MaskedTextBox)control).ReadOnly = false;
-                //    }
-                //    else
-                //    {
-                //        if (control is TextBox)
-                //            ((TextBox)control).ReadOnly = true;
-                //        else if (control is MaskedTextBox)
-                //            ((MaskedTextBox)control).ReadOnly = true;
-                //    }
-                //}
-                if (control is TextBox || control is MaskedTextBox || control is ComboBox || control is Button|| control is PictureBox || 
-                    control is DataGridView || control is NumericUpDown || control is DateTimePicker)
+                if (control is TextBox || control is MaskedTextBox)
                 {
-                    control.Enabled = enable;
+                    if (enable.Equals(true))
+                    {
+                        if (control is TextBox)
+                            ((TextBox)control).ReadOnly = false;
+                        else
+                            ((MaskedTextBox)control).ReadOnly = false;
+                    }
+                    else
+                    {
+                        if (control is TextBox)
+                            ((TextBox)control).ReadOnly = true;
+                        else if (control is MaskedTextBox)
+                            ((MaskedTextBox)control).ReadOnly = true;
+                    }
                 }
+                if (control is ComboBox || control is Button|| control is PictureBox || 
+                     control is DataGridView || control is NumericUpDown || control is DateTimePicker)
+                 {
+                     control.Enabled = enable;
+                 }
+                /* if (control is TextBox || control is MaskedTextBox || control is ComboBox || control is Button|| control is PictureBox || 
+                     control is DataGridView || control is NumericUpDown || control is DateTimePicker)
+                 {
+                     control.Enabled = enable;
+                 }*/
             }
         }
     }

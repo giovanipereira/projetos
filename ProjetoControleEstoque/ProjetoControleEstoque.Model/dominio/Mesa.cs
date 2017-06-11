@@ -23,6 +23,11 @@ namespace ProjetoControleEstoque.Model.dominio
             get { return this.numero_mesa; }
             set { this.numero_mesa = value; }
         }
+
+        public static implicit operator Mesa(int v)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

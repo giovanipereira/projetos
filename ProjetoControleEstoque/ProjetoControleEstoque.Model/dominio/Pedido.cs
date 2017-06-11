@@ -8,17 +8,14 @@ namespace ProjetoControleEstoque.Model.dominio
 {
     public class Pedido
     {
-        #region Fields
         private int numero;
         private DateTime data;
         private int status;
         private string observacao;
-        private Mesa numero_mesa;
+        private int numero_mesa;
         private int funcionario;
         private double valor_total;
-        #endregion
 
-        #region Properties
         public int Numero
         {
             get { return this.numero; }
@@ -43,7 +40,7 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.observacao = value; }
         }
 
-        public Mesa Numero_Mesa
+        public int Numero_Mesa
         {
             get { return this.numero_mesa; }
             set { this.numero_mesa = value; }
@@ -60,7 +57,6 @@ namespace ProjetoControleEstoque.Model.dominio
             get { return this.valor_total; }
             set { this.valor_total = value; }
         }
-        #endregion
     }
 
     public enum EnumStatusPedido

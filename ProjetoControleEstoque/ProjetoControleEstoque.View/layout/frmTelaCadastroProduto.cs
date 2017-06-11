@@ -83,8 +83,7 @@ namespace ProjetoControleEstoque.View.layout
 
         private void cboUnidade_Leave(object sender, EventArgs e)
         {
-            if (cboUnidade.Text.Equals(string.Empty))
-                txtPorcao.Focus();
+            controladorTelaCadastroProduto().UnidadeLeave();
         }
     }
 }

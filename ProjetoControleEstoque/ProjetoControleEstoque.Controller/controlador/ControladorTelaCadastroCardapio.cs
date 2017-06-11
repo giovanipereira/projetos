@@ -65,10 +65,8 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Public Methods
 
-        // Função que habilita ou desabilita os botões de editar e remover itens
         public void HabilitarBotaoItem()
         {
-            // Verifica se o datagridview tem registros, se tiver habilita os botões de editar e remover item
             if (dgvListaProdutos.Rows.Count > 0)
             {
                 btnEditarItem.Enabled = true;
@@ -81,13 +79,11 @@ namespace ProjetoControleEstoque.Controller.controlador
             }
         }
 
-        // Função que seleciona uma figura para a picturebox
         public void EscolherFigura()
         {
             string foto = null;
             OpenFileDialog OpenFileDialog = new OpenFileDialog();
             OpenFileDialog.ShowDialog();
-            // Se o objeto OpenFileDialog estiver diferente de vazio carregara a foto para a picturebox 
             if (!string.IsNullOrEmpty(OpenFileDialog.FileName))
             {
                 foto = OpenFileDialog.FileName;
@@ -95,25 +91,20 @@ namespace ProjetoControleEstoque.Controller.controlador
             }
         }
 
-        // Função que remove a figura da picturebox
         public void RemoverFigura()
         {
             picFigura.Image = null;
         }
 
-        // Função que abre o form de consulta produto
         public void SelecionarProduto(Form form)
         {
             form.ShowDialog();
         }
 
-        // Função que remove os itens do datagridview
         public void RemoverItem()
         {
-            // Verifica se contem registros no datagridview
             if (dgvListaProdutos.Rows.Count > 0)
             {
-                // Mensagem para confirmação do usuário
                 if (Mensagem.MensagemQuestao("Tem certeza que deseja remover esse item?"))
                     dgvListaProdutos.Rows.RemoveAt(dgvListaProdutos.CurrentRow.Index);
             }
@@ -121,14 +112,12 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         // ======== não finalizadas =========
 
-        // Função que adiciona o produto ao datagridview
         public void AdicionarItem(object item)
         {
             dgvListaProdutos.Rows.Add(item);
             dgvListaProdutos.Refresh();
         }
 
-        // Função que edita o item
         public void EditarItem()
         {
             HabilitarBotaoItem();
@@ -136,41 +125,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-        #region Private and Abstracts Methods
-
-        // Função que adiciona uma lista ao construtor da classe Validacao
-        public override void AdicionarListaControles()
-        {
-            listaControles.Add(txtCodigo);
-            listaControles.Add(txtNome);
-            listaControles.Add(txtPreco);
-            listaControles.Add(picFigura);
-            listaControles.Add(txtDescricao);
-            listaControles.Add(cboCategoria);
-            listaControles.Add(dgvListaProdutos);
-            listaControles.Add(btnEscolher);
-            listaControles.Add(btnRemover);
-            listaControles.Add(btnSelecionar);
-            validacao = new ValidacaoCardapio(listaControles);
-        }
-
-        // Função que habilita os componentes se receber true ou desabilita se receber false
-        public override void HabilitarTodosCampos(bool enable)
-        {
-            // Os componentes que estão com o valor false é porque sempre que 
-            // for chamado esse método eles não ficaram habilitados
-            validacao.EnableControle(enable);
-            txtCodigo.Enabled = false;
-            btnRemoverItem.Enabled = false;
-            btnEditarItem.Enabled = false;
-        }
-
-        // Função que limpa todos os componentes
-        public override void LimparCampos()
-        {
-            validacao.LimparControl();
-        }
-
+        #region Private Methods
         private void PreencherCategoria()
         {
             repositorioCardapio.PreencherCategoria(cboCategoria);
@@ -199,7 +154,37 @@ namespace ProjetoControleEstoque.Controller.controlador
             cardapio.Id_categoria = int.Parse(cboCategoria.SelectedValue.ToString());
             return cardapio;
         }
+        #endregion
 
+        #region Abstracts Methods
+
+        public override void AdicionarListaControles()
+        {
+            listaControles.Add(txtCodigo);
+            listaControles.Add(txtNome);
+            listaControles.Add(txtPreco);
+            listaControles.Add(picFigura);
+            listaControles.Add(txtDescricao);
+            listaControles.Add(cboCategoria);
+            listaControles.Add(dgvListaProdutos);
+            listaControles.Add(btnEscolher);
+            listaControles.Add(btnRemover);
+            listaControles.Add(btnSelecionar);
+            validacao = new ValidacaoCardapio(listaControles);
+        }
+
+        public override void HabilitarTodosCampos(bool enable)
+        {
+            validacao.EnableControle(enable);
+            txtCodigo.Enabled = false;
+            btnRemoverItem.Enabled = false;
+            btnEditarItem.Enabled = false;
+        }
+
+        public override void LimparCampos()
+        {
+            validacao.LimparControl();
+        }
         #endregion
 
         #region Event Functions
@@ -228,7 +213,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void PrecoLeave()
         {
-            // Se não tiver o caracter "."
+         /*   // Se não tiver o caracter "."
             if (!txtPreco.Text.Contains(".") && txtPreco.Text == string.Empty)
             {
                 //Adicionara ao compoente
@@ -243,16 +228,16 @@ namespace ProjetoControleEstoque.Controller.controlador
             else
                  //O método IndexOf retorna - 1 se encontrar o caractere.
                  if (txtPreco.Text.IndexOf(".") == txtPreco.Text.Length - 1)
-                txtPreco.Text += "00";
+                txtPreco.Text += "00";*/
         }
 
         public void PrecoKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',' && e.KeyChar != '.')
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != '.')
             {
                 e.Handled = true;
             }
-            if (e.KeyChar == ',' || e.KeyChar == '.')
+            if (e.KeyChar == '.')
             {
                 if (!txtPreco.Text.Contains("."))
                 {

@@ -162,9 +162,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(467, 242);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 16);
+            this.label9.Size = new System.Drawing.Size(24, 16);
             this.label9.TabIndex = 34;
-            this.label9.Text = "Estado:";
+            this.label9.Text = "Uf:";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
@@ -354,7 +354,7 @@
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(104, 31);
             this.btnInserir.TabIndex = 12;
-            this.btnInserir.Text = "Inserir";
+            this.btnInserir.Text = "Novo";
             this.btnInserir.UseVisualStyleBackColor = true;
             this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 

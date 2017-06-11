@@ -35,27 +35,31 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
             this.btnEditarItem = new System.Windows.Forms.Button();
-            this.btnSelecionar = new System.Windows.Forms.Button();
+            this.btnAdicionarItem = new System.Windows.Forms.Button();
             this.dgvConsulta = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
             this.txtHorario = new System.Windows.Forms.TextBox();
             this.dtpData = new System.Windows.Forms.DateTimePicker();
             this.cboMesa = new System.Windows.Forms.ComboBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtNumeroPedido = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.btnInserir = new System.Windows.Forms.Button();
+            this.btnAtualizar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsulta)).BeginInit();
             this.panel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtTotal
             // 
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(670, 336);
+            this.txtTotal.Location = new System.Drawing.Point(670, 333);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(100, 22);
             this.txtTotal.TabIndex = 57;
@@ -66,15 +70,14 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(643, 339);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 16);
+            this.label7.Size = new System.Drawing.Size(0, 16);
             this.label7.TabIndex = 56;
-            this.label7.Text = "R$";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(603, 339);
+            this.label6.Location = new System.Drawing.Point(622, 336);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 16);
             this.label6.TabIndex = 55;
@@ -83,52 +86,56 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(537, 444);
+            this.btnCancelar.Location = new System.Drawing.Point(539, 34);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(102, 29);
             this.btnCancelar.TabIndex = 52;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(128, 444);
+            this.btnSalvar.Location = new System.Drawing.Point(243, 36);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(102, 29);
             this.btnSalvar.TabIndex = 50;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnRemoverItem
             // 
             this.btnRemoverItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverItem.Location = new System.Drawing.Point(257, 333);
+            this.btnRemoverItem.Location = new System.Drawing.Point(250, 333);
             this.btnRemoverItem.Name = "btnRemoverItem";
             this.btnRemoverItem.Size = new System.Drawing.Size(102, 29);
             this.btnRemoverItem.TabIndex = 48;
-            this.btnRemoverItem.Text = "Remover item";
+            this.btnRemoverItem.Text = "Remover";
             this.btnRemoverItem.UseVisualStyleBackColor = true;
+            this.btnRemoverItem.Click += new System.EventHandler(this.btnRemoverItem_Click);
             // 
             // btnEditarItem
             // 
             this.btnEditarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarItem.Location = new System.Drawing.Point(144, 333);
+            this.btnEditarItem.Location = new System.Drawing.Point(131, 333);
             this.btnEditarItem.Name = "btnEditarItem";
             this.btnEditarItem.Size = new System.Drawing.Size(102, 29);
             this.btnEditarItem.TabIndex = 47;
-            this.btnEditarItem.Text = "Editar Item";
+            this.btnEditarItem.Text = "Editar";
             this.btnEditarItem.UseVisualStyleBackColor = true;
             // 
-            // btnSelecionar
+            // btnAdicionarItem
             // 
-            this.btnSelecionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionar.Location = new System.Drawing.Point(31, 333);
-            this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(102, 29);
-            this.btnSelecionar.TabIndex = 46;
-            this.btnSelecionar.Text = "Adicionar item";
-            this.btnSelecionar.UseVisualStyleBackColor = true;
+            this.btnAdicionarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarItem.Location = new System.Drawing.Point(12, 333);
+            this.btnAdicionarItem.Name = "btnAdicionarItem";
+            this.btnAdicionarItem.Size = new System.Drawing.Size(102, 29);
+            this.btnAdicionarItem.TabIndex = 46;
+            this.btnAdicionarItem.Text = "Adicionar";
+            this.btnAdicionarItem.UseVisualStyleBackColor = true;
+            this.btnAdicionarItem.Click += new System.EventHandler(this.btnAdicionarItem_Click);
             // 
             // dgvConsulta
             // 
@@ -137,6 +144,7 @@
             this.dgvConsulta.Name = "dgvConsulta";
             this.dgvConsulta.Size = new System.Drawing.Size(758, 150);
             this.dgvConsulta.TabIndex = 45;
+            this.dgvConsulta.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvConsulta_RowsAdded);
             // 
             // label5
             // 
@@ -153,7 +161,7 @@
             this.panel.Controls.Add(this.txtHorario);
             this.panel.Controls.Add(this.dtpData);
             this.panel.Controls.Add(this.cboMesa);
-            this.panel.Controls.Add(this.txtCodigo);
+            this.panel.Controls.Add(this.txtNumeroPedido);
             this.panel.Controls.Add(this.label4);
             this.panel.Controls.Add(this.label3);
             this.panel.Controls.Add(this.label2);
@@ -187,16 +195,16 @@
             this.cboMesa.FormattingEnabled = true;
             this.cboMesa.Location = new System.Drawing.Point(226, 47);
             this.cboMesa.Name = "cboMesa";
-            this.cboMesa.Size = new System.Drawing.Size(121, 24);
+            this.cboMesa.Size = new System.Drawing.Size(145, 24);
             this.cboMesa.TabIndex = 7;
             // 
-            // txtCodigo
+            // txtNumeroPedido
             // 
-            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(19, 47);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(130, 22);
-            this.txtCodigo.TabIndex = 5;
+            this.txtNumeroPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumeroPedido.Location = new System.Drawing.Point(19, 47);
+            this.txtNumeroPedido.Name = "txtNumeroPedido";
+            this.txtNumeroPedido.Size = new System.Drawing.Size(130, 22);
+            this.txtNumeroPedido.TabIndex = 5;
             // 
             // label4
             // 
@@ -248,29 +256,63 @@
             this.label21.TabIndex = 106;
             this.label21.Text = "Cadastro Pedido";
             // 
+            // btnInserir
+            // 
+            this.btnInserir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInserir.Location = new System.Drawing.Point(96, 36);
+            this.btnInserir.Name = "btnInserir";
+            this.btnInserir.Size = new System.Drawing.Size(102, 29);
+            this.btnInserir.TabIndex = 107;
+            this.btnInserir.Text = "Novo";
+            this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
+            // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtualizar.Location = new System.Drawing.Point(390, 34);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(104, 31);
+            this.btnAtualizar.TabIndex = 108;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnInserir);
+            this.panel1.Controls.Add(this.btnAtualizar);
+            this.panel1.Controls.Add(this.btnSalvar);
+            this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Location = new System.Drawing.Point(12, 397);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(775, 88);
+            this.panel1.TabIndex = 109;
+            // 
             // frmTelaCadastroPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(799, 497);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnRemoverItem);
             this.Controls.Add(this.dgvConsulta);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnEditarItem);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.btnSelecionar);
+            this.Controls.Add(this.btnAdicionarItem);
             this.Name = "frmTelaCadastroPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Cadastro Pedido";
+            this.Load += new System.EventHandler(this.frmTelaCadastroPedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsulta)).EndInit();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,18 +327,21 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnRemoverItem;
         private System.Windows.Forms.Button btnEditarItem;
-        private System.Windows.Forms.Button btnSelecionar;
+        private System.Windows.Forms.Button btnAdicionarItem;
         private System.Windows.Forms.DataGridView dgvConsulta;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.TextBox txtHorario;
         private System.Windows.Forms.DateTimePicker dtpData;
         private System.Windows.Forms.ComboBox cboMesa;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtNumeroPedido;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnInserir;
+        private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.Panel panel1;
     }
 }

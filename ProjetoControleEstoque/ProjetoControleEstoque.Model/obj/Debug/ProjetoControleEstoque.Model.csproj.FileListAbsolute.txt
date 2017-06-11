@@ -3,15 +3,15 @@ C:\Users\Giovani\Documents\Projetos\ProjetoControleEstoque\ProjetoControleEstoqu
 C:\Users\Giovani\Documents\Projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.csprojResolveAssemblyReference.cache
 C:\Users\Giovani\Documents\Projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.dll
 C:\Users\Giovani\Documents\Projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.pdb
-C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.dll.config
-C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.dll
-C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.pdb
-C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.csprojResolveAssemblyReference.cache
-C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.dll
-C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.pdb
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.dll.config
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.dll
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.pdb
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.dll
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.pdb
 C:\Users\3binfo\Documents\Giovani\projetos\Nova pasta\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.csprojResolveAssemblyReference.cache
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.dll.config
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.dll
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.pdb
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.csprojResolveAssemblyReference.cache
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.dll
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.pdb

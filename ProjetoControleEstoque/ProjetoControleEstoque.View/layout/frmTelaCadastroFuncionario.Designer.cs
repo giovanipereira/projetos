@@ -54,7 +54,9 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel
@@ -276,7 +278,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(511, 440);
+            this.btnCancelar.Location = new System.Drawing.Point(521, 15);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(104, 31);
             this.btnCancelar.TabIndex = 11;
@@ -287,7 +289,7 @@
             // btnAtualizar
             // 
             this.btnAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtualizar.Location = new System.Drawing.Point(387, 440);
+            this.btnAtualizar.Location = new System.Drawing.Point(375, 15);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(104, 31);
             this.btnAtualizar.TabIndex = 10;
@@ -298,7 +300,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(263, 440);
+            this.btnSalvar.Location = new System.Drawing.Point(229, 15);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(104, 31);
             this.btnSalvar.TabIndex = 9;
@@ -309,11 +311,11 @@
             // btnInserir
             // 
             this.btnInserir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInserir.Location = new System.Drawing.Point(139, 440);
+            this.btnInserir.Location = new System.Drawing.Point(83, 15);
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(104, 31);
             this.btnInserir.TabIndex = 8;
-            this.btnInserir.Text = "Inserir";
+            this.btnInserir.Text = "Novo";
             this.btnInserir.UseVisualStyleBackColor = true;
             this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
@@ -327,17 +329,25 @@
             this.label21.TabIndex = 104;
             this.label21.Text = "Cadastro Funcionário";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnInserir);
+            this.panel1.Controls.Add(this.btnSalvar);
+            this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Controls.Add(this.btnAtualizar);
+            this.panel1.Location = new System.Drawing.Point(12, 425);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(735, 66);
+            this.panel1.TabIndex = 105;
+            // 
             // frmTelaCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(759, 497);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAtualizar);
-            this.Controls.Add(this.btnSalvar);
-            this.Controls.Add(this.btnInserir);
             this.Controls.Add(this.panel);
             this.Name = "frmTelaCadastroFuncionario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -345,6 +355,7 @@
             this.Load += new System.EventHandler(this.frmTelaCadastroFuncionario_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,5 +389,6 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Panel panel1;
     }
 }

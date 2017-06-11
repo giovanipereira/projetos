@@ -67,14 +67,13 @@ namespace ProjetoControleEstoque.Controller.controlador
         #region Private Methods
         private Produto CarregarProduto(Produto produto)
         {
-            decimal porcao, valor_unitario;
+            decimal porcao;
             int id;
-            //DateTime data;
             produto.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
             produto.Nome = txtNome.Text;
             produto.Id_unidade = int.Parse(cboUnidade.SelectedValue.ToString());
             produto.Porcao_pro = decimal.TryParse(txtPorcao.Text, out porcao) ? porcao : 0;
-            produto.Valor_unitario = decimal.TryParse(txtValorUnitario.Text.Replace(".00", ""), out valor_unitario) ? valor_unitario : 0;
+            produto.Valor_unitario = Convert.ToDecimal(txtValorUnitario.Text.Replace(",", "."));
             produto.Descricao = txtDescricao.Text;
             produto.Qtd_estoque = int.Parse(nudQtdEstoque.Value.ToString());
             produto.Qtd_minima = int.Parse(nudQtdMinima.Value.ToString());
@@ -124,7 +123,8 @@ namespace ProjetoControleEstoque.Controller.controlador
         public override void HabilitarTodosCampos(bool enable)
         {
             validacao.EnableControle(enable);
-            txtCodigo.Enabled = false;
+            txtCodigo.ReadOnly = true;
+            txtPorcao.ReadOnly = true;
         }
 
         public override void LimparCampos()
@@ -182,31 +182,26 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void ValorUnitarioLeave()
         {
-            // Se não tiver o caracter "."
-            if (!txtValorUnitario.Text.Contains(".") && txtValorUnitario.Text == string.Empty)
+            /*if (!txtValorUnitario.Text.Contains(".") && txtValorUnitario.Text.Equals(string.Empty))
             {
-                //Adicionara ao compoente
                 txtValorUnitario.Text += "0.00";
             }
             if (!txtValorUnitario.Text.Contains("."))
             {
-                //Adicionara ao compoente
                 txtValorUnitario.Text += ".00";
             }
-            // Se tiver o caracter "."
             else
-                 //O método IndexOf retorna - 1 se encontrar o caractere.
                  if (txtValorUnitario.Text.IndexOf(".") == txtValorUnitario.Text.Length - 1)
-                txtValorUnitario.Text += "00";
+                txtValorUnitario.Text += "00";*/
         }
 
         public void ValorUnitarioKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',' && e.KeyChar != '.')
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != '.')
             {
                 e.Handled = true;
             }
-            if (e.KeyChar == ',' || e.KeyChar == '.')
+            if (e.KeyChar == '.')
             {
                 if (!txtValorUnitario.Text.Contains("."))
                 {
@@ -234,6 +229,12 @@ namespace ProjetoControleEstoque.Controller.controlador
             {
 
             }
+        }
+
+        public void UnidadeLeave()
+        {
+            txtPorcao.ReadOnly = false;
+            txtPorcao.Focus();
         }
 
         #endregion

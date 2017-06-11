@@ -100,12 +100,6 @@
     <Compile Include="layout\frmTelaConsultaProduto.Designer.cs">
       <DependentUpon>frmTelaConsultaProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="layout\frmTelaPedido.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="layout\frmTelaPedido.Designer.cs">
-      <DependentUpon>frmTelaPedido.cs</DependentUpon>
-    </Compile>
     <Compile Include="layout\frmTelaPedidoItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +111,12 @@
     </Compile>
     <Compile Include="layout\frmTelaPrincipal.Designer.cs">
       <DependentUpon>frmTelaPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="layout\TelaDetalhesPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\TelaDetalhesPedido.Designer.cs">
+      <DependentUpon>TelaDetalhesPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,14 +147,14 @@
     <EmbeddedResource Include="layout\frmTelaConsultaProduto.resx">
       <DependentUpon>frmTelaConsultaProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="layout\frmTelaPedido.resx">
-      <DependentUpon>frmTelaPedido.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaPedidoItem.resx">
       <DependentUpon>frmTelaPedidoItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaPrincipal.resx">
       <DependentUpon>frmTelaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\TelaDetalhesPedido.resx">
+      <DependentUpon>TelaDetalhesPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

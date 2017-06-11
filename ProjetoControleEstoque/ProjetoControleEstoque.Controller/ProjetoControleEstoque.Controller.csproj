@@ -47,6 +47,7 @@
     <Compile Include="controlador\ControladorTelaCadastroFornecedor.cs" />
     <Compile Include="controlador\ControladorTelaCadastroFuncionario.cs" />
     <Compile Include="controlador\ControladorTelaCadastroMesa.cs" />
+    <Compile Include="controlador\ControladorTelaCadastroPedido.cs" />
     <Compile Include="controlador\ControladorTelaCadastroProduto.cs" />
     <Compile Include="controlador\ControladorTelaCadastroSubcategoria.cs" />
     <Compile Include="controlador\ControladorTelaCardapioItem.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="utilitario\Mensagem.cs" />
     <Compile Include="validacao\ValidacaoBase.cs" />
     <Compile Include="validacao\ValidacaoCardapio.cs" />
+    <Compile Include="validacao\ValidacaoPedido.cs" />
     <Compile Include="validacao\ValidacaoProduto.cs" />
   </ItemGroup>
   <ItemGroup>
