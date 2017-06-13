@@ -12,7 +12,7 @@ namespace ProjetoControleEstoque.Model.interfaces
         bool Salvar(T entidade);
         bool Atualizar(T obj);
         void Remover(T obj);
-        //IList<T> ConsultarTodos();
+        IList<T> ConsultarTodos();
         //IEnumerable<T> Localizar(Expression<Func<T, bool>> predicate);
     }
 }

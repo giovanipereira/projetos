@@ -11,20 +11,20 @@ namespace ProjetoControleEstoque.Model.dominio
     public class Usuario
     {
         private int id;
-        private string nome_usuario;
+        private string nome;
         private string senha;
-        private int nivel_acesso;
-        public virtual Funcionario Funcionario { get; set; }
+        private int id_nivel_acesso;
+        public virtual ICollection<Funcionario> Funcionarios { get; set; }
 
         public int Id
         {
             get { return this.id; }
             set { this.id = value; }
         }
-        public string Nome_Usuario
+        public string Nome
         {
-            get { return this.nome_usuario; }
-            set { this.nome_usuario = value; }
+            get { return this.nome; }
+            set { this.nome = value; }
         }
 
         [DataType(DataType.Password)]
@@ -34,17 +34,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.senha = value; }
         }
 
-        public int Nivel_Acesso
+        public int Id_nivel_acesso
         {
-            get { return this.nivel_acesso; }
-            set { this.nivel_acesso = value; }
+            get { return this.id_nivel_acesso; }
+            set { this.id_nivel_acesso = value; }
         }
     }
-
-    public enum EnumNivelAcesso
-    {
-        Administrador = 1,
-        Padrao = 2
-    }
-
 }

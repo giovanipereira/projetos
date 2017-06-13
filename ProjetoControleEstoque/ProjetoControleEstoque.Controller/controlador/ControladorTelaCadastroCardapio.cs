@@ -183,7 +183,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public override void LimparCampos()
         {
-            validacao.LimparControl();
+            validacao.LimparControles();
         }
         #endregion
 

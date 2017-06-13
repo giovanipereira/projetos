@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ProjetoControleEstoque.Controller.validacao
 {
-    public abstract class ValidacaoBase<T> : IValidacaoBase<T> where T : class
+    public abstract class ValidacaoBase
     {
         private List<Control> listaControles;
 
@@ -17,8 +17,7 @@ namespace ProjetoControleEstoque.Controller.validacao
             this.listaControles = listaControles;
         }
 
-        // Função que limpa os controles
-        public void LimparControl()
+        public void LimparControles()
         {
             foreach (var control in listaControles)
             {
@@ -45,7 +44,6 @@ namespace ProjetoControleEstoque.Controller.validacao
             }
         }
 
-        // Função que habilita ou desabilita os controles dependendo do parãmetro recebido
         public void EnableControle(bool enable)
         {
             foreach (var control in listaControles)
@@ -67,16 +65,11 @@ namespace ProjetoControleEstoque.Controller.validacao
                             ((MaskedTextBox)control).ReadOnly = true;
                     }
                 }
-                if (control is ComboBox || control is Button|| control is PictureBox || 
+                if (control is ComboBox || control is Button || control is PictureBox ||
                      control is DataGridView || control is NumericUpDown || control is DateTimePicker)
-                 {
-                     control.Enabled = enable;
-                 }
-                /* if (control is TextBox || control is MaskedTextBox || control is ComboBox || control is Button|| control is PictureBox || 
-                     control is DataGridView || control is NumericUpDown || control is DateTimePicker)
-                 {
-                     control.Enabled = enable;
-                 }*/
+                {
+                    control.Enabled = enable;
+                }
             }
         }
     }

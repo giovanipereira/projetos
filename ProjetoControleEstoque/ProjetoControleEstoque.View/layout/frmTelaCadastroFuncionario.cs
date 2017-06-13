@@ -47,7 +47,12 @@ namespace ProjetoControleEstoque.View.layout
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            {
+                if (btnInserir.Enabled.Equals(true))
+                    this.Close();
+                else
+                    controladorTelaCadastroFuncionario().Load();
+            }
         }
     }
 }

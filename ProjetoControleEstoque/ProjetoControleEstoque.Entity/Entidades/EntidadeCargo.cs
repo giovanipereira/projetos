@@ -15,7 +15,7 @@ namespace ProjetoControleEstoque.Entity.Entidades
             ToTable("Cargo");
             HasKey(p => p.Id);
 
-            Property(p => p.Descricao)
+            Property(p => p.Nome)
                 .HasMaxLength(100)
                 .IsRequired();
         }

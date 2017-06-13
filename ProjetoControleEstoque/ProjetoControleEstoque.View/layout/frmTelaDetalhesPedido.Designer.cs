@@ -1,6 +1,6 @@
 ﻿namespace ProjetoControleEstoque.View.layout
 {
-    partial class TelaDetalhesPedido
+    partial class frmTelaDetalhesPedido
     {
         /// <summary>
         /// Required designer variable.

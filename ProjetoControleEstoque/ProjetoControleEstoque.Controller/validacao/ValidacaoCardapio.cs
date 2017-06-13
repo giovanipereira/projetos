@@ -8,7 +8,7 @@ using ProjetoControleEstoque.Model.dominio;
 
 namespace ProjetoControleEstoque.Controller.validacao
 {
-    public class ValidacaoCardapio : ValidacaoBase<Cardapio>
+    public class ValidacaoCardapio : ValidacaoBase
     {
         public ValidacaoCardapio(List<Control> listaControles) : base(listaControles)
         {

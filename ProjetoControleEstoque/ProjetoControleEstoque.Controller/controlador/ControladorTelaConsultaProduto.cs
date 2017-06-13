@@ -1,4 +1,5 @@
 ﻿using ProjetoControleEstoque.Model.dominio;
+using ProjetoControleEstoque.Model.repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,68 +13,65 @@ namespace ProjetoControleEstoque.Controller.controlador
     {
         #region Declaration
 
-        private ComboBox cboFiltro;
-        private TextBox txtBusca;
-        private Button btnBuscar, btnBuscarTodos, btnAdicionar;
-        private DataGridView dgvListaProdutos;
+        private ComboBox cboConsultarPor;
+        private TextBox txtValor;
+        private Button btnConsultar, btnExcluir, btnAdicionar;
+        private DataGridView dgvConsultaProdutos;
 
-        private List<Produto> listProducts = new List<Produto>();
+        RepositorioProduto repositorioProduto = new RepositorioProduto();
 
         #endregion
 
         #region Constructors
+
         public ControladorTelaConsultaProduto()
         {
 
         }
 
-        public ControladorTelaConsultaProduto(ComboBox cboFiltro, TextBox txtBusca, Button btnBuscar,
-            Button btnBuscarTodos, Button btnAdicionar, DataGridView dgvListaProdutos)
+        public ControladorTelaConsultaProduto(ComboBox cboConsultarPor, TextBox txtValor, Button btnConsultar,
+            Button btnAdicionar,Button btnExcluir, DataGridView dgvConsultaProdutos)
         {
-            this.cboFiltro = cboFiltro;
-            this.txtBusca = txtBusca;
-            this.btnBuscar = btnBuscar;
-            this.btnBuscarTodos = btnBuscarTodos;
+            this.cboConsultarPor = cboConsultarPor;
+            this.txtValor = txtValor;
+            this.btnConsultar = btnConsultar;
             this.btnAdicionar = btnAdicionar;
-            this.dgvListaProdutos = dgvListaProdutos;
+            this.dgvConsultaProdutos = dgvConsultaProdutos;
+            this.btnExcluir = btnExcluir;
         }
 
         #endregion
 
-       /* private void LoadInfo()
+        private void TipoConsulta()
         {
-            listProducts.Add(new Produto()
+            string opcao = cboConsultarPor.Text;
+            switch (opcao)
             {
-                Id = 1,
-                Nome = "Goiaba",
-                Valor_unitario = 2,
-                Qtd_estoque = 6,
-                Qtd_minima = 4,
-                Qtd_fornecidas = 6,
-                Qtd_maxima = 10,
-                Data_validade = new DateTime(2000, 05, 12),
-                Descricao = "N.d.a",
-                Id_unidade = 1,
-                Id_fornecedor = 1,
-                Id_subcategoria = 1
-            });
-        }*/
+                case "Código":
+                    dgvConsultaProdutos.DataSource = repositorioProduto.ConsultarTodos().Where(P => P.Id.Equals(7)).First();
+                    
+                    break;
+
+                case "Nome":
+                    dgvConsultaProdutos.DataSource = repositorioProduto.ConsultarTodos().Where(p => p.Nome.Contains(txtValor.Text)).ToList();
+                    break;
+            }
+        }
+
 
         private void LoadDatagridView()
         {
-            dgvListaProdutos.DataSource = listProducts;
+            dgvConsultaProdutos.DataSource = repositorioProduto.ConsultarTodos();
         }
 
         public void Load()
         {
-            //LoadInfo();
             LoadDatagridView();
         }
 
-        public void AddProduct(Form form)
+        public void Consultar()
         {
-            form.Show();
+            TipoConsulta();
         }
-
     }
 }

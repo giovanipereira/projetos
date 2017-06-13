@@ -59,7 +59,7 @@
             // txtTotal
             // 
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(670, 333);
+            this.txtTotal.Location = new System.Drawing.Point(647, 367);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(100, 22);
             this.txtTotal.TabIndex = 57;
@@ -68,7 +68,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(643, 339);
+            this.label7.Location = new System.Drawing.Point(620, 373);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(0, 16);
             this.label7.TabIndex = 56;
@@ -77,7 +77,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(622, 336);
+            this.label6.Location = new System.Drawing.Point(599, 370);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 16);
             this.label6.TabIndex = 55;
@@ -86,9 +86,9 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(539, 34);
+            this.btnCancelar.Location = new System.Drawing.Point(521, 15);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(102, 29);
+            this.btnCancelar.Size = new System.Drawing.Size(104, 31);
             this.btnCancelar.TabIndex = 52;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -97,9 +97,9 @@
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(243, 36);
+            this.btnSalvar.Location = new System.Drawing.Point(229, 15);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(102, 29);
+            this.btnSalvar.Size = new System.Drawing.Size(104, 31);
             this.btnSalvar.TabIndex = 50;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             // btnRemoverItem
             // 
             this.btnRemoverItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverItem.Location = new System.Drawing.Point(250, 333);
+            this.btnRemoverItem.Location = new System.Drawing.Point(250, 367);
             this.btnRemoverItem.Name = "btnRemoverItem";
             this.btnRemoverItem.Size = new System.Drawing.Size(102, 29);
             this.btnRemoverItem.TabIndex = 48;
@@ -119,7 +119,7 @@
             // btnEditarItem
             // 
             this.btnEditarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarItem.Location = new System.Drawing.Point(131, 333);
+            this.btnEditarItem.Location = new System.Drawing.Point(131, 367);
             this.btnEditarItem.Name = "btnEditarItem";
             this.btnEditarItem.Size = new System.Drawing.Size(102, 29);
             this.btnEditarItem.TabIndex = 47;
@@ -129,7 +129,7 @@
             // btnAdicionarItem
             // 
             this.btnAdicionarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionarItem.Location = new System.Drawing.Point(12, 333);
+            this.btnAdicionarItem.Location = new System.Drawing.Point(12, 367);
             this.btnAdicionarItem.Name = "btnAdicionarItem";
             this.btnAdicionarItem.Size = new System.Drawing.Size(102, 29);
             this.btnAdicionarItem.TabIndex = 46;
@@ -142,7 +142,7 @@
             this.dgvConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsulta.Location = new System.Drawing.Point(12, 177);
             this.dgvConsulta.Name = "dgvConsulta";
-            this.dgvConsulta.Size = new System.Drawing.Size(758, 150);
+            this.dgvConsulta.Size = new System.Drawing.Size(735, 184);
             this.dgvConsulta.TabIndex = 45;
             this.dgvConsulta.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvConsulta_RowsAdded);
             // 
@@ -168,7 +168,7 @@
             this.panel.Controls.Add(this.label1);
             this.panel.Location = new System.Drawing.Point(12, 46);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(758, 99);
+            this.panel.Size = new System.Drawing.Size(735, 99);
             this.panel.TabIndex = 43;
             // 
             // txtHorario
@@ -195,7 +195,7 @@
             this.cboMesa.FormattingEnabled = true;
             this.cboMesa.Location = new System.Drawing.Point(226, 47);
             this.cboMesa.Name = "cboMesa";
-            this.cboMesa.Size = new System.Drawing.Size(145, 24);
+            this.cboMesa.Size = new System.Drawing.Size(119, 24);
             this.cboMesa.TabIndex = 7;
             // 
             // txtNumeroPedido
@@ -259,9 +259,9 @@
             // btnInserir
             // 
             this.btnInserir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInserir.Location = new System.Drawing.Point(96, 36);
+            this.btnInserir.Location = new System.Drawing.Point(83, 15);
             this.btnInserir.Name = "btnInserir";
-            this.btnInserir.Size = new System.Drawing.Size(102, 29);
+            this.btnInserir.Size = new System.Drawing.Size(104, 31);
             this.btnInserir.TabIndex = 107;
             this.btnInserir.Text = "Novo";
             this.btnInserir.UseVisualStyleBackColor = true;
@@ -270,7 +270,7 @@
             // btnAtualizar
             // 
             this.btnAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtualizar.Location = new System.Drawing.Point(390, 34);
+            this.btnAtualizar.Location = new System.Drawing.Point(375, 15);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(104, 31);
             this.btnAtualizar.TabIndex = 108;
@@ -283,9 +283,9 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Location = new System.Drawing.Point(12, 397);
+            this.panel1.Location = new System.Drawing.Point(12, 425);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(775, 88);
+            this.panel1.Size = new System.Drawing.Size(735, 66);
             this.panel1.TabIndex = 109;
             // 
             // frmTelaCadastroPedido
@@ -293,7 +293,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(799, 497);
+            this.ClientSize = new System.Drawing.Size(759, 497);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.txtTotal);

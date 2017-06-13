@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="dominio\Cardapio.cs" />
     <Compile Include="dominio\Cargo.cs" />
+    <Compile Include="dominio\Categoria.cs" />
+    <Compile Include="dominio\CategoriaCardapio.cs" />
+    <Compile Include="dominio\Estado.cs" />
     <Compile Include="dominio\Fornecedor.cs" />
     <Compile Include="dominio\Funcionario.cs" />
     <Compile Include="dominio\ItemCardapio.cs" />
@@ -53,6 +56,7 @@
     <Compile Include="dominio\Pedido.cs" />
     <Compile Include="dominio\Produto.cs" />
     <Compile Include="dominio\Subcategoria.cs" />
+    <Compile Include="dominio\Unidade.cs" />
     <Compile Include="dominio\Usuario.cs" />
     <Compile Include="interfaces\IRepositorioBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

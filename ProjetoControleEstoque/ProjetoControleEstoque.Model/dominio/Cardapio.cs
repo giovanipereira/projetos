@@ -14,7 +14,7 @@ namespace ProjetoControleEstoque.Model.dominio
         private string figura;
         private string descricao;
         private int id_categoria;
-        public virtual int Categoria { get; set; }
+        public virtual CategoriaCardapio Categoria { get; set; }
 
         public int Id
         {
@@ -52,19 +52,4 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.id_categoria = value; }
         }
     }
-
-    /*public static class ListaCardapio
-    {
-        public static IEnumerable<Cardapio> getCardapio()
-        {
-            var cardapios = new List<Cardapio>
-            {
-                new Cardapio() {  Id= 1, Nome = "Refreigerante",
-                    Preco = 30, Figura= "C:User/Giovani/Projetos/teste.png",
-                    Descricao = "Suco", Categoria = 1},
-            };
-            return cardapios;
-        }
-    }*/
-
 }

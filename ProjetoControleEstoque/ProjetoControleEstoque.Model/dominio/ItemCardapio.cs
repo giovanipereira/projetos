@@ -11,9 +11,9 @@ namespace ProjetoControleEstoque.Model.dominio
     {
         private int id_produto;
         private int id_cardapio;
-        private string nome;
-        private string unidade;
         private double quantidade;
+        public virtual ICollection<Produto> Produtos { get; set; }
+        public virtual ICollection<Cardapio> Cardapios { get; set; }
 
         public int Id_cardapio
         {
@@ -24,18 +24,6 @@ namespace ProjetoControleEstoque.Model.dominio
         {
             get { return this.id_produto; }
             set { this.id_produto = value; }
-        }
-
-        public string Nome
-        {
-            get { return this.nome; }
-            set { this.nome = value; }
-        }
-
-        public string Unidade
-        {
-            get { return this.unidade; }
-            set { this.unidade = value; }
         }
 
         public double Quantidade

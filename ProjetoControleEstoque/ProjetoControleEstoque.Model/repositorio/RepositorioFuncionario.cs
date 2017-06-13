@@ -14,21 +14,20 @@ namespace ProjetoControleEstoque.Model.repositorio
     public class RepositorioFuncionario : RepositorioBase<Funcionario>
     {
 
-        public override bool Atualizar(Funcionario obj)
+        public override bool Atualizar(Funcionario funcionario)
         {
             return true;
         }
 
-        public override void Remover(Funcionario obj)
+        public override void Remover(Funcionario funcionario)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Salvar(Funcionario entidade)
+        public override bool Salvar(Funcionario funcionario)
         {
             throw new NotImplementedException();
         }
-
 
         public bool Salvar(Funcionario funcionario, Usuario usuario)
         {
@@ -46,9 +45,9 @@ namespace ProjetoControleEstoque.Model.repositorio
                 cmd.Parameters.Add(new SqlParameter("@email_fun", SqlDbType.VarChar)).Value = funcionario.Email;
                 cmd.Parameters.Add(new SqlParameter("@telefone_fun", SqlDbType.BigInt)).Value = funcionario.Telefone;
                 cmd.Parameters.Add(new SqlParameter("@id_car", SqlDbType.Int)).Value = funcionario.Id_cargo;
-                cmd.Parameters.Add(new SqlParameter("@nome_usu", SqlDbType.VarChar)).Value = usuario.Nome_Usuario;
+                cmd.Parameters.Add(new SqlParameter("@nome_usu", SqlDbType.VarChar)).Value = usuario.Nome;
                 cmd.Parameters.Add(new SqlParameter("@senha_usu", SqlDbType.VarChar)).Value = usuario.Senha;
-                cmd.Parameters.Add(new SqlParameter("@id_niv", SqlDbType.Int)).Value = usuario.Nivel_Acesso;
+                cmd.Parameters.Add(new SqlParameter("@id_niv", SqlDbType.Int)).Value = usuario.Id_nivel_acesso;
                 cmd.ExecuteNonQuery();
                 transacao.Commit();
                 retorno = true;

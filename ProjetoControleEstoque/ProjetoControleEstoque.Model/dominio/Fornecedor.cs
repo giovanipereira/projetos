@@ -15,11 +15,12 @@ namespace ProjetoControleEstoque.Model.dominio
         private string complemento;
         private string bairro;
         private string cidade;
-        private int uf;
+        private int id_uf;
         private long telefone;
         private string email;
         private long cep;
-        private int situacao;
+        private bool ativo;
+        public virtual Estado Estado { get; set; }
 
         public int Id
         {
@@ -63,10 +64,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.cidade = value; }
         }
 
-        public int Uf
+        public int Id_uf
         {
-            get { return this.uf; }
-            set { this.uf = value; }
+            get { return this.id_uf; }
+            set { this.id_uf = value; }
         }
 
         public long Telefone
@@ -87,16 +88,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.cep = value; }
         }
 
-        public int Situacao
+        public bool Ativo
         {
-            get { return this.situacao; }
-            set { this.situacao = value; }
+            get { return this.ativo; }
+            set { this.ativo = value; }
         }
-    }
-
-    public enum EnumStatusFornecedor
-    {
-        Ativo = 1,
-        Inativo = 2
     }
 }

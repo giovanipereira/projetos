@@ -15,10 +15,10 @@ namespace ProjetoControleEstoque.Entity.Entidades
         public EntidadeUsuario()
         {
             ToTable("Usuario");
-            HasRequired(p => p.Funcionario)
-                .WithRequiredPrincipal(p => p.Usuario);
+            HasRequired(p => p.Funcionarios);
+              //  .WithRequiredPrincipal(p => p.);
 
-            Property(p => p.Nome_Usuario)
+            Property(p => p.Nome)
                 .HasMaxLength(50)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
                  new IndexAnnotation(new IndexAttribute("ix_usuario") { IsUnique = true }))
@@ -29,7 +29,7 @@ namespace ProjetoControleEstoque.Entity.Entidades
                 .HasMaxLength(30)
                 .IsRequired();
 
-            Property(p => p.Nivel_Acesso)
+            Property(p => p.Id_nivel_acesso)
                 .IsRequired();
         }
     }

@@ -8,18 +8,20 @@ namespace ProjetoControleEstoque.Model.dominio
 {
     public class Pedido
     {
-        private int numero;
+        private int id;
         private DateTime data;
+        private DateTime horario;
         private int status;
-        private string observacao;
-        private int numero_mesa;
-        private int funcionario;
-        private double valor_total;
+        private int id_mesa;
+        private int id_funcionario;
+        private double vltotal;
+        public virtual Mesa Mesa { get; set; }
+        public virtual Funcionario Funcionario { get; set; }
 
-        public int Numero
+        public int Id
         {
-            get { return this.numero; }
-            set { this.numero = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public DateTime Data
@@ -28,42 +30,41 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.data = value; }
         }
 
+        public DateTime Horario
+        {
+            get { return this.horario; }
+            set { this.horario = value; }
+        }
+
         public int Status
         {
             get { return this.status; }
             set { this.status = value; }
         }
 
-        public string Observacao
+        public int Id_mesa
         {
-            get { return this.observacao; }
-            set { this.observacao = value; }
+            get { return this.id_mesa; }
+            set { this.id_mesa = value; }
         }
 
-        public int Numero_Mesa
+        public int Id_funcionario
         {
-            get { return this.numero_mesa; }
-            set { this.numero_mesa = value; }
+            get { return this.id_funcionario; }
+            set { this.id_funcionario = value; }
         }
 
-        public int Funcionario
+        public double VlTotal
         {
-            get { return this.funcionario; }
-            set { this.funcionario = value; }
-        }
-
-        public double Valor_Total
-        {
-            get { return this.valor_total; }
-            set { this.valor_total = value; }
+            get { return this.vltotal; }
+            set { this.vltotal = value; }
         }
     }
 
     public enum EnumStatusPedido
     {
         Pendente = 1,
-        Processando = 2,
-        Cancelado = 3,
-        Finalizado = 4
+        Cancelado = 2,
+        Finalizado = 3
     }
 }

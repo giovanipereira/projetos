@@ -22,7 +22,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
         Funcionario funcionario;
         Usuario usuario;
-        ValidacaoProduto validacao;
+        ValidacaoFuncionario validacaoFuncionario;
 
         #endregion
 
@@ -71,14 +71,16 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private Usuario CarregarUsuario(Usuario usuario)
         {
-            usuario.Nome_Usuario = txtUsuario.Text;
+            usuario.Nome = txtUsuario.Text;
             usuario.Senha = txtSenha.Text;
-            usuario.Nivel_Acesso = int.Parse(cboNivelAcesso.SelectedValue.ToString());
+            usuario.Id_nivel_acesso = int.Parse(cboNivelAcesso.SelectedValue.ToString());
             return usuario;
         }
 
         private Funcionario CarregarFuncionario(Funcionario funcionario)
         {
+            int id;
+            funcionario.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
             funcionario.Nome = txtNome.Text;
             mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             funcionario.Cpf = long.Parse(mskCpf.Text);
@@ -93,16 +95,11 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             usuario = new Usuario();
             funcionario = new Funcionario();
-
             usuario = CarregarUsuario(usuario);
             funcionario = CarregarFuncionario(funcionario);
-
             if (repositorioFuncionario.Salvar(funcionario,usuario))
-            {
                 Mensagem.MensagemSalvar();
-            }
         }
-
 
         #endregion
 
@@ -120,18 +117,18 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(cboNivelAcesso);
             listaControles.Add(mskCpf);
             listaControles.Add(mskTelefone);
-            validacao = new ValidacaoProduto(listaControles);
+            validacaoFuncionario = new ValidacaoFuncionario(listaControles);
         }
 
         public override void HabilitarTodosCampos(bool enable)
         {
-            validacao.EnableControle(enable);
-            txtCodigo.Enabled = false;
+            validacaoFuncionario.EnableControle(enable);
+            txtCodigo.ReadOnly = true;
         }
 
         public override void LimparCampos()
         {
-            validacao.LimparControl();
+            validacaoFuncionario.LimparControles();
         }
 
         #endregion

@@ -58,6 +58,8 @@
     <Compile Include="utilitario\Mensagem.cs" />
     <Compile Include="validacao\ValidacaoBase.cs" />
     <Compile Include="validacao\ValidacaoCardapio.cs" />
+    <Compile Include="validacao\ValidacaoFornecedor.cs" />
+    <Compile Include="validacao\ValidacaoFuncionario.cs" />
     <Compile Include="validacao\ValidacaoPedido.cs" />
     <Compile Include="validacao\ValidacaoProduto.cs" />
   </ItemGroup>

@@ -56,7 +56,9 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel
@@ -95,9 +97,8 @@
             this.cboUf.FormattingEnabled = true;
             this.cboUf.Location = new System.Drawing.Point(467, 267);
             this.cboUf.Name = "cboUf";
-            this.cboUf.Size = new System.Drawing.Size(146, 24);
+            this.cboUf.Size = new System.Drawing.Size(95, 24);
             this.cboUf.TabIndex = 33;
-            this.cboUf.SelectedIndexChanged += new System.EventHandler(this.cboUf_SelectedIndexChanged);
             // 
             // mskCep
             // 
@@ -105,9 +106,8 @@
             this.mskCep.Location = new System.Drawing.Point(467, 210);
             this.mskCep.Mask = "00000-000";
             this.mskCep.Name = "mskCep";
-            this.mskCep.Size = new System.Drawing.Size(146, 22);
+            this.mskCep.Size = new System.Drawing.Size(95, 22);
             this.mskCep.TabIndex = 32;
-            this.mskCep.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskCep_MaskInputRejected);
             // 
             // txtCidade
             // 
@@ -116,7 +116,6 @@
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(146, 22);
             this.txtCidade.TabIndex = 34;
-            this.txtCidade.TextChanged += new System.EventHandler(this.txtCidade_TextChanged);
             // 
             // txtBairro
             // 
@@ -125,7 +124,6 @@
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(146, 22);
             this.txtBairro.TabIndex = 31;
-            this.txtBairro.TextChanged += new System.EventHandler(this.txtBairro_TextChanged);
             // 
             // txtComplemento
             // 
@@ -134,7 +132,6 @@
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(146, 22);
             this.txtComplemento.TabIndex = 30;
-            this.txtComplemento.TextChanged += new System.EventHandler(this.txtComplemento_TextChanged);
             // 
             // txtEndereco
             // 
@@ -143,7 +140,6 @@
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(146, 22);
             this.txtEndereco.TabIndex = 29;
-            this.txtEndereco.TextChanged += new System.EventHandler(this.txtEndereco_TextChanged);
             // 
             // label11
             // 
@@ -154,7 +150,6 @@
             this.label11.Size = new System.Drawing.Size(55, 16);
             this.label11.TabIndex = 35;
             this.label11.Text = "Cidade:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label9
             // 
@@ -165,7 +160,6 @@
             this.label9.Size = new System.Drawing.Size(24, 16);
             this.label9.TabIndex = 34;
             this.label9.Text = "Uf:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
@@ -176,7 +170,6 @@
             this.label8.Size = new System.Drawing.Size(36, 16);
             this.label8.TabIndex = 33;
             this.label8.Text = "Cep:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -187,7 +180,6 @@
             this.label7.Size = new System.Drawing.Size(47, 16);
             this.label7.TabIndex = 32;
             this.label7.Text = "Bairro:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -198,7 +190,6 @@
             this.label6.Size = new System.Drawing.Size(95, 16);
             this.label6.TabIndex = 31;
             this.label6.Text = "Complemento:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -209,7 +200,6 @@
             this.label5.Size = new System.Drawing.Size(70, 16);
             this.label5.TabIndex = 30;
             this.label5.Text = "Endereço:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label10
             // 
@@ -220,7 +210,6 @@
             this.label10.Size = new System.Drawing.Size(65, 16);
             this.label10.TabIndex = 29;
             this.label10.Text = "Telefone:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // mskTelefone
             // 
@@ -228,9 +217,8 @@
             this.mskTelefone.Location = new System.Drawing.Point(34, 330);
             this.mskTelefone.Mask = "(99) 0000-0000";
             this.mskTelefone.Name = "mskTelefone";
-            this.mskTelefone.Size = new System.Drawing.Size(146, 22);
+            this.mskTelefone.Size = new System.Drawing.Size(126, 22);
             this.mskTelefone.TabIndex = 28;
-            this.mskTelefone.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTelefone_MaskInputRejected);
             // 
             // mskCnpj
             // 
@@ -238,9 +226,8 @@
             this.mskCnpj.Location = new System.Drawing.Point(34, 188);
             this.mskCnpj.Mask = "00.000.000/0000-00";
             this.mskCnpj.Name = "mskCnpj";
-            this.mskCnpj.Size = new System.Drawing.Size(146, 22);
+            this.mskCnpj.Size = new System.Drawing.Size(126, 22);
             this.mskCnpj.TabIndex = 26;
-            this.mskCnpj.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskCnpj_MaskInputRejected);
             // 
             // txtEmail
             // 
@@ -249,7 +236,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(146, 22);
             this.txtEmail.TabIndex = 27;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // txtNome
             // 
@@ -258,17 +244,14 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(146, 22);
             this.txtNome.TabIndex = 25;
-            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(34, 46);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(146, 22);
+            this.txtCodigo.Size = new System.Drawing.Size(79, 22);
             this.txtCodigo.TabIndex = 24;
-            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
             // label4
             // 
@@ -279,7 +262,6 @@
             this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 23;
             this.label4.Text = "E-mail:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -290,7 +272,6 @@
             this.label3.Size = new System.Drawing.Size(46, 16);
             this.label3.TabIndex = 22;
             this.label3.Text = "CNPJ:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -301,7 +282,6 @@
             this.label2.Size = new System.Drawing.Size(48, 16);
             this.label2.TabIndex = 21;
             this.label2.Text = "Nome:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -312,12 +292,11 @@
             this.label1.Size = new System.Drawing.Size(55, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Código:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(511, 440);
+            this.btnCancelar.Location = new System.Drawing.Point(521, 15);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(104, 31);
             this.btnCancelar.TabIndex = 15;
@@ -328,7 +307,7 @@
             // btnAtualizar
             // 
             this.btnAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtualizar.Location = new System.Drawing.Point(387, 440);
+            this.btnAtualizar.Location = new System.Drawing.Point(375, 15);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(104, 31);
             this.btnAtualizar.TabIndex = 14;
@@ -339,7 +318,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(263, 440);
+            this.btnSalvar.Location = new System.Drawing.Point(229, 15);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(104, 31);
             this.btnSalvar.TabIndex = 13;
@@ -350,7 +329,7 @@
             // btnInserir
             // 
             this.btnInserir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInserir.Location = new System.Drawing.Point(139, 440);
+            this.btnInserir.Location = new System.Drawing.Point(83, 15);
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(104, 31);
             this.btnInserir.TabIndex = 12;
@@ -367,7 +346,17 @@
             this.label21.Size = new System.Drawing.Size(189, 24);
             this.label21.TabIndex = 105;
             this.label21.Text = "Cadastro Fornecedor";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnInserir);
+            this.panel1.Controls.Add(this.btnSalvar);
+            this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Controls.Add(this.btnAtualizar);
+            this.panel1.Location = new System.Drawing.Point(12, 425);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(735, 66);
+            this.panel1.TabIndex = 106;
             // 
             // frmTelaCadastroFornecedor
             // 
@@ -375,18 +364,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(759, 497);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAtualizar);
-            this.Controls.Add(this.btnSalvar);
-            this.Controls.Add(this.btnInserir);
             this.Controls.Add(this.panel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTelaCadastroFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Cadastro Fornecedor";
             this.Load += new System.EventHandler(this.frmTelaCadastroFornecedor_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,5 +410,6 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Panel panel1;
     }
 }

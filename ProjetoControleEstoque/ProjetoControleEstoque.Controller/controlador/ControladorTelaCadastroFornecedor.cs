@@ -21,7 +21,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         RepositorioFornecedor repositorioFornecedor = new RepositorioFornecedor();
         Fornecedor fornecedor;
-        ValidacaoProduto validacao;
+        ValidacaoFornecedor validacaoFornecedor;
 
         #endregion
 
@@ -73,13 +73,13 @@ namespace ProjetoControleEstoque.Controller.controlador
             fornecedor.Complemento = txtComplemento.Text;
             fornecedor.Bairro = txtBairro.Text;
             fornecedor.Cidade = txtCidade.Text;
-            fornecedor.Situacao = (int) EnumSituacaoFornecedor.Ativo;
+            fornecedor.Ativo = true;
             mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             fornecedor.Cep = long.Parse(mskCep.Text);
             mskTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             fornecedor.Telefone = long.Parse(mskTelefone.Text);
             fornecedor.Email = txtEmail.Text;
-            fornecedor.Uf = int.Parse(cboUf.SelectedValue.ToString());
+            fornecedor.Id_uf = int.Parse(cboUf.SelectedValue.ToString());
             return fornecedor;
         }
 
@@ -87,11 +87,8 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             fornecedor = new Fornecedor();
             fornecedor = CarregarFornecedor(fornecedor);
-
             if (repositorioFornecedor.Salvar(fornecedor))
-            {
                 Mensagem.MensagemSalvar();
-            }
         }
 
         #endregion
@@ -111,18 +108,18 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(mskCnpj);
             listaControles.Add(mskTelefone);
             listaControles.Add(mskCep);
-            validacao = new ValidacaoProduto(listaControles);
+            validacaoFornecedor = new ValidacaoFornecedor(listaControles);
         }
 
         public override void HabilitarTodosCampos(bool enable)
         {
-            validacao.EnableControle(enable);
+            validacaoFornecedor.EnableControle(enable);
             txtCodigo.Enabled = false;
         }
 
         public override void LimparCampos()
         {
-            validacao.LimparControl();
+            validacaoFornecedor.LimparControles();
         }
 
         #endregion
@@ -153,11 +150,5 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-    }
-
-    internal enum EnumSituacaoFornecedor
-    {
-        Ativo = 1,
-        Desativado = 2
     }
 }

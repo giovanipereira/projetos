@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ProjetoControleEstoque.Controller.validacao
 {
-    public class ValidacaoPedido : ValidacaoBase<Pedido>
+    public class ValidacaoPedido : ValidacaoBase
     {
         public ValidacaoPedido(List<Control> listaControles) : base(listaControles)
         {

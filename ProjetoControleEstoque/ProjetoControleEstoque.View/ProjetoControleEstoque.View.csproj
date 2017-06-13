@@ -100,6 +100,12 @@
     <Compile Include="layout\frmTelaConsultaProduto.Designer.cs">
       <DependentUpon>frmTelaConsultaProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="layout\frmTelaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaLogin.Designer.cs">
+      <DependentUpon>frmTelaLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="layout\frmTelaPedidoItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,11 +118,17 @@
     <Compile Include="layout\frmTelaPrincipal.Designer.cs">
       <DependentUpon>frmTelaPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="layout\TelaDetalhesPedido.cs">
+    <Compile Include="layout\frmTelaSplash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="layout\TelaDetalhesPedido.Designer.cs">
-      <DependentUpon>TelaDetalhesPedido.cs</DependentUpon>
+    <Compile Include="layout\frmTelaSplash.Designer.cs">
+      <DependentUpon>frmTelaSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="layout\frmTelaDetalhesPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaDetalhesPedido.Designer.cs">
+      <DependentUpon>frmTelaDetalhesPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,14 +159,20 @@
     <EmbeddedResource Include="layout\frmTelaConsultaProduto.resx">
       <DependentUpon>frmTelaConsultaProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaLogin.resx">
+      <DependentUpon>frmTelaLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaPedidoItem.resx">
       <DependentUpon>frmTelaPedidoItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaPrincipal.resx">
       <DependentUpon>frmTelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="layout\TelaDetalhesPedido.resx">
-      <DependentUpon>TelaDetalhesPedido.cs</DependentUpon>
+    <EmbeddedResource Include="layout\frmTelaSplash.resx">
+      <DependentUpon>frmTelaSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaDetalhesPedido.resx">
+      <DependentUpon>frmTelaDetalhesPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -164,6 +182,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -183,6 +202,27 @@
       <Project>{1b369c1f-fa8f-453d-9128-fe022955a667}</Project>
       <Name>ProjetoControleEstoque.Controller</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shop-cart-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notepad-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fork-Knife-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-male-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reports-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clock-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,26 +8,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoControleEstoque.Model.dominio
 {
-    [Table("Mesa")]
     public class Mesa
     {
-        #region Fields
-        private int numero_mesa;
-        #endregion
+        private int id_mesa;
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
-        #region Properties
-
-        [Key()]
-        public int Numero_Mesa
+        public int Id_Mesa
         {
-            get { return this.numero_mesa; }
-            set { this.numero_mesa = value; }
+            get { return this.id_mesa; }
+            set { this.id_mesa = value; }
         }
-
-        public static implicit operator Mesa(int v)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
     }
 }

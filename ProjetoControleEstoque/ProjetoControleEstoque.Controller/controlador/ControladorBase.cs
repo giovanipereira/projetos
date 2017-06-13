@@ -67,7 +67,6 @@ namespace ProjetoControleEstoque.Controller.controlador
                     break;
             }
         }
-
         #endregion
 
     }

@@ -8,21 +8,20 @@ namespace ProjetoControleEstoque.Model.dominio
 {
     public class ItemPedido
     {
-        #region Fields
-        private int numero_pedido;
+        private int id_pedido;
         private int id_cardapio;
         private int quantidade;
-        private double total_item;
-        #endregion
+        private string observacao;
+        public virtual ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Cardapio> Cardapios { get; set; }
 
-        #region Properties
-        public int Numero_Pedido
+        public int Id_pedido
         {
-            get { return this.numero_pedido; }
-            set { this.numero_pedido = value; }
+            get { return this.id_pedido; }
+            set { this.id_pedido = value; }
         }
 
-        public int Id_Cardapio
+        public int Id_cardapio
         {
             get { return this.id_cardapio; }
             set { this.id_cardapio = value; }
@@ -34,12 +33,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.quantidade = value; }
         }
 
-        public double Total_Item
+        public string Observacao
         {
-            get { return this.total_item; }
-            set { this.total_item = value; }
+            get { return this.observacao; }
+            set { this.observacao = value; }
         }
-
-        #endregion
     }
 }

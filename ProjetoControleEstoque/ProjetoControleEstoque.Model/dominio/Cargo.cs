@@ -9,13 +9,8 @@ namespace ProjetoControleEstoque.Model.dominio
     public class Cargo 
     {
         private int id;
-        private string descricao;
+        private string nome;
         public virtual ICollection<Funcionario> Funcionarios { get; set; }
-
-        public Cargo()
-        {
-            Funcionarios = new List<Funcionario>();
-        }
 
         public int Id
         {
@@ -23,10 +18,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.id = value; }
         }
 
-        public string Descricao
+        public string Nome
         {
-            get { return this.descricao; }
-            set { this.descricao = value; }
+            get { return this.Nome; }
+            set { this.nome = value; }
         }
     }
 }

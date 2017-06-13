@@ -33,7 +33,7 @@ namespace ProjetoControleEstoque.Model.repositorio
                 SqlCommand cmd = new SqlCommand("proc_ins_mesa", Conexao.connection, transacao);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Clear();
-                cmd.Parameters.Add(new SqlParameter("@id_mes", SqlDbType.Int)).Value = mesa.Numero_Mesa;
+                cmd.Parameters.Add(new SqlParameter("@id_mes", SqlDbType.Int)).Value = mesa.Id_Mesa;
                 cmd.ExecuteNonQuery();
                 transacao.Commit();
                 retorno = true;

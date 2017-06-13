@@ -15,13 +15,13 @@ namespace ProjetoControleEstoque.Controller.controlador
     {
         #region Declaration
 
-        private TextBox txtCodigo, txtNome, txtValorUnitario, txtPorcao, txtDescricao;
+        private TextBox txtCodigo, txtNome, txtValorUnitario, txtQuantidade, txtDescricao;
         private ComboBox cboFornecedor, cboUnidade, cboSubcategoria, cboCategoria;
         private NumericUpDown nudQtdFornecidas, nudQtdMinima, nudQtdMaxima, nudQtdEstoque;
         private DateTimePicker dtpDataValidade;
 
         // Declaração das classes 
-        ValidacaoProduto validacao;
+        ValidacaoProduto validacaoProduto;
         Produto produto;
         RepositorioProduto repositorioProduto = new RepositorioProduto();
 
@@ -35,7 +35,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         }
 
         public ControladorTelaCadastroProduto(TextBox txtCodigo, TextBox txtNome, TextBox txtValorUnitario,
-            TextBox txtPorcao, TextBox txtDescricao, ComboBox cboFornecedor, ComboBox cboUnidade,
+            TextBox txtQuantidade, TextBox txtDescricao, ComboBox cboFornecedor, ComboBox cboUnidade,
             ComboBox cboSubcategoria, ComboBox cboCategoria, 
             NumericUpDown nudQtdFornecidas, NumericUpDown nudQtdEstoque,
             NumericUpDown nudQtdMinima, NumericUpDown nudQtdMaxima, DateTimePicker mskDataValidade,
@@ -44,7 +44,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             this.txtCodigo = txtCodigo;
             this.txtNome = txtNome;
             this.txtValorUnitario = txtValorUnitario;
-            this.txtPorcao = txtPorcao;
+            this.txtQuantidade = txtQuantidade;
             this.txtDescricao = txtDescricao;
             this.cboFornecedor = cboFornecedor;
             this.cboUnidade = cboUnidade;
@@ -65,15 +65,15 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
+
         private Produto CarregarProduto(Produto produto)
         {
-            decimal porcao;
             int id;
             produto.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
             produto.Nome = txtNome.Text;
             produto.Id_unidade = int.Parse(cboUnidade.SelectedValue.ToString());
-            produto.Porcao_pro = decimal.TryParse(txtPorcao.Text, out porcao) ? porcao : 0;
-            produto.Valor_unitario = Convert.ToDecimal(txtValorUnitario.Text.Replace(",", "."));
+            produto.Quantidade = txtQuantidade.Text;
+            produto.Vlunitario = txtValorUnitario.Text;
             produto.Descricao = txtDescricao.Text;
             produto.Qtd_estoque = int.Parse(nudQtdEstoque.Value.ToString());
             produto.Qtd_minima = int.Parse(nudQtdMinima.Value.ToString());
@@ -81,7 +81,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             produto.Qtd_fornecidas = int.Parse(nudQtdFornecidas.Value.ToString());
             produto.Data_validade = DateTime.Parse(dtpDataValidade.Value.ToString());
             produto.Id_fornecedor = int.Parse(cboFornecedor.SelectedValue.ToString());
-            produto.Id_categoria = int.Parse(cboCategoria.SelectedValue.ToString());
             produto.Id_subcategoria = int.Parse(cboSubcategoria.SelectedValue.ToString());
             return produto;
         }
@@ -91,10 +90,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             produto = new Produto();
             produto = CarregarProduto(produto);
             if (repositorioProduto.Salvar(produto))
-            {
                 Mensagem.MensagemSalvar();
-            }
-
         }
 
         private void PreencherFornecedor()
@@ -116,20 +112,20 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             repositorioProduto.PreencherSubcategoria(cboSubcategoria, int.Parse(cboCategoria.SelectedValue.ToString()));
         }
+
         #endregion
 
         #region Abstracts Methods
 
         public override void HabilitarTodosCampos(bool enable)
         {
-            validacao.EnableControle(enable);
+            validacaoProduto.EnableControle(enable);
             txtCodigo.ReadOnly = true;
-            txtPorcao.ReadOnly = true;
         }
 
         public override void LimparCampos()
         {
-            validacao.LimparControl();
+            validacaoProduto.LimparControles();
         }
 
         public override void AdicionarListaControles()
@@ -147,8 +143,8 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(nudQtdMinima);
             listaControles.Add(nudQtdMaxima);
             listaControles.Add(dtpDataValidade);
-            listaControles.Add(txtPorcao);
-            validacao = new ValidacaoProduto(listaControles);
+            listaControles.Add(txtQuantidade);
+            validacaoProduto = new ValidacaoProduto(listaControles);
         }
 
         #endregion
@@ -167,7 +163,6 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             SalvarProduto();
             OperationMode((int)EnumOperationMode.Normal);
-            
         }
 
         public void Inserir()
@@ -211,9 +206,9 @@ namespace ProjetoControleEstoque.Controller.controlador
             }
         }
 
-        public void PorcaoKeyPress(object sender, KeyPressEventArgs e)
+        public void QuantidadeKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != txtPorcao.MaxLength)
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != txtQuantidade.MaxLength)
             {
                 e.Handled = true;
             }
@@ -229,12 +224,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             {
 
             }
-        }
-
-        public void UnidadeLeave()
-        {
-            txtPorcao.ReadOnly = false;
-            txtPorcao.Focus();
         }
 
         #endregion

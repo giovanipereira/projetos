@@ -10,13 +10,12 @@ namespace ProjetoControleEstoque.Model.dominio
 {
     public class Subcategoria
     {
-        #region Fields
         private int id;
         private string nome;
-        private int categoria;
-        #endregion
+        private int id_categoria;
+        public virtual Categoria Categoria { get; set; }
+        public virtual ICollection<Produto> Produtos { get; set; }
 
-        #region Properties
         public int Id
         {
             get { return this.id; }
@@ -29,11 +28,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.nome = value; }
         }
 
-        public int Categoria
+        public int Id_categoria
         {
-            get { return this.categoria; }
-            set { this.categoria = value; }
+            get { return this.id_categoria; }
+            set { this.id_categoria = value; }
         }
-        #endregion
     }
 }

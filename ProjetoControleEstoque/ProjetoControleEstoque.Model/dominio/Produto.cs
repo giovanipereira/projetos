@@ -10,20 +10,19 @@ namespace ProjetoControleEstoque.Model.dominio
     {
         private int id;
         private string nome;
-        private decimal valor_unitario;
+        private string vlunitario;
         private int qtd_estoque;
         private int qtd_minima;
         private int qtd_maxima;
-        private decimal porcao_pro;
+        private string quantidade;
         private DateTime data_validade;
         private string descricao;
         private int qtd_fornecidas;
         private int id_unidade;
         private int id_fornecedor;
-        private int id_categoria;
         private int id_subcategoria;
-        public virtual Fornecedor Fornecedor { get; set; }
-        public virtual Subcategoria Subcategoria { get; set; }
+        //public virtual Fornecedor Fornecedor { get; set; }
+        //public virtual Subcategoria Subcategoria { get; set; }
         //public virtual Unidade Unidade { get; set; }
 
         public int Id
@@ -38,10 +37,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.nome = value; }
         }
 
-        public decimal Valor_unitario
+        public string Vlunitario
         {
-            get { return this.valor_unitario; }
-            set { this.valor_unitario = value; }
+            get { return this.vlunitario; }
+            set { this.vlunitario = value; }
         }
 
         public int Qtd_estoque
@@ -62,10 +61,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.qtd_maxima = value; }
         }
 
-        public decimal Porcao_pro
+        public string Quantidade
         {
-            get { return this.porcao_pro; }
-            set { this.porcao_pro = value; }
+            get { return this.quantidade; }
+            set { this.quantidade = value; }
         }
 
         public DateTime Data_validade
@@ -98,11 +97,6 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.id_fornecedor = value; }
         }
 
-        public int Id_categoria
-        {
-            get { return this.id_categoria; }
-            set { this.id_categoria = value; }
-        }
         public int Id_subcategoria
         {
             get { return this.id_subcategoria; }

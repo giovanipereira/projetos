@@ -102,7 +102,7 @@
             this.mskTelefone.Location = new System.Drawing.Point(41, 330);
             this.mskTelefone.Mask = "(99) 0000-0000";
             this.mskTelefone.Name = "mskTelefone";
-            this.mskTelefone.Size = new System.Drawing.Size(146, 22);
+            this.mskTelefone.Size = new System.Drawing.Size(123, 22);
             this.mskTelefone.TabIndex = 13;
             // 
             // cboNivelAcesso
@@ -112,7 +112,7 @@
             this.cboNivelAcesso.FormattingEnabled = true;
             this.cboNivelAcesso.Location = new System.Drawing.Point(481, 118);
             this.cboNivelAcesso.Name = "cboNivelAcesso";
-            this.cboNivelAcesso.Size = new System.Drawing.Size(146, 24);
+            this.cboNivelAcesso.Size = new System.Drawing.Size(132, 24);
             this.cboNivelAcesso.TabIndex = 15;
             // 
             // cboCargo
@@ -122,7 +122,7 @@
             this.cboCargo.FormattingEnabled = true;
             this.cboCargo.Location = new System.Drawing.Point(481, 46);
             this.cboCargo.Name = "cboCargo";
-            this.cboCargo.Size = new System.Drawing.Size(146, 24);
+            this.cboCargo.Size = new System.Drawing.Size(132, 24);
             this.cboCargo.TabIndex = 14;
             // 
             // mskCpf
@@ -131,7 +131,7 @@
             this.mskCpf.Location = new System.Drawing.Point(41, 188);
             this.mskCpf.Mask = "000.000.000-00";
             this.mskCpf.Name = "mskCpf";
-            this.mskCpf.Size = new System.Drawing.Size(146, 22);
+            this.mskCpf.Size = new System.Drawing.Size(112, 22);
             this.mskCpf.TabIndex = 11;
             // 
             // txtConfirmarSenha
@@ -178,11 +178,10 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(41, 46);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(146, 22);
+            this.txtCodigo.Size = new System.Drawing.Size(98, 22);
             this.txtCodigo.TabIndex = 20;
             // 
             // label9
@@ -349,6 +348,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.panel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTelaCadastroFuncionario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela de Cadastro Funcionario";

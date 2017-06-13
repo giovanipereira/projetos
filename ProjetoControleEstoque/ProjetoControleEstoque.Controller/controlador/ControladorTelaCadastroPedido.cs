@@ -71,7 +71,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             if (dgvConsulta.Rows.Count > 0)
             {
                 if (Mensagem.MensagemQuestao("Tem certeza que deseja remover esse item?")){
-                    a.RemoveAll(p => p.Numero == int.Parse((dgvConsulta.CurrentRow.Cells[0].Value.ToString())));
+                    a.RemoveAll(p => p.Id == int.Parse((dgvConsulta.CurrentRow.Cells[0].Value.ToString())));
                     dgvConsulta.DataSource = a;
                 }
                 
@@ -112,7 +112,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public override void LimparCampos()
         {
-            validacao.LimparControl();
+            validacao.LimparControles();
         }
         #endregion
 
@@ -143,11 +143,10 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             Pedido p = new Pedido();
             p.Data = DateTime.Now;
-            p.Numero = 1;
-            p.Numero_Mesa = 2;
-            p.Observacao = "sa";
+            p.Id = 1;
+            p.Id_mesa = 2;
             p.Status = 1;
-            p.Valor_Total = 213;
+            p.VlTotal = 23.00;
             a.Add(p);
         }
 

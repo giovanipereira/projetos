@@ -21,7 +21,7 @@ namespace ProjetoControleEstoque.View.layout
         ControladorTelaCadastroProduto controladorTelaCadastroProduto()
         {
             ControladorTelaCadastroProduto controlador = new ControladorTelaCadastroProduto(txtCodigo,
-                txtNome, txtValorUnitario, txtPorcao, txtDescricao, cboFornecedor, cboUnidade, cboSubcategoria,
+                txtNome, txtValorUnitario, txtQuantidade, txtDescricao, cboFornecedor, cboUnidade, cboSubcategoria,
                 cboCategoria, nudQtdFornecidas, nudQtdEstoque, nudQtdMinima, nudQtdMaxima, dtpDataValidade, btnInserir, btnSalvar,
                 btnAtualizar, btnCancelar);
             return controlador;
@@ -49,7 +49,12 @@ namespace ProjetoControleEstoque.View.layout
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            {
+                if (btnInserir.Enabled.Equals(true))
+                    this.Close();
+                else
+                    controladorTelaCadastroProduto().Load();
+            }
         }
 
         private void txtPrecoCompra_KeyPress(object sender, KeyPressEventArgs e)
@@ -62,28 +67,15 @@ namespace ProjetoControleEstoque.View.layout
             controladorTelaCadastroProduto().ValorUnitarioLeave();
         }
 
-        private void txtPorcao_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            controladorTelaCadastroProduto().PorcaoKeyPress(sender, e);
-        }
-
-        private void cboCategoria_TextChanged(object sender, EventArgs e)
-        {
-        }
 
         private void cboCategoria_Leave(object sender, EventArgs e)
         {
             controladorTelaCadastroProduto().CategoriaLeave();
         }
 
-        private void nudQtdFornecidas_Leave(object sender, EventArgs e)
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            nudQtdEstoque.Value = nudQtdFornecidas.Value;
-        }
-
-        private void cboUnidade_Leave(object sender, EventArgs e)
-        {
-            controladorTelaCadastroProduto().UnidadeLeave();
+            controladorTelaCadastroProduto().QuantidadeKeyPress(sender, e);
         }
     }
 }
