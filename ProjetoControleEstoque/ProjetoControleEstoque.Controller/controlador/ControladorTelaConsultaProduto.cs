@@ -17,6 +17,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         private TextBox txtValor;
         private Button btnConsultar, btnExcluir, btnAdicionar;
         private DataGridView dgvConsultaProdutos;
+        private IList<Produto> listaProdutos = new List<Produto>();
 
         RepositorioProduto repositorioProduto = new RepositorioProduto();
 
@@ -30,7 +31,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         }
 
         public ControladorTelaConsultaProduto(ComboBox cboConsultarPor, TextBox txtValor, Button btnConsultar,
-            Button btnAdicionar,Button btnExcluir, DataGridView dgvConsultaProdutos)
+            Button btnAdicionar, Button btnExcluir, DataGridView dgvConsultaProdutos)
         {
             this.cboConsultarPor = cboConsultarPor;
             this.txtValor = txtValor;
@@ -44,20 +45,26 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private void TipoConsulta()
         {
+            listaProdutos = repositorioProduto.ConsultarTodos();
             string opcao = cboConsultarPor.Text;
             switch (opcao)
             {
                 case "Código":
-                    dgvConsultaProdutos.DataSource = repositorioProduto.ConsultarTodos().Where(P => P.Id.Equals(7)).First();
-                    
+                    if (listaProdutos.Where(p => p.Id.Equals(txtValor.Text)).ToList().Count <= 0)
+                    {
+                        MessageBox.Show("Codigo do produto nao existe!");
+                    }
+                    else
+                    {
+                        listaProdutos.Where(p => p.Id.Equals(txtValor.Text));
+                    }
+                    dgvConsultaProdutos.DataSource = listaProdutos;
                     break;
-
                 case "Nome":
                     dgvConsultaProdutos.DataSource = repositorioProduto.ConsultarTodos().Where(p => p.Nome.Contains(txtValor.Text)).ToList();
                     break;
             }
         }
-
 
         private void LoadDatagridView()
         {

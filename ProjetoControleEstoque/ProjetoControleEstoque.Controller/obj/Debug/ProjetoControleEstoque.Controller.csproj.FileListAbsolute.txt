@@ -19,3 +19,10 @@ C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoContr
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\obj\Debug\ProjetoControleEstoque.Controller.csprojResolveAssemblyReference.cache
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\obj\Debug\ProjetoControleEstoque.Controller.dll
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\obj\Debug\ProjetoControleEstoque.Controller.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\bin\Debug\ProjetoControleEstoque.Controller.dll
+C:\Users\3binfo\Documents\Giovani\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\bin\Debug\ProjetoControleEstoque.Controller.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\bin\Debug\ProjetoControleEstoque.Model.dll
+C:\Users\3binfo\Documents\Giovani\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\bin\Debug\ProjetoControleEstoque.Model.pdb
+C:\Users\3binfo\Documents\Giovani\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\obj\Debug\ProjetoControleEstoque.Controller.csprojResolveAssemblyReference.cache
+C:\Users\3binfo\Documents\Giovani\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\obj\Debug\ProjetoControleEstoque.Controller.dll
+C:\Users\3binfo\Documents\Giovani\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Controller\obj\Debug\ProjetoControleEstoque.Controller.pdb
