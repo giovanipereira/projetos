@@ -17,8 +17,8 @@ namespace ProjetoControleEstoque.Entity.Entidades
         {
             ToTable("Funcionario");
             HasKey(p => p.Id);
-            HasRequired<Cargo>(p => p.Cargo)
-                .WithMany(p => p.Funcionarios);
+           // HasRequired<Cargo>(p => p.Cargo)
+            //    .WithMany(p => p.Funcionarios);
 
             Property(p => p.Nome)
                 .HasMaxLength(100)

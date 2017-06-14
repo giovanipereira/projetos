@@ -58,11 +58,11 @@
             this.produtoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cardápioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.novoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -352,26 +352,27 @@
             // funcionárioToolStripMenuItem1
             // 
             this.funcionárioToolStripMenuItem1.Name = "funcionárioToolStripMenuItem1";
-            this.funcionárioToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
+            this.funcionárioToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.funcionárioToolStripMenuItem1.Text = "Funcionário";
+            this.funcionárioToolStripMenuItem1.Click += new System.EventHandler(this.funcionárioToolStripMenuItem1_Click);
             // 
             // fornecedorToolStripMenuItem1
             // 
             this.fornecedorToolStripMenuItem1.Name = "fornecedorToolStripMenuItem1";
-            this.fornecedorToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
+            this.fornecedorToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.fornecedorToolStripMenuItem1.Text = "Fornecedor";
             // 
             // produtoToolStripMenuItem1
             // 
             this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
-            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.produtoToolStripMenuItem1.Text = "Produto";
             this.produtoToolStripMenuItem1.Click += new System.EventHandler(this.produtoToolStripMenuItem1_Click);
             // 
             // cardápioToolStripMenuItem1
             // 
             this.cardápioToolStripMenuItem1.Name = "cardápioToolStripMenuItem1";
-            this.cardápioToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
+            this.cardápioToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.cardápioToolStripMenuItem1.Text = "Cardápio";
             // 
             // pedidosToolStripMenuItem
@@ -381,6 +382,13 @@
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
             this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.pedidosToolStripMenuItem.Text = "Pedidos";
+            // 
+            // novoPedidoToolStripMenuItem
+            // 
+            this.novoPedidoToolStripMenuItem.Name = "novoPedidoToolStripMenuItem";
+            this.novoPedidoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.novoPedidoToolStripMenuItem.Text = "Novo Pedido";
+            this.novoPedidoToolStripMenuItem.Click += new System.EventHandler(this.novoPedidoToolStripMenuItem_Click);
             // 
             // relatoriosToolStripMenuItem
             // 
@@ -399,13 +407,6 @@
             // 
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // novoPedidoToolStripMenuItem
-            // 
-            this.novoPedidoToolStripMenuItem.Name = "novoPedidoToolStripMenuItem";
-            this.novoPedidoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.novoPedidoToolStripMenuItem.Text = "Novo Pedido";
-            this.novoPedidoToolStripMenuItem.Click += new System.EventHandler(this.novoPedidoToolStripMenuItem_Click);
             // 
             // frmTelaPrincipal
             // 

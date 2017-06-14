@@ -24,6 +24,33 @@ namespace ProjetoControleEstoque.Model.repositorio
             throw new NotImplementedException();
         }
 
+        public new IList<Funcionario> ConsultarTodos()
+        {
+            Funcionario funcionario;
+            SqlCommand cmd = new SqlCommand("select * from funcionario", Conexao.connection);
+            Conexao.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<Funcionario> listaFuncionarios = new List<Funcionario>();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    funcionario = new Funcionario();
+                    funcionario.Id = (int)(dr[0]);
+                    funcionario.Nome = (dr[1]).ToString();
+                    funcionario.Cpf = (long)(dr[2]);
+                    funcionario.Email = (dr[3]).ToString();
+                    funcionario.Telefone = (long) (dr[4]);
+                    funcionario.Id_cargo = (int) (dr[5]);
+                    funcionario.Id_Usuario = (int)(dr[6]);
+                    listaFuncionarios.Add(funcionario);
+                }
+            }
+            Conexao.Close();
+            return listaFuncionarios;
+
+        }
+
         public override bool Salvar(Funcionario funcionario)
         {
             throw new NotImplementedException();

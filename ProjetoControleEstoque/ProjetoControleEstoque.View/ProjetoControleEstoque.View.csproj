@@ -94,6 +94,12 @@
     <Compile Include="layout\frmTelaCardapioItem.Designer.cs">
       <DependentUpon>frmTelaCardapioItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="layout\frmTelaConsultaFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaConsultaFuncionario.Designer.cs">
+      <DependentUpon>frmTelaConsultaFuncionario.cs</DependentUpon>
+    </Compile>
     <Compile Include="layout\frmTelaConsultaProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaCardapioItem.resx">
       <DependentUpon>frmTelaCardapioItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaConsultaFuncionario.resx">
+      <DependentUpon>frmTelaConsultaFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaConsultaProduto.resx">
       <DependentUpon>frmTelaConsultaProduto.cs</DependentUpon>

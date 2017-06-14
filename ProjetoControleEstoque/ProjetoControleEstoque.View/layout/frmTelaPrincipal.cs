@@ -86,5 +86,11 @@ namespace ProjetoControleEstoque.View.layout
             frmTelaCadastroPedido telaCadastroPedido = new frmTelaCadastroPedido();
             telaCadastroPedido.ShowDialog();
         }
+
+        private void funcionárioToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmTelaConsultaFuncionario telaConsultaFuncionario = new frmTelaConsultaFuncionario();
+            telaConsultaFuncionario.ShowDialog();
+        }
     }
 }

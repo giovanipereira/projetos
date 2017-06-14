@@ -17,9 +17,9 @@ namespace ProjetoControleEstoque.Model.dominio
         private long telefone;
         private int id_cargo;
         private int id_usuario;
-        public virtual Cargo Cargo { get; set; }
-        public virtual Usuario Usuario { get; set; }
-        public virtual ICollection<Pedido> Pedidos { get; set; }
+        //public virtual Cargo Cargo { get; set; }
+        //public virtual Usuario Usuario { get; set; }
+        //public virtual ICollection<Pedido> Pedidos { get; set; }
 
         public int Id
         {
