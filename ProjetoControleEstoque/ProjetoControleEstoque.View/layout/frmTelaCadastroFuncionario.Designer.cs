@@ -364,15 +364,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel;
-        private System.Windows.Forms.ComboBox cboNivelAcesso;
-        private System.Windows.Forms.ComboBox cboCargo;
-        private System.Windows.Forms.MaskedTextBox mskCpf;
-        private System.Windows.Forms.TextBox txtConfirmarSenha;
-        private System.Windows.Forms.TextBox txtSenha;
-        private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -383,12 +374,21 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.MaskedTextBox mskTelefone;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.ComboBox cboNivelAcesso;
+        public System.Windows.Forms.ComboBox cboCargo;
+        public System.Windows.Forms.MaskedTextBox mskCpf;
+        public System.Windows.Forms.TextBox txtConfirmarSenha;
+        public System.Windows.Forms.TextBox txtSenha;
+        public System.Windows.Forms.TextBox txtUsuario;
+        public System.Windows.Forms.TextBox txtEmail;
+        public System.Windows.Forms.TextBox txtNome;
+        public System.Windows.Forms.TextBox txtCodigo;
+        public System.Windows.Forms.MaskedTextBox mskTelefone;
     }
 }

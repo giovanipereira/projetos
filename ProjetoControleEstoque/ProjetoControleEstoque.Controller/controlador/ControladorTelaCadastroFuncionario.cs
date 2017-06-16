@@ -97,7 +97,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             funcionario = new Funcionario();
             usuario = CarregarUsuario(usuario);
             funcionario = CarregarFuncionario(funcionario);
-            if (repositorioFuncionario.Salvar(funcionario,usuario))
+            if (repositorioFuncionario.Salvar(funcionario, usuario))
                 Mensagem.MensagemSalvar();
         }
 
@@ -135,11 +135,14 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Event Functions
 
-        public void Load()
+        public void Load(int opcao)
         {
-            OperationMode((int)EnumOperationMode.Normal);
             PreencherCargo();
             PreencherNivelAcesso();
+            if (opcao.Equals((int)EnumOperationMode.Normal))
+                OperationMode((int)EnumOperationMode.Normal);
+            if (opcao.Equals((int)EnumOperationMode.Atualizar))
+                OperationMode((int)EnumOperationMode.Atualizar);
         }
 
         public void Salvar()
@@ -155,7 +158,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Atualizar()
         {
-            OperationMode((int)EnumOperationMode.Atualizar);
+            Load((int)EnumOperationMode.Atualizar);
         }
 
         #endregion

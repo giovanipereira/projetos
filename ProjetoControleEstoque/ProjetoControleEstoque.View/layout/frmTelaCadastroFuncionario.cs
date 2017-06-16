@@ -13,21 +13,29 @@ namespace ProjetoControleEstoque.View.layout
 {
     public partial class frmTelaCadastroFuncionario : Form
     {
-        public frmTelaCadastroFuncionario()
+        public frmTelaCadastroFuncionario(int opcao)
         {
             InitializeComponent();
+            this.opcao = opcao;
         }
-        ControladorTelaCadastroFuncionario controladorTelaCadastroFuncionario()
+
+        private int opcao;
+
+        public ControladorTelaCadastroFuncionario controladorTelaCadastroFuncionario()
         {
             ControladorTelaCadastroFuncionario controlador = new ControladorTelaCadastroFuncionario(txtCodigo,
                 txtNome, txtEmail, txtUsuario, txtSenha, txtConfirmarSenha, cboCargo, cboNivelAcesso, mskCpf,
-                mskTelefone, btnInserir,btnSalvar,btnAtualizar,btnCancelar);
+                mskTelefone, btnInserir, btnSalvar, btnAtualizar, btnCancelar);
             return controlador;
         }
 
         private void frmTelaCadastroFuncionario_Load(object sender, EventArgs e)
         {
-            controladorTelaCadastroFuncionario().Load();
+            if (opcao.Equals((int)EnumOpcao.Cadastro))
+                controladorTelaCadastroFuncionario().Load((int)EnumOpcao.Cadastro);
+
+            if (opcao.Equals((int)EnumOpcao.Atualizar))
+                controladorTelaCadastroFuncionario().Load((int)EnumOpcao.Atualizar);
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -48,11 +56,19 @@ namespace ProjetoControleEstoque.View.layout
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             {
-                if (btnInserir.Enabled.Equals(true))
+                if (btnSalvar.Enabled.Equals(false))
+                    this.Close();
+                else if (opcao.Equals((int)EnumOpcao.Atualizar))
                     this.Close();
                 else
-                    controladorTelaCadastroFuncionario().Load();
+                controladorTelaCadastroFuncionario().Load((int)EnumOpcao.Cadastro);
             }
         }
+    }
+
+    public enum EnumOpcao
+    {
+        Cadastro = 1,
+        Atualizar = 3
     }
 }

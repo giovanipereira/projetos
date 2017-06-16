@@ -53,6 +53,7 @@
     <Compile Include="dominio\ItemCardapio.cs" />
     <Compile Include="dominio\ItemPedido.cs" />
     <Compile Include="dominio\Mesa.cs" />
+    <Compile Include="dominio\NivelAcesso.cs" />
     <Compile Include="dominio\Pedido.cs" />
     <Compile Include="dominio\Produto.cs" />
     <Compile Include="dominio\Subcategoria.cs" />

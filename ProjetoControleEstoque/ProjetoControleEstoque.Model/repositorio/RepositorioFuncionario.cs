@@ -24,7 +24,74 @@ namespace ProjetoControleEstoque.Model.repositorio
             throw new NotImplementedException();
         }
 
-        public new IList<Funcionario> ConsultarTodos()
+        public IList<NivelAcesso> CarregarNiveisAcessos()
+        {
+            NivelAcesso nivelAcesso;
+            SqlCommand cmd = new SqlCommand("select * from nivel_acesso", Conexao.connection);
+            Conexao.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<NivelAcesso> listaNiveisAcessos = new List<NivelAcesso>();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    nivelAcesso = new NivelAcesso();
+                    nivelAcesso.Id = (int)(dr[0]);
+                    nivelAcesso.Nome = (dr[1]).ToString();
+
+                    listaNiveisAcessos.Add(nivelAcesso);
+                }
+            }
+            Conexao.Close();
+            return listaNiveisAcessos;
+        }
+
+        public IList<Usuario> CarregarUsuarios()
+        {
+            Usuario usuario;
+            SqlCommand cmd = new SqlCommand("select * from usuario", Conexao.connection);
+            Conexao.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    usuario = new Usuario();
+                    usuario.Id = (int)(dr[0]);
+                    usuario.Nome = (dr[1]).ToString();
+                    usuario.Senha = (dr[2]).ToString();
+                    usuario.Id_nivel_acesso = (int)(dr[3]);
+
+                    listaUsuarios.Add(usuario);
+                }
+            }
+            Conexao.Close();
+            return listaUsuarios;
+        }
+
+        public IList<Cargo> CarregarCargos()
+        {
+            Cargo cargo;
+            SqlCommand cmd = new SqlCommand("select * from cargo", Conexao.connection);
+            Conexao.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<Cargo> listaCargos = new List<Cargo>();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    cargo = new Cargo();
+                    cargo.Id = (int)(dr[0]);
+                    cargo.Nome = (dr[1]).ToString();
+                    listaCargos.Add(cargo);
+                }
+            }
+            Conexao.Close();
+            return listaCargos;
+        }
+
+        public IList<Funcionario> CarregarFuncionarios()
         {
             Funcionario funcionario;
             SqlCommand cmd = new SqlCommand("select * from funcionario", Conexao.connection);
@@ -48,7 +115,6 @@ namespace ProjetoControleEstoque.Model.repositorio
             }
             Conexao.Close();
             return listaFuncionarios;
-
         }
 
         public override bool Salvar(Funcionario funcionario)
@@ -102,7 +168,6 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.DataSource = dt;
             combobox.ValueMember = "id_car";
             combobox.DisplayMember = "nome_car";
-            combobox.SelectedValue = 0;
         }
 
         public void PreencherNivelAcesso(ComboBox combobox)
@@ -114,7 +179,6 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.DataSource = dt;
             combobox.ValueMember = "id_niv";
             combobox.DisplayMember = "nome_niv";
-            combobox.SelectedValue = 0;
         }
     }
 }

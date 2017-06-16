@@ -29,8 +29,10 @@ namespace ProjetoControleEstoque.Controller.validacao
                         ((MaskedTextBox)control).Clear();
                 }
                 else if (control is ComboBox)
+                {
                     ((ComboBox)control).Text = null;
-
+                    ((ComboBox)control).SelectedValue = 0;
+                }
                 else if (control is PictureBox)
                     ((PictureBox)control).Image = null;
 

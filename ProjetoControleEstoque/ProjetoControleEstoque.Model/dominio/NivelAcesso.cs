@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjetoControleEstoque.Model.dominio
 {
-    public class Cargo 
+    public class NivelAcesso
     {
         private int id;
         private string nome;
-        //public virtual ICollection<Funcionario> Funcionarios { get; set; }
+        //public virtual ICollection<Usuario> Usuarios { get; set; }
 
         public int Id
         {

@@ -93,6 +93,7 @@
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(163, 22);
             this.txtValor.TabIndex = 2;
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // cboConsultarPor
             // 
@@ -133,6 +134,7 @@
             this.btnAtualizar.TabIndex = 5;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // frmTelaConsultaFuncionario
             // 
@@ -145,6 +147,7 @@
             this.Controls.Add(this.dgvConsultaFuncionarios);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTelaConsultaFuncionario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Consulta Funcionario";

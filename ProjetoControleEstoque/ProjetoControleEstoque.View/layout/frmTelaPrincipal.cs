@@ -43,7 +43,7 @@ namespace ProjetoControleEstoque.View.layout
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTelaCadastroFuncionario telaCadastroFuncionario = new frmTelaCadastroFuncionario();
+            frmTelaCadastroFuncionario telaCadastroFuncionario = new frmTelaCadastroFuncionario((int)EnumOpcao.Cadastro);
             telaCadastroFuncionario.ShowDialog();
         }
 
