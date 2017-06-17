@@ -64,8 +64,10 @@ namespace ProjetoControleEstoque.Controller.controlador
             repositorioFornecedor.PreencherUf(cboUf);
         }
 
-        private Fornecedor CarregarFornecedor(Fornecedor fornecedor)
+        private Fornecedor PreencherFornecedor(Fornecedor fornecedor)
         {
+            int id;
+            fornecedor.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
             fornecedor.Nome = txtNome.Text;
             mskCnpj.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             fornecedor.Cnpj = long.Parse(mskCnpj.Text);
@@ -86,9 +88,17 @@ namespace ProjetoControleEstoque.Controller.controlador
         private void SalvarFornecedor()
         {
             fornecedor = new Fornecedor();
-            fornecedor = CarregarFornecedor(fornecedor);
+            fornecedor = PreencherFornecedor(fornecedor);
             if (repositorioFornecedor.Salvar(fornecedor))
                 Mensagem.MensagemSalvar();
+        }
+
+        private void AtualizarFornecedor()
+        {
+            fornecedor = new Fornecedor();
+            fornecedor = PreencherFornecedor(fornecedor);
+            if (repositorioFornecedor.Atualizar(fornecedor))
+                Mensagem.MensagemAtualizar();
         }
 
         #endregion
@@ -114,7 +124,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         public override void HabilitarTodosCampos(bool enable)
         {
             validacaoFornecedor.EnableControle(enable);
-            txtCodigo.Enabled = false;
+            txtCodigo.ReadOnly = true;
         }
 
         public override void LimparCampos()
@@ -126,10 +136,23 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Event Functions
 
-        public void Load()
+        public void PreencherCombobox()
         {
-            OperationMode((int)EnumOperationMode.Normal);
             PreencherUf();
+        }
+
+        public void Load(int opcao)
+        {
+            switch (opcao)
+            {
+                case (int)EnumOperationMode.Normal:
+                    PreencherCombobox();
+                    OperationMode((int)EnumOperationMode.Normal);
+                    break;
+                case (int)EnumOperationMode.Atualizar:
+                    OperationMode((int)EnumOperationMode.Atualizar);
+                    break;
+            }
         }
 
         public void Salvar()
@@ -143,9 +166,10 @@ namespace ProjetoControleEstoque.Controller.controlador
             OperationMode((int)EnumOperationMode.Inserir);
         }
 
-        public void Atualizar()
+        public void Atualizar(Form form)
         {
-            OperationMode((int)EnumOperationMode.Atualizar);
+            AtualizarFornecedor();
+            form.Close();
         }
 
         #endregion

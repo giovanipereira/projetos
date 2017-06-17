@@ -27,6 +27,30 @@ namespace ProjetoControleEstoque.View.layout
             return controlador;
         }
 
+        private void Atualizar()
+        {
+            if (dgvConsultaFuncionarios.RowCount > 0)
+            {
+                int id = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
+                object[] dados = controladorTelaConsultaFuncionario().ObterDadosFuncionario(id);
+                telaCadastroFuncionario = new frmTelaCadastroFuncionario((int)EnumOpcao.Atualizar);
+                telaCadastroFuncionario.txtCodigo.Text = dados[0].ToString();
+                telaCadastroFuncionario.txtNome.Text = dados[1].ToString();
+                telaCadastroFuncionario.mskCpf.Text = dados[2].ToString();
+                telaCadastroFuncionario.txtEmail.Text = dados[3].ToString();
+                telaCadastroFuncionario.mskTelefone.Text = dados[4].ToString();
+                telaCadastroFuncionario.cboCargo.SelectedValue = dados[5].ToString();
+                telaCadastroFuncionario.cboNivelAcesso.SelectedValue = dados[6].ToString();
+                telaCadastroFuncionario.id_usuario = int.Parse(dados[7].ToString());
+                telaCadastroFuncionario.txtUsuario.Text = dados[8].ToString();
+                telaCadastroFuncionario.txtSenha.Text = dados[9].ToString();
+                telaCadastroFuncionario.txtConfirmarSenha.Text = dados[9].ToString();
+                telaCadastroFuncionario.controladorTelaCadastroFuncionario().Load((int)EnumOpcao.Atualizar);
+                telaCadastroFuncionario.ShowDialog();
+                controladorTelaConsultaFuncionario().ConsultarPorId(int.Parse(dados[0].ToString()));
+            }
+        }
+
         private void frmTelaConsultaFuncionario_Load(object sender, EventArgs e)
         {
             controladorTelaConsultaFuncionario().Load();
@@ -39,33 +63,27 @@ namespace ProjetoControleEstoque.View.layout
 
         private void cboConsultarPor_TextChanged(object sender, EventArgs e)
         {
-            txtValor.Enabled = true;
-            txtValor.Clear();
+            controladorTelaConsultaFuncionario().ConsultarPorTextChanged();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if(dgvConsultaFuncionarios.RowCount > 0)
-            {
-                object[] dados = controladorTelaConsultaFuncionario().Atualizar(int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString()));
-                telaCadastroFuncionario = new frmTelaCadastroFuncionario((int)EnumOpcao.Atualizar);
-                telaCadastroFuncionario.txtCodigo.Text = dados[0].ToString();
-                telaCadastroFuncionario.txtNome.Text = dados[1].ToString();
-                telaCadastroFuncionario.mskCpf.Text = dados[2].ToString();
-                telaCadastroFuncionario.txtEmail.Text = dados[3].ToString();
-                telaCadastroFuncionario.mskTelefone.Text = dados[4].ToString();
-                telaCadastroFuncionario.cboCargo.SelectedValue = dados[5].ToString();
-                telaCadastroFuncionario.txtUsuario.Text = dados[7].ToString();
-                telaCadastroFuncionario.txtSenha.Text = dados[8].ToString();
-                telaCadastroFuncionario.txtConfirmarSenha.Text = dados[8].ToString();
-                telaCadastroFuncionario.controladorTelaCadastroFuncionario().Atualizar();
-                telaCadastroFuncionario.ShowDialog();
-            }
+            Atualizar();
         }
 
         private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
             controladorTelaConsultaFuncionario().ValorKeyPress(sender, e);
+        }
+
+        private void dgvConsultaFuncionarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Atualizar();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            controladorTelaConsultaFuncionario().Remover();
         }
     }
 }

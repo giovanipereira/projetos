@@ -18,6 +18,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         private TextBox txtCodigo, txtNome, txtEmail, txtUsuario, txtSenha, txtConfirmarSenha;
         private ComboBox cboCargo, cboNivelAcesso;
         private MaskedTextBox mskCpf, mskTelefone;
+        private int id_usuario;
 
         RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
         Funcionario funcionario;
@@ -36,7 +37,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         public ControladorTelaCadastroFuncionario(TextBox txtCodigo, TextBox txtNome, TextBox txtEmail,
             TextBox txtUsuario, TextBox txtSenha, TextBox txtConfirmarSenha, ComboBox cboCargo,
             ComboBox cboNivelAcesso, MaskedTextBox mskCpf, MaskedTextBox mskTelefone, Button btnInserir,
-            Button btnSalvar, Button btnAtualizar, Button btnCancelar)
+            Button btnSalvar, Button btnAtualizar, Button btnCancelar, int id_usuario)
         {
             this.txtCodigo = txtCodigo;
             this.txtNome = txtNome;
@@ -52,6 +53,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             this.btnSalvar = btnSalvar;
             this.btnAtualizar = btnAtualizar;
             this.btnCancelar = btnCancelar;
+            this.id_usuario = id_usuario;
             AdicionarListaControles();
         }
 
@@ -69,7 +71,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             repositorioFuncionario.PreencherNivelAcesso(cboNivelAcesso);
         }
 
-        private Usuario CarregarUsuario(Usuario usuario)
+        private Usuario PreencherUsuario(Usuario usuario)
         {
             usuario.Nome = txtUsuario.Text;
             usuario.Senha = txtSenha.Text;
@@ -77,7 +79,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             return usuario;
         }
 
-        private Funcionario CarregarFuncionario(Funcionario funcionario)
+        private Funcionario PreencherFuncionario(Funcionario funcionario)
         {
             int id;
             funcionario.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
@@ -88,6 +90,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             mskTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             funcionario.Telefone = long.Parse(mskTelefone.Text);
             funcionario.Id_cargo = int.Parse(cboCargo.SelectedValue.ToString());
+            funcionario.Id_Usuario = id_usuario;
             return funcionario;
         }
 
@@ -95,10 +98,20 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             usuario = new Usuario();
             funcionario = new Funcionario();
-            usuario = CarregarUsuario(usuario);
-            funcionario = CarregarFuncionario(funcionario);
+            usuario = PreencherUsuario(usuario);
+            funcionario = PreencherFuncionario(funcionario);
             if (repositorioFuncionario.Salvar(funcionario, usuario))
                 Mensagem.MensagemSalvar();
+        }
+
+        private void AtualizarFuncionario()
+        {
+            usuario = new Usuario();
+            funcionario = new Funcionario();
+            usuario = PreencherUsuario(usuario);
+            funcionario = PreencherFuncionario(funcionario);
+            if (repositorioFuncionario.Atualizar(funcionario, usuario))
+                Mensagem.MensagemAtualizar();
         }
 
         #endregion
@@ -135,14 +148,24 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Event Functions
 
-        public void Load(int opcao)
+        public void PreencherCombobox()
         {
             PreencherCargo();
             PreencherNivelAcesso();
-            if (opcao.Equals((int)EnumOperationMode.Normal))
-                OperationMode((int)EnumOperationMode.Normal);
-            if (opcao.Equals((int)EnumOperationMode.Atualizar))
-                OperationMode((int)EnumOperationMode.Atualizar);
+        }
+
+        public void Load(int opcao)
+        {
+            switch (opcao)
+            {
+                case (int)EnumOperationMode.Normal:
+                    PreencherCombobox();
+                    OperationMode((int)EnumOperationMode.Normal);
+                    break;
+                case (int)EnumOperationMode.Atualizar:
+                    OperationMode((int)EnumOperationMode.Atualizar);
+                    break;
+            }
         }
 
         public void Salvar()
@@ -156,9 +179,10 @@ namespace ProjetoControleEstoque.Controller.controlador
             OperationMode((int)EnumOperationMode.Inserir);
         }
 
-        public void Atualizar()
+        public void Atualizar(Form form)
         {
-            Load((int)EnumOperationMode.Atualizar);
+            AtualizarFuncionario();
+            form.Close();
         }
 
         #endregion

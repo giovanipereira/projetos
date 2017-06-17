@@ -14,6 +14,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         protected Button btnInserir, btnSalvar, btnAtualizar, btnCancelar;
         protected List<Control> listaControles = new List<Control>();
+
         #endregion
 
         #region Declaration Public Abstract Methods
@@ -26,47 +27,34 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Protected Methods
 
-        // Função que controla o tipo de operação que o usuário executara
-        protected void OperationMode(int option)
+        protected void OperationMode(int opcao)
         {
-            // A variável option recebe um valor que pode ser standard, insert ou update
-            // Por padrão os botões de operação vem desabilitados
             btnInserir.Enabled = false;
             btnSalvar.Enabled = false;
             btnAtualizar.Enabled = false;
             btnCancelar.Enabled = false;
-            // Desabilitar todos os componentes
             HabilitarTodosCampos(false);
-            switch (option)
+            switch (opcao)
             {
-                // Se for standard
                 case 1:
-                    // Habilita os botões padrões
                     btnInserir.Enabled = true;
                     btnCancelar.Enabled = true;
-                    // Desabilita os componentes
                     HabilitarTodosCampos(false);
-                    // E limpa os componentes
                     LimparCampos();
                     break;
-                // Se for Insert
                 case 2:
-                    // Habilita os componentes para realizar a operação de salvar
                     btnSalvar.Enabled = true;
                     btnCancelar.Enabled = true;
-                    // Habilita os componentes
                     HabilitarTodosCampos(true);
                     break;
-                // Se for Update
                 case 3:
-                    // Habilita os componentes para realizar a operação de atualizar
                     btnAtualizar.Enabled = true;
                     btnCancelar.Enabled = true;
-                    // Habilita os componentes
                     HabilitarTodosCampos(true);
                     break;
             }
         }
+
         #endregion
 
     }
@@ -77,4 +65,5 @@ namespace ProjetoControleEstoque.Controller.controlador
         Inserir = 2,
         Atualizar = 3
     }
+
 }

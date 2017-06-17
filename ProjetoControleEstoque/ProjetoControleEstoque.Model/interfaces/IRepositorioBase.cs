@@ -10,9 +10,7 @@ namespace ProjetoControleEstoque.Model.interfaces
     public interface IRepositorioBase<T> where T : class
     {
         bool Salvar(T entidade);
-        bool Atualizar(T obj);
-        void Remover(T obj);
-        IList<T> ConsultarTodos();
-        //IEnumerable<T> Localizar(Expression<Func<T, bool>> predicate);
+        bool Atualizar(T entidade);
+        bool Remover(T entidade);
     }
 }

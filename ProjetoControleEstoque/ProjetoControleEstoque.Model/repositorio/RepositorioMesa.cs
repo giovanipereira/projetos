@@ -17,7 +17,7 @@ namespace ProjetoControleEstoque.Model.repositorio
             throw new NotImplementedException();
         }
 
-        public override void Remover(Mesa obj)
+        public override bool Remover(Mesa entidade)
         {
             throw new NotImplementedException();
         }

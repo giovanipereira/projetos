@@ -17,13 +17,12 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private TextBox txtCodigo, txtNome, txtValorUnitario, txtQuantidade, txtDescricao;
         private ComboBox cboFornecedor, cboUnidade, cboSubcategoria, cboCategoria;
-        private NumericUpDown nudQtdFornecidas, nudQtdMinima, nudQtdMaxima, nudQtdEstoque;
+        private NumericUpDown nudQtdMinima, nudQtdMaxima, nudQtdEstoque;
         private DateTimePicker dtpDataValidade;
 
-        // Declaração das classes 
-        ValidacaoProduto validacaoProduto;
-        Produto produto;
         RepositorioProduto repositorioProduto = new RepositorioProduto();
+        Produto produto;
+        ValidacaoProduto validacaoProduto;
 
         #endregion
 
@@ -36,8 +35,8 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public ControladorTelaCadastroProduto(TextBox txtCodigo, TextBox txtNome, TextBox txtValorUnitario,
             TextBox txtQuantidade, TextBox txtDescricao, ComboBox cboFornecedor, ComboBox cboUnidade,
-            ComboBox cboSubcategoria, ComboBox cboCategoria, 
-            NumericUpDown nudQtdFornecidas, NumericUpDown nudQtdEstoque,
+            ComboBox cboSubcategoria, ComboBox cboCategoria,
+            NumericUpDown nudQtdEstoque,
             NumericUpDown nudQtdMinima, NumericUpDown nudQtdMaxima, DateTimePicker mskDataValidade,
             Button btnInserir, Button btnSalvar, Button btnAtualizar, Button btnCancelar)
         {
@@ -50,7 +49,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             this.cboUnidade = cboUnidade;
             this.cboSubcategoria = cboSubcategoria;
             this.cboCategoria = cboCategoria;
-            this.nudQtdFornecidas = nudQtdFornecidas;
             this.nudQtdEstoque = nudQtdEstoque;
             this.nudQtdMinima = nudQtdMinima;
             this.nudQtdMaxima = nudQtdMaxima;
@@ -65,33 +63,6 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
-
-        private Produto CarregarProduto(Produto produto)
-        {
-            int id;
-            produto.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
-            produto.Nome = txtNome.Text;
-            produto.Id_unidade = int.Parse(cboUnidade.SelectedValue.ToString());
-            produto.Quantidade = txtQuantidade.Text;
-            produto.Vlunitario = txtValorUnitario.Text;
-            produto.Descricao = txtDescricao.Text;
-            produto.Qtd_estoque = int.Parse(nudQtdEstoque.Value.ToString());
-            produto.Qtd_minima = int.Parse(nudQtdMinima.Value.ToString());
-            produto.Qtd_maxima = int.Parse(nudQtdMaxima.Value.ToString());
-            produto.Qtd_fornecidas = int.Parse(nudQtdFornecidas.Value.ToString());
-            produto.Data_validade = DateTime.Parse(dtpDataValidade.Value.ToString());
-            produto.Id_fornecedor = int.Parse(cboFornecedor.SelectedValue.ToString());
-            produto.Id_subcategoria = int.Parse(cboSubcategoria.SelectedValue.ToString());
-            return produto;
-        }
-
-        private void SalvarProduto()
-        {
-            produto = new Produto();
-            produto = CarregarProduto(produto);
-            if (repositorioProduto.Salvar(produto))
-                Mensagem.MensagemSalvar();
-        }
 
         private void PreencherFornecedor()
         {
@@ -113,6 +84,40 @@ namespace ProjetoControleEstoque.Controller.controlador
             repositorioProduto.PreencherSubcategoria(cboSubcategoria, int.Parse(cboCategoria.SelectedValue.ToString()));
         }
 
+        private Produto PreencherProduto(Produto produto)
+        {
+            int id;
+            produto.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
+            produto.Nome = txtNome.Text;
+            produto.Id_unidade = int.Parse(cboUnidade.SelectedValue.ToString());
+            produto.Quantidade = txtQuantidade.Text;
+            produto.Vlunitario = txtValorUnitario.Text;
+            produto.Descricao = txtDescricao.Text;
+            if (cboUnidade.Text.Equals("Unidade"))
+                produto.Qtd_estoque = int.Parse(txtQuantidade.Text);
+            else
+                produto.Qtd_estoque = int.Parse(nudQtdEstoque.Value.ToString());
+            produto.Qtd_minima = int.Parse(nudQtdMinima.Value.ToString());
+            produto.Qtd_maxima = int.Parse(nudQtdMaxima.Value.ToString());
+            produto.Data_validade = DateTime.Parse(dtpDataValidade.Value.ToString());
+            produto.Id_fornecedor = int.Parse(cboFornecedor.SelectedValue.ToString());
+            produto.Id_subcategoria = int.Parse(cboSubcategoria.SelectedValue.ToString());
+            return produto;
+        }
+
+        private void SalvarProduto()
+        {
+            produto = new Produto();
+            produto = PreencherProduto(produto);
+            if (repositorioProduto.Salvar(produto))
+                Mensagem.MensagemSalvar();
+        }
+
+        private void AtualizarProduto()
+        {
+
+        }
+
         #endregion
 
         #region Abstracts Methods
@@ -121,6 +126,8 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             validacaoProduto.EnableControle(enable);
             txtCodigo.ReadOnly = true;
+            cboSubcategoria.Enabled = false;
+            txtQuantidade.ReadOnly = true;
         }
 
         public override void LimparCampos()
@@ -139,7 +146,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(cboUnidade);
             listaControles.Add(cboSubcategoria);
             listaControles.Add(cboCategoria);
-            listaControles.Add(nudQtdFornecidas);
             listaControles.Add(nudQtdMinima);
             listaControles.Add(nudQtdMaxima);
             listaControles.Add(dtpDataValidade);
@@ -151,12 +157,25 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Event Functions
 
-        public void Load()
+        public void PreencherCombobox()
         {
-            OperationMode((int)EnumOperationMode.Normal);
-            PreencherUnidade();
             PreencherFornecedor();
+            PreencherUnidade();
             PreencherCategoria();
+        }
+
+        public void Load(int opcao)
+        {
+            switch (opcao)
+            {
+                case (int)EnumOperationMode.Normal:
+                    PreencherCombobox();
+                    OperationMode((int)EnumOperationMode.Normal);
+                    break;
+                case (int)EnumOperationMode.Atualizar:
+                    OperationMode((int)EnumOperationMode.Atualizar);
+                    break;
+            }
         }
 
         public void Salvar()
@@ -170,24 +189,28 @@ namespace ProjetoControleEstoque.Controller.controlador
             OperationMode((int)EnumOperationMode.Inserir);
         }
 
-        public void Atualizar()
+        public void Atualizar(Form form)
         {
-            OperationMode((int)EnumOperationMode.Atualizar);
+            //Atualizar();
+            form.Close();
         }
 
         public void ValorUnitarioLeave()
         {
-            /*if (!txtValorUnitario.Text.Contains(".") && txtValorUnitario.Text.Equals(string.Empty))
+            if (!string.IsNullOrEmpty(txtValorUnitario.Text))
             {
-                txtValorUnitario.Text += "0.00";
+                if (!txtValorUnitario.Text.Contains(".") && txtValorUnitario.Text.Equals(string.Empty))
+                {
+                    txtValorUnitario.Text += "0.00";
+                }
+                if (!txtValorUnitario.Text.Contains("."))
+                {
+                    txtValorUnitario.Text += ".00";
+                }
+                else if (txtValorUnitario.Text.IndexOf(".") == txtValorUnitario.Text.Length - 1)
+                    txtValorUnitario.Text += "00";
             }
-            if (!txtValorUnitario.Text.Contains("."))
-            {
-                txtValorUnitario.Text += ".00";
-            }
-            else
-                 if (txtValorUnitario.Text.IndexOf(".") == txtValorUnitario.Text.Length - 1)
-                txtValorUnitario.Text += "00";*/
+
         }
 
         public void ValorUnitarioKeyPress(object sender, KeyPressEventArgs e)
@@ -208,21 +231,97 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void QuantidadeKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != txtQuantidade.MaxLength)
+            if (cboUnidade.Text != "Unidade")
             {
-                e.Handled = true;
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != '.')
+                {
+                    e.Handled = true;
+                }
+                if (e.KeyChar == '.')
+                {
+                    if (!txtQuantidade.Text.Contains("."))
+                    {
+                        e.KeyChar = '.';
+                    }
+                    else e.Handled = true;
+                }
+            }
+            else
+            {
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+                {
+                    e.Handled = true;
+                }
+            }
+
+        }
+
+        public void QuantidadeLeave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtQuantidade.Text))
+            {
+                if (cboUnidade.Text != "Unidade")
+                {
+                    if (!txtQuantidade.Text.Contains(".") && txtQuantidade.Text.Equals(string.Empty))
+                    {
+                        txtQuantidade.Text += "0.00";
+                    }
+                    if (!txtQuantidade.Text.Contains("."))
+                    {
+                        txtQuantidade.Text += ".00";
+                    }
+                    else
+                         if (txtQuantidade.Text.IndexOf(".") == txtQuantidade.Text.Length - 1)
+                        txtQuantidade.Text += "00";
+                }
             }
         }
 
         public void CategoriaLeave()
         {
-            try
-            {
-                PreencherSubcategoria();
-            }
-            catch
-            {
+            PreencherSubcategoria();
+        }
 
+        public void CategoriaTextChanged()
+        {
+            if (cboCategoria.Text != string.Empty)
+            {
+                cboSubcategoria.Enabled = true;
+                try
+                {
+                    PreencherSubcategoria();
+                }
+                catch
+                {
+                    cboSubcategoria.Text = null;
+                }
+
+            }
+            else
+            {
+                cboSubcategoria.Enabled = false;
+                cboSubcategoria.Text = null;
+            }
+
+        }
+
+        public void UnidadeTextChanged()
+        {
+            if (cboUnidade.Text.Equals(string.Empty))
+            {
+                txtQuantidade.ReadOnly = true;
+            }
+            else if (cboUnidade.Text != "Unidade")
+            {
+                txtQuantidade.Focus();
+                txtQuantidade.ReadOnly = false;
+                nudQtdEstoque.Value = 0;
+            }
+            else if (cboUnidade.Text.Equals("Unidade"))
+            {
+                txtQuantidade.Clear();
+                txtQuantidade.ReadOnly = true;
+                nudQtdEstoque.Enabled = true;
             }
         }
 

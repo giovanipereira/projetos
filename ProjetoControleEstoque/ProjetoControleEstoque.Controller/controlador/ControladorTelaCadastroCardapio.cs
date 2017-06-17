@@ -105,7 +105,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             if (dgvListaProdutos.Rows.Count > 0)
             {
-                if (Mensagem.MensagemQuestao("Tem certeza que deseja remover esse item?"))
+                if (Mensagem.MensagemQuestao("Tem certeza que deseja remover esse item?").Equals(DialogResult.Yes))
                     dgvListaProdutos.Rows.RemoveAt(dgvListaProdutos.CurrentRow.Index);
             }
         }

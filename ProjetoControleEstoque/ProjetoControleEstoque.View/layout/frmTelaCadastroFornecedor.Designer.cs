@@ -251,7 +251,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(34, 46);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(79, 22);
-            this.txtCodigo.TabIndex = 24;
+            this.txtCodigo.TabIndex = 35;
             // 
             // label4
             // 
@@ -390,26 +390,26 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.MaskedTextBox mskTelefone;
-        private System.Windows.Forms.MaskedTextBox mskCnpj;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboUf;
-        private System.Windows.Forms.MaskedTextBox mskCep;
-        private System.Windows.Forms.TextBox txtCidade;
-        private System.Windows.Forms.TextBox txtBairro;
-        private System.Windows.Forms.TextBox txtComplemento;
-        private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.MaskedTextBox mskTelefone;
+        public System.Windows.Forms.MaskedTextBox mskCnpj;
+        public System.Windows.Forms.TextBox txtEmail;
+        public System.Windows.Forms.TextBox txtNome;
+        public System.Windows.Forms.TextBox txtCodigo;
+        public System.Windows.Forms.ComboBox cboUf;
+        public System.Windows.Forms.MaskedTextBox mskCep;
+        public System.Windows.Forms.TextBox txtCidade;
+        public System.Windows.Forms.TextBox txtBairro;
+        public System.Windows.Forms.TextBox txtComplemento;
+        public System.Windows.Forms.TextBox txtEndereco;
     }
 }

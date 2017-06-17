@@ -9,18 +9,17 @@ namespace ProjetoControleEstoque.Controller.utility
 {
     public static class Mensagem
     { 
-
         public static void MensagemSalvar()
         {
             MessageBox.Show("Cadastrado com sucesso!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static bool MensagemQuestao(string message)
+        public static DialogResult MensagemQuestao(string mensagem)
         {
-            if (MessageBox.Show(message, "Mensagem", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                return true;
+            if (MessageBox.Show(mensagem, "Mensagem", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                return DialogResult.Yes;
             else
-                return false;
+                return DialogResult.No;
         }
 
         public static void MensagemExclusao()
@@ -30,12 +29,7 @@ namespace ProjetoControleEstoque.Controller.utility
 
         public static void MensagemAtualizar()
         {
-            MessageBox.Show("Atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        public static void MensagemObrigatoriedade()
-        {
-
+            MessageBox.Show("Atualizado com sucesso!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
     }

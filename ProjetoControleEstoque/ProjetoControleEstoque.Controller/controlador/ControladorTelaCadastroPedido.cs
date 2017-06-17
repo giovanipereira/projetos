@@ -70,7 +70,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             if (dgvConsulta.Rows.Count > 0)
             {
-                if (Mensagem.MensagemQuestao("Tem certeza que deseja remover esse item?")){
+                if (Mensagem.MensagemQuestao("Tem certeza que deseja remover esse item?").Equals(DialogResult.Yes)){
                     a.RemoveAll(p => p.Id == int.Parse((dgvConsulta.CurrentRow.Cells[0].Value.ToString())));
                     dgvConsulta.DataSource = a;
                 }

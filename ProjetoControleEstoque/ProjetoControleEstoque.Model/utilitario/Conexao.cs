@@ -15,11 +15,12 @@ namespace ProjetoControleEstoque.Model.utilitario
 
         public static void Open()
         {
-            if (connection.State == ConnectionState.Closed)
+            if (connection.State.Equals(ConnectionState.Closed))
             {
                 connection.Open();
             }
         }
+
         public static void Close()
         {
             if (connection.State != ConnectionState.Closed)

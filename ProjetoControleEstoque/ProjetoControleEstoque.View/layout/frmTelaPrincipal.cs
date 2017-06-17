@@ -49,13 +49,13 @@ namespace ProjetoControleEstoque.View.layout
 
         private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTelaCadastroFornecedor telaCadastroFornecedor = new frmTelaCadastroFornecedor();
+            frmTelaCadastroFornecedor telaCadastroFornecedor = new frmTelaCadastroFornecedor((int)EnumOpcao.Cadastro);
             telaCadastroFornecedor.ShowDialog();
         }
 
         private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTelaCadastroProduto telaCadastroProduto = new frmTelaCadastroProduto();
+            frmTelaCadastroProduto telaCadastroProduto = new frmTelaCadastroProduto((int)EnumOpcao.Cadastro);
             telaCadastroProduto.ShowDialog();
         }
 
@@ -91,6 +91,12 @@ namespace ProjetoControleEstoque.View.layout
         {
             frmTelaConsultaFuncionario telaConsultaFuncionario = new frmTelaConsultaFuncionario();
             telaConsultaFuncionario.ShowDialog();
+        }
+
+        private void fornecedorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmTelaConsultaFornecedor telaConsultaFornecedor = new frmTelaConsultaFornecedor();
+            telaConsultaFornecedor.ShowDialog();
         }
     }
 }

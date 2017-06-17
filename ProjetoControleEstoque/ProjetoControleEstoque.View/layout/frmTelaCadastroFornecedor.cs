@@ -13,12 +13,17 @@ namespace ProjetoControleEstoque.View.layout
 {
     public partial class frmTelaCadastroFornecedor : Form
     {
-        public frmTelaCadastroFornecedor()
+        public frmTelaCadastroFornecedor(int opcao)
         {
             InitializeComponent();
+            this.opcao = opcao;
+            if (opcao.Equals((int)EnumOpcao.Atualizar))
+                controladorTelaCadastroFornecedor().PreencherCombobox();
         }
 
-        ControladorTelaCadastroFornecedor controladorTelaCadastroFornecedor()
+        private int opcao;
+
+        public ControladorTelaCadastroFornecedor controladorTelaCadastroFornecedor()
         {
             ControladorTelaCadastroFornecedor controlador = new ControladorTelaCadastroFornecedor(txtCodigo,
                 txtNome, txtEmail, txtEndereco, txtComplemento, txtBairro, txtCidade, cboUf, mskCnpj, mskTelefone,
@@ -28,7 +33,10 @@ namespace ProjetoControleEstoque.View.layout
 
         private void frmTelaCadastroFornecedor_Load(object sender, EventArgs e)
         {
-            controladorTelaCadastroFornecedor().Load();
+            if (opcao.Equals((int)EnumOpcao.Cadastro))
+                controladorTelaCadastroFornecedor().Load((int)EnumOpcao.Cadastro);
+            else if (opcao.Equals((int)EnumOpcao.Atualizar))
+                controladorTelaCadastroFornecedor().Load((int)EnumOpcao.Atualizar);
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -43,15 +51,17 @@ namespace ProjetoControleEstoque.View.layout
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            controladorTelaCadastroFornecedor().Atualizar();
+            controladorTelaCadastroFornecedor().Atualizar(this);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (btnInserir.Enabled.Equals(true))
+            if (btnSalvar.Enabled.Equals(false))
+                this.Close();
+            else if (opcao.Equals((int)EnumOpcao.Atualizar))
                 this.Close();
             else
-                controladorTelaCadastroFornecedor().Load();
+                controladorTelaCadastroFornecedor().Load((int)EnumOpcao.Cadastro);
         }
     }
 }

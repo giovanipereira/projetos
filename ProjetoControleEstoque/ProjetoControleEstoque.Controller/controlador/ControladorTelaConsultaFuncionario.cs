@@ -1,4 +1,5 @@
-﻿using ProjetoControleEstoque.Model.dominio;
+﻿using ProjetoControleEstoque.Controller.utility;
+using ProjetoControleEstoque.Model.dominio;
 using ProjetoControleEstoque.Model.repositorio;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         IList<NivelAcesso> listaNiveisAcessos = new List<NivelAcesso>();
 
         RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario();
+        Funcionario funcionario;
 
         #endregion
 
@@ -45,35 +47,14 @@ namespace ProjetoControleEstoque.Controller.controlador
         }
         #endregion
 
+        #region Private Methods
+
         private void CarregarListas()
         {
             listaFuncionarios = repositorioFuncionario.CarregarFuncionarios();
             listaCargos = repositorioFuncionario.CarregarCargos();
             listaUsuarios = repositorioFuncionario.CarregarUsuarios();
             listaNiveisAcessos = repositorioFuncionario.CarregarNiveisAcessos();
-        }
-
-        private void TipoConsulta()
-        {
-            string opcao = cboConsultarPor.Text;
-            string valor = txtValor.Text;
-            switch (opcao)
-            {
-                case "Código":
-                    if (valor.Equals(string.Empty))
-                    {
-                        ListarFuncionarioPorNome(valor);
-                    }
-                    else
-                    {
-                        ListarFuncionarioPorId(int.Parse(valor));
-                    }
-                    break;
-
-                case "Nome":
-                    ListarFuncionarioPorNome(valor);
-                    break;
-            }
         }
 
         private void ListarFuncionarioPorNome(string nome)
@@ -143,14 +124,50 @@ namespace ProjetoControleEstoque.Controller.controlador
             dgvConsultaFuncionarios.DataSource = Query.ToList();
         }
 
-        private void LoadDatagridView()
+        private void TipoConsulta()
         {
-            ListarTodosFuncionarios();
+            string opcao = cboConsultarPor.Text;
+            string valor = txtValor.Text;
+
+            switch (opcao)
+            {
+                case "Código":
+                    if (valor.Equals(string.Empty))
+                    {
+                        ListarFuncionarioPorNome(valor);
+                    }
+                    else
+                    {
+                        ListarFuncionarioPorId(int.Parse(valor));
+                    }
+                    break;
+
+                case "Nome":
+                    ListarFuncionarioPorNome(valor);
+                    break;
+            }
         }
+
+        private void RemoverFuncionario()
+        {
+            CarregarListas();
+            funcionario = new Funcionario();
+            funcionario.Id = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
+            funcionario.Id_Usuario = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
+            if(Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+            {
+                repositorioFuncionario.Remover(funcionario);
+                Mensagem.MensagemExclusao();
+                ListarTodosFuncionarios();
+            }
+        }
+        #endregion
+
+        #region Event Functions
 
         public void Load()
         {
-            LoadDatagridView();
+            ListarTodosFuncionarios();
         }
 
         public void Consultar()
@@ -166,7 +183,13 @@ namespace ProjetoControleEstoque.Controller.controlador
             }
         }
 
-        public object[] Atualizar(int id)
+        public void ConsultarPorTextChanged()
+        {
+            txtValor.Enabled = true;
+            txtValor.Clear();
+        }
+
+        public object[] ObterDadosFuncionario(int id)
         {
             CarregarListas();
             var Query = from f in listaFuncionarios
@@ -183,13 +206,27 @@ namespace ProjetoControleEstoque.Controller.controlador
                             Telefone = f.Telefone,
                             Cargo = f.Id_cargo,
                             Nível = n.Id,
+                            Id_Usuario = f.Id_Usuario,
                             Usuário = u.Nome,
                             Senha = u.Senha,
                         };
             var funcionario = Query.FirstOrDefault(x => x.Id.Equals(id));
             object[] dados = { funcionario.Id, funcionario.Nome, funcionario.Cpf, funcionario.Email,
-                    funcionario.Telefone, funcionario.Cargo, funcionario.Nível, funcionario.Usuário, funcionario.Senha};
+                    funcionario.Telefone, funcionario.Cargo, funcionario.Nível, funcionario.Id_Usuario ,funcionario.Usuário, funcionario.Senha};
             return dados;
         }
+
+        public void ConsultarPorId(int id)
+        {
+            ListarFuncionarioPorId(id);
+        }
+
+        public void Remover()
+        {
+            RemoverFuncionario();
+        }
+
+        #endregion
+
     }
 }

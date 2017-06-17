@@ -17,15 +17,18 @@ namespace ProjetoControleEstoque.View.layout
         {
             InitializeComponent();
             this.opcao = opcao;
+            if (opcao.Equals((int)EnumOpcao.Atualizar))
+               controladorTelaCadastroFuncionario().PreencherCombobox();
         }
 
         private int opcao;
+        public int id_usuario;
 
         public ControladorTelaCadastroFuncionario controladorTelaCadastroFuncionario()
         {
             ControladorTelaCadastroFuncionario controlador = new ControladorTelaCadastroFuncionario(txtCodigo,
                 txtNome, txtEmail, txtUsuario, txtSenha, txtConfirmarSenha, cboCargo, cboNivelAcesso, mskCpf,
-                mskTelefone, btnInserir, btnSalvar, btnAtualizar, btnCancelar);
+                mskTelefone, btnInserir, btnSalvar, btnAtualizar, btnCancelar,id_usuario);
             return controlador;
         }
 
@@ -33,8 +36,7 @@ namespace ProjetoControleEstoque.View.layout
         {
             if (opcao.Equals((int)EnumOpcao.Cadastro))
                 controladorTelaCadastroFuncionario().Load((int)EnumOpcao.Cadastro);
-
-            if (opcao.Equals((int)EnumOpcao.Atualizar))
+            else if (opcao.Equals((int)EnumOpcao.Atualizar))
                 controladorTelaCadastroFuncionario().Load((int)EnumOpcao.Atualizar);
         }
 
@@ -50,19 +52,17 @@ namespace ProjetoControleEstoque.View.layout
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            controladorTelaCadastroFuncionario().Atualizar();
+            controladorTelaCadastroFuncionario().Atualizar(this);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            {
-                if (btnSalvar.Enabled.Equals(false))
-                    this.Close();
-                else if (opcao.Equals((int)EnumOpcao.Atualizar))
-                    this.Close();
-                else
+            if (btnSalvar.Enabled.Equals(false))
+                this.Close();
+            else if (opcao.Equals((int)EnumOpcao.Atualizar))
+                this.Close();
+            else
                 controladorTelaCadastroFuncionario().Load((int)EnumOpcao.Cadastro);
-            }
         }
     }
 
@@ -71,4 +71,5 @@ namespace ProjetoControleEstoque.View.layout
         Cadastro = 1,
         Atualizar = 3
     }
+
 }

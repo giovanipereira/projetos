@@ -8,20 +8,134 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq.Expressions;
 
 namespace ProjetoControleEstoque.Model.repositorio
 {
     public class RepositorioFuncionario : RepositorioBase<Funcionario>
     {
 
+        #region Abstract Methods
+
         public override bool Atualizar(Funcionario funcionario)
         {
-            return true;
+            throw new NotImplementedException();
         }
 
-        public override void Remover(Funcionario funcionario)
+        public override bool Salvar(Funcionario funcionario)
         {
             throw new NotImplementedException();
+        }
+
+        public override bool Remover(Funcionario funcionario)
+        {
+            SqlTransaction transacao = null;
+            bool retorno = false;
+            try
+            {
+                Conexao.Open();
+                transacao = Conexao.connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("proc_del_funcionario", Conexao.connection, transacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@id_fun", SqlDbType.Int)).Value = funcionario.Id;
+                cmd.Parameters.Add(new SqlParameter("@id_usu", SqlDbType.Int)).Value = funcionario.Id_Usuario;
+                cmd.ExecuteNonQuery();
+                transacao.Commit();
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                if (transacao != null)
+                    transacao.Rollback();
+                retorno = false;
+                throw e;
+            }
+            finally
+            {
+                Conexao.Close();
+            }
+            return retorno;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public bool Atualizar(Funcionario funcionario, Usuario usuario)
+        {
+            SqlTransaction transacao = null;
+            bool retorno = false;
+            try
+            {
+                Conexao.Open();
+                transacao = Conexao.connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("proc_upd_funcionario", Conexao.connection, transacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@id_fun", SqlDbType.Int)).Value = funcionario.Id;
+                cmd.Parameters.Add(new SqlParameter("@nome_fun", SqlDbType.VarChar)).Value = funcionario.Nome;
+                cmd.Parameters.Add(new SqlParameter("@cpf_fun", SqlDbType.BigInt)).Value = funcionario.Cpf;
+                cmd.Parameters.Add(new SqlParameter("@email_fun", SqlDbType.VarChar)).Value = funcionario.Email;
+                cmd.Parameters.Add(new SqlParameter("@telefone_fun", SqlDbType.BigInt)).Value = funcionario.Telefone;
+                cmd.Parameters.Add(new SqlParameter("@id_car", SqlDbType.Int)).Value = funcionario.Id_cargo;
+                cmd.Parameters.Add(new SqlParameter("@id_usu", SqlDbType.Int)).Value = funcionario.Id_Usuario ;
+                cmd.Parameters.Add(new SqlParameter("@nome_usu", SqlDbType.VarChar)).Value = usuario.Nome;
+                cmd.Parameters.Add(new SqlParameter("@senha_usu", SqlDbType.VarChar)).Value = usuario.Senha;
+                cmd.Parameters.Add(new SqlParameter("@id_niv", SqlDbType.Int)).Value = usuario.Id_nivel_acesso;
+                cmd.ExecuteNonQuery();
+                transacao.Commit();
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                if (transacao != null)
+                    transacao.Rollback();
+                retorno = false;
+                throw e;
+            }
+            finally
+            {
+                Conexao.Close();
+            }
+            return retorno;
+        }
+
+        public bool Salvar(Funcionario funcionario, Usuario usuario)
+        {
+            SqlTransaction transacao = null;
+            bool retorno = false;
+            try
+            {
+                Conexao.Open();
+                transacao = Conexao.connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("proc_ins_funcionario", Conexao.connection, transacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@nome_fun", SqlDbType.VarChar)).Value = funcionario.Nome;
+                cmd.Parameters.Add(new SqlParameter("@cpf_fun", SqlDbType.BigInt)).Value = funcionario.Cpf;
+                cmd.Parameters.Add(new SqlParameter("@email_fun", SqlDbType.VarChar)).Value = funcionario.Email;
+                cmd.Parameters.Add(new SqlParameter("@telefone_fun", SqlDbType.BigInt)).Value = funcionario.Telefone;
+                cmd.Parameters.Add(new SqlParameter("@id_car", SqlDbType.Int)).Value = funcionario.Id_cargo;
+                cmd.Parameters.Add(new SqlParameter("@nome_usu", SqlDbType.VarChar)).Value = usuario.Nome;
+                cmd.Parameters.Add(new SqlParameter("@senha_usu", SqlDbType.VarChar)).Value = usuario.Senha;
+                cmd.Parameters.Add(new SqlParameter("@id_niv", SqlDbType.Int)).Value = usuario.Id_nivel_acesso;
+                cmd.ExecuteNonQuery();
+                transacao.Commit();
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                if (transacao != null)
+                    transacao.Rollback();
+                retorno = false;
+                throw e;
+            }
+            finally
+            {
+                Conexao.Close();
+            }
+            return retorno;
         }
 
         public IList<NivelAcesso> CarregarNiveisAcessos()
@@ -38,7 +152,6 @@ namespace ProjetoControleEstoque.Model.repositorio
                     nivelAcesso = new NivelAcesso();
                     nivelAcesso.Id = (int)(dr[0]);
                     nivelAcesso.Nome = (dr[1]).ToString();
-
                     listaNiveisAcessos.Add(nivelAcesso);
                 }
             }
@@ -62,7 +175,6 @@ namespace ProjetoControleEstoque.Model.repositorio
                     usuario.Nome = (dr[1]).ToString();
                     usuario.Senha = (dr[2]).ToString();
                     usuario.Id_nivel_acesso = (int)(dr[3]);
-
                     listaUsuarios.Add(usuario);
                 }
             }
@@ -117,48 +229,6 @@ namespace ProjetoControleEstoque.Model.repositorio
             return listaFuncionarios;
         }
 
-        public override bool Salvar(Funcionario funcionario)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Salvar(Funcionario funcionario, Usuario usuario)
-        {
-            SqlTransaction transacao = null;
-            bool retorno = false;
-            try
-            {
-                Conexao.Open();
-                transacao = Conexao.connection.BeginTransaction();
-                SqlCommand cmd = new SqlCommand("proc_ins_funcionario", Conexao.connection, transacao);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Clear();
-                cmd.Parameters.Add(new SqlParameter("@nome_fun", SqlDbType.VarChar)).Value = funcionario.Nome;
-                cmd.Parameters.Add(new SqlParameter("@cpf_fun", SqlDbType.BigInt)).Value = funcionario.Cpf;
-                cmd.Parameters.Add(new SqlParameter("@email_fun", SqlDbType.VarChar)).Value = funcionario.Email;
-                cmd.Parameters.Add(new SqlParameter("@telefone_fun", SqlDbType.BigInt)).Value = funcionario.Telefone;
-                cmd.Parameters.Add(new SqlParameter("@id_car", SqlDbType.Int)).Value = funcionario.Id_cargo;
-                cmd.Parameters.Add(new SqlParameter("@nome_usu", SqlDbType.VarChar)).Value = usuario.Nome;
-                cmd.Parameters.Add(new SqlParameter("@senha_usu", SqlDbType.VarChar)).Value = usuario.Senha;
-                cmd.Parameters.Add(new SqlParameter("@id_niv", SqlDbType.Int)).Value = usuario.Id_nivel_acesso;
-                cmd.ExecuteNonQuery();
-                transacao.Commit();
-                retorno = true;
-            }
-            catch (Exception e)
-            {
-                if (transacao != null)
-                    transacao.Rollback();
-                retorno = false;
-                throw e;
-            }
-            finally
-            {
-                Conexao.Close();
-            }
-            return retorno;
-        }
-
         public void PreencherCargo(ComboBox combobox)
         {
             SqlCommand cmd = new SqlCommand("select id_car,nome_car from cargo order by nome_car asc", Conexao.connection);
@@ -180,5 +250,8 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.ValueMember = "id_niv";
             combobox.DisplayMember = "nome_niv";
         }
+
+        #endregion
+
     }
 }

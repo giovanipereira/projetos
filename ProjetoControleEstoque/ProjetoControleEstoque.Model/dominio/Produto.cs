@@ -17,13 +17,12 @@ namespace ProjetoControleEstoque.Model.dominio
         private string quantidade;
         private DateTime data_validade;
         private string descricao;
-        private int qtd_fornecidas;
         private int id_unidade;
         private int id_fornecedor;
         private int id_subcategoria;
-        //public virtual Fornecedor Fornecedor { get; set; }
-        //public virtual Subcategoria Subcategoria { get; set; }
-        //public virtual Unidade Unidade { get; set; }
+        public virtual Fornecedor Fornecedor { get; set; }
+        public virtual Subcategoria Subcategoria { get; set; }
+        public virtual Unidade Unidade { get; set; }
 
         public int Id
         {
@@ -77,12 +76,6 @@ namespace ProjetoControleEstoque.Model.dominio
         {
             get { return this.descricao; }
             set { this.descricao = value; }
-        }
-
-        public int Qtd_fornecidas
-        {
-            get { return this.qtd_fornecidas; }
-            set { this.qtd_fornecidas = value; }
         }
 
         public int Id_unidade

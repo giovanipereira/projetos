@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controlador\ControladorBase.cs" />
+    <Compile Include="controlador\ControladorTelaConsultaFornecedor.cs" />
     <Compile Include="controlador\ControladorTelaConsultaFuncionario.cs" />
     <Compile Include="controlador\ControladorTelaCadastroCardapio.cs" />
     <Compile Include="controlador\ControladorTelaCadastroFornecedor.cs" />

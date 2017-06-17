@@ -18,10 +18,6 @@ namespace ProjetoControleEstoque.Model.repositorio
             throw new NotImplementedException();
         }
 
-        public override void Remover(Subcategoria obj)
-        {
-            throw new NotImplementedException();
-        }
 
         public override bool Salvar(Subcategoria subcategoria)
         {
@@ -64,6 +60,11 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.ValueMember = "id_cat";
             combobox.DisplayMember = "nome_cat";
             combobox.SelectedValue = 0;
+        }
+
+        public override bool Remover(Subcategoria entidade)
+        {
+            throw new NotImplementedException();
         }
     }
 }

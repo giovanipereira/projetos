@@ -10,7 +10,7 @@ namespace ProjetoControleEstoque.Model.dominio
     {
         private int id;
         private string nome;
-        //public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; }
 
         public int Id
         {

@@ -114,10 +114,13 @@
             this.dgvConsultaProdutos.AllowUserToDeleteRows = false;
             this.dgvConsultaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultaProdutos.Location = new System.Drawing.Point(12, 145);
+            this.dgvConsultaProdutos.MultiSelect = false;
             this.dgvConsultaProdutos.Name = "dgvConsultaProdutos";
             this.dgvConsultaProdutos.ReadOnly = true;
+            this.dgvConsultaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConsultaProdutos.Size = new System.Drawing.Size(735, 290);
             this.dgvConsultaProdutos.TabIndex = 2;
+            this.dgvConsultaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsultaProdutos_CellDoubleClick);
             // 
             // btnAtualizar
             // 
@@ -127,6 +130,7 @@
             this.btnAtualizar.TabIndex = 3;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // btnExcluir
             // 

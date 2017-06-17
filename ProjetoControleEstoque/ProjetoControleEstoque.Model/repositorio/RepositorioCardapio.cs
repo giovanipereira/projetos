@@ -18,11 +18,6 @@ namespace ProjetoControleEstoque.Model.repositorio
             throw new NotImplementedException();
         }
 
-        public override void Remover(Cardapio obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public override bool Salvar(Cardapio cardapio)
         {
             SqlTransaction transacao = null;
@@ -68,6 +63,12 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.ValueMember = "id_cat";
             combobox.DisplayMember = "nome_cat";
             combobox.SelectedValue = 0;
+        }
+
+
+        public override bool Remover(Cardapio entidade)
+        {
+            throw new NotImplementedException();
         }
     }
 }
