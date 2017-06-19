@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
@@ -50,10 +50,6 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.dgvListaProdutos = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEditarItem = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -141,18 +137,18 @@
             this.picFigura.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.picFigura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picFigura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFigura.Location = new System.Drawing.Point(544, 17);
+            this.picFigura.Location = new System.Drawing.Point(530, 17);
             this.picFigura.Name = "picFigura";
-            this.picFigura.Size = new System.Drawing.Size(165, 115);
+            this.picFigura.Size = new System.Drawing.Size(185, 115);
             this.picFigura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFigura.TabIndex = 8;
             this.picFigura.TabStop = false;
             // 
             // btnEscolher
             // 
-            this.btnEscolher.Location = new System.Drawing.Point(533, 145);
+            this.btnEscolher.Location = new System.Drawing.Point(530, 138);
             this.btnEscolher.Name = "btnEscolher";
-            this.btnEscolher.Size = new System.Drawing.Size(92, 24);
+            this.btnEscolher.Size = new System.Drawing.Size(95, 31);
             this.btnEscolher.TabIndex = 9;
             this.btnEscolher.Text = "Selecionar";
             this.btnEscolher.UseVisualStyleBackColor = true;
@@ -160,9 +156,9 @@
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(631, 145);
+            this.btnRemover.Location = new System.Drawing.Point(629, 138);
             this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(87, 24);
+            this.btnRemover.Size = new System.Drawing.Size(95, 31);
             this.btnRemover.TabIndex = 10;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
@@ -265,57 +261,24 @@
             this.dgvListaProdutos.AllowUserToAddRows = false;
             this.dgvListaProdutos.AllowUserToDeleteRows = false;
             this.dgvListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.Nome,
-            this.Unidade,
-            this.Quantidade});
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaProdutos.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaProdutos.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaProdutos.Location = new System.Drawing.Point(20, 237);
             this.dgvListaProdutos.MultiSelect = false;
             this.dgvListaProdutos.Name = "dgvListaProdutos";
             this.dgvListaProdutos.ReadOnly = true;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaProdutos.Size = new System.Drawing.Size(727, 147);
             this.dgvListaProdutos.TabIndex = 28;
             this.dgvListaProdutos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvListaProdutos_RowsAdded);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Código";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 110;
-            // 
-            // Nome
-            // 
-            this.Nome.HeaderText = "Produto";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 262;
-            // 
-            // Unidade
-            // 
-            this.Unidade.HeaderText = "Unidade";
-            this.Unidade.Name = "Unidade";
-            this.Unidade.ReadOnly = true;
-            this.Unidade.Width = 180;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.HeaderText = "Quantidade";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            this.Quantidade.Width = 130;
             // 
             // btnEditarItem
             // 
@@ -423,10 +386,6 @@
         private System.Windows.Forms.Button btnRemoverItem;
         public System.Windows.Forms.DataGridView dgvListaProdutos;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel1;
     }

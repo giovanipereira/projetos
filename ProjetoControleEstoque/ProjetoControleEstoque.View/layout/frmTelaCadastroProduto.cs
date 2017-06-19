@@ -13,15 +13,20 @@ namespace ProjetoControleEstoque.View.layout
 {
     public partial class frmTelaCadastroProduto : Form
     {
-        public frmTelaCadastroProduto(int opcao)
+        public frmTelaCadastroProduto(int opcao, int id_sub)
         {
             InitializeComponent();
             this.opcao = opcao;
+            this.id_sub = id_sub;
             if (opcao.Equals((int)EnumOpcao.Atualizar))
+            {
                 controladorTelaCadastroProduto().PreencherCombobox();
+            }
+
         }
 
         private int opcao;
+        private int id_sub;
 
         public ControladorTelaCadastroProduto controladorTelaCadastroProduto()
         {
@@ -35,9 +40,13 @@ namespace ProjetoControleEstoque.View.layout
         private void frmTelaCadastroProduto_Load(object sender, EventArgs e)
         {
             if (opcao.Equals((int)EnumOpcao.Cadastro))
-                controladorTelaCadastroProduto().Load((int)EnumOpcao.Cadastro);
+                controladorTelaCadastroProduto().Load((int)EnumOpcao.Cadastro,1);
             else if (opcao.Equals((int)EnumOpcao.Atualizar))
-                controladorTelaCadastroProduto().Load((int)EnumOpcao.Atualizar);
+            {
+                controladorTelaCadastroProduto().PreencherSubcategoria();
+                controladorTelaCadastroProduto().Load((int)EnumOpcao.Atualizar, id_sub);
+            }
+
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -62,7 +71,7 @@ namespace ProjetoControleEstoque.View.layout
             else if (opcao.Equals((int)EnumOpcao.Atualizar))
                 this.Close();
             else
-                controladorTelaCadastroProduto().Load((int)EnumOpcao.Cadastro);
+                controladorTelaCadastroProduto().Load((int)EnumOpcao.Cadastro,1);
         }
 
         private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)

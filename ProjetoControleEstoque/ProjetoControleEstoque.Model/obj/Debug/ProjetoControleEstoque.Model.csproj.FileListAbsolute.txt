@@ -14,4 +14,3 @@ C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoContr
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\bin\Debug\ProjetoControleEstoque.Model.pdb
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.dll
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.pdb
-C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.Model\obj\Debug\ProjetoControleEstoque.Model.csprojResolveAssemblyReference.cache

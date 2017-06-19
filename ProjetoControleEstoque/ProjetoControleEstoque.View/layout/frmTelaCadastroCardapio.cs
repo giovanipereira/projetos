@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjetoControleEstoque.Controller.controlador;
+using ProjetoControleEstoque.Model.dominio;
 
 namespace ProjetoControleEstoque.View.layout
 {
@@ -18,6 +19,9 @@ namespace ProjetoControleEstoque.View.layout
             InitializeComponent();
         }
 
+        public object[] dados;
+        public string quantidade;
+
         ControladorTelaCadastroCardapio controladorTelaCadastroCardapio()
         {
             ControladorTelaCadastroCardapio controlador = new ControladorTelaCadastroCardapio(txtCodigo,
@@ -27,7 +31,14 @@ namespace ProjetoControleEstoque.View.layout
             return controlador;
         }
 
+        List<ItemCardapio> listaItens = new List<ItemCardapio>();
         frmTelaConsultaProduto telaConsultaProduto;
+        frmTelaCardapioItem telaCardapioItem;
+
+        public void ObterQuantidade(string quantidade)
+        {
+            
+        }
 
         private void frmTelaCadastroCardapio_Load(object sender, EventArgs e)
         {
@@ -62,7 +73,21 @@ namespace ProjetoControleEstoque.View.layout
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             telaConsultaProduto = new frmTelaConsultaProduto();
-            controladorTelaCadastroCardapio().SelecionarProduto(telaConsultaProduto);
+            telaConsultaProduto.telaCadastroCardapio = this;
+            telaConsultaProduto.ShowDialog();
+            telaCardapioItem = new frmTelaCardapioItem();
+            telaCardapioItem.telaCadastroCardapio = this;
+            telaCardapioItem.txtCodigoProduto.Text = dados[0].ToString();
+            telaCardapioItem.txtNomeProduto.Text = dados[1].ToString();
+            telaCardapioItem.cboUnidadeProduto.Text = dados[11].ToString();
+            telaCardapioItem.ShowDialog();
+            ItemCardapio item = new ItemCardapio();
+            item.Id_produto = (int)dados[0];
+            item.Nome = dados[1].ToString();
+            item.Unidade = dados[11].ToString();
+            item.Quantidade = quantidade;
+            listaItens.Add(item);
+            dgvListaProdutos.DataSource = listaItens;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

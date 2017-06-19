@@ -10,7 +10,7 @@ namespace ProjetoControleEstoque.Model.dominio
     {
         private int id;
         private string nome;
-        private decimal preco;
+        private string preco;
         private string figura;
         private string descricao;
         private int id_categoria;
@@ -28,7 +28,7 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.nome = value; }
         }
 
-        public decimal Preco
+        public string Preco
         {
             get { return this.preco; }
             set { this.preco = value; }

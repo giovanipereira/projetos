@@ -69,7 +69,8 @@ namespace ProjetoControleEstoque.View.layout
     public enum EnumOpcao
     {
         Cadastro = 1,
-        Atualizar = 3
+        Atualizar = 3,
+        Adicionar = 4
     }
 
 }

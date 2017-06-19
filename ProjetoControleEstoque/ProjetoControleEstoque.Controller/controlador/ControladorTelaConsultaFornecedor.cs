@@ -137,6 +137,10 @@ namespace ProjetoControleEstoque.Controller.controlador
                 case "Nome":
                     ListarFornecedorPorNome(valor);
                     break;
+
+                default:
+                    ListarTodosFornecedores();
+                    break;
             }
         }
 

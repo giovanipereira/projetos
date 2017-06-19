@@ -113,7 +113,7 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(12, 244);
+            this.btnAdicionar.Location = new System.Drawing.Point(24, 244);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(118, 29);
             this.btnAdicionar.TabIndex = 40;
@@ -123,7 +123,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(177, 244);
+            this.btnAtualizar.Location = new System.Drawing.Point(186, 244);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(118, 29);
             this.btnAtualizar.TabIndex = 41;
@@ -152,7 +152,7 @@
             this.panel.Controls.Add(this.txtQuantidadeProduto);
             this.panel.Location = new System.Drawing.Point(12, 12);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(449, 203);
+            this.panel.Size = new System.Drawing.Size(449, 211);
             this.panel.TabIndex = 43;
             // 
             // frmTelaCardapioItem
@@ -176,18 +176,17 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cboUnidadeProduto;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label Label10;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtQuantidadeProduto;
-        private System.Windows.Forms.TextBox txtNomeProduto;
-        private System.Windows.Forms.TextBox txtCodigoProduto;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel;
+        public System.Windows.Forms.ComboBox cboUnidadeProduto;
+        public System.Windows.Forms.TextBox txtQuantidadeProduto;
+        public System.Windows.Forms.TextBox txtNomeProduto;
+        public System.Windows.Forms.TextBox txtCodigoProduto;
     }
 }

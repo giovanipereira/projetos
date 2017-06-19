@@ -145,7 +145,7 @@
             // 
             this.nudQtdEstoque.Location = new System.Drawing.Point(282, 112);
             this.nudQtdEstoque.Maximum = new decimal(new int[] {
-            5000,
+            100000000,
             0,
             0,
             0});
@@ -197,7 +197,7 @@
             this.nudQtdMaxima.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudQtdMaxima.Location = new System.Drawing.Point(560, 111);
             this.nudQtdMaxima.Maximum = new decimal(new int[] {
-            5000,
+            100000000,
             0,
             0,
             0});
@@ -210,7 +210,7 @@
             this.nudQtdMinima.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudQtdMinima.Location = new System.Drawing.Point(560, 47);
             this.nudQtdMinima.Maximum = new decimal(new int[] {
-            4999,
+            99999999,
             0,
             0,
             0});

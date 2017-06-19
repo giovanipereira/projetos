@@ -145,6 +145,10 @@ namespace ProjetoControleEstoque.Controller.controlador
                 case "Nome":
                     ListarFuncionarioPorNome(valor);
                     break;
+
+                default:
+                    ListarTodosFuncionarios();
+                    break;
             }
         }
 

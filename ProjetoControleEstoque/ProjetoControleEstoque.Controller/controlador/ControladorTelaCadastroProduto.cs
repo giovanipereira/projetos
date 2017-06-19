@@ -79,7 +79,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             repositorioProduto.PreencherCategoria(cboCategoria);
         }
 
-        private void PreencherSubcategoria()
+        public void PreencherSubcategoria()
         {
             repositorioProduto.PreencherSubcategoria(cboSubcategoria, int.Parse(cboCategoria.SelectedValue.ToString()));
         }
@@ -90,13 +90,15 @@ namespace ProjetoControleEstoque.Controller.controlador
             produto.Id = int.TryParse(txtCodigo.Text, out id) ? id : 0;
             produto.Nome = txtNome.Text;
             produto.Id_unidade = int.Parse(cboUnidade.SelectedValue.ToString());
-            produto.Quantidade = txtQuantidade.Text;
-            produto.Vlunitario = txtValorUnitario.Text;
+            produto.Vlunitario = txtValorUnitario.Text.Replace(",", ".");
             produto.Descricao = txtDescricao.Text;
             if (cboUnidade.Text.Equals("Unidade"))
-                produto.Qtd_estoque = int.Parse(txtQuantidade.Text);
+                produto.Quantidade = nudQtdEstoque.Value.ToString();
             else
-                produto.Qtd_estoque = int.Parse(nudQtdEstoque.Value.ToString());
+            {
+                produto.Quantidade = txtQuantidade.Text.Replace(",", ".");
+            }
+            produto.Qtd_estoque = int.Parse(nudQtdEstoque.Value.ToString());
             produto.Qtd_minima = int.Parse(nudQtdMinima.Value.ToString());
             produto.Qtd_maxima = int.Parse(nudQtdMaxima.Value.ToString());
             produto.Data_validade = DateTime.Parse(dtpDataValidade.Value.ToString());
@@ -115,7 +117,10 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private void AtualizarProduto()
         {
-
+            produto = new Produto();
+            produto = PreencherProduto(produto);
+            if (repositorioProduto.Atualizar(produto))
+                Mensagem.MensagemAtualizar();
         }
 
         #endregion
@@ -164,7 +169,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             PreencherCategoria();
         }
 
-        public void Load(int opcao)
+        public void Load(int opcao, int id_sub)
         {
             switch (opcao)
             {
@@ -174,6 +179,10 @@ namespace ProjetoControleEstoque.Controller.controlador
                     break;
                 case (int)EnumOperationMode.Atualizar:
                     OperationMode((int)EnumOperationMode.Atualizar);
+                    cboSubcategoria.Enabled = true;
+                    cboSubcategoria.SelectedValue = id_sub;
+                    if (cboUnidade.Text != "Unidade")
+                        txtQuantidade.ReadOnly = false;
                     break;
             }
         }
@@ -191,7 +200,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Atualizar(Form form)
         {
-            //Atualizar();
+            AtualizarProduto();
             form.Close();
         }
 
@@ -199,15 +208,15 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             if (!string.IsNullOrEmpty(txtValorUnitario.Text))
             {
-                if (!txtValorUnitario.Text.Contains(".") && txtValorUnitario.Text.Equals(string.Empty))
+                if (!txtValorUnitario.Text.Replace(",",".").Contains(".") && txtValorUnitario.Text.Equals(string.Empty))
                 {
                     txtValorUnitario.Text += "0.00";
                 }
-                if (!txtValorUnitario.Text.Contains("."))
+                if (!txtValorUnitario.Text.Replace(",", ".").Contains("."))
                 {
                     txtValorUnitario.Text += ".00";
                 }
-                else if (txtValorUnitario.Text.IndexOf(".") == txtValorUnitario.Text.Length - 1)
+                else if (txtValorUnitario.Text.Replace(",", ".").IndexOf(".") == txtValorUnitario.Text.Length - 1)
                     txtValorUnitario.Text += "00";
             }
 
@@ -262,16 +271,16 @@ namespace ProjetoControleEstoque.Controller.controlador
             {
                 if (cboUnidade.Text != "Unidade")
                 {
-                    if (!txtQuantidade.Text.Contains(".") && txtQuantidade.Text.Equals(string.Empty))
+                    if (!txtQuantidade.Text.Replace(",", ".").Contains(".") && txtQuantidade.Text.Equals(string.Empty))
                     {
                         txtQuantidade.Text += "0.00";
                     }
-                    if (!txtQuantidade.Text.Contains("."))
+                    if (!txtQuantidade.Text.Replace(",", ".").Contains("."))
                     {
                         txtQuantidade.Text += ".00";
                     }
                     else
-                         if (txtQuantidade.Text.IndexOf(".") == txtQuantidade.Text.Length - 1)
+                         if (txtQuantidade.Text.Replace(",", ".").IndexOf(".") == txtQuantidade.Text.Length - 1)
                         txtQuantidade.Text += "00";
                 }
             }
@@ -295,14 +304,12 @@ namespace ProjetoControleEstoque.Controller.controlador
                 {
                     cboSubcategoria.Text = null;
                 }
-
             }
             else
             {
                 cboSubcategoria.Enabled = false;
                 cboSubcategoria.Text = null;
             }
-
         }
 
         public void UnidadeTextChanged()
@@ -315,7 +322,6 @@ namespace ProjetoControleEstoque.Controller.controlador
             {
                 txtQuantidade.Focus();
                 txtQuantidade.ReadOnly = false;
-                nudQtdEstoque.Value = 0;
             }
             else if (cboUnidade.Text.Equals("Unidade"))
             {

@@ -1,5 +1,6 @@
 ﻿using ProjetoControleEstoque.Controller.utility;
 using ProjetoControleEstoque.Controller.validacao;
+using ProjetoControleEstoque.Model.dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,20 @@ using System.Windows.Forms;
 
 namespace ProjetoControleEstoque.Controller.controlador
 {
-    public class ControladorTelaCardapioItem
+    public class ControladorTelaCardapioItem : ControladorBase
     {
         #region Declaration
-        ValidacaoProduto validacao;
 
         private TextBox txtCodigoProduto, txtNomeProduto, txtQuantidadeProduto;
         private ComboBox cboUnidadeProduto;
-        private Button btnAdicionar, btnAtualizar, btnCancelar;
+        private Button btnAdicionar;
 
-        private List<Control> listControls = new List<Control>();
+        //ItemCardapio itemCardapio;
+        ValidacaoProduto validacao;
 
         #endregion
+
+        #region Constructors
 
         public ControladorTelaCardapioItem()
         {
@@ -37,40 +40,39 @@ namespace ProjetoControleEstoque.Controller.controlador
             this.btnAdicionar = btnAdicionar;
             this.btnAtualizar = btnAtualizar;
             this.btnCancelar = btnCancelar;
-            AddList();
+            AdicionarListaControles();
         }
 
-        // Função que adiciona os componentes ao list e inicia o objeto validacao
-        public void AddList()
+        #endregion
+
+        #region Private Methods
+
+        #endregion
+
+        #region Abstracts Methods
+
+        public override void HabilitarTodosCampos(bool enable)
         {
-            listControls.Add(txtCodigoProduto);
-            listControls.Add(txtNomeProduto);
-            listControls.Add(cboUnidadeProduto);
-            validacao = new ValidacaoProduto(listControls);
+            txtCodigoProduto.ReadOnly = true;
+            txtNomeProduto.ReadOnly = true;
+            cboUnidadeProduto.Enabled = false;
         }
 
-        // Função que desabilita os componentes
-        private void EnableAll()
+        public override void LimparCampos()
         {
-            validacao.EnableControle(false);
+            throw new NotImplementedException();
         }
 
-        // Função para o evento load que desabilita os componentes
-        public void Load()
+        public override void AdicionarListaControles()
         {
-            EnableAll();
+            listaControles.Add(txtCodigoProduto);
+            listaControles.Add(txtNomeProduto);
+            listaControles.Add(cboUnidadeProduto);
+            validacao = new ValidacaoProduto(listaControles);
         }
 
-        public object[] AddItem()
-        {
-            object[] item = { txtCodigoProduto.Text, txtNomeProduto.Text, cboUnidadeProduto.Text, txtQuantidadeProduto.Text,  };
-            return item;
-        }
+        #endregion
 
-        // Função que atualiza o item do cardápio
-        public void UpdateItem()
-        {
 
-        }
     }
 }

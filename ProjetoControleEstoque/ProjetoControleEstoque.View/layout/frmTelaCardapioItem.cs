@@ -18,8 +18,7 @@ namespace ProjetoControleEstoque.View.layout
             InitializeComponent();
         }
 
-        //frmTelaCadastroCardapio telaCadastroCardapio;
-        frmTelaCadastroCardapio telaCadastroCardapio;
+        public frmTelaCadastroCardapio telaCadastroCardapio;
 
          private ControladorTelaCardapioItem controladorTelaCardapioItem()
          {
@@ -36,18 +35,12 @@ namespace ProjetoControleEstoque.View.layout
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             telaCadastroCardapio = new frmTelaCadastroCardapio();
-         //   controladorTelaCadastroCardapio = new ControladorTelaCadastroCardapio(telaCadastroCardapio.dgvListaProdutos);
-           // controladorTelaCadastroCardapio.AddItem(controladorTelaCardapioItem().AddItem());
-            //object[] item = { "1", "Macarrão", "Un", "2" };
-            //tela.dgvListaProdutos.Rows.Add(controladorTelaCadastroCardapio.AddItem(controladorTelaCardapioItem().AddItem()));
-            
-            telaCadastroCardapio.Show();
+            telaCadastroCardapio.quantidade = (txtQuantidadeProduto.Text);
             this.Hide();
         }
 
         private void frmTelaCardapioItem_Load(object sender, EventArgs e)
         {
-            controladorTelaCardapioItem().Load();
         }
     }
 }

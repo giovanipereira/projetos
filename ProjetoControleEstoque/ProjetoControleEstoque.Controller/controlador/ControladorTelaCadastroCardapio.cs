@@ -18,14 +18,12 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private TextBox txtCodigo, txtNome, txtPreco, txtDescricao;
         private PictureBox picFigura;
-        private Button btnEscolher, btnRemover, btnSelecionar;
-        private Button btnRemoverItem, btnEditarItem;
+        private Button btnEscolher, btnRemover, btnSelecionar, btnRemoverItem, btnEditarItem;
         private DataGridView dgvListaProdutos;
         private ComboBox cboCategoria;
 
-
         Cardapio cardapio;
-        ValidacaoCardapio validacao;
+        ValidacaoCardapio validacaoCardapio;
         RepositorioCardapio repositorioCardapio = new RepositorioCardapio();
 
         #endregion
@@ -33,7 +31,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         #region Constructors
 
         public ControladorTelaCadastroCardapio()
-        { 
+        {
 
         }
 
@@ -126,34 +124,33 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
+
         private void PreencherCategoria()
         {
             repositorioCardapio.PreencherCategoria(cboCategoria);
         }
 
-        private void SalvarCardapio()
-        {
-            cardapio = new Cardapio();
-            cardapio = CarregarCardapio(cardapio);
-
-            if (repositorioCardapio.Salvar(cardapio))
-            {
-                Mensagem.MensagemSalvar();
-            }
-        }
-
-        private Cardapio CarregarCardapio(Cardapio cardapio)
+        private Cardapio PreencherCardapio(Cardapio cardapio)
         {
             int codigo;
-            cardapio = new Cardapio();
             cardapio.Id = int.TryParse(txtCodigo.Text, out codigo) ? codigo : 0;
             cardapio.Nome = txtNome.Text;
-            cardapio.Preco = decimal.Parse(txtPreco.Text);
+            cardapio.Preco = txtPreco.Text;
             cardapio.Figura = picFigura.ImageLocation;
             cardapio.Descricao = txtDescricao.Text;
             cardapio.Id_categoria = int.Parse(cboCategoria.SelectedValue.ToString());
             return cardapio;
         }
+
+        private void SalvarCardapio()
+        {
+            cardapio = new Cardapio();
+            cardapio = PreencherCardapio(cardapio);
+            if (repositorioCardapio.Salvar(cardapio))
+                Mensagem.MensagemSalvar();
+        }
+
+
         #endregion
 
         #region Abstracts Methods
@@ -170,21 +167,22 @@ namespace ProjetoControleEstoque.Controller.controlador
             listaControles.Add(btnEscolher);
             listaControles.Add(btnRemover);
             listaControles.Add(btnSelecionar);
-            validacao = new ValidacaoCardapio(listaControles);
+            validacaoCardapio = new ValidacaoCardapio(listaControles);
         }
 
         public override void HabilitarTodosCampos(bool enable)
         {
-            validacao.EnableControle(enable);
-            txtCodigo.Enabled = false;
+            validacaoCardapio.EnableControle(enable);
+            txtCodigo.ReadOnly = true;
             btnRemoverItem.Enabled = false;
             btnEditarItem.Enabled = false;
         }
 
         public override void LimparCampos()
         {
-            validacao.LimparControles();
+            validacaoCardapio.LimparControles();
         }
+
         #endregion
 
         #region Event Functions
@@ -213,22 +211,20 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void PrecoLeave()
         {
-         /*   // Se não tiver o caracter "."
-            if (!txtPreco.Text.Contains(".") && txtPreco.Text == string.Empty)
+            if (!string.IsNullOrEmpty(txtPreco.Text))
             {
-                //Adicionara ao compoente
-                txtPreco.Text += "0.00";
+                if (!txtPreco.Text.Replace(",", ".").Contains(".") && txtPreco.Text.Equals(string.Empty))
+                {
+                    txtPreco.Text += "0.00";
+                }
+                if (!txtPreco.Text.Replace(",", ".").Contains("."))
+                {
+                    txtPreco.Text += ".00";
+                }
+                else
+                     if (txtPreco.Text.Replace(",", ".").IndexOf(".") == txtPreco.Text.Length - 1)
+                    txtPreco.Text += "00";
             }
-            if (!txtPreco.Text.Contains("."))
-            {
-                //Adicionara ao compoente
-                txtPreco.Text += ".00";
-            }
-            // Se tiver o caracter "."
-            else
-                 //O método IndexOf retorna - 1 se encontrar o caractere.
-                 if (txtPreco.Text.IndexOf(".") == txtPreco.Text.Length - 1)
-                txtPreco.Text += "00";*/
         }
 
         public void PrecoKeyPress(object sender, KeyPressEventArgs e)

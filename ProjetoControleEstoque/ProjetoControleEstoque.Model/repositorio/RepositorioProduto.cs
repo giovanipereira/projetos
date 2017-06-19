@@ -17,12 +17,73 @@ namespace ProjetoControleEstoque.Model.repositorio
 
         public override bool Atualizar(Produto produto)
         {
-            throw new NotImplementedException();
+            SqlTransaction transacao = null;
+            bool retorno = false;
+            try
+            {
+                Conexao.Open();
+                transacao = Conexao.connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("proc_upd_produto", Conexao.connection, transacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@id_pro", SqlDbType.Int)).Value = produto.Id;
+                cmd.Parameters.Add(new SqlParameter("@nome_pro", SqlDbType.VarChar)).Value = produto.Nome;
+                cmd.Parameters.Add(new SqlParameter("@vlunitario_pro", SqlDbType.VarChar)).Value = produto.Vlunitario;
+                cmd.Parameters.Add(new SqlParameter("@qtd_estoque_pro", SqlDbType.Int)).Value = produto.Qtd_estoque;
+                cmd.Parameters.Add(new SqlParameter("@qtd_minima_pro", SqlDbType.Int)).Value = produto.Qtd_minima;
+                cmd.Parameters.Add(new SqlParameter("@qtd_maxima_pro", SqlDbType.Int)).Value = produto.Qtd_maxima;
+                cmd.Parameters.Add(new SqlParameter("@quantidade_pro", SqlDbType.VarChar)).Value = produto.Quantidade;
+                cmd.Parameters.Add(new SqlParameter("@dt_validade_pro", SqlDbType.Date)).Value = produto.Data_validade;
+                cmd.Parameters.Add(new SqlParameter("@descricao_pro", SqlDbType.VarChar)).Value = produto.Descricao;
+                cmd.Parameters.Add(new SqlParameter("@id_sub", SqlDbType.Int)).Value = produto.Id_subcategoria;
+                cmd.Parameters.Add(new SqlParameter("@id_for", SqlDbType.Int)).Value = produto.Id_fornecedor;
+                cmd.Parameters.Add(new SqlParameter("@id_uni", SqlDbType.Int)).Value = produto.Id_unidade;
+                cmd.ExecuteNonQuery();
+                transacao.Commit();
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                if (transacao != null)
+                    transacao.Rollback();
+                retorno = false;
+                throw e;
+            }
+            finally
+            {
+                Conexao.Close();
+            }
+            return retorno;
         }
 
         public override bool Remover(Produto produto)
         {
-            throw new NotImplementedException();
+            SqlTransaction transacao = null;
+            bool retorno = false;
+            try
+            {
+                Conexao.Open();
+                transacao = Conexao.connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("proc_del_produto", Conexao.connection, transacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@id_pro", SqlDbType.Int)).Value = produto.Id;
+                cmd.ExecuteNonQuery();
+                transacao.Commit();
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                if (transacao != null)
+                    transacao.Rollback();
+                retorno = false;
+                throw e;
+            }
+            finally
+            {
+                Conexao.Close();
+            }
+            return retorno;
         }
 
         public override bool Salvar(Produto produto)
@@ -209,6 +270,7 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.DataSource = dt;
             combobox.ValueMember = "id_sub";
             combobox.DisplayMember = "nome_sub";
+            combobox.SelectedValue = 0;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ProjetoControleEstoque.Model.dominio;
+﻿using ProjetoControleEstoque.Controller.utility;
+using ProjetoControleEstoque.Model.dominio;
 using ProjetoControleEstoque.Model.repositorio;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         RepositorioProduto repositorioProduto = new RepositorioProduto();
         RepositorioFornecedor repositorioFornecedor = new RepositorioFornecedor();
+        Produto produto = new Produto();
 
         #endregion
 
@@ -151,6 +153,23 @@ namespace ProjetoControleEstoque.Controller.controlador
                 case "Nome":
                     ListarProdutoPorNome(valor);
                     break;
+
+                default:
+                    ListarTodosProdutos();
+                    break;
+            }
+        }
+
+        private void RemoverProduto()
+        {
+            CarregarListas();
+            produto = new Produto();
+            produto.Id = int.Parse(dgvConsultaProdutos.CurrentRow.Cells[0].Value.ToString());
+            if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+            {
+                repositorioProduto.Remover(produto);
+                Mensagem.MensagemExclusao();
+                ListarTodosProdutos();
             }
         }
 
@@ -219,6 +238,43 @@ namespace ProjetoControleEstoque.Controller.controlador
             ListarProdutoPorId(id);
         }
 
+        public void Remover()
+        {
+            RemoverProduto();
+        }
+
+        public object[] ObterProduto()
+        {
+            CarregarListas();
+            var Query = from p in listaProdutos
+                        join f in listaFornecedores on p.Id_fornecedor equals f.Id
+                        join u in listaUnidades on p.Id_unidade equals u.Id
+                        join s in listaSubcategorias on p.Id_subcategoria equals s.Id
+                        join c in listaCategorias on s.Id_categoria equals c.Id
+                        select new
+                        {
+                            Id = p.Id,
+                            Nome = p.Nome,
+                            Valor = p.Vlunitario,
+                            Estoque = p.Qtd_estoque,
+                            Minimo = p.Qtd_minima,
+                            Maximo = p.Qtd_maxima,
+                            Quantidade = p.Quantidade,
+                            Validade = p.Data_validade,
+                            Descricao = p.Descricao,
+                            Subcategoria = p.Id_subcategoria,
+                            Fornecedor = p.Id_fornecedor,
+                            Unidade = u.Nome,
+                            Unidade_id = u.Id,
+                            Categoria = c.Id
+                        };
+            int id = int.Parse(dgvConsultaProdutos.CurrentRow.Cells[0].Value.ToString());
+            var produto = Query.FirstOrDefault(x => x.Id.Equals(id));
+            object[] dados = { produto.Id, produto.Nome, produto.Valor, produto.Estoque, produto.Minimo,
+            produto.Maximo, produto.Quantidade, produto.Validade, produto.Descricao, produto.Subcategoria, produto.Fornecedor,
+            produto.Unidade, produto.Unidade_id ,produto.Categoria};
+            return dados;
+        }
 
         #endregion
     }

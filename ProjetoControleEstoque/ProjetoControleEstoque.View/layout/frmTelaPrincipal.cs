@@ -55,7 +55,7 @@ namespace ProjetoControleEstoque.View.layout
 
         private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTelaCadastroProduto telaCadastroProduto = new frmTelaCadastroProduto((int)EnumOpcao.Cadastro);
+            frmTelaCadastroProduto telaCadastroProduto = new frmTelaCadastroProduto((int)EnumOpcao.Cadastro,1);
             telaCadastroProduto.ShowDialog();
         }
 

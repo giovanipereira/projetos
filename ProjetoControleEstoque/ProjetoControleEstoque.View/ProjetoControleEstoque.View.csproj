@@ -220,6 +220,10 @@
       <Project>{1b369c1f-fa8f-453d-9128-fe022955a667}</Project>
       <Name>ProjetoControleEstoque.Controller</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProjetoControleEstoque.Model\ProjetoControleEstoque.Model.csproj">
+      <Project>{83CD9EA5-D95E-4DA0-BC1A-1713706F9372}</Project>
+      <Name>ProjetoControleEstoque.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shop-cart-icon.png" />
