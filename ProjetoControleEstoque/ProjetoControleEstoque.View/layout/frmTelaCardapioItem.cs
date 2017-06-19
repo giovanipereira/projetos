@@ -41,6 +41,7 @@ namespace ProjetoControleEstoque.View.layout
 
         private void frmTelaCardapioItem_Load(object sender, EventArgs e)
         {
+            controladorTelaCardapioItem().Load();
         }
     }
 }

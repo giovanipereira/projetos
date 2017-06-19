@@ -101,11 +101,12 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void RemoverItem()
         {
-            if (dgvListaProdutos.Rows.Count > 0)
-            {
-                if (Mensagem.MensagemQuestao("Tem certeza que deseja remover esse item?").Equals(DialogResult.Yes))
-                    dgvListaProdutos.Rows.RemoveAt(dgvListaProdutos.CurrentRow.Index);
-            }
+           //if (dgvListaProdutos.Rows.Count > 0)
+           // {
+           //     if (Mensagem.MensagemQuestao("Tem certeza que deseja remover esse item?").Equals(DialogResult.Yes))
+           //         //dgvListaProdutos.Rows.RemoveAt(dgvListaProdutos.CurrentRow.Index);
+           //         //lista
+           // }
         }
 
         // ======== não finalizadas =========

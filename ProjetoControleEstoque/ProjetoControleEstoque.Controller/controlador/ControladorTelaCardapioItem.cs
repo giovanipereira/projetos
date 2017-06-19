@@ -73,6 +73,11 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
+        public void Load()
+        {
+            HabilitarTodosCampos(false);
+        }
+
 
     }
 }
