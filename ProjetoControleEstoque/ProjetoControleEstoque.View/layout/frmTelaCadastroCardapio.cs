@@ -77,9 +77,16 @@ namespace ProjetoControleEstoque.View.layout
             telaConsultaProduto.ShowDialog();
             telaCardapioItem = new frmTelaCardapioItem();
             telaCardapioItem.telaCadastroCardapio = this;
-            telaCardapioItem.txtCodigoProduto.Text = dados[0].ToString();
-            telaCardapioItem.txtNomeProduto.Text = dados[1].ToString();
-            telaCardapioItem.cboUnidadeProduto.Text = dados[11].ToString();
+            try
+            {
+                telaCardapioItem.txtCodigoProduto.Text = dados[0].ToString();
+                telaCardapioItem.txtNomeProduto.Text = dados[1].ToString();
+                telaCardapioItem.cboUnidadeProduto.Text = dados[11].ToString();
+            }
+            catch
+            {
+
+            }
             telaCardapioItem.ShowDialog();
             ItemCardapio item = new ItemCardapio();
             item.Id_produto = (int)dados[0];

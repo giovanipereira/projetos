@@ -61,6 +61,25 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Private Methods
 
+        private void VerificarCampos()
+        {
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show("Campo nome é obrigatório!");
+                txtNome.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show("Campo e-mail é obrigatório!");
+                txtNome.Focus();
+            }
+            else if (string.IsNullOrEmpty(mskCpf.Text))
+            {
+                MessageBox.Show("Campo cpf é obrigatório!");
+                txtNome.Focus();
+            }
+        }
+
         private void PreencherCargo()
         {
             repositorioFuncionario.PreencherCargo(cboCargo);
@@ -96,22 +115,36 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private void SalvarFuncionario()
         {
-            usuario = new Usuario();
-            funcionario = new Funcionario();
-            usuario = PreencherUsuario(usuario);
-            funcionario = PreencherFuncionario(funcionario);
-            if (repositorioFuncionario.Salvar(funcionario, usuario))
-                Mensagem.MensagemSalvar();
+            try
+            {
+                usuario = new Usuario();
+                funcionario = new Funcionario();
+                usuario = PreencherUsuario(usuario);
+                funcionario = PreencherFuncionario(funcionario);
+                if (repositorioFuncionario.Salvar(funcionario, usuario))
+                    Mensagem.MensagemSalvar();
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível cadastrar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AtualizarFuncionario()
         {
-            usuario = new Usuario();
-            funcionario = new Funcionario();
-            usuario = PreencherUsuario(usuario);
-            funcionario = PreencherFuncionario(funcionario);
-            if (repositorioFuncionario.Atualizar(funcionario, usuario))
-                Mensagem.MensagemAtualizar();
+            try
+            {
+                usuario = new Usuario();
+                funcionario = new Funcionario();
+                usuario = PreencherUsuario(usuario);
+                funcionario = PreencherFuncionario(funcionario);
+                if (repositorioFuncionario.Atualizar(funcionario, usuario))
+                    Mensagem.MensagemAtualizar();
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível atualizar!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion

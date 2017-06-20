@@ -109,18 +109,32 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private void SalvarProduto()
         {
-            produto = new Produto();
-            produto = PreencherProduto(produto);
-            if (repositorioProduto.Salvar(produto))
-                Mensagem.MensagemSalvar();
+            try
+            {
+                produto = new Produto();
+                produto = PreencherProduto(produto);
+                if (repositorioProduto.Salvar(produto))
+                    Mensagem.MensagemSalvar();
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível cadastrar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AtualizarProduto()
         {
-            produto = new Produto();
-            produto = PreencherProduto(produto);
-            if (repositorioProduto.Atualizar(produto))
-                Mensagem.MensagemAtualizar();
+            try
+            {
+                produto = new Produto();
+                produto = PreencherProduto(produto);
+                if (repositorioProduto.Atualizar(produto))
+                    Mensagem.MensagemAtualizar();
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível atualizar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion

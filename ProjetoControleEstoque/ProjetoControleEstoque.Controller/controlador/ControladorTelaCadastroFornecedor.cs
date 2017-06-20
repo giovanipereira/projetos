@@ -87,18 +87,34 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private void SalvarFornecedor()
         {
-            fornecedor = new Fornecedor();
-            fornecedor = PreencherFornecedor(fornecedor);
-            if (repositorioFornecedor.Salvar(fornecedor))
-                Mensagem.MensagemSalvar();
+            try
+            {
+                fornecedor = new Fornecedor();
+                fornecedor = PreencherFornecedor(fornecedor);
+                if (repositorioFornecedor.Salvar(fornecedor))
+                    Mensagem.MensagemSalvar();
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível cadastrar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void AtualizarFornecedor()
         {
-            fornecedor = new Fornecedor();
-            fornecedor = PreencherFornecedor(fornecedor);
-            if (repositorioFornecedor.Atualizar(fornecedor))
-                Mensagem.MensagemAtualizar();
+            try
+            {
+                fornecedor = new Fornecedor();
+                fornecedor = PreencherFornecedor(fornecedor);
+                if (repositorioFornecedor.Atualizar(fornecedor))
+                    Mensagem.MensagemAtualizar();
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possível atualizar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         #endregion
