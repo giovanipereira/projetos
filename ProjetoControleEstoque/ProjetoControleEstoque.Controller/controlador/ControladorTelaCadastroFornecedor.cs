@@ -85,36 +85,196 @@ namespace ProjetoControleEstoque.Controller.controlador
             return fornecedor;
         }
 
-        private void SalvarFornecedor()
+        private bool VerificarCampos()
         {
-            try
+            mskCnpj.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            mskTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            bool retorno;
+            if (string.IsNullOrEmpty(txtNome.Text))
             {
-                fornecedor = new Fornecedor();
-                fornecedor = PreencherFornecedor(fornecedor);
-                if (repositorioFornecedor.Salvar(fornecedor))
-                    Mensagem.MensagemSalvar();
+                Mensagem.MensagemEmpty("Nome");
+                txtNome.Focus();
+                retorno = false;
             }
-            catch
+            else if (string.IsNullOrEmpty(mskCnpj.Text))
             {
-                MessageBox.Show("Não foi possível cadastrar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Mensagem.MensagemEmpty("Cnpj");
+                mskCnpj.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                Mensagem.MensagemEmpty("E-mail");
+                txtEmail.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(mskTelefone.Text))
+            {
+                Mensagem.MensagemEmpty("Telefone");
+                mskTelefone.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtEndereco.Text))
+            {
+                Mensagem.MensagemEmpty("Endereço");
+                txtEndereco.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtBairro.Text))
+            {
+                Mensagem.MensagemEmpty("Bairro");
+                txtBairro.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(mskCep.Text))
+            {
+                Mensagem.MensagemEmpty("Cep");
+                mskCep.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(cboUf.Text))
+            {
+                Mensagem.MensagemEmpty("Uf");
+                cboUf.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtCidade.Text))
+            {
+                Mensagem.MensagemEmpty("Cidade");
+                txtCidade.Focus();
+                retorno = false;
+            }
+            else
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
+
+        private bool VerificarCnpjExistente(Fornecedor fornecedor)
+        {
+            IList<Fornecedor> lista = new List<Fornecedor>();
+            lista = repositorioFornecedor.CarregarFornecedores();
+            if (fornecedor.Id.Equals(0))
+            {
+                if (lista.Where(f => f.Cnpj.Equals(fornecedor.Cnpj)).Count() > 0)
+                    return true;
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (lista.Where(f => f.Cnpj.Equals(fornecedor.Cnpj)).Where(f => f.Id != fornecedor.Id).Count() > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
 
         }
 
-        private void AtualizarFornecedor()
+        private bool VerificarEmailExistente(Fornecedor fornecedor)
         {
-            try
+            IList<Fornecedor> lista = new List<Fornecedor>();
+            lista = repositorioFornecedor.CarregarFornecedores();
+            if (fornecedor.Id.Equals(0))
+            {
+                if (lista.Where(f => f.Email.Equals(fornecedor.Email)).Count() > 0)
+                    return true;
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (lista.Where(f => f.Email.Equals(fornecedor.Email)).Where(f => f.Id != fornecedor.Id).Count() > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        private bool SalvarFornecedor()
+        {
+            bool sucesso = false;
+            if (VerificarCampos())
             {
                 fornecedor = new Fornecedor();
                 fornecedor = PreencherFornecedor(fornecedor);
-                if (repositorioFornecedor.Atualizar(fornecedor))
-                    Mensagem.MensagemAtualizar();
+                if (!VerificarCnpjExistente(fornecedor))
+                {
+                    if (!VerificarEmailExistente(fornecedor))
+                    {
+                        if (repositorioFornecedor.Salvar(fornecedor))
+                        {
+                            Mensagem.MensagemSalvar();
+                            sucesso = true;
+                        }
+                        else
+                        {
+                            sucesso = false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("E-mail já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtEmail.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Cnpj já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mskCnpj.Focus();
+                }
             }
-            catch
-            {
-                MessageBox.Show("Não foi possível atualizar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return sucesso;
+        }
 
+        private bool AtualizarFornecedor()
+        {
+            bool sucesso = false;
+            if (VerificarCampos())
+            {
+                fornecedor = new Fornecedor();
+                fornecedor = PreencherFornecedor(fornecedor);
+                if (!VerificarCnpjExistente(fornecedor))
+                {
+                    if (!VerificarEmailExistente(fornecedor))
+                    {
+                        if (repositorioFornecedor.Atualizar(fornecedor))
+                        {
+                            Mensagem.MensagemAtualizar();
+                            sucesso = true;
+                        }
+                        else
+                        {
+                            sucesso = false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("E-mail já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtEmail.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Cnpj já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mskCnpj.Focus();
+                }
+            }
+            return sucesso;
         }
 
         #endregion
@@ -173,8 +333,10 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Salvar()
         {
-            SalvarFornecedor();
-            OperationMode((int)EnumOperationMode.Normal);
+            if (SalvarFornecedor())
+            {
+                OperationMode((int)EnumOperationMode.Normal);
+            }
         }
 
         public void Inserir()
@@ -184,8 +346,10 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Atualizar(Form form)
         {
-            AtualizarFornecedor();
-            form.Close();
+            if (AtualizarFornecedor())
+            {
+                form.Close();
+            }
         }
 
         #endregion

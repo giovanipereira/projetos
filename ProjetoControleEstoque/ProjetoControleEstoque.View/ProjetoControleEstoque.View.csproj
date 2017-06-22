@@ -246,6 +246,45 @@
   <ItemGroup>
     <None Include="Resources\Clock-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\padlock-lock-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locked-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Adicionar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salvar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apps-system-software-update-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\No.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alterar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Yes1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pesquisar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Remover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

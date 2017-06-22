@@ -64,6 +64,58 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Private Methods
 
+        private bool VerificarCampos()
+        {
+            bool retorno;
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                Mensagem.MensagemEmpty("Nome");
+                txtNome.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(cboUnidade.Text))
+            {
+                Mensagem.MensagemEmpty("Unidade");
+                cboUnidade.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtQuantidade.Text) && cboUnidade.Text != "Unidade")
+            {
+                Mensagem.MensagemEmpty("Quantidade");
+                txtQuantidade.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(cboFornecedor.Text))
+            {
+                Mensagem.MensagemEmpty("Fornecedor");
+                cboFornecedor.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtValorUnitario.Text))
+            {
+                Mensagem.MensagemEmpty("Valor unitário");
+                txtValorUnitario.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(cboCategoria.Text))
+            {
+                Mensagem.MensagemEmpty("Categoria");
+                cboCategoria.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(cboSubcategoria.Text))
+            {
+                Mensagem.MensagemEmpty("Subcategoria");
+                cboSubcategoria.Focus();
+                retorno = false;
+            }
+            else
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
+
         private void PreencherFornecedor()
         {
             repositorioProduto.PreencherFornecedor(cboFornecedor);
@@ -102,39 +154,49 @@ namespace ProjetoControleEstoque.Controller.controlador
             produto.Qtd_minima = int.Parse(nudQtdMinima.Value.ToString());
             produto.Qtd_maxima = int.Parse(nudQtdMaxima.Value.ToString());
             produto.Data_validade = DateTime.Parse(dtpDataValidade.Value.ToString());
-            produto.Id_fornecedor = int.Parse(cboFornecedor.SelectedValue.ToString());
             produto.Id_subcategoria = int.Parse(cboSubcategoria.SelectedValue.ToString());
+            produto.Id_fornecedor = int.Parse(cboFornecedor.SelectedValue.ToString());
             return produto;
         }
 
-        private void SalvarProduto()
+        private bool SalvarProduto()
         {
-            try
+            bool sucesso = false;
+            if (VerificarCampos())
             {
                 produto = new Produto();
                 produto = PreencherProduto(produto);
                 if (repositorioProduto.Salvar(produto))
+                {
                     Mensagem.MensagemSalvar();
+                    sucesso = true;
+                }
+                else
+                {
+                    sucesso = false;
+                }
             }
-            catch
-            {
-                MessageBox.Show("Não foi possível cadastrar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return sucesso;
         }
 
-        private void AtualizarProduto()
+        private bool AtualizarProduto()
         {
-            try
+            bool sucesso = false;
+            if (VerificarCampos())
             {
                 produto = new Produto();
                 produto = PreencherProduto(produto);
                 if (repositorioProduto.Atualizar(produto))
+                {
                     Mensagem.MensagemAtualizar();
+                    sucesso = true;
+                }
+                else
+                {
+                    sucesso = false;
+                }
             }
-            catch
-            {
-                MessageBox.Show("Não foi possível atualizar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return sucesso;
         }
 
         #endregion
@@ -203,8 +265,10 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Salvar()
         {
-            SalvarProduto();
-            OperationMode((int)EnumOperationMode.Normal);
+            if (SalvarProduto())
+            {
+                OperationMode((int)EnumOperationMode.Normal);
+            }
         }
 
         public void Inserir()
@@ -214,15 +278,17 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Atualizar(Form form)
         {
-            AtualizarProduto();
-            form.Close();
+            if (AtualizarProduto())
+            {
+                form.Close();
+            }
         }
 
         public void ValorUnitarioLeave()
         {
             if (!string.IsNullOrEmpty(txtValorUnitario.Text))
             {
-                if (!txtValorUnitario.Text.Replace(",",".").Contains(".") && txtValorUnitario.Text.Equals(string.Empty))
+                if (!txtValorUnitario.Text.Replace(",", ".").Contains(".") && txtValorUnitario.Text.Equals(string.Empty))
                 {
                     txtValorUnitario.Text += "0.00";
                 }

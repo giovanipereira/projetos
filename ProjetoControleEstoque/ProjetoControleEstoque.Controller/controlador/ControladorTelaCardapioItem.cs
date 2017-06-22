@@ -1,6 +1,7 @@
 ﻿using ProjetoControleEstoque.Controller.utility;
 using ProjetoControleEstoque.Controller.validacao;
 using ProjetoControleEstoque.Model.dominio;
+using ProjetoControleEstoque.Model.repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,8 @@ namespace ProjetoControleEstoque.Controller.controlador
         private TextBox txtCodigoProduto, txtNomeProduto, txtQuantidadeProduto;
         private ComboBox cboUnidadeProduto;
         private Button btnAdicionar;
+        RepositorioProduto repositorioProduto = new RepositorioProduto();
 
-        //ItemCardapio itemCardapio;
         ValidacaoProduto validacao;
 
         #endregion
@@ -27,7 +28,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public ControladorTelaCardapioItem()
         {
-            
+
         }
 
         public ControladorTelaCardapioItem(TextBox txtCodigoProduto, TextBox txtNomeProduto, TextBox txtQuantidadeProduto,
@@ -46,6 +47,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
+
 
         #endregion
 
@@ -73,11 +75,66 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #endregion
 
-        public void Load()
+        public void PreencherUnidade()
         {
-            HabilitarTodosCampos(false);
+            repositorioProduto.PreencherUnidade(cboUnidadeProduto);
         }
 
+        public void Load(int opcao)
+        {
+            if (opcao.Equals((int)EnumOperationMode.Normal))
+            {
+                HabilitarTodosCampos(false);
+                PreencherUnidade();
+                btnAtualizar.Enabled = false;
+            }
+            else if (opcao.Equals((int)EnumOperationMode.Atualizar))
+            {
+                HabilitarTodosCampos(false);
+                PreencherUnidade();
+                txtQuantidadeProduto.Focus();
+                btnSalvar.Enabled = false;
+            }
+        }
 
+        public void QuantidadeProdutoKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cboUnidadeProduto.Text != "Unidade")
+            {
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != '.')
+                {
+                    e.Handled = true;
+                }
+                if (e.KeyChar == '.')
+                {
+                    if (!txtQuantidadeProduto.Text.Contains("."))
+                    {
+                        e.KeyChar = '.';
+                    }
+                    else e.Handled = true;
+                }
+            }
+        }
+
+        public void QuantidadeProdutoLeave()
+        {
+            if (!string.IsNullOrEmpty(txtQuantidadeProduto.Text))
+            {
+                if (cboUnidadeProduto.Text != "Unidade")
+                {
+                    if (!txtQuantidadeProduto.Text.Replace(",", ".").Contains(".") && txtQuantidadeProduto.Text.Equals(string.Empty))
+                    {
+                        txtQuantidadeProduto.Text += "0.00";
+                    }
+                    if (!txtQuantidadeProduto.Text.Replace(",", ".").Contains("."))
+                    {
+                        txtQuantidadeProduto.Text += ".00";
+                    }
+                    else
+                         if (txtQuantidadeProduto.Text.Replace(",", ".").IndexOf(".") == txtQuantidadeProduto.Text.Length - 1)
+                        txtQuantidadeProduto.Text += "00";
+                }
+            }
+        }
     }
 }

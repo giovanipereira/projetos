@@ -94,9 +94,9 @@ namespace ProjetoControleEstoque.Controller.controlador
             picFigura.Image = null;
         }
 
-        public void SelecionarProduto(Form form)
+        public Cardapio SelecionarProduto(Cardapio cardapio)
         {
-            form.ShowDialog();
+            return cardapio;
         }
 
         public void RemoverItem()

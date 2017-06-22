@@ -72,5 +72,4 @@ namespace ProjetoControleEstoque.View.layout
         Atualizar = 3,
         Adicionar = 4
     }
-
 }

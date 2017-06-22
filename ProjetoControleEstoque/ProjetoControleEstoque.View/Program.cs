@@ -17,7 +17,7 @@ namespace ProjetoControleEstoque.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTelaSplash());
+            Application.Run(new frmTelaLogin());
         }
     }
 }

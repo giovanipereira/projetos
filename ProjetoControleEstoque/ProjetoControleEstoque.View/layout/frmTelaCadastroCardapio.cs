@@ -19,8 +19,7 @@ namespace ProjetoControleEstoque.View.layout
             InitializeComponent();
         }
 
-        public object[] dados;
-        public string quantidade;
+        ControladorTelaConsultaProduto controladorTelaConsultaProduto = new ControladorTelaConsultaProduto();
 
         ControladorTelaCadastroCardapio controladorTelaCadastroCardapio()
         {
@@ -30,14 +29,15 @@ namespace ProjetoControleEstoque.View.layout
             cboCategoria, btnRemoverItem, btnEditarItem);
             return controlador;
         }
+        public Produto produto = new Produto();
+        public List<ItemCardapio> listaItens = new List<ItemCardapio>();
+        public frmTelaConsultaProduto telaConsultaProduto;
+        public frmTelaCardapioItem telaCardapioItem;
+        public ItemCardapio itemCardapio = new ItemCardapio();
 
-        List<ItemCardapio> listaItens = new List<ItemCardapio>();
-        frmTelaConsultaProduto telaConsultaProduto;
-        frmTelaCardapioItem telaCardapioItem;
-
-        public void ObterQuantidade(string quantidade)
+        public void MostrarDGV()
         {
-            
+            listaItens.Add(itemCardapio);
         }
 
         private void frmTelaCadastroCardapio_Load(object sender, EventArgs e)
@@ -70,30 +70,29 @@ namespace ProjetoControleEstoque.View.layout
             controladorTelaCadastroCardapio().Salvar();
         }
 
+        public Produto ObterProduto(Produto produto)
+        {
+            this.produto = produto;
+            return produto;
+        }
+
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             telaConsultaProduto = new frmTelaConsultaProduto();
-            telaConsultaProduto.telaCadastroCardapio = this;
             telaConsultaProduto.ShowDialog();
-            telaCardapioItem = new frmTelaCardapioItem();
+            telaCardapioItem = new frmTelaCardapioItem((int)EnumOpcao.Cadastro);
             telaCardapioItem.telaCadastroCardapio = this;
-            try
-            {
-                telaCardapioItem.txtCodigoProduto.Text = dados[0].ToString();
-                telaCardapioItem.txtNomeProduto.Text = dados[1].ToString();
-                telaCardapioItem.cboUnidadeProduto.Text = dados[11].ToString();
-            }
-            catch
-            {
-
-            }
+            telaCardapioItem.txtCodigoProduto.Text = produto.Id.ToString();
+            telaCardapioItem.txtNomeProduto.Text = produto.Nome;
+            telaCardapioItem.cboUnidadeProduto.SelectedValue = produto.Id_unidade.ToString();
             telaCardapioItem.ShowDialog();
-            ItemCardapio item = new ItemCardapio();
-            item.Id_produto = (int)dados[0];
-            item.Nome = dados[1].ToString();
-            item.Unidade = dados[11].ToString();
-            item.Quantidade = quantidade;
-            listaItens.Add(item);
+            produto.Quantidade = telaCardapioItem.txtQuantidadeProduto.Text;
+            itemCardapio = new ItemCardapio();
+            itemCardapio.Id_produto = produto.Id;
+            itemCardapio.Nome = produto.Nome;
+            itemCardapio.Quantidade = produto.Quantidade;
+            itemCardapio.Unidade = telaCardapioItem.cboUnidadeProduto.Text;
+            listaItens.Add(itemCardapio);
             dgvListaProdutos.DataSource = listaItens;
         }
 

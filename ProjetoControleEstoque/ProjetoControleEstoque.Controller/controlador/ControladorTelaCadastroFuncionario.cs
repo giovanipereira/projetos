@@ -61,22 +61,166 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Private Methods
 
-        private void VerificarCampos()
+        private bool VerificarCampos()
         {
+            mskTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            bool retorno;
             if (string.IsNullOrEmpty(txtNome.Text))
             {
-                MessageBox.Show("Campo nome é obrigatório!");
+                Mensagem.MensagemEmpty("Nome");
                 txtNome.Focus();
-            }
-            else if (string.IsNullOrEmpty(txtEmail.Text))
-            {
-                MessageBox.Show("Campo e-mail é obrigatório!");
-                txtNome.Focus();
+                retorno = false;
             }
             else if (string.IsNullOrEmpty(mskCpf.Text))
             {
-                MessageBox.Show("Campo cpf é obrigatório!");
-                txtNome.Focus();
+                Mensagem.MensagemEmpty("Cpf");
+                mskCpf.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                Mensagem.MensagemEmpty("E-mail");
+                txtEmail.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(mskTelefone.Text))
+            {
+                Mensagem.MensagemEmpty("Telefone");
+                mskTelefone.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(cboCargo.Text))
+            {
+                Mensagem.MensagemEmpty("Cargo");
+                cboCargo.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(cboNivelAcesso.Text))
+            {
+                Mensagem.MensagemEmpty("Nível de acesso");
+                cboNivelAcesso.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtUsuario.Text))
+            {
+                Mensagem.MensagemEmpty("Nome de usuário");
+                txtUsuario.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtSenha.Text))
+            {
+                Mensagem.MensagemEmpty("Senha");
+                txtSenha.Focus();
+                retorno = false;
+            }
+            else if (string.IsNullOrEmpty(txtConfirmarSenha.Text))
+            {
+                Mensagem.MensagemEmpty("Confirmar senha");
+                txtConfirmarSenha.Focus();
+                retorno = false;
+            }
+            else
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
+
+        private bool VerificarSenhas()
+        {
+            if (txtSenha.Text.Equals(txtConfirmarSenha.Text))
+                return true;
+            else
+            {
+                return false;
+            }
+        }
+
+        private void LimparSenhas()
+        {
+            txtSenha.Clear();
+            txtConfirmarSenha.Clear();
+            txtSenha.Focus();
+        }
+
+        private bool VerificarCpfExistente(Funcionario funcionario)
+        {
+            IList<Funcionario> lista = new List<Funcionario>();
+            lista = repositorioFuncionario.CarregarFuncionarios();
+            if (funcionario.Id.Equals(0))
+            {
+                if (lista.Where(f => f.Cpf.Equals(funcionario.Cpf)).Count() > 0)
+                    return true;
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (lista.Where(f => f.Cpf.Equals(funcionario.Cpf)).Where(f => f.Id != funcionario.Id).Count() > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        private bool VerificarEmailExistente(Funcionario funcionario)
+        {
+            IList<Funcionario> lista = new List<Funcionario>();
+            lista = repositorioFuncionario.CarregarFuncionarios();
+            if (funcionario.Id.Equals(0))
+            {
+                if (lista.Where(f => f.Email.Equals(funcionario.Email)).Count() > 0)
+                    return true;
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (lista.Where(f => f.Email.Equals(funcionario.Email)).Where(f => f.Id != funcionario.Id).Count() > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }          
+
+        private bool VerificarUsuarioExistente(Usuario usuario, Funcionario funcionario)
+        {
+            IList<Funcionario> listaFuncionarios = new List<Funcionario>();
+            IList<Usuario> listaUsuarios = new List<Usuario>();
+            listaFuncionarios = repositorioFuncionario.CarregarFuncionarios();
+            listaUsuarios = repositorioFuncionario.CarregarUsuarios();
+            var Query = from f in listaFuncionarios
+                        join u in listaUsuarios on f.Id_Usuario equals u.Id
+                        select new { f.Id, u.Nome };
+            if (funcionario.Id.Equals(0))
+            {
+                if (Query.Where(f => f.Nome.Equals(usuario.Nome)).Count() > 0)
+                    return true;
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (Query.Where(f => f.Nome.Equals(usuario.Nome)).Where(f => f.Id != funcionario.Id).Count() > 0)
+                    return true;
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -113,38 +257,115 @@ namespace ProjetoControleEstoque.Controller.controlador
             return funcionario;
         }
 
-        private void SalvarFuncionario()
+        private bool SalvarFuncionario()
         {
-            try
+            bool sucesso = false;
+            if (VerificarCampos())
             {
                 usuario = new Usuario();
                 funcionario = new Funcionario();
                 usuario = PreencherUsuario(usuario);
                 funcionario = PreencherFuncionario(funcionario);
-                if (repositorioFuncionario.Salvar(funcionario, usuario))
-                    Mensagem.MensagemSalvar();
+                if (VerificarSenhas())
+                {
+                    if (!VerificarCpfExistente(funcionario))
+                    {
+                        if (!VerificarEmailExistente(funcionario))
+                        {
+                            if (!VerificarUsuarioExistente(usuario,funcionario))
+                            {
+                                if (repositorioFuncionario.Salvar(funcionario, usuario))
+                                {
+                                    Mensagem.MensagemSalvar();
+                                    sucesso = true;
+                                }
+                                else
+                                {
+                                    sucesso = false;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nome de usuário já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtUsuario.Focus();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("E-mail já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtEmail.Focus();
+                        }
+                        
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cpf já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mskCpf.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("As senhas não coincidem", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparSenhas();
+                }
+
             }
-            catch
-            {
-                MessageBox.Show("Não foi possível cadastrar", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return sucesso;
         }
 
-        private void AtualizarFuncionario()
+        private bool AtualizarFuncionario()
         {
-            try
+            bool sucesso = false;
+            if (VerificarCampos())
             {
                 usuario = new Usuario();
                 funcionario = new Funcionario();
                 usuario = PreencherUsuario(usuario);
                 funcionario = PreencherFuncionario(funcionario);
-                if (repositorioFuncionario.Atualizar(funcionario, usuario))
-                    Mensagem.MensagemAtualizar();
+                if (VerificarSenhas())
+                {
+                    if (!VerificarCpfExistente(funcionario))
+                    {
+                        if (!VerificarEmailExistente(funcionario))
+                        {
+                            if (!VerificarUsuarioExistente(usuario, funcionario))
+                            {
+                                if (repositorioFuncionario.Atualizar(funcionario, usuario))
+                                {
+                                    Mensagem.MensagemAtualizar();
+                                    sucesso = true;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nome de usuário já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtUsuario.Focus();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("E-mail já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtEmail.Focus();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cpf já cadastrado", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mskCpf.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("As senhas não coincidem", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparSenhas();
+                }
             }
-            catch
+            else
             {
-                MessageBox.Show("Não foi possível atualizar!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sucesso = false;
             }
+            return sucesso;
         }
 
         #endregion
@@ -203,8 +424,10 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Salvar()
         {
-            SalvarFuncionario();
-            OperationMode((int)EnumOperationMode.Normal);
+            if (SalvarFuncionario())
+            {
+                OperationMode((int)EnumOperationMode.Normal);
+            }
         }
 
         public void Inserir()
@@ -214,8 +437,11 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Atualizar(Form form)
         {
-            AtualizarFuncionario();
-            form.Close();
+            if (AtualizarFuncionario())
+            {
+                form.Close();
+            }
+
         }
 
         #endregion

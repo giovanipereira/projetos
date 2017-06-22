@@ -79,7 +79,7 @@ namespace ProjetoControleEstoque.Model.repositorio
                 cmd.Parameters.Add(new SqlParameter("@email_fun", SqlDbType.VarChar)).Value = funcionario.Email;
                 cmd.Parameters.Add(new SqlParameter("@telefone_fun", SqlDbType.BigInt)).Value = funcionario.Telefone;
                 cmd.Parameters.Add(new SqlParameter("@id_car", SqlDbType.Int)).Value = funcionario.Id_cargo;
-                cmd.Parameters.Add(new SqlParameter("@id_usu", SqlDbType.Int)).Value = funcionario.Id_Usuario ;
+                cmd.Parameters.Add(new SqlParameter("@id_usu", SqlDbType.Int)).Value = funcionario.Id_Usuario;
                 cmd.Parameters.Add(new SqlParameter("@nome_usu", SqlDbType.VarChar)).Value = usuario.Nome;
                 cmd.Parameters.Add(new SqlParameter("@senha_usu", SqlDbType.VarChar)).Value = usuario.Senha;
                 cmd.Parameters.Add(new SqlParameter("@id_niv", SqlDbType.Int)).Value = usuario.Id_nivel_acesso;
@@ -219,8 +219,8 @@ namespace ProjetoControleEstoque.Model.repositorio
                     funcionario.Nome = (dr[1]).ToString();
                     funcionario.Cpf = (long)(dr[2]);
                     funcionario.Email = (dr[3]).ToString();
-                    funcionario.Telefone = (long) (dr[4]);
-                    funcionario.Id_cargo = (int) (dr[5]);
+                    funcionario.Telefone = (long)(dr[4]);
+                    funcionario.Id_cargo = (int)(dr[5]);
                     funcionario.Id_Usuario = (int)(dr[6]);
                     listaFuncionarios.Add(funcionario);
                 }
@@ -249,6 +249,36 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.DataSource = dt;
             combobox.ValueMember = "id_niv";
             combobox.DisplayMember = "nome_niv";
+        }
+
+        public bool VerificarLogin(Usuario usuario)
+        {
+            try
+            {
+                //Conexao.Open();
+                //SqlCommand cmd = new SqlCommand("proc_upd_funcionario", Conexao.connection);
+                //cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.Parameters.Clear();
+                //cmd.Parameters.Add(new SqlParameter("@nome_usu", SqlDbType.VarChar)).Value = usuario.Nome;
+                //cmd.Parameters.Add(new SqlParameter("@senha_usu", SqlDbType.VarChar)).Value = usuario.Senha;
+                //cmd.ExecuteNonQuery();
+                if(usuario.Nome.Equals("admin") && usuario.Senha.Equals("admin"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                //Conexao.Close();
+            }
         }
 
         #endregion

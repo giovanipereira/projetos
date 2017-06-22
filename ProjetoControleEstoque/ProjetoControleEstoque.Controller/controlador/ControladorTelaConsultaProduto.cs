@@ -243,7 +243,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             RemoverProduto();
         }
 
-        public object[] ObterProduto()
+        public Produto ObterProduto()
         {
             CarregarListas();
             var Query = from p in listaProdutos
@@ -269,11 +269,12 @@ namespace ProjetoControleEstoque.Controller.controlador
                             Categoria = c.Id
                         };
             int id = int.Parse(dgvConsultaProdutos.CurrentRow.Cells[0].Value.ToString());
-            var produto = Query.FirstOrDefault(x => x.Id.Equals(id));
-            object[] dados = { produto.Id, produto.Nome, produto.Valor, produto.Estoque, produto.Minimo,
-            produto.Maximo, produto.Quantidade, produto.Validade, produto.Descricao, produto.Subcategoria, produto.Fornecedor,
-            produto.Unidade, produto.Unidade_id ,produto.Categoria};
-            return dados;
+            var queryproduto = Query.FirstOrDefault(x => x.Id.Equals(id));
+            produto = new Produto();
+            produto.Id = queryproduto.Id;
+            produto.Nome = queryproduto.Nome;
+            produto.Id_unidade = queryproduto.Unidade_id;
+            return produto;
         }
 
         #endregion

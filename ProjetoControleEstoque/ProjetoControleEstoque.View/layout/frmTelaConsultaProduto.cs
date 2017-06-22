@@ -1,4 +1,5 @@
 ﻿using ProjetoControleEstoque.Controller.controlador;
+using ProjetoControleEstoque.Model.dominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace ProjetoControleEstoque.View.layout
             InitializeComponent();
         }
 
-        public frmTelaCadastroCardapio telaCadastroCardapio;
+        frmTelaCadastroCardapio telaCadastroCardapio = new frmTelaCadastroCardapio();
         frmTelaCadastroProduto telaCadastroProduto;
 
         ControladorTelaConsultaProduto controladorTelaConsultaProduto()
@@ -84,16 +85,22 @@ namespace ProjetoControleEstoque.View.layout
             controladorTelaConsultaProduto().Remover();
         }
 
+        public void ObterProduto()
+        {
+            if (dgvConsultaProdutos.RowCount > 0)
+            {
+                var produto = controladorTelaConsultaProduto().ObterProduto();
+            }
+        }
+
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             if (dgvConsultaProdutos.RowCount > 0)
             {
-                if(telaCadastroCardapio != null)
-                {
-                    telaCadastroCardapio.dados = controladorTelaConsultaProduto().ObterProduto();
-                    this.Close();
-                }
+                var produto = controladorTelaConsultaProduto().ObterProduto();
+                telaCadastroCardapio.ObterProduto(produto);
+                this.Close();
             }
         }
     }

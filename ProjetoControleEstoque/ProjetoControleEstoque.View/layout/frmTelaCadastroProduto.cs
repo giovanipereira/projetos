@@ -22,7 +22,6 @@ namespace ProjetoControleEstoque.View.layout
             {
                 controladorTelaCadastroProduto().PreencherCombobox();
             }
-
         }
 
         private int opcao;
@@ -46,7 +45,6 @@ namespace ProjetoControleEstoque.View.layout
                 controladorTelaCadastroProduto().PreencherSubcategoria();
                 controladorTelaCadastroProduto().Load((int)EnumOpcao.Atualizar, id_sub);
             }
-
         }
 
         private void btnInserir_Click(object sender, EventArgs e)

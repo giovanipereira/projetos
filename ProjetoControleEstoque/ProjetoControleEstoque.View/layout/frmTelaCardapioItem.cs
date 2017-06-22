@@ -13,10 +13,15 @@ namespace ProjetoControleEstoque.View.layout
 {
     public partial class frmTelaCardapioItem : Form
     {
-        public frmTelaCardapioItem()
+        public frmTelaCardapioItem(int opcao)
         {
             InitializeComponent();
+            this.opcao = opcao;
+            if (opcao.Equals((int)EnumOpcao.Atualizar))
+                controladorTelaCardapioItem().PreencherUnidade();
         }
+
+        int opcao;
 
         public frmTelaCadastroCardapio telaCadastroCardapio;
 
@@ -35,13 +40,26 @@ namespace ProjetoControleEstoque.View.layout
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             telaCadastroCardapio = new frmTelaCadastroCardapio();
-            telaCadastroCardapio.quantidade = (txtQuantidadeProduto.Text);
-            this.Hide();
+            telaCadastroCardapio.telaCardapioItem = this;
+            this.Close();
         }
 
         private void frmTelaCardapioItem_Load(object sender, EventArgs e)
         {
-            controladorTelaCardapioItem().Load();
+            if (opcao.Equals((int)EnumOpcao.Cadastro))
+                controladorTelaCardapioItem().Load((int)EnumOpcao.Cadastro);
+            else if (opcao.Equals((int)EnumOpcao.Atualizar))
+                controladorTelaCardapioItem().Load((int)EnumOpcao.Atualizar);
+        }
+
+        private void txtQuantidadeProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            controladorTelaCardapioItem().QuantidadeProdutoKeyPress(sender,e);
+        }
+
+        private void txtQuantidadeProduto_Leave(object sender, EventArgs e)
+        {
+            controladorTelaCardapioItem().QuantidadeProdutoLeave();
         }
     }
 }

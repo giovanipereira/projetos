@@ -32,5 +32,10 @@ namespace ProjetoControleEstoque.Controller.utility
             MessageBox.Show("Atualizado com sucesso!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        public static void MensagemEmpty(string campo)
+        {
+            MessageBox.Show("Campo "+ campo + " é obrigatório.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
     }
 }
