@@ -86,5 +86,15 @@ namespace ProjetoControleEstoque.View.layout
         {
             controladorTelaConsultaFornecedor().Remover();
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnBuscarTodos_Click(object sender, EventArgs e)
+        {
+            controladorTelaConsultaFornecedor().BuscarTodos();
+        }
     }
 }

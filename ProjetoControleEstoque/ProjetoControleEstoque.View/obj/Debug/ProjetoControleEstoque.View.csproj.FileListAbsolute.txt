@@ -55,6 +55,7 @@ C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoContr
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroProduto.resources
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCadastroSubcategoria.resources
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaCardapioItem.resources
+C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaConsultaCardapio.resources
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaConsultaFornecedor.resources
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaConsultaFuncionario.resources
 C:\Users\Giovani\Documents\Projetos\projetos\ProjetoControleEstoque\ProjetoControleEstoque.View\obj\Debug\ProjetoControleEstoque.View.layout.frmTelaConsultaProduto.resources

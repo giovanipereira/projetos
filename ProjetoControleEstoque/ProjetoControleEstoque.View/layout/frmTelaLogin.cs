@@ -36,8 +36,9 @@ namespace ProjetoControleEstoque.View.layout
             }
             else
             {
-                MessageBox.Show("Usuário ou senha incorreto","Mensagem",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Usuário ou senha incorretos", "Mensagem",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 controladadorTelaLogin().LimparCampos();
+                txtUsuario.Focus();
             }
 
         }

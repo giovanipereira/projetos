@@ -61,6 +61,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -68,9 +69,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdMaxima)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdMinima)).BeginInit();
@@ -460,6 +458,17 @@
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Dados:";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.Red;
+            this.label17.Location = new System.Drawing.Point(289, 190);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(22, 16);
+            this.label17.TabIndex = 119;
+            this.label17.Text = "R$";
+            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -537,45 +546,12 @@
             this.label19.TabIndex = 108;
             this.label19.Text = "*";
             // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.Red;
-            this.label26.Location = new System.Drawing.Point(684, 455);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(13, 16);
-            this.label26.TabIndex = 108;
-            this.label26.Text = "*";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(703, 455);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(92, 13);
-            this.label27.TabIndex = 109;
-            this.label27.Text = "Campo obrigatório";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(289, 190);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(22, 16);
-            this.label17.TabIndex = 119;
-            this.label17.Text = "R$";
-            // 
             // frmTelaCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(822, 575);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.label27);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label21);
@@ -637,8 +613,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label17;
     }
 }

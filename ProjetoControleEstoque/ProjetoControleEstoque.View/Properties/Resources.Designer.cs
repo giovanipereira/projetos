@@ -113,6 +113,26 @@ namespace ProjetoControleEstoque.View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Fechar {
+            get {
+                object obj = ResourceManager.GetObject("Fechar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fichar_Titulo {
+            get {
+                object obj = ResourceManager.GetObject("Fichar_Titulo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fork_Knife_icon {
             get {
                 object obj = ResourceManager.GetObject("Fork-Knife-icon", resourceCulture);
@@ -143,6 +163,16 @@ namespace ProjetoControleEstoque.View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap locked_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("locked-icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap No {
             get {
                 object obj = ResourceManager.GetObject("No", resourceCulture);
@@ -153,9 +183,29 @@ namespace ProjetoControleEstoque.View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap No1 {
+            get {
+                object obj = ResourceManager.GetObject("No1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap notepad_icon {
             get {
                 object obj = ResourceManager.GetObject("notepad-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Novo {
+            get {
+                object obj = ResourceManager.GetObject("Novo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +226,16 @@ namespace ProjetoControleEstoque.View.Properties {
         internal static System.Drawing.Bitmap Pesquisar {
             get {
                 object obj = ResourceManager.GetObject("Pesquisar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pesquisar1 {
+            get {
+                object obj = ResourceManager.GetObject("Pesquisar1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +266,16 @@ namespace ProjetoControleEstoque.View.Properties {
         internal static System.Drawing.Bitmap Salvar {
             get {
                 object obj = ResourceManager.GetObject("Salvar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search {
+            get {
+                object obj = ResourceManager.GetObject("search", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

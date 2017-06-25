@@ -18,8 +18,9 @@ namespace ProjetoControleEstoque.Controller.controlador
         private TextBox txtCodigoProduto, txtNomeProduto, txtQuantidadeProduto;
         private ComboBox cboUnidadeProduto;
         private Button btnAdicionar;
+        RepositorioCardapio repositorioCardapio = new RepositorioCardapio();
         RepositorioProduto repositorioProduto = new RepositorioProduto();
-
+        ItemCardapio itemCardapio;
         ValidacaoProduto validacao;
 
         #endregion
@@ -48,6 +49,88 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         #region Private Methods
 
+        private bool VerificarCampos()
+        {
+            bool retorno = false;
+            if (string.IsNullOrEmpty(txtQuantidadeProduto.Text))
+            {
+                Mensagem.MensagemEmpty("Quantidade");
+                txtQuantidadeProduto.Focus();
+                retorno = false;
+            }
+            else
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
+
+        private ItemCardapio PreencherItemCardapio(ItemCardapio itemCardapio)
+        {
+            itemCardapio.Id_produto = int.Parse(txtCodigoProduto.Text);
+            itemCardapio.Quantidade = txtQuantidadeProduto.Text;
+            return itemCardapio;
+        }
+
+        public bool VerificarItemExistente(ItemCardapio itemCardapio)
+        {
+            IList<ItemCardapio> lista = new List<ItemCardapio>();
+            lista = repositorioCardapio.CarregarItensCardapiosTemporarios();
+            if (lista.Where(i => i.Id_produto.Equals(itemCardapio.Id_produto)).Count() > 0)
+                return true;
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool SalvarItemCardapio()
+        {
+            bool retorno = false;
+            if (VerificarCampos())
+            {
+                itemCardapio = new ItemCardapio();
+                itemCardapio = PreencherItemCardapio(itemCardapio);
+                if (!VerificarItemExistente(itemCardapio))
+                {
+                    if (repositorioCardapio.SalvarItemCardapioTemporariamente(itemCardapio))
+                    {
+                        retorno = true;
+                    }
+                    else
+                    {
+                        retorno = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Item já adicionado.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    retorno = true;
+                }
+
+                return retorno;
+            }
+            return retorno;
+        }
+
+        private bool AtualizarItemCardapio()
+        {
+            bool retorno = false;
+            if (VerificarCampos())
+            {
+                itemCardapio = new ItemCardapio();
+                itemCardapio = PreencherItemCardapio(itemCardapio);
+                if (repositorioCardapio.AtualizarItemCardapioTemporariamente(itemCardapio))
+                {
+                    retorno = true;
+                }
+                else
+                {
+                    retorno = false;
+                }
+            }
+            return retorno;
+        }
 
         #endregion
 
@@ -85,34 +168,45 @@ namespace ProjetoControleEstoque.Controller.controlador
             if (opcao.Equals((int)EnumOperationMode.Normal))
             {
                 HabilitarTodosCampos(false);
-                PreencherUnidade();
                 btnAtualizar.Enabled = false;
             }
             else if (opcao.Equals((int)EnumOperationMode.Atualizar))
             {
                 HabilitarTodosCampos(false);
-                PreencherUnidade();
                 txtQuantidadeProduto.Focus();
-                btnSalvar.Enabled = false;
+                btnAdicionar.Enabled = false;
+            }
+        }
+
+        public void Salvar(Form form)
+        {
+            if (SalvarItemCardapio())
+            {
+                form.Close();
+            }
+        }
+
+        public void Atualizar(Form form)
+        {
+            if (AtualizarItemCardapio())
+            {
+                form.Close();
             }
         }
 
         public void QuantidadeProdutoKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cboUnidadeProduto.Text != "Unidade")
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != '.')
             {
-                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != '.')
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.')
+            {
+                if (!txtQuantidadeProduto.Text.Contains("."))
                 {
-                    e.Handled = true;
+                    e.KeyChar = '.';
                 }
-                if (e.KeyChar == '.')
-                {
-                    if (!txtQuantidadeProduto.Text.Contains("."))
-                    {
-                        e.KeyChar = '.';
-                    }
-                    else e.Handled = true;
-                }
+                else e.Handled = true;
             }
         }
 

@@ -24,9 +24,11 @@ namespace ProjetoControleEstoque.Controller.controlador
         IList<Subcategoria> listaSubcategorias = new List<Subcategoria>();
         IList<Categoria> listaCategorias = new List<Categoria>();
         IList<Unidade> listaUnidades = new List<Unidade>();
+        IList<ItemCardapio> listaItensCardapio = new List<ItemCardapio>();
 
         RepositorioProduto repositorioProduto = new RepositorioProduto();
         RepositorioFornecedor repositorioFornecedor = new RepositorioFornecedor();
+        RepositorioCardapio repositorioCardapio = new RepositorioCardapio();
         Produto produto = new Produto();
 
         #endregion
@@ -52,6 +54,19 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
+
+        private bool VerificarProdutoExistenteNoItemCardapio(int id)
+        {
+            listaItensCardapio = repositorioCardapio.CarregarItensCardapios();
+            if(listaItensCardapio.Where(i => i.Id_produto.Equals(id)).Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         private void CarregarListas()
         {
@@ -117,7 +132,56 @@ namespace ProjetoControleEstoque.Controller.controlador
                         join u in listaUnidades on p.Id_unidade equals u.Id
                         join s in listaSubcategorias on p.Id_subcategoria equals s.Id
                         join c in listaCategorias on s.Id_categoria equals c.Id
-                        orderby p.Nome ascending
+                        orderby p.Id ascending
+                        select new
+                        {
+                            Código = p.Id,
+                            Nome = p.Nome,
+                            Fornecedor = f.Nome,
+                            Categoria = c.Nome,
+                            Subcategoria = s.Nome,
+                            Estoque = p.Qtd_estoque,
+                            Unidade = u.Nome,
+                            Quantidade = p.Quantidade
+                        };
+            dgvConsultaProdutos.DataSource = Query.ToList();
+            ConfigurarGrid();
+        }
+
+        private void ListarProdutoPorFornecedor(string fornecedor)
+        {
+            CarregarListas();
+            var Query = from p in listaProdutos
+                        join f in listaFornecedores on p.Id_fornecedor equals f.Id
+                        join u in listaUnidades on p.Id_unidade equals u.Id
+                        join s in listaSubcategorias on p.Id_subcategoria equals s.Id
+                        join c in listaCategorias on s.Id_categoria equals c.Id
+                        where f.Nome.Equals(fornecedor)
+                        orderby p.Nome
+                        select new
+                        {
+                            Código = p.Id,
+                            Nome = p.Nome,
+                            Fornecedor = f.Nome,
+                            Categoria = c.Nome,
+                            Subcategoria = s.Nome,
+                            Estoque = p.Qtd_estoque,
+                            Unidade = u.Nome,
+                            Quantidade = p.Quantidade
+                        };
+            dgvConsultaProdutos.DataSource = Query.ToList();
+        }
+
+        private void ListarProdutoPorCategoria(string categoria)
+        {
+            CarregarListas();
+            var Query = from p in listaProdutos
+                        join f in listaFornecedores on p.Id_fornecedor equals f.Id
+                        join u in listaUnidades on p.Id_unidade equals u.Id
+                        join s in listaSubcategorias on p.Id_subcategoria equals s.Id
+                        join c in listaCategorias on s.Id_categoria equals c.Id
+                        where c.Nome.Equals(categoria)
+                        orderby p.Nome
                         select new
                         {
                             Código = p.Id,
@@ -154,6 +218,28 @@ namespace ProjetoControleEstoque.Controller.controlador
                     ListarProdutoPorNome(valor);
                     break;
 
+                case "Fornecedor":
+                    if (valor.Equals(string.Empty))
+                    {
+                        ListarProdutoPorNome(valor);
+                    }
+                    else
+                    {
+                        ListarProdutoPorFornecedor(valor);
+                    }
+                    break;
+
+                case "Categoria":
+                    if (valor.Equals(string.Empty))
+                    {
+                        ListarProdutoPorNome(valor);
+                    }
+                    else
+                    {
+                        ListarProdutoPorCategoria(valor);
+                    }
+                    break;
+
                 default:
                     ListarTodosProdutos();
                     break;
@@ -162,15 +248,35 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private void RemoverProduto()
         {
-            CarregarListas();
-            produto = new Produto();
-            produto.Id = int.Parse(dgvConsultaProdutos.CurrentRow.Cells[0].Value.ToString());
-            if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+            if(dgvConsultaProdutos.RowCount > 0)
             {
-                repositorioProduto.Remover(produto);
-                Mensagem.MensagemExclusao();
-                ListarTodosProdutos();
+                int id = int.Parse(dgvConsultaProdutos.CurrentRow.Cells[0].Value.ToString());
+                if (!VerificarProdutoExistenteNoItemCardapio(id))
+                {
+                    CarregarListas();
+                    produto = new Produto();
+                    produto.Id = id;
+                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                    {
+                        repositorioProduto.Remover(produto);
+                        Mensagem.MensagemExclusao();
+                        ListarTodosProdutos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não é possível excluír o produto desejado,\npois ele está cadastrado em um produto do cardápio", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
             }
+        }
+
+        private void ConfigurarGrid()
+        {
+            dgvConsultaProdutos.Columns[0].Width = 60;
+            dgvConsultaProdutos.Columns[1].Width = 170;
+            dgvConsultaProdutos.Columns[5].Width = 60;
+            dgvConsultaProdutos.Columns[7].Width = 65;
         }
 
         #endregion
@@ -243,38 +349,9 @@ namespace ProjetoControleEstoque.Controller.controlador
             RemoverProduto();
         }
 
-        public Produto ObterProduto()
+        public void BuscarTodos()
         {
-            CarregarListas();
-            var Query = from p in listaProdutos
-                        join f in listaFornecedores on p.Id_fornecedor equals f.Id
-                        join u in listaUnidades on p.Id_unidade equals u.Id
-                        join s in listaSubcategorias on p.Id_subcategoria equals s.Id
-                        join c in listaCategorias on s.Id_categoria equals c.Id
-                        select new
-                        {
-                            Id = p.Id,
-                            Nome = p.Nome,
-                            Valor = p.Vlunitario,
-                            Estoque = p.Qtd_estoque,
-                            Minimo = p.Qtd_minima,
-                            Maximo = p.Qtd_maxima,
-                            Quantidade = p.Quantidade,
-                            Validade = p.Data_validade,
-                            Descricao = p.Descricao,
-                            Subcategoria = p.Id_subcategoria,
-                            Fornecedor = p.Id_fornecedor,
-                            Unidade = u.Nome,
-                            Unidade_id = u.Id,
-                            Categoria = c.Id
-                        };
-            int id = int.Parse(dgvConsultaProdutos.CurrentRow.Cells[0].Value.ToString());
-            var queryproduto = Query.FirstOrDefault(x => x.Id.Equals(id));
-            produto = new Produto();
-            produto.Id = queryproduto.Id;
-            produto.Nome = queryproduto.Nome;
-            produto.Id_unidade = queryproduto.Unidade_id;
-            return produto;
+            ListarTodosProdutos();
         }
 
         #endregion

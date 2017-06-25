@@ -8,16 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjetoControleEstoque.Controller.controlador;
-using ProjetoControleEstoque.Model.dominio;
 
 namespace ProjetoControleEstoque.View.layout
 {
     public partial class frmTelaCadastroCardapio : Form
     {
-        public frmTelaCadastroCardapio()
+        public frmTelaCadastroCardapio(int opcao)
         {
             InitializeComponent();
+            this.opcao = opcao;
+            if (opcao.Equals((int)EnumOpcao.Atualizar))
+                controladorTelaCadastroCardapio().PreencherCombobox();
         }
+
+        private int opcao;
 
         ControladorTelaConsultaProduto controladorTelaConsultaProduto = new ControladorTelaConsultaProduto();
 
@@ -29,20 +33,36 @@ namespace ProjetoControleEstoque.View.layout
             cboCategoria, btnRemoverItem, btnEditarItem);
             return controlador;
         }
-        public Produto produto = new Produto();
-        public List<ItemCardapio> listaItens = new List<ItemCardapio>();
-        public frmTelaConsultaProduto telaConsultaProduto;
-        public frmTelaCardapioItem telaCardapioItem;
-        public ItemCardapio itemCardapio = new ItemCardapio();
 
-        public void MostrarDGV()
+        frmTelaConsultaProduto telaConsultaProduto;
+        frmTelaCardapioItem telaCardapioItem;
+
+        private void Editar()
         {
-            listaItens.Add(itemCardapio);
+            int ordem = controladorTelaCadastroCardapio().ObterOrdemItem(int.Parse(dgvListaProdutos.CurrentRow.Cells[0].Value.ToString()));
+            if (ordem != 0)
+            {
+                telaCardapioItem = new frmTelaCardapioItem((int)EnumOpcao.Atualizar);
+                object[] dados = controladorTelaCadastroCardapio().ObterDadosItem(int.Parse(dgvListaProdutos.CurrentRow.Cells[0].Value.ToString()));
+                telaCardapioItem.txtCodigoProduto.Text = dados[0].ToString();
+                telaCardapioItem.txtNomeProduto.Text = dados[1].ToString();
+                telaCardapioItem.cboUnidadeProduto.SelectedValue = dados[2].ToString();
+                telaCardapioItem.txtQuantidadeProduto.Text = dados[3].ToString().Replace(",", ".");
+                telaCardapioItem.ShowDialog();
+                controladorTelaCadastroCardapio().ListarProdutos();
+            }
+            else
+            {
+                controladorTelaCadastroCardapio().ListarProdutos();
+            }
         }
 
         private void frmTelaCadastroCardapio_Load(object sender, EventArgs e)
         {
-            controladorTelaCadastroCardapio().Load();
+            if (opcao.Equals((int)EnumOpcao.Cadastro))
+                controladorTelaCadastroCardapio().Load((int)EnumOpcao.Cadastro);
+            else if (opcao.Equals((int)EnumOpcao.Atualizar))
+                controladorTelaCadastroCardapio().Load((int)EnumOpcao.Atualizar);
         }
 
         private void btnEscolher_Click(object sender, EventArgs e)
@@ -70,39 +90,30 @@ namespace ProjetoControleEstoque.View.layout
             controladorTelaCadastroCardapio().Salvar();
         }
 
-        public Produto ObterProduto(Produto produto)
-        {
-            this.produto = produto;
-            return produto;
-        }
-
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
-            telaConsultaProduto = new frmTelaConsultaProduto();
+            telaConsultaProduto = new frmTelaConsultaProduto((int)EnumOpcao.Adicionar);
             telaConsultaProduto.ShowDialog();
-            telaCardapioItem = new frmTelaCardapioItem((int)EnumOpcao.Cadastro);
-            telaCardapioItem.telaCadastroCardapio = this;
-            telaCardapioItem.txtCodigoProduto.Text = produto.Id.ToString();
-            telaCardapioItem.txtNomeProduto.Text = produto.Nome;
-            telaCardapioItem.cboUnidadeProduto.SelectedValue = produto.Id_unidade.ToString();
-            telaCardapioItem.ShowDialog();
-            produto.Quantidade = telaCardapioItem.txtQuantidadeProduto.Text;
-            itemCardapio = new ItemCardapio();
-            itemCardapio.Id_produto = produto.Id;
-            itemCardapio.Nome = produto.Nome;
-            itemCardapio.Quantidade = produto.Quantidade;
-            itemCardapio.Unidade = telaCardapioItem.cboUnidadeProduto.Text;
-            listaItens.Add(itemCardapio);
-            dgvListaProdutos.DataSource = listaItens;
+            controladorTelaCadastroCardapio().ListarProdutos();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            if (btnSalvar.Enabled.Equals(false))
             {
-                if (btnInserir.Enabled.Equals(true))
-                    this.Close();
-                else
-                    controladorTelaCadastroCardapio().Load();
+                controladorTelaCadastroCardapio().RemoverTodosItensTemporarios();
+                this.Close();
+            }
+                
+            else if (opcao.Equals((int)EnumOpcao.Atualizar))
+            {
+                controladorTelaCadastroCardapio().RemoverTodosItensTemporarios();
+                this.Close();
+            }
+            else
+            {
+                controladorTelaCadastroCardapio().RemoverTodosItensTemporarios();
+                controladorTelaCadastroCardapio().Load((int)EnumOpcao.Cadastro);
             }
         }
 
@@ -119,6 +130,31 @@ namespace ProjetoControleEstoque.View.layout
         private void dgvListaProdutos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             controladorTelaCadastroCardapio().HabilitarBotaoItem();
+        }
+
+        private void btnEditarItem_Click(object sender, EventArgs e)
+        {
+            Editar();
+        }
+
+        private void dgvListaProdutos_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            controladorTelaCadastroCardapio().HabilitarBotaoItem();
+        }
+
+        private void frmTelaCadastroCardapio_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            controladorTelaCadastroCardapio().RemoverTodosItensTemporarios();
+        }
+
+        private void dgvListaProdutos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Editar();
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            controladorTelaCadastroCardapio().Atualizar(this);
         }
     }
 }

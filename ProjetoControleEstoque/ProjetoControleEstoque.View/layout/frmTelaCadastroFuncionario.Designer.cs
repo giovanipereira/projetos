@@ -64,8 +64,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -474,34 +472,12 @@
             this.label19.TabIndex = 94;
             this.label19.Text = "*";
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(690, 455);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(92, 13);
-            this.label21.TabIndex = 103;
-            this.label21.Text = "Campo obrigatório";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(671, 455);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(13, 16);
-            this.label22.TabIndex = 103;
-            this.label22.Text = "*";
-            // 
             // frmTelaCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(822, 575);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label21);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel1);
@@ -555,7 +531,5 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
     }
 }

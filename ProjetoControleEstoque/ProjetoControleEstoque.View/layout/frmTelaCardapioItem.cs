@@ -17,15 +17,14 @@ namespace ProjetoControleEstoque.View.layout
         {
             InitializeComponent();
             this.opcao = opcao;
-            if (opcao.Equals((int)EnumOpcao.Atualizar))
-                controladorTelaCardapioItem().PreencherUnidade();
+            controladorTelaCardapioItem().PreencherUnidade();
         }
 
         int opcao;
 
         public frmTelaCadastroCardapio telaCadastroCardapio;
 
-         private ControladorTelaCardapioItem controladorTelaCardapioItem()
+        private ControladorTelaCardapioItem controladorTelaCardapioItem()
          {
              ControladorTelaCardapioItem controlador = new ControladorTelaCardapioItem(txtCodigoProduto, txtNomeProduto,
                  txtQuantidadeProduto, cboUnidadeProduto, btnAdicionar, btnAtualizar, btnCancelar);
@@ -39,9 +38,7 @@ namespace ProjetoControleEstoque.View.layout
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            telaCadastroCardapio = new frmTelaCadastroCardapio();
-            telaCadastroCardapio.telaCardapioItem = this;
-            this.Close();
+            controladorTelaCardapioItem().Salvar(this);
         }
 
         private void frmTelaCardapioItem_Load(object sender, EventArgs e)
@@ -60,6 +57,11 @@ namespace ProjetoControleEstoque.View.layout
         private void txtQuantidadeProduto_Leave(object sender, EventArgs e)
         {
             controladorTelaCardapioItem().QuantidadeProdutoLeave();
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            controladorTelaCardapioItem().Atualizar(this);
         }
     }
 }

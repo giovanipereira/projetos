@@ -15,16 +15,7 @@ namespace ProjetoControleEstoque.View.layout
     {
         public frmTelaPrincipal()
         {
-            System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(SplashScreen));
-            System.Threading.Thread.Sleep(1000);
             InitializeComponent();
-            t.Abort();
-        }
-
-        public void SplashScreen()
-        {
-            Application.Run(new frmTelaSplash());
-
         }
 
         private void frmTelaPrincipal_Load(object sender, EventArgs e)
@@ -61,7 +52,7 @@ namespace ProjetoControleEstoque.View.layout
 
         private void cardápioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTelaCadastroCardapio telaCadastroCardapio = new frmTelaCadastroCardapio();
+            frmTelaCadastroCardapio telaCadastroCardapio = new frmTelaCadastroCardapio((int)EnumOpcao.Cadastro);
             telaCadastroCardapio.ShowDialog();
         }
 
@@ -77,13 +68,13 @@ namespace ProjetoControleEstoque.View.layout
 
         private void produtoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmTelaConsultaProduto telaConsultaProduto = new frmTelaConsultaProduto();
+            frmTelaConsultaProduto telaConsultaProduto = new frmTelaConsultaProduto(0);
             telaConsultaProduto.ShowDialog();
         }
 
         private void novoPedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTelaCadastroPedido telaCadastroPedido = new frmTelaCadastroPedido();
+            frmTelaCadastroPedido telaCadastroPedido = new frmTelaCadastroPedido((int)EnumOpcao.Cadastro);
             telaCadastroPedido.ShowDialog();
         }
 
@@ -97,6 +88,12 @@ namespace ProjetoControleEstoque.View.layout
         {
             frmTelaConsultaFornecedor telaConsultaFornecedor = new frmTelaConsultaFornecedor();
             telaConsultaFornecedor.ShowDialog();
+        }
+
+        private void cardápioToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmTelaConsultaCardapio telaConsultaCardapio = new frmTelaConsultaCardapio(0);
+            telaConsultaCardapio.ShowDialog();
         }
     }
 }

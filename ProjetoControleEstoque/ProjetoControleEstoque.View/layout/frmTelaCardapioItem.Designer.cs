@@ -32,6 +32,7 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Label10 = new System.Windows.Forms.Label();
             this.txtNomeProduto = new System.Windows.Forms.TextBox();
@@ -69,6 +70,7 @@
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // btnCancelar
             // 
@@ -86,6 +88,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.Label10);
             this.groupBox1.Controls.Add(this.txtNomeProduto);
@@ -101,6 +104,17 @@
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Red;
+            this.label20.Location = new System.Drawing.Point(284, 89);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(13, 16);
+            this.label20.TabIndex = 104;
+            this.label20.Text = "*";
             // 
             // label5
             // 
@@ -180,6 +194,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.btnAtualizar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTelaCardapioItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela de item de cardápio";
@@ -203,5 +218,6 @@
         public System.Windows.Forms.TextBox txtCodigoProduto;
         public System.Windows.Forms.TextBox txtQuantidadeProduto;
         public System.Windows.Forms.ComboBox cboUnidadeProduto;
+        private System.Windows.Forms.Label label20;
     }
 }

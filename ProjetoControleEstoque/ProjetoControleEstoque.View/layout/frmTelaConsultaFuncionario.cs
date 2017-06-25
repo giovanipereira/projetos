@@ -23,7 +23,7 @@ namespace ProjetoControleEstoque.View.layout
         ControladorTelaConsultaFuncionario controladorTelaConsultaFuncionario()
         {
             ControladorTelaConsultaFuncionario controlador = new ControladorTelaConsultaFuncionario(cboConsultarPor, txtValor,
-                btnConsultar, btnExcluir, dgvConsultaFuncionarios);
+                btnConsultar, btnExcluir, btnBuscarTodos, dgvConsultaFuncionarios);
             return controlador;
         }
 
@@ -40,6 +40,7 @@ namespace ProjetoControleEstoque.View.layout
                 telaCadastroFuncionario.txtEmail.Text = dados[3].ToString();
                 telaCadastroFuncionario.mskTelefone.Text = dados[4].ToString();
                 telaCadastroFuncionario.cboCargo.SelectedValue = dados[5].ToString();
+                telaCadastroFuncionario.cboNivelAcesso.SelectedValue = dados[6].ToString();
                 telaCadastroFuncionario.id_usuario = int.Parse(dados[7].ToString());
                 telaCadastroFuncionario.txtUsuario.Text = dados[8].ToString();
                 telaCadastroFuncionario.txtSenha.Text = dados[9].ToString();
@@ -83,6 +84,16 @@ namespace ProjetoControleEstoque.View.layout
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             controladorTelaConsultaFuncionario().Remover();
+        }
+
+        private void btnBuscarTodos_Click(object sender, EventArgs e)
+        {
+            controladorTelaConsultaFuncionario().BuscarTodos();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

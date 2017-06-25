@@ -94,6 +94,12 @@
     <Compile Include="layout\frmTelaCardapioItem.Designer.cs">
       <DependentUpon>frmTelaCardapioItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="layout\frmTelaConsultaCardapio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaConsultaCardapio.Designer.cs">
+      <DependentUpon>frmTelaConsultaCardapio.cs</DependentUpon>
+    </Compile>
     <Compile Include="layout\frmTelaConsultaFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaCardapioItem.resx">
       <DependentUpon>frmTelaCardapioItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaConsultaCardapio.resx">
+      <DependentUpon>frmTelaConsultaCardapio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaConsultaFornecedor.resx">
       <DependentUpon>frmTelaConsultaFornecedor.cs</DependentUpon>
@@ -284,6 +293,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Remover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\No1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fechar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Novo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pesquisar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fichar_Titulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locked-icon1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

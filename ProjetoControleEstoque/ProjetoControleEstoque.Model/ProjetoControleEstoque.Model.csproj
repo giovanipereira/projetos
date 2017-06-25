@@ -66,6 +66,7 @@
     <Compile Include="repositorio\RepositorioFornecedor.cs" />
     <Compile Include="repositorio\RepositorioFuncionario.cs" />
     <Compile Include="repositorio\RepositorioMesa.cs" />
+    <Compile Include="repositorio\RepositorioPedido.cs" />
     <Compile Include="repositorio\RepositorioProduto.cs" />
     <Compile Include="repositorio\RepositorioSubcategoria.cs" />
     <Compile Include="utilitario\Conexao.cs" />

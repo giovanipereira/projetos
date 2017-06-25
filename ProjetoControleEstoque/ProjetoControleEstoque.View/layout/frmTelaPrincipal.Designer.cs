@@ -59,13 +59,13 @@
             this.cardápioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entradaDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.consultarPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entradaDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pedidosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -316,28 +316,28 @@
             // funcionárioToolStripMenuItem
             // 
             this.funcionárioToolStripMenuItem.Name = "funcionárioToolStripMenuItem";
-            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.funcionárioToolStripMenuItem.Text = "Funcionário";
             this.funcionárioToolStripMenuItem.Click += new System.EventHandler(this.funcionárioToolStripMenuItem_Click);
             // 
             // fornecedorToolStripMenuItem
             // 
             this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.fornecedorToolStripMenuItem.Text = "Fornecedor";
             this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.fornecedorToolStripMenuItem_Click);
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.produtoToolStripMenuItem.Text = "Produto";
             this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
             // 
             // cardápioToolStripMenuItem
             // 
             this.cardápioToolStripMenuItem.Name = "cardápioToolStripMenuItem";
-            this.cardápioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cardápioToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.cardápioToolStripMenuItem.Text = "Cardápio";
             this.cardápioToolStripMenuItem.Click += new System.EventHandler(this.cardápioToolStripMenuItem_Click);
             // 
@@ -378,6 +378,7 @@
             this.cardápioToolStripMenuItem1.Name = "cardápioToolStripMenuItem1";
             this.cardápioToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.cardápioToolStripMenuItem1.Text = "Cardápio";
+            this.cardápioToolStripMenuItem1.Click += new System.EventHandler(this.cardápioToolStripMenuItem1_Click);
             // 
             // pedidosToolStripMenuItem
             // 
@@ -395,6 +396,12 @@
             this.novoPedidoToolStripMenuItem.Text = "Novo Pedido";
             this.novoPedidoToolStripMenuItem.Click += new System.EventHandler(this.novoPedidoToolStripMenuItem_Click);
             // 
+            // consultarPedidosToolStripMenuItem
+            // 
+            this.consultarPedidosToolStripMenuItem.Name = "consultarPedidosToolStripMenuItem";
+            this.consultarPedidosToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.consultarPedidosToolStripMenuItem.Text = "Consultar Pedidos";
+            // 
             // relatoriosToolStripMenuItem
             // 
             this.relatoriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -403,24 +410,6 @@
             this.relatoriosToolStripMenuItem.Name = "relatoriosToolStripMenuItem";
             this.relatoriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.relatoriosToolStripMenuItem.Text = "Relatorios";
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
-            // 
-            // timer
-            // 
-            this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // consultarPedidosToolStripMenuItem
-            // 
-            this.consultarPedidosToolStripMenuItem.Name = "consultarPedidosToolStripMenuItem";
-            this.consultarPedidosToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.consultarPedidosToolStripMenuItem.Text = "Consultar Pedidos";
             // 
             // entradaDeProdutosToolStripMenuItem
             // 
@@ -433,6 +422,18 @@
             this.pedidosToolStripMenuItem1.Name = "pedidosToolStripMenuItem1";
             this.pedidosToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
             this.pedidosToolStripMenuItem1.Text = "Pedidos";
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // frmTelaPrincipal
             // 

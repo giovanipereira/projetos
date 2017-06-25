@@ -64,6 +64,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         private bool VerificarCampos()
         {
             mskTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             bool retorno;
             if (string.IsNullOrEmpty(txtNome.Text))
             {

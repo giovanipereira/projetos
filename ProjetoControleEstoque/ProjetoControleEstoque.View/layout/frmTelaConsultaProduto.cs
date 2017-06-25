@@ -14,13 +14,15 @@ namespace ProjetoControleEstoque.View.layout
 {
     public partial class frmTelaConsultaProduto : Form
     {
-        public frmTelaConsultaProduto()
+        public frmTelaConsultaProduto(int opcao)
         {
             InitializeComponent();
+            this.opcao = opcao;
         }
 
-        frmTelaCadastroCardapio telaCadastroCardapio = new frmTelaCadastroCardapio();
         frmTelaCadastroProduto telaCadastroProduto;
+
+        public int opcao;
 
         ControladorTelaConsultaProduto controladorTelaConsultaProduto()
         {
@@ -57,7 +59,17 @@ namespace ProjetoControleEstoque.View.layout
 
         private void frmTelaConsultaProduto_Load(object sender, EventArgs e)
         {
-            controladorTelaConsultaProduto().Load();
+            if (opcao.Equals(0))
+            {
+                controladorTelaConsultaProduto().Load();
+                btnAdicionar.Enabled = false;
+            }
+            else if (opcao.Equals((int)EnumOpcao.Adicionar))
+            {
+                controladorTelaConsultaProduto().Load();
+                btnExcluir.Enabled = false;
+                btnAtualizar.Enabled = false;
+            }
         }
 
         private void cboConsultarPor_TextChanged(object sender, EventArgs e)
@@ -72,7 +84,14 @@ namespace ProjetoControleEstoque.View.layout
 
         private void dgvConsultaProdutos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Atualizar();
+            if (opcao.Equals((int)EnumOpcao.Adicionar))
+            {
+                Adicionar();
+            }
+            else
+            {
+                Atualizar();
+            }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -85,23 +104,34 @@ namespace ProjetoControleEstoque.View.layout
             controladorTelaConsultaProduto().Remover();
         }
 
-        public void ObterProduto()
+        private void Adicionar()
         {
             if (dgvConsultaProdutos.RowCount > 0)
             {
-                var produto = controladorTelaConsultaProduto().ObterProduto();
+                int id = int.Parse(dgvConsultaProdutos.CurrentRow.Cells[0].Value.ToString());
+                object[] dados = controladorTelaConsultaProduto().ObterDadosProduto(id);
+                frmTelaCardapioItem tela = new frmTelaCardapioItem((int)EnumOpcao.Cadastro);
+                tela.txtCodigoProduto.Text = dados[0].ToString();
+                tela.txtNomeProduto.Text = dados[1].ToString();
+                tela.cboUnidadeProduto.SelectedValue = dados[11].ToString();
+                tela.ShowDialog();
+                this.Close();
             }
         }
 
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (dgvConsultaProdutos.RowCount > 0)
-            {
-                var produto = controladorTelaConsultaProduto().ObterProduto();
-                telaCadastroCardapio.ObterProduto(produto);
-                this.Close();
-            }
+            Adicionar();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnBuscarTodos_Click(object sender, EventArgs e)
+        {
+            controladorTelaConsultaProduto().BuscarTodos();
         }
     }
 }

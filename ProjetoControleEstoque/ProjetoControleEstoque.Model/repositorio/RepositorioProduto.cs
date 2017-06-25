@@ -128,6 +128,7 @@ namespace ProjetoControleEstoque.Model.repositorio
 
         #endregion
 
+
         public IList<Produto> CarregarProdutos()
         {
             Produto produto;

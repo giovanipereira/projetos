@@ -16,7 +16,7 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private ComboBox cboConsultarPor;
         private TextBox txtValor;
-        private Button btnConsultar, btnExcluir;
+        private Button btnConsultar, btnExcluir, btnBuscarTodos;
         private DataGridView dgvConsultaFuncionarios;
 
         IList<Funcionario> listaFuncionarios = new List<Funcionario>();
@@ -37,13 +37,14 @@ namespace ProjetoControleEstoque.Controller.controlador
         }
 
         public ControladorTelaConsultaFuncionario(ComboBox cboConsultarPor, TextBox txtValor, Button btnConsultar,
-            Button btnExcluir, DataGridView dgvConsultaFuncionarios)
+            Button btnExcluir, Button btnBuscarTodos, DataGridView dgvConsultaFuncionarios)
         {
             this.cboConsultarPor = cboConsultarPor;
             this.txtValor = txtValor;
             this.btnConsultar = btnConsultar;
             this.dgvConsultaFuncionarios = dgvConsultaFuncionarios;
             this.btnExcluir = btnExcluir;
+            this.btnBuscarTodos = btnBuscarTodos;
         }
         #endregion
 
@@ -102,14 +103,14 @@ namespace ProjetoControleEstoque.Controller.controlador
             dgvConsultaFuncionarios.DataSource = Query.ToList();
         }
 
-        private void ListarTodosFuncionarios()
+        private void ListarFuncionarioPorCpf(long cpf)
         {
             CarregarListas();
             var Query = from f in listaFuncionarios
                         join c in listaCargos on f.Id_cargo equals c.Id
                         join u in listaUsuarios on f.Id_Usuario equals u.Id
                         join n in listaNiveisAcessos on u.Id_nivel_acesso equals n.Id
-                        orderby f.Nome ascending
+                        where f.Cpf.Equals(cpf)
                         select new
                         {
                             Código = f.Id,
@@ -122,6 +123,38 @@ namespace ProjetoControleEstoque.Controller.controlador
                             Nível = n.Nome,
                         };
             dgvConsultaFuncionarios.DataSource = Query.ToList();
+        }
+
+        private void ListarTodosFuncionarios()
+        {
+            CarregarListas();
+            var Query = from f in listaFuncionarios
+                        join c in listaCargos on f.Id_cargo equals c.Id
+                        join u in listaUsuarios on f.Id_Usuario equals u.Id
+                        join n in listaNiveisAcessos on u.Id_nivel_acesso equals n.Id
+                        orderby f.Id ascending
+                        select new
+                        {
+                            Código = f.Id,
+                            Nome = f.Nome,
+                            CPF = f.Cpf,
+                            Cargo = c.Nome,
+                            Telefone = f.Telefone,
+                            Email = f.Email,
+                            Usuário = u.Nome,
+                            Nível = n.Nome,
+                        };
+            dgvConsultaFuncionarios.DataSource = Query.ToList();
+            ConfigurarGrid();
+        }
+
+        private void ConfigurarGrid()
+        {
+            dgvConsultaFuncionarios.Columns[0].Width = 65;
+            dgvConsultaFuncionarios.Columns[1].Width = 100;
+            dgvConsultaFuncionarios.Columns[5].HeaderText = "E-mail";
+            dgvConsultaFuncionarios.Columns[3].Width = 90;
+            dgvConsultaFuncionarios.Columns[7].HeaderText = "Nível de Acesso";
         }
 
         private void TipoConsulta()
@@ -146,6 +179,22 @@ namespace ProjetoControleEstoque.Controller.controlador
                     ListarFuncionarioPorNome(valor);
                     break;
 
+                case "CPF":
+                    if (valor.Equals(string.Empty))
+                    {
+                        ListarFuncionarioPorNome(valor);
+                    }
+                    if(txtValor.TextLength < 11)
+                    {
+                        MessageBox.Show("CPF inválido.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtValor.Focus();
+                    }
+                    else
+                    {
+                        ListarFuncionarioPorCpf(long.Parse(valor));
+                    }
+                    break;
+
                 default:
                     ListarTodosFuncionarios();
                     break;
@@ -154,17 +203,21 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private void RemoverFuncionario()
         {
-            CarregarListas();
-            funcionario = new Funcionario();
-            funcionario.Id = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
-            funcionario.Id_Usuario = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
-            if(Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+            if (dgvConsultaFuncionarios.RowCount > 0)
             {
-                repositorioFuncionario.Remover(funcionario);
-                Mensagem.MensagemExclusao();
-                ListarTodosFuncionarios();
+                CarregarListas();
+                funcionario = new Funcionario();
+                funcionario.Id = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
+                funcionario.Id_Usuario = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
+                if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                {
+                    repositorioFuncionario.Remover(funcionario);
+                    Mensagem.MensagemExclusao();
+                    ListarTodosFuncionarios();
+                }
             }
         }
+
         #endregion
 
         #region Event Functions
@@ -181,9 +234,25 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void ValorKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && cboConsultarPor.Text.Equals("Código"))
+            if (cboConsultarPor.Text.Equals("Código"))
             {
-                e.Handled = true;
+                txtValor.MaxLength = 10;
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (cboConsultarPor.Text.Equals("CPF"))
+            {
+                txtValor.MaxLength = 11;
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && txtValor.MaxLength <= 11)
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                txtValor.MaxLength = 100;
             }
         }
 
@@ -228,6 +297,11 @@ namespace ProjetoControleEstoque.Controller.controlador
         public void Remover()
         {
             RemoverFuncionario();
+        }
+
+        public void BuscarTodos()
+        {
+            ListarTodosFuncionarios();
         }
 
         #endregion

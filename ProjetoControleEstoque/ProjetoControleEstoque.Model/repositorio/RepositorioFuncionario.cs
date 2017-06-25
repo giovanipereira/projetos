@@ -251,36 +251,6 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.DisplayMember = "nome_niv";
         }
 
-        public bool VerificarLogin(Usuario usuario)
-        {
-            try
-            {
-                //Conexao.Open();
-                //SqlCommand cmd = new SqlCommand("proc_upd_funcionario", Conexao.connection);
-                //cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.Parameters.Clear();
-                //cmd.Parameters.Add(new SqlParameter("@nome_usu", SqlDbType.VarChar)).Value = usuario.Nome;
-                //cmd.Parameters.Add(new SqlParameter("@senha_usu", SqlDbType.VarChar)).Value = usuario.Senha;
-                //cmd.ExecuteNonQuery();
-                if(usuario.Nome.Equals("admin") && usuario.Senha.Equals("admin"))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                //Conexao.Close();
-            }
-        }
-
         #endregion
 
     }

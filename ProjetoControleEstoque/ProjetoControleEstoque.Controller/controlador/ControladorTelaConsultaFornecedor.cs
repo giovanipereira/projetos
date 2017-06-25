@@ -21,9 +21,11 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         IList<Estado> listaEstados = new List<Estado>();
         IList<Fornecedor> listaFornecedores = new List<Fornecedor>();
+        IList<Produto> listaProdutos = new List<Produto>();
 
-        RepositorioFornecedor repositorioFornecedor = new RepositorioFornecedor();
         Fornecedor fornecedor;
+        RepositorioFornecedor repositorioFornecedor = new RepositorioFornecedor();
+        RepositorioProduto repositorioProduto = new RepositorioProduto();
 
         #endregion
 
@@ -47,6 +49,19 @@ namespace ProjetoControleEstoque.Controller.controlador
         #endregion
 
         #region Private Methods
+
+        private bool VerificarFornecedorExistenteNoProduto(int id)
+        {
+            listaProdutos = repositorioProduto.CarregarProdutos();
+            if (listaProdutos.Where(i => i.Id_fornecedor.Equals(id)).Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         private void CarregarListas()
         {
@@ -75,6 +90,26 @@ namespace ProjetoControleEstoque.Controller.controlador
             dgvConsultaFornecedores.DataSource = Query.ToList();
         }
 
+        private void ListarFornecedorPorCnpj(long cnpj)
+        {
+            CarregarListas();
+            var Query = from f in listaFornecedores
+                        join e in listaEstados on f.Id_uf equals e.Id
+                        where f.Cnpj.Equals(cnpj)
+                        where f.Ativo.Equals(true)
+                        select new
+                        {
+                            Código = f.Id,
+                            Nome = f.Nome,
+                            CNPJ = f.Cnpj,
+                            Telefone = f.Telefone,
+                            Email = f.Email,
+                            Cidade = f.Cidade,
+                            Uf = e.Sigla
+                        };
+            dgvConsultaFornecedores.DataSource = Query.ToList();
+        }
+
         private void ListarFornecedorPorId(int id)
         {
             CarregarListas();
@@ -82,7 +117,6 @@ namespace ProjetoControleEstoque.Controller.controlador
                         join e in listaEstados on f.Id_uf equals e.Id
                         where f.Id.Equals(id)
                         where f.Ativo.Equals(true)
-                        orderby f.Nome ascending
                         select new
                         {
                             Código = f.Id,
@@ -102,7 +136,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             var Query = from f in listaFornecedores
                         join e in listaEstados on f.Id_uf equals e.Id
                         where f.Ativo.Equals(true)
-                        orderby f.Nome ascending
+                        orderby f.Id ascending
                         select new
                         {
                             Código = f.Id,
@@ -114,6 +148,7 @@ namespace ProjetoControleEstoque.Controller.controlador
                             Uf = e.Sigla
                         };
             dgvConsultaFornecedores.DataSource = Query.ToList();
+            ConfigurarGrid();
         }
 
         private void TipoConsulta()
@@ -138,22 +173,56 @@ namespace ProjetoControleEstoque.Controller.controlador
                     ListarFornecedorPorNome(valor);
                     break;
 
+                case "CNPJ":
+                    if (valor.Equals(string.Empty))
+                    {
+                        ListarFornecedorPorNome(valor);
+                    }
+                    if (txtValor.TextLength < 14)
+                    {
+                        MessageBox.Show("CNPJ inválido.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtValor.Focus();
+                    }
+                    else
+                    {
+                        ListarFornecedorPorCnpj(long.Parse(valor));
+                    }
+                    break;
+
                 default:
                     ListarTodosFornecedores();
                     break;
             }
         }
 
+        private void ConfigurarGrid()
+        {
+            dgvConsultaFornecedores.Columns[0].Width = 93;
+            dgvConsultaFornecedores.Columns[1].Width = 162;
+            dgvConsultaFornecedores.Columns[4].HeaderText = "E-mail";
+        }
+
         private void RemoverFornecedor()
         {
-            CarregarListas();
-            fornecedor = new Fornecedor();
-            fornecedor.Id = int.Parse(dgvConsultaFornecedores.CurrentRow.Cells[0].Value.ToString());
-            if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+            if(dgvConsultaFornecedores.RowCount > 0)
             {
-                repositorioFornecedor.Remover(fornecedor);
-                Mensagem.MensagemExclusao();
-                ListarTodosFornecedores();
+                int id = int.Parse(dgvConsultaFornecedores.CurrentRow.Cells[0].Value.ToString());
+                if (!VerificarFornecedorExistenteNoProduto(id))
+                {
+                    CarregarListas();
+                    fornecedor = new Fornecedor();
+                    fornecedor.Id = id;
+                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                    {
+                        repositorioFornecedor.Remover(fornecedor);
+                        Mensagem.MensagemExclusao();
+                        ListarTodosFornecedores();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não é possível excluír o fornecedor desejado,\npois ele está cadastrado em um produto.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -173,9 +242,25 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void ValorKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && cboConsultarPor.Text.Equals("Código"))
+            if (cboConsultarPor.Text.Equals("Código"))
             {
-                e.Handled = true;
+                txtValor.MaxLength = 10;
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (cboConsultarPor.Text.Equals("CNPJ"))
+            {
+                txtValor.MaxLength = 14;
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && txtValor.MaxLength <= 14)
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                txtValor.MaxLength = 100;
             }
         }
 
@@ -223,6 +308,12 @@ namespace ProjetoControleEstoque.Controller.controlador
             RemoverFornecedor();
         }
 
+        public void BuscarTodos()
+        {
+            ListarTodosFornecedores();
+        }
+
         #endregion
+
     }
 }
