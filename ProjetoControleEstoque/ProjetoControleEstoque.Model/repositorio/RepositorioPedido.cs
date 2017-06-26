@@ -73,6 +73,32 @@ namespace ProjetoControleEstoque.Model.repositorio
             combobox.DisplayMember = "id_mes";
         }
 
+        public IList<Pedido> CarregarPedidos()
+        {
+            Pedido pedido;
+            SqlCommand cmd = new SqlCommand("select * from pedido", Conexao.connection);
+            Conexao.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<Pedido> listaPedidos = new List<Pedido>();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    pedido = new Pedido();
+                    pedido.Id = (int)(dr[0]);
+                    pedido.Data = DateTime.Parse((dr[1]).ToString());
+                    pedido.Horario = (dr[2]).ToString();
+                    pedido.Status = (int)(dr[3]);
+                    pedido.VlTotal = (dr[4]).ToString();
+                    pedido.Id_mesa = (int)(dr[5]);
+                    listaPedidos.Add(pedido);
+                }
+            }
+            Conexao.Close();
+            return listaPedidos;
+        }
+
+
         #region Temporary Methods
 
         public bool SalvarItemPedidoTemporariamente(ItemPedido itemPedido)

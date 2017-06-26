@@ -95,5 +95,11 @@ namespace ProjetoControleEstoque.View.layout
             frmTelaConsultaCardapio telaConsultaCardapio = new frmTelaConsultaCardapio(0);
             telaConsultaCardapio.ShowDialog();
         }
+
+        private void consultarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTelaConsultaPedido telaConsultaPedido = new frmTelaConsultaPedido();
+            telaConsultaPedido.ShowDialog();
+        }
     }
 }

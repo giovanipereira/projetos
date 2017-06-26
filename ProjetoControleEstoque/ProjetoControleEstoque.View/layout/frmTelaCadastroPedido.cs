@@ -136,6 +136,7 @@ namespace ProjetoControleEstoque.View.layout
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             controladorTelaCadastroPedido().Salvar();
+            timer.Stop();
         }
     }
 }

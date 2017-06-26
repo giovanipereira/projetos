@@ -24,9 +24,11 @@ namespace ProjetoControleEstoque.Controller.controlador
         IList<ItemCardapio> listaItensCardapio = new List<ItemCardapio>();
         IList<Produto> listaProdutos = new List<Produto>();
         IList<Unidade> listaUnidades = new List<Unidade>();
+        IList<ItemPedido> listaItensPedido = new List<ItemPedido>();
 
         RepositorioCardapio repositorioCardapio = new RepositorioCardapio();
         RepositorioProduto repositorioProduto = new RepositorioProduto();
+        RepositorioPedido repositorioPedido = new RepositorioPedido();
         Cardapio cardapio;
 
         #endregion
@@ -57,6 +59,19 @@ namespace ProjetoControleEstoque.Controller.controlador
         }
 
         #region Private Methods
+
+        private bool VerificarCardapioExistenteNoItemPedido(int id)
+        {
+            //listaItensPedido = repositorioPedido.CarregarPedidos();
+            if (listaItensCardapio.Where(i => i.Id_produto.Equals(id)).Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         private void ListarCardapioPorId(int id)
         {

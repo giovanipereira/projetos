@@ -401,6 +401,7 @@
             this.consultarPedidosToolStripMenuItem.Name = "consultarPedidosToolStripMenuItem";
             this.consultarPedidosToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.consultarPedidosToolStripMenuItem.Text = "Consultar Pedidos";
+            this.consultarPedidosToolStripMenuItem.Click += new System.EventHandler(this.consultarPedidosToolStripMenuItem_Click);
             // 
             // relatoriosToolStripMenuItem
             // 
