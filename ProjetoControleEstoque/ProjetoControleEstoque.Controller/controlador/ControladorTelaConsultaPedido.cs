@@ -52,6 +52,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             CarregarListas();
             var Query = from p in listaPedido
                         orderby p.Horario ascending
+                        where p.Status.Equals(1)
                         select new
                         {
                             Pedido = p.Id,
