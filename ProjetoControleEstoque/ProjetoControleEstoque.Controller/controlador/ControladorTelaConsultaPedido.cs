@@ -15,8 +15,14 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private DataGridView dgvConsultaPedidos;
 
-        RepositorioPedido repositorioPedido = new RepositorioPedido();
+
         IList<Pedido> listaPedido = new List<Pedido>();
+        IList<ItemPedido> listaItensPedido = new List<ItemPedido>();
+        IList<Cardapio> listaCardapio = new List<Cardapio>();
+        Pedido pedido;
+
+        RepositorioPedido repositorioPedido = new RepositorioPedido();
+        RepositorioCardapio repositorioCardapio = new RepositorioCardapio();
 
         #endregion
 
@@ -65,12 +71,55 @@ namespace ProjetoControleEstoque.Controller.controlador
             dgvConsultaPedidos.Columns[3].Width = 185;
         }
 
+        public void ListarTodosItensPedido(int id, ListBox listbox)
+        {
+            listaItensPedido = repositorioPedido.CarregarItensPedido();
+            listaCardapio = repositorioCardapio.CarregarCardapios();
+            var Query = from i in listaItensPedido
+                        join c in listaCardapio on i.Id_cardapio equals c.Id
+                        where i.Id_pedido.Equals(id)
+                        select new
+                        {
+                            Código = i.Id_cardapio,
+                            Produto = c.Nome,
+                            Preço = c.Preco,
+                            Quantidade = i.Quantidade
+                        };
+            listbox.DataSource = Query.ToList();
+        }
+
         #endregion
 
 
         public void Load()
         {
             ListarTodosPedidos();
+        }
+
+        public void SalvarItensPedidoTemporariamente(int id)
+        {
+            pedido = new Pedido();
+            pedido.Id = id;
+            repositorioPedido.SalvarItemPedidoTemporariamenteParaAlterar(pedido);
+        }
+
+        public object[] ObterDadosPedido(int id)
+        {
+            CarregarListas();
+            var Query = from p in listaPedido
+                        where p.Id.Equals(id)
+                        select new
+                        {
+                            Código = p.Id,
+                            Data = p.Data,
+                            Horario = p.Horario,
+                            Mesa = p.Id_mesa,
+                            Status = p.Status,
+                            Vltotal = p.VlTotal
+                        };
+            var pedido = Query.FirstOrDefault(x => x.Código.Equals(id));
+            object[] dados = { pedido.Código, pedido.Data, pedido.Horario, pedido.Mesa, pedido.Status, pedido.Vltotal };
+            return dados;
         }
     }
 }

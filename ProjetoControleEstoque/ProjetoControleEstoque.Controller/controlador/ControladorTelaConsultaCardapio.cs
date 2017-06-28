@@ -62,8 +62,8 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         private bool VerificarCardapioExistenteNoItemPedido(int id)
         {
-            //listaItensPedido = repositorioPedido.CarregarPedidos();
-            if (listaItensCardapio.Where(i => i.Id_produto.Equals(id)).Count() > 0)
+            listaItensPedido = repositorioPedido.CarregarItensPedido();
+            if (listaItensPedido.Where(i => i.Id_cardapio.Equals(id)).Count() > 0)
             {
                 return true;
             }
@@ -191,15 +191,24 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             if (dgvConsultaCardapio.RowCount > 0)
             {
-                CarregarListas();
-                cardapio = new Cardapio();
-                cardapio.Id = int.Parse(dgvConsultaCardapio.CurrentRow.Cells[0].Value.ToString());
-                if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                int id = int.Parse(dgvConsultaCardapio.CurrentRow.Cells[0].Value.ToString());
+                if (!VerificarCardapioExistenteNoItemPedido(id))
                 {
-                    repositorioCardapio.Remover(cardapio);
-                    Mensagem.MensagemExclusao();
-                    ListarTodosCardapios();
+                    CarregarListas();
+                    cardapio = new Cardapio();
+                    cardapio.Id = int.Parse(dgvConsultaCardapio.CurrentRow.Cells[0].Value.ToString());
+                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                    {
+                        repositorioCardapio.Remover(cardapio);
+                        Mensagem.MensagemExclusao();
+                        ListarTodosCardapios();
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Não é possível excluír o cardápio desejado,\npois ele está cadastrado em um pedido", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
         }
 

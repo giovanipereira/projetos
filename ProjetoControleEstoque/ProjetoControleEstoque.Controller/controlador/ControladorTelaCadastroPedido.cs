@@ -251,6 +251,34 @@ namespace ProjetoControleEstoque.Controller.controlador
             return sucesso;
         }
 
+        public bool AtualizarPedido()
+        {
+            bool sucesso = false;
+            if (VerificarCampos())
+            {
+                pedido = new Pedido();
+                pedido = PreencherPedido(pedido);
+                if (dgvListaCardapios.RowCount > 0)
+                {
+                    if (repositorioPedido.Atualizar(pedido))
+                    {
+                        Mensagem.MensagemAtualizar();
+                        sucesso = true;
+                    }
+                    else
+                    {
+                        sucesso = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Obrigatório adicionar itens.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    sucesso = false;
+                }
+            }
+            return sucesso;
+        }
+
         #endregion
 
         #region Abstracts Methods
@@ -324,7 +352,10 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Atualizar(Form form)
         {
-            OperationMode((int)EnumOperationMode.Atualizar);
+            if (AtualizarPedido())
+            {
+                form.Close();
+            }
         }
 
         #endregion

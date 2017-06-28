@@ -31,9 +31,9 @@
             this.dgvConsultaPedidos = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
+            this.btnDetalhes = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaPedidos)).BeginInit();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -65,13 +65,27 @@
             // 
             // panel
             // 
-            this.panel.Controls.Add(this.button1);
+            this.panel.Controls.Add(this.btnDetalhes);
             this.panel.Controls.Add(this.btnCancelar);
             this.panel.Controls.Add(this.btnAtualizar);
             this.panel.Location = new System.Drawing.Point(16, 482);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(794, 86);
             this.panel.TabIndex = 11;
+            // 
+            // btnDetalhes
+            // 
+            this.btnDetalhes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalhes.Image = global::ProjetoControleEstoque.View.Properties.Resources.Adicionar;
+            this.btnDetalhes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDetalhes.Location = new System.Drawing.Point(183, 20);
+            this.btnDetalhes.Name = "btnDetalhes";
+            this.btnDetalhes.Size = new System.Drawing.Size(104, 57);
+            this.btnDetalhes.TabIndex = 14;
+            this.btnDetalhes.Text = "Detalhes";
+            this.btnDetalhes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDetalhes.UseVisualStyleBackColor = true;
+            this.btnDetalhes.Click += new System.EventHandler(this.btnDetalhes_Click);
             // 
             // btnCancelar
             // 
@@ -98,19 +112,7 @@
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAtualizar.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ProjetoControleEstoque.View.Properties.Resources.Adicionar;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(183, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 57);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Detalhes";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // frmTelaConsultaPedido
             // 
@@ -139,6 +141,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.Button btnAtualizar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDetalhes;
     }
 }

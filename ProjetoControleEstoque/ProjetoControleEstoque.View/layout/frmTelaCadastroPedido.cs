@@ -17,6 +17,8 @@ namespace ProjetoControleEstoque.View.layout
         {
             InitializeComponent();
             this.opcao = opcao;
+            if (opcao.Equals((int)EnumOpcao.Atualizar))
+                controladorTelaCadastroPedido().PreencherCombobox();
         }
 
         int opcao;
@@ -137,6 +139,11 @@ namespace ProjetoControleEstoque.View.layout
         {
             controladorTelaCadastroPedido().Salvar();
             timer.Stop();
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            controladorTelaCadastroPedido().Atualizar(this);
         }
     }
 }

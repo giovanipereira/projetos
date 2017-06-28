@@ -17,7 +17,34 @@ namespace ProjetoControleEstoque.Model.repositorio
 
         public override bool Atualizar(Pedido pedido)
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+            SqlTransaction transacao = null;
+            try
+            {
+                Conexao.Open();
+                transacao = Conexao.connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("proc_upd_pedido", Conexao.connection, transacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@id_ped", SqlDbType.Int)).Value = pedido.Id;
+                cmd.Parameters.Add(new SqlParameter("@vltotal_ped", SqlDbType.VarChar)).Value = pedido.VlTotal;
+                cmd.Parameters.Add(new SqlParameter("@id_mes", SqlDbType.Int)).Value = pedido.Id_mesa;
+                cmd.ExecuteNonQuery();
+                transacao.Commit();
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                if (transacao != null)
+                    transacao.Rollback();
+                retorno = false;
+                throw e;
+            }
+            finally
+            {
+                Conexao.Close();
+            }
+            return retorno;
         }
 
         public override bool Remover(Pedido pedido)
@@ -98,6 +125,27 @@ namespace ProjetoControleEstoque.Model.repositorio
             return listaPedidos;
         }
 
+        public IList<ItemPedido> CarregarItensPedido()
+        {
+            ItemPedido itemPedido;
+            SqlCommand cmd = new SqlCommand("select * from item_pedido", Conexao.connection);
+            Conexao.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<ItemPedido> listaItensPedido = new List<ItemPedido>();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    itemPedido = new ItemPedido();
+                    itemPedido.Id_pedido = (int)(dr[0]);
+                    itemPedido.Id_cardapio = (int)(dr[1]);
+                    itemPedido.Quantidade = (int)(dr[2]);
+                    listaItensPedido.Add(itemPedido);
+                }
+            }
+            Conexao.Close();
+            return listaItensPedido;
+        }
 
         #region Temporary Methods
 
@@ -132,7 +180,7 @@ namespace ProjetoControleEstoque.Model.repositorio
             return retorno;
         }
 
-        public bool SalvarItemPedidoTemporariamenteParaAlterar(ItemPedido itemPedido)
+        public bool SalvarItemPedidoTemporariamenteParaAlterar(Pedido pedido)
         {
             bool retorno = false;
             SqlTransaction transacao = null;
@@ -143,7 +191,7 @@ namespace ProjetoControleEstoque.Model.repositorio
                 SqlCommand cmd = new SqlCommand("proc_ins_temp_item_pedido", Conexao.connection, transacao);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Clear();
-                cmd.Parameters.Add(new SqlParameter("@id_pedido", SqlDbType.Int)).Value = itemPedido.Id_pedido;
+                cmd.Parameters.Add(new SqlParameter("@id_pedido", SqlDbType.Int)).Value = pedido.Id;
                 cmd.ExecuteNonQuery();
                 transacao.Commit();
                 retorno = true;

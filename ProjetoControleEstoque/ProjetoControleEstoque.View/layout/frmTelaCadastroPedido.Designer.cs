@@ -257,6 +257,7 @@
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // btnInserir
             // 
@@ -378,13 +379,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtHorario;
-        private System.Windows.Forms.DateTimePicker dtpData;
-        private System.Windows.Forms.ComboBox cboMesa;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -404,5 +400,9 @@
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Timer timer;
+        public System.Windows.Forms.TextBox txtTotal;
+        public System.Windows.Forms.TextBox txtHorario;
+        public System.Windows.Forms.DateTimePicker dtpData;
+        public System.Windows.Forms.ComboBox cboMesa;
     }
 }

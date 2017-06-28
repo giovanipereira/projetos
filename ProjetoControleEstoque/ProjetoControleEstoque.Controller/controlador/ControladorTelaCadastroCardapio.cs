@@ -125,15 +125,20 @@ namespace ProjetoControleEstoque.Controller.controlador
             if (Query.Count() > 0)
             {
                 dgvListaProdutos.DataSource = Query.ToList();
-                dgvListaProdutos.Columns[0].Width = 120;
-                dgvListaProdutos.Columns[1].Width = 250;
-                dgvListaProdutos.Columns[2].Width = 150;
-                dgvListaProdutos.Columns[3].Width = 200;
+                ConfiguarGrid();
             }
             else
             {
                 dgvListaProdutos.DataSource = null;
             }
+        }
+
+        private void ConfiguarGrid()
+        {
+            dgvListaProdutos.Columns[0].Width = 120;
+            dgvListaProdutos.Columns[1].Width = 250;
+            dgvListaProdutos.Columns[2].Width = 150;
+            dgvListaProdutos.Columns[3].Width = 200;
         }
 
         public void RemoverTodosItensTemporarios()
