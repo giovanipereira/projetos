@@ -11,7 +11,7 @@ namespace ProjetoControleEstoque.Model.dominio
         private int id_pedido;
         private int id_cardapio;
         private int quantidade;
-        private string observacao;
+        private string status;
         public virtual ICollection<Pedido> Pedidos { get; set; }
         public virtual ICollection<Cardapio> Cardapios { get; set; }
 
@@ -33,10 +33,10 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.quantidade = value; }
         }
 
-        public string Observacao
+        public string Status
         {
-            get { return this.observacao; }
-            set { this.observacao = value; }
+            get { return this.status; }
+            set { this.status = value; }
         }
     }
 }

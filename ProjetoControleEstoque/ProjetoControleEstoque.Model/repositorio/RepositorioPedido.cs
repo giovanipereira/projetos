@@ -49,7 +49,32 @@ namespace ProjetoControleEstoque.Model.repositorio
 
         public override bool Remover(Pedido pedido)
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+            SqlTransaction transacao = null;
+            try
+            {
+                Conexao.Open();
+                transacao = Conexao.connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("proc_del_pedido", Conexao.connection, transacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@id_ped", SqlDbType.Int)).Value = pedido.Id;
+                cmd.ExecuteNonQuery();
+                transacao.Commit();
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                if (transacao != null)
+                    transacao.Rollback();
+                retorno = false;
+                throw e;
+            }
+            finally
+            {
+                Conexao.Close();
+            }
+            return retorno;
         }
 
         public override bool Salvar(Pedido pedido)
@@ -65,7 +90,7 @@ namespace ProjetoControleEstoque.Model.repositorio
                 cmd.Parameters.Clear();
                 cmd.Parameters.Add(new SqlParameter("@data_ped", SqlDbType.Date)).Value = pedido.Data;
                 cmd.Parameters.Add(new SqlParameter("@horario_ped", SqlDbType.Time)).Value = pedido.Horario;
-                cmd.Parameters.Add(new SqlParameter("@status_ped", SqlDbType.Int)).Value = pedido.Status;
+                cmd.Parameters.Add(new SqlParameter("@status_ped", SqlDbType.Char)).Value = pedido.Status;
                 cmd.Parameters.Add(new SqlParameter("@vltotal_ped", SqlDbType.VarChar)).Value = pedido.VlTotal;
                 cmd.Parameters.Add(new SqlParameter("@id_mes", SqlDbType.Int)).Value = pedido.Id_mesa;
                 cmd.ExecuteNonQuery();
@@ -87,6 +112,36 @@ namespace ProjetoControleEstoque.Model.repositorio
         }
 
         #endregion
+
+        public bool FinalizarPedido(Pedido pedido)
+        {
+            bool retorno = false;
+            SqlTransaction transacao = null;
+            try
+            {
+                Conexao.Open();
+                transacao = Conexao.connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("proc_finalizar_pedido", Conexao.connection, transacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@id_ped", SqlDbType.Int)).Value = pedido.Id;
+                cmd.ExecuteNonQuery();
+                transacao.Commit();
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                if (transacao != null)
+                    transacao.Rollback();
+                retorno = false;
+                throw e;
+            }
+            finally
+            {
+                Conexao.Close();
+            }
+            return retorno;
+        }
 
 
         public void PreencherMesa(ComboBox combobox)
@@ -115,7 +170,7 @@ namespace ProjetoControleEstoque.Model.repositorio
                     pedido.Id = (int)(dr[0]);
                     pedido.Data = DateTime.Parse((dr[1]).ToString());
                     pedido.Horario = (dr[2]).ToString();
-                    pedido.Status = (int)(dr[3]);
+                    pedido.Status = (dr[3]).ToString();
                     pedido.VlTotal = (dr[4]).ToString();
                     pedido.Id_mesa = (int)(dr[5]);
                     listaPedidos.Add(pedido);
@@ -140,6 +195,7 @@ namespace ProjetoControleEstoque.Model.repositorio
                     itemPedido.Id_pedido = (int)(dr[0]);
                     itemPedido.Id_cardapio = (int)(dr[1]);
                     itemPedido.Quantidade = (int)(dr[2]);
+                    itemPedido.Status = (dr[3]).ToString();
                     listaItensPedido.Add(itemPedido);
                 }
             }
@@ -162,6 +218,7 @@ namespace ProjetoControleEstoque.Model.repositorio
                 cmd.Parameters.Clear();
                 cmd.Parameters.Add(new SqlParameter("@id_cardapio", SqlDbType.Int)).Value = itemPedido.Id_cardapio;
                 cmd.Parameters.Add(new SqlParameter("@quantidade", SqlDbType.Int)).Value = itemPedido.Quantidade;
+                cmd.Parameters.Add(new SqlParameter("@status", SqlDbType.Char)).Value = itemPedido.Status;
                 cmd.ExecuteNonQuery();
                 transacao.Commit();
                 retorno = true;

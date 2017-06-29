@@ -41,8 +41,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.btnCancelarPedido = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancelarPedido = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -171,19 +172,6 @@
             this.lblTotal.TabIndex = 119;
             this.lblTotal.Text = "total";
             // 
-            // btnCancelarPedido
-            // 
-            this.btnCancelarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarPedido.Image = global::ProjetoControleEstoque.View.Properties.Resources.No;
-            this.btnCancelarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelarPedido.Location = new System.Drawing.Point(329, 372);
-            this.btnCancelarPedido.Name = "btnCancelarPedido";
-            this.btnCancelarPedido.Size = new System.Drawing.Size(139, 34);
-            this.btnCancelarPedido.TabIndex = 121;
-            this.btnCancelarPedido.Text = "Cancelar Pedido";
-            this.btnCancelarPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelarPedido.UseVisualStyleBackColor = true;
-            // 
             // groupBox
             // 
             this.groupBox.BackColor = System.Drawing.SystemColors.Control;
@@ -207,17 +195,46 @@
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Dados:";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::ProjetoControleEstoque.View.Properties.Resources.voltar;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(393, 372);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 34);
+            this.button1.TabIndex = 123;
+            this.button1.Text = "Voltar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnCancelarPedido
+            // 
+            this.btnCancelarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarPedido.Image = global::ProjetoControleEstoque.View.Properties.Resources.Fechar;
+            this.btnCancelarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelarPedido.Location = new System.Drawing.Point(210, 372);
+            this.btnCancelarPedido.Name = "btnCancelarPedido";
+            this.btnCancelarPedido.Size = new System.Drawing.Size(139, 34);
+            this.btnCancelarPedido.TabIndex = 121;
+            this.btnCancelarPedido.Text = "Cancelar Pedido";
+            this.btnCancelarPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelarPedido.UseVisualStyleBackColor = true;
+            this.btnCancelarPedido.Click += new System.EventHandler(this.btnCancelarPedido_Click);
+            // 
             // btnFinalizar
             // 
             this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinalizar.Image = global::ProjetoControleEstoque.View.Properties.Resources.Yes2;
             this.btnFinalizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFinalizar.Location = new System.Drawing.Point(92, 372);
+            this.btnFinalizar.Location = new System.Drawing.Point(68, 372);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(119, 34);
             this.btnFinalizar.TabIndex = 120;
             this.btnFinalizar.Text = "Finalizar";
             this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
             // frmTelaDetalhesPedido
             // 
@@ -225,6 +242,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(571, 424);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.btnCancelarPedido);
             this.Controls.Add(this.btnFinalizar);
@@ -258,5 +276,6 @@
         public System.Windows.Forms.Label lblMesa;
         public System.Windows.Forms.ListBox lbProdutos;
         public System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Button button1;
     }
 }

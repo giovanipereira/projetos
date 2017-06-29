@@ -52,6 +52,7 @@
             this.dgvConsultaPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConsultaPedidos.Size = new System.Drawing.Size(798, 443);
             this.dgvConsultaPedidos.TabIndex = 10;
+            this.dgvConsultaPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsultaPedidos_CellDoubleClick);
             // 
             // label1
             // 

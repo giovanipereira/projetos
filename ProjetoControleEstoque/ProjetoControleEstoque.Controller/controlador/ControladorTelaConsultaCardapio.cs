@@ -197,10 +197,10 @@ namespace ProjetoControleEstoque.Controller.controlador
                     CarregarListas();
                     cardapio = new Cardapio();
                     cardapio.Id = int.Parse(dgvConsultaCardapio.CurrentRow.Cells[0].Value.ToString());
-                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluir?").Equals(DialogResult.Yes))
                     {
                         repositorioCardapio.Remover(cardapio);
-                        Mensagem.MensagemExclusao();
+                        MessageBox.Show("Pedido cancelado com sucesso!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ListarTodosCardapios();
                     }
                 }

@@ -11,7 +11,7 @@ namespace ProjetoControleEstoque.Model.dominio
         private int id;
         private DateTime data;
         private string horario;
-        private int status;
+        private string status;
         private int id_mesa;
         private string vltotal;
         public virtual Mesa Mesa { get; set; }
@@ -34,7 +34,7 @@ namespace ProjetoControleEstoque.Model.dominio
             set { this.horario = value; }
         }
 
-        public int Status
+        public string Status
         {
             get { return this.status; }
             set { this.status = value; }
@@ -51,12 +51,5 @@ namespace ProjetoControleEstoque.Model.dominio
             get { return this.vltotal; }
             set { this.vltotal = value; }
         }
-    }
-
-    public enum EnumStatusPedido
-    {
-        Pendente = 1,
-        Cancelado = 2,
-        Finalizado = 3
     }
 }

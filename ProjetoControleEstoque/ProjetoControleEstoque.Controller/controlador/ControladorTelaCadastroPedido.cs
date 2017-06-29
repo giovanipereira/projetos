@@ -218,7 +218,7 @@ namespace ProjetoControleEstoque.Controller.controlador
             pedido.Id_mesa = int.Parse(cboMesa.SelectedValue.ToString());
             pedido.Horario = DateTime.Now.ToString("HH:mm:ss");
             pedido.Data = dtpData.Value;
-            pedido.Status = (int)EnumStatusPedido.Pendente;
+            pedido.Status = "P";
             pedido.VlTotal = txtTotal.Text;
             return pedido;
         }

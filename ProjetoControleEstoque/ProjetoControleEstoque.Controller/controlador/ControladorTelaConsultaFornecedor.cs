@@ -212,7 +212,7 @@ namespace ProjetoControleEstoque.Controller.controlador
                     CarregarListas();
                     fornecedor = new Fornecedor();
                     fornecedor.Id = id;
-                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluir?").Equals(DialogResult.Yes))
                     {
                         repositorioFornecedor.Remover(fornecedor);
                         Mensagem.MensagemExclusao();

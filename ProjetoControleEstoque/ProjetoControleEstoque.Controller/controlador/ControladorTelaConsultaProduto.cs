@@ -256,7 +256,7 @@ namespace ProjetoControleEstoque.Controller.controlador
                     CarregarListas();
                     produto = new Produto();
                     produto.Id = id;
-                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                    if (Mensagem.MensagemQuestao("Tem certeza que deseja excluir?").Equals(DialogResult.Yes))
                     {
                         repositorioProduto.Remover(produto);
                         Mensagem.MensagemExclusao();
@@ -267,7 +267,6 @@ namespace ProjetoControleEstoque.Controller.controlador
                 {
                     MessageBox.Show("Não é possível excluír o produto desejado,\npois ele está cadastrado em um produto do cardápio", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                
             }
         }
 

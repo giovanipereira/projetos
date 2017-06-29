@@ -209,7 +209,7 @@ namespace ProjetoControleEstoque.Controller.controlador
                 funcionario = new Funcionario();
                 funcionario.Id = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
                 funcionario.Id_Usuario = int.Parse(dgvConsultaFuncionarios.CurrentRow.Cells[0].Value.ToString());
-                if (Mensagem.MensagemQuestao("Tem certeza que deseja excluír?").Equals(DialogResult.Yes))
+                if (Mensagem.MensagemQuestao("Tem certeza que deseja excluir?").Equals(DialogResult.Yes))
                 {
                     repositorioFuncionario.Remover(funcionario);
                     Mensagem.MensagemExclusao();

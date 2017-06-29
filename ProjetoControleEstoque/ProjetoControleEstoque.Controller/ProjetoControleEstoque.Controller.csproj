@@ -56,6 +56,7 @@
     <Compile Include="controlador\ControladorTelaCardapioItem.cs" />
     <Compile Include="controlador\ControladorTelaConsultaPedido.cs" />
     <Compile Include="controlador\ControladorTelaConsultaProduto.cs" />
+    <Compile Include="controlador\ControladorTelaDetalhesPedido.cs" />
     <Compile Include="controlador\ControladorTelaLogin.cs" />
     <Compile Include="controlador\ControladorTelaPedidoItem.cs" />
     <Compile Include="interfaces\IControladorBase.cs" />

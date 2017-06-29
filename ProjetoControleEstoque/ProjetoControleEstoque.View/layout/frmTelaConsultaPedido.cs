@@ -57,19 +57,32 @@ namespace ProjetoControleEstoque.View.layout
                 telaCadastroPedido.ShowDialog();
             }
         }
+        private void Detalhes()
+        {
+            if (dgvConsultaPedidos.RowCount > 0)
+            {
+                frmTelaDetalhesPedido telaDetalhesPedido = new frmTelaDetalhesPedido();
+                int id = int.Parse(dgvConsultaPedidos.CurrentRow.Cells[0].Value.ToString());
+                object[] dados = controladorTelaConsultaPedido().ObterDadosPedido(id);
+                telaDetalhesPedido.lblCodigo.Text = dados[0].ToString();
+                telaDetalhesPedido.lblData.Text = dados[1].ToString().Substring(0, 10);
+                telaDetalhesPedido.lblHorario.Text = dados[2].ToString();
+                telaDetalhesPedido.lblMesa.Text = dados[3].ToString();
+                telaDetalhesPedido.lblTotal.Text = dados[5].ToString();
+                controladorTelaConsultaPedido().ListarTodosItensPedido(id, telaDetalhesPedido.lbProdutos);
+                telaDetalhesPedido.ShowDialog();
+                controladorTelaConsultaPedido().Load();
+            }
+        }
 
         private void btnDetalhes_Click(object sender, EventArgs e)
         {
-            frmTelaDetalhesPedido telaDetalhesPedido = new frmTelaDetalhesPedido();
-            int id = int.Parse(dgvConsultaPedidos.CurrentRow.Cells[0].Value.ToString());
-            object[] dados = controladorTelaConsultaPedido().ObterDadosPedido(id);
-            telaDetalhesPedido.lblCodigo.Text = dados[0].ToString();
-            telaDetalhesPedido.lblData.Text = dados[1].ToString().Substring(0,10);
-            telaDetalhesPedido.lblHorario.Text = dados[2].ToString();
-            telaDetalhesPedido.lblMesa.Text = dados[3].ToString();
-            telaDetalhesPedido.lblTotal.Text = dados[5].ToString();
-            controladorTelaConsultaPedido().ListarTodosItensPedido(id, telaDetalhesPedido.lbProdutos);
-            telaDetalhesPedido.ShowDialog();
+            Detalhes();
+        }
+
+        private void dgvConsultaPedidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Detalhes();
         }
     }
 }

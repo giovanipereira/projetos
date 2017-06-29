@@ -52,6 +52,7 @@ namespace ProjetoControleEstoque.Controller.controlador
         {
             itemPedido.Id_cardapio = int.Parse(txtCodigo.Text);
             itemPedido.Quantidade = (int)nudQuantidade.Value;
+            itemPedido.Status = "P";
             return itemPedido;
         }
 
