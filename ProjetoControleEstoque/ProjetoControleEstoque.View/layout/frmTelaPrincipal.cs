@@ -101,5 +101,23 @@ namespace ProjetoControleEstoque.View.layout
             frmTelaConsultaPedido telaConsultaPedido = new frmTelaConsultaPedido();
             telaConsultaPedido.ShowDialog();
         }
+
+        private void entradaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTelaRelatorioEntradaProduto telaRelatorioEntradaProduto = new frmTelaRelatorioEntradaProduto();
+            telaRelatorioEntradaProduto.ShowDialog();
+        }
+
+        private void pedidosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmTelaRelatorioPedido telaRelatorioPedido = new frmTelaRelatorioPedido();
+            telaRelatorioPedido.ShowDialog();
+        }
+
+        private void btnProduto_Click(object sender, EventArgs e)
+        {
+            frmTelaEscolherProduto telaEscolherProduto = new frmTelaEscolherProduto();
+            telaEscolherProduto.ShowDialog();
+        }
     }
 }

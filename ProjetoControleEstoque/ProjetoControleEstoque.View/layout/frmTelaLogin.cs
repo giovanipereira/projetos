@@ -18,7 +18,7 @@ namespace ProjetoControleEstoque.View.layout
             InitializeComponent();
         }
 
-        frmTelaSplash telaSplash;
+        frmTelaPrincipal telaPrincipal;
 
         ControladorTelaLogin controladadorTelaLogin()
         {
@@ -30,8 +30,8 @@ namespace ProjetoControleEstoque.View.layout
         {
             if (controladadorTelaLogin().EfetuarLogin())
             {
-                telaSplash = new frmTelaSplash();
-                telaSplash.ShowDialog();
+                telaPrincipal = new frmTelaPrincipal();
+                telaPrincipal.Show();
                 this.Hide();
             }
             else
@@ -40,7 +40,6 @@ namespace ProjetoControleEstoque.View.layout
                 controladadorTelaLogin().LimparCampos();
                 txtUsuario.Focus();
             }
-
         }
 
         private void btnSair_Click(object sender, EventArgs e)

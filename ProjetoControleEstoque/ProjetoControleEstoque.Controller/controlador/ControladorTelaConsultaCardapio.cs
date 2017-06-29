@@ -200,7 +200,7 @@ namespace ProjetoControleEstoque.Controller.controlador
                     if (Mensagem.MensagemQuestao("Tem certeza que deseja excluir?").Equals(DialogResult.Yes))
                     {
                         repositorioCardapio.Remover(cardapio);
-                        MessageBox.Show("Pedido cancelado com sucesso!", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Mensagem.MensagemExclusao();
                         ListarTodosCardapios();
                     }
                 }

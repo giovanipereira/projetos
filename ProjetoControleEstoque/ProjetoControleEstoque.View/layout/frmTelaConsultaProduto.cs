@@ -41,7 +41,10 @@ namespace ProjetoControleEstoque.View.layout
                 telaCadastroProduto.txtCodigo.Text = dados[0].ToString();
                 telaCadastroProduto.txtNome.Text = dados[1].ToString();
                 telaCadastroProduto.txtValorUnitario.Text = dados[2].ToString().Replace(",", ".");
-                telaCadastroProduto.nudQtdEstoque.Value = (int)dados[3];
+                if ((int)dados[3] < 0)
+                    telaCadastroProduto.nudQtdEstoque.Value = 1;
+                else
+                    telaCadastroProduto.nudQtdEstoque.Value = (int)dados[3];
                 telaCadastroProduto.nudQtdMinima.Value = (int)dados[4];
                 telaCadastroProduto.nudQtdMaxima.Value = (int)dados[5];
                 telaCadastroProduto.txtQuantidade.Text = dados[6].ToString().Replace(",", ".");

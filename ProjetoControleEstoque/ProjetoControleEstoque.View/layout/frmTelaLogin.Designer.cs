@@ -132,9 +132,9 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::ProjetoControleEstoque.View.Properties.Resources.locked_icon1;
-            this.pictureBox3.Location = new System.Drawing.Point(348, 68);
+            this.pictureBox3.Location = new System.Drawing.Point(348, 60);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(136, 71);
+            this.pictureBox3.Size = new System.Drawing.Size(136, 101);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;

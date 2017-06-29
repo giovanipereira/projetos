@@ -30,12 +30,9 @@ namespace ProjetoControleEstoque.View.layout
                 timer.Stop();
                 timer.Enabled = false;
                 this.Visible = false;
-                frmTelaPrincipal te = new frmTelaPrincipal();
-                te.Show();
-            }
-            else
-            {
-                
+                frmTelaLogin telaLogin = new frmTelaLogin();
+                telaLogin.Show();
+                this.Hide();
             }
         }
     }

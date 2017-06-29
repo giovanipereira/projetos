@@ -33,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -124,6 +127,12 @@
     <Compile Include="layout\frmTelaConsultaProduto.Designer.cs">
       <DependentUpon>frmTelaConsultaProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="layout\frmTelaEscolherProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaEscolherProduto.Designer.cs">
+      <DependentUpon>frmTelaEscolherProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="layout\frmTelaLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +151,18 @@
     <Compile Include="layout\frmTelaPrincipal.Designer.cs">
       <DependentUpon>frmTelaPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="layout\frmTelaRelatorioEntradaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaRelatorioEntradaProduto.Designer.cs">
+      <DependentUpon>frmTelaRelatorioEntradaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="layout\frmTelaRelatorioPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="layout\frmTelaRelatorioPedido.Designer.cs">
+      <DependentUpon>frmTelaRelatorioPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="layout\frmTelaSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +177,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="relatorios\DataSetControleEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetControleEstoque.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="layout\frmTelaCadastroCardapio.resx">
       <DependentUpon>frmTelaCadastroCardapio.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +221,9 @@
     <EmbeddedResource Include="layout\frmTelaConsultaProduto.resx">
       <DependentUpon>frmTelaConsultaProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaEscolherProduto.resx">
+      <DependentUpon>frmTelaEscolherProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaLogin.resx">
       <DependentUpon>frmTelaLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaPrincipal.resx">
       <DependentUpon>frmTelaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaRelatorioEntradaProduto.resx">
+      <DependentUpon>frmTelaRelatorioEntradaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layout\frmTelaRelatorioPedido.resx">
+      <DependentUpon>frmTelaRelatorioPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="layout\frmTelaSplash.resx">
       <DependentUpon>frmTelaSplash.cs</DependentUpon>
@@ -220,6 +255,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="relatorios\ReportHistoricoPedidos.rdlc" />
+    <EmbeddedResource Include="relatorios\ReportHistoricoProdutos.rdlc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -244,6 +281,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="relatorios\DataSetControleEstoque.xsc">
+      <DependentUpon>DataSetControleEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="relatorios\DataSetControleEstoque.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetControleEstoque.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="relatorios\DataSetControleEstoque.xss">
+      <DependentUpon>DataSetControleEstoque.xsd</DependentUpon>
+    </None>
     <None Include="Resources\shop-cart-icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +377,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\voltar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logocoruja.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lyra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adicionaruser.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\depositphotos_72518493-Square-bottle-icon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -56,16 +56,23 @@ namespace ProjetoControleEstoque.Controller.controlador
             return sucesso;
         }
 
-        private void CancelarPedido()
+        private bool CancelarPedido()
         {
+            bool sucesso = false;
             int id = int.Parse(lblCodigo.Text.ToString());
             pedido = new Pedido();
             pedido.Id = id;
             if (Mensagem.MensagemQuestao("Tem certeza que deseja cancelar o pedido?").Equals(DialogResult.Yes))
             {
                 repositorioPedido.Remover(pedido);
-                Mensagem.MensagemExclusao();
+                MessageBox.Show("Pedido cancelado com sucesso.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                sucesso = true;
             }
+            else
+            {
+                sucesso = false;
+            }
+            return sucesso;
         }
 
 
@@ -79,8 +86,12 @@ namespace ProjetoControleEstoque.Controller.controlador
 
         public void Cancelar(Form form)
         {
-            CancelarPedido();
-            form.Close();
+            if (CancelarPedido())
+            {
+                form.Close();
+            }
+
+
         }
     }
 }
